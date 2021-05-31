@@ -1,0 +1,106 @@
+{
+  "name": "dreifuss-editor",
+  "private": true,
+  "engines": {
+    "node": "^12.0.0",
+    "yarn": "^1.16.0"
+  },
+  "scripts": {
+    "build": "run-s --print-label build:api build:api-db-mongodb build:api-media-karma build:oauth2 build:editor build:api-example build:media-example",
+    "dev": "run-p --print-label watch",
+    "watch": "run-p --print-label watch:*",
+    "watch:wysiwyg-editor": "yarn workspace @dreifuss-editor/core start",
+    "build:wysiwyg-editor": "yarn workspace @dreifuss-editor/core build",
+    "watch:package-character-count": "yarn workspace @dreifuss-editor/package-character-count build:w",
+    "build:package-character-count": "yarn workspace @dreifuss-editor/package-character-count build",
+    "prettier": "prettier --write '{packages,services}/**/*.{js,ts,tsx,json}'",
+    "prettier-check": "prettier --check '{packages,services}/**/*.{js,ts,tsx,json}'"
+  },
+  "workspaces": [
+    "core",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-import": "^1.13.3",
+    "babel-plugin-inline-json-import": "^0.3.2",
+    "babel-plugin-prismjs": "2.0.1",
+    "babel-plugin-styled-components": "^1.12.0",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-i18next": "^5.0.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^3.0.0",
+    "lerna": "^3.22.1",
+    "lerna-changelog": "^1.0.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.1",
+    "pretty-quick": "^1.11.1",
+    "rollup": "^2.39.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-includepaths": "^0.2.4",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --pattern '{examples,packages,services}/**/*.{js,ts,tsx,json}'"
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "react",
+      "standard"
+    ],
+    "extends": [
+      "standard",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "prettier",
+      "prettier/@typescript-eslint",
+      "prettier/react",
+      "prettier/standard"
+    ],
+    "rules": {
+      "no-use-before-define": [
+        0
+      ],
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-use-before-define": [
+        1
+      ]
+    },
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "ignorePatterns": [
+      "node_modules",
+      "dist",
+      "lib",
+      "coverage",
+      "assets"
+    ]
+  },
+  "version": "0.0.0"
+}
