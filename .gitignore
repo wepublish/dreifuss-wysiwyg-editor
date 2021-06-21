@@ -3,8 +3,8 @@
 lib/
 dist/
 assets/
-examples/**/LICENSE
 packages/**/LICENSE
+packages/**/dist
 node_modules
 npm-debug.log
 yarn-error.log
