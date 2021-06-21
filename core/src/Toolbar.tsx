@@ -14,6 +14,8 @@ import {
   AlignCenter,
   AlignJustify,
   StrikeThrough,
+  Superscript,
+  Subscript,
   //   FileImage,
   ListOL,
   ListUL,
@@ -31,30 +33,21 @@ import {
   ELEMENT_ALIGN_JUSTIFY,
   ELEMENT_ALIGN_RIGHT
 } from '@udecode/slate-plugins-alignment'
-import {ToolbarAlign} from '@udecode/slate-plugins-alignment-ui'
-// import {} from '@udecode/slate-plugins-autoformat'
-// import {
-//   BasicElementPluginsOptions,
-//   createBasicElementPlugins
-// } from '@udecode/slate-plugins-basic-elements'
-import {
-  MARK_BOLD,
-  //   MARK_CODE,
-  MARK_ITALIC,
-  //   MARK_KBD,
-  MARK_STRIKETHROUGH,
-  //   MARK_SUBSCRIPT,
-  //   MARK_SUPERSCRIPT,
-  MARK_UNDERLINE
-} from '@udecode/slate-plugins-basic-marks'
-import {ELEMENT_BLOCKQUOTE} from '@udecode/slate-plugins-block-quote'
-// import {BlockquoteElement} from '@udecode/slate-plugins-block-quote-ui'
-import {ELEMENT_CODE_BLOCK} from '@udecode/slate-plugins-code-block'
-import {ToolbarCodeBlock} from '@udecode/slate-plugins-code-block-ui'
-import {useSlatePluginType, useStoreEditor} from '@udecode/slate-plugins-core'
-import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, ELEMENT_H4} from '@udecode/slate-plugins-heading'
-import {ELEMENT_OL, ELEMENT_UL} from '@udecode/slate-plugins-list'
+import Popover from './atoms/Popover'
+import {EmojiPicker} from './atoms/EmojiPicker'
 import {ToolbarList} from '@udecode/slate-plugins-list-ui'
+import {ToolbarTable} from '@udecode/slate-plugins-table-ui'
+import {ToolbarAlign} from '@udecode/slate-plugins-alignment-ui'
+import {ELEMENT_OL, ELEMENT_UL} from '@udecode/slate-plugins-list'
+import {ELEMENT_CODE_BLOCK} from '@udecode/slate-plugins-code-block'
+import {ELEMENT_BLOCKQUOTE} from '@udecode/slate-plugins-block-quote'
+import {ToolbarCodeBlock} from '@udecode/slate-plugins-code-block-ui'
+import {LinkToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-link-ui'
+import {ToolbarElement, ToolbarMark} from '@udecode/slate-plugins-toolbar'
+import {useSlatePluginType, useStoreEditor} from '@udecode/slate-plugins-core'
+import {TableColorPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-table-border'
+import {QuotationMarksPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui'
+import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, ELEMENT_H4} from '@udecode/slate-plugins-heading'
 import {
   insertTable,
   deleteColumn,
@@ -63,14 +56,14 @@ import {
   addColumn,
   addRow
 } from '@udecode/slate-plugins-table'
-import {ToolbarTable} from '@udecode/slate-plugins-table-ui'
-import {ToolbarElement, ToolbarMark} from '@udecode/slate-plugins-toolbar'
-import {EmojiPicker} from './atoms/EmojiPicker'
-import Popover from './atoms/Popover'
-import {LinkToolbar} from './packages/LinkToolbar'
-import { Node} from 'slate'
-import {toArray} from 'lodash'
-import { QuotationMarksPicker } from './atoms/QuotationMarksPicker'
+import {
+  MARK_BOLD,
+  MARK_ITALIC,
+  MARK_STRIKETHROUGH,
+  MARK_SUBSCRIPT,
+  MARK_SUPERSCRIPT,
+  MARK_UNDERLINE
+} from '@udecode/slate-plugins-basic-marks'
 
 export const ToolbarLink = () => (
   <Popover Icon={<ToolbarElement type="" icon={<Link />} />}>
@@ -80,6 +73,7 @@ export const ToolbarLink = () => (
 
 export const ToolbarEmoji = () => {
   const editor = useStoreEditor()
+
   return (
     <Popover Icon={<ToolbarElement type="" icon={<Emoji />} />}>
       <EmojiPicker setEmoji={emoji => editor?.insertText(emoji)} />
@@ -87,39 +81,11 @@ export const ToolbarEmoji = () => {
   )
 }
 
-export const ToolbarQutationMarks = () => {
-  const editor = useStoreEditor()
-  return (
-    <Popover Icon={<ToolbarElement type="" icon={"<<>>"} />}>
-      <QuotationMarksPicker setQuotationMarks={quotationMark => editor?.insertText(quotationMark)} />
-    </Popover>
-  )
-}
-
-export const ToolbarCharCount= () => {
-  const editor = useStoreEditor()
-  console.log(editor?.children)
-  const getTextString = (editor: any) => {
-    // get all text nodes and append them to each other in one string
-    console.log(editor)
-    return [...Node.texts(editor)].reduce((string, nodePair, index) => {
-      const [textNode] = nodePair
-      if (index === 0) return `${textNode.text}`
-      return `${string} ${textNode.text}`
-    }, '')
-  }
-
-  const calculateEditorCharCount = (editor: any) => {
-    // using lodash toArray to get correct length for characters like emojis
-    return toArray(getTextString(editor)).length
-  }
-
-  const charCount = calculateEditorCharCount(editor)
-
-  return (
-      <div> {charCount} </div>
-  )
-}
+export const ToolbarQuotationMarks = ({editorId}: {editorId: string}) => (
+  <Popover Icon={<ToolbarElement type="" icon={'<<>>'} />}>
+    <QuotationMarksPicker editorId={editorId} />
+  </Popover>
+)
 
 export const ToolbarButtonsBasicElements = () => (
   <>
@@ -157,7 +123,7 @@ export const ToolbarButtonsBasicMarks = () => {
       <ToolbarMark type={useSlatePluginType(MARK_STRIKETHROUGH)} icon={<StrikeThrough />} />
       {/* <ToolbarMark type={useSlatePluginType(MARK_CODE)} icon={<CodeAlt />} />
       <ToolbarMark type={useSlatePluginType(MARK_KBD)} icon={<Keyboard />} /> */}
-      {/* <ToolbarMark
+      <ToolbarMark
         type={useSlatePluginType(MARK_SUPERSCRIPT)}
         clear={useSlatePluginType(MARK_SUBSCRIPT)}
         icon={<Superscript />}
@@ -166,12 +132,12 @@ export const ToolbarButtonsBasicMarks = () => {
         type={useSlatePluginType(MARK_SUBSCRIPT)}
         clear={useSlatePluginType(MARK_SUPERSCRIPT)}
         icon={<Subscript />}
-      /> */}
+      />
     </>
   )
 }
 
-export const ToolbarButtonsTable = () => (
+export const ToolbarButtonsTable = ({editorId}: {editorId: string}) => (
   <>
     <ToolbarTable icon={<BorderAll />} transform={insertTable} />
     <ToolbarTable icon={<BorderClear />} transform={deleteTable} />
@@ -179,45 +145,8 @@ export const ToolbarButtonsTable = () => (
     <ToolbarTable icon={<BorderTop />} transform={deleteRow} />
     <ToolbarTable icon={<BorderLeft />} transform={addColumn} />
     <ToolbarTable icon={<BorderRight />} transform={deleteColumn} />
+    <Popover Icon={<ToolbarElement type="" icon={'+'} />}>
+      {'Border color: '} <TableColorPicker editorId={editorId} />
+    </Popover>
   </>
 )
-
-// export const BallonToolbarMarks = () => {
-//   const arrow = false;
-//   const theme = 'dark';
-//   const direction = 'top';
-//   const hiddenDelay = 0;
-//   const tooltip: TippyProps = {
-//     arrow: true,
-//     delay: 0,
-//     duration: [200, 0],
-//     hideOnClick: false,
-//     offset: [0, 17],
-//     placement: 'top',
-//   };
-
-//   return (
-//     <BalloonToolbar
-//       direction={direction}
-//       hiddenDelay={hiddenDelay}
-//       theme={theme}
-//       arrow={arrow}
-//     >
-//       <ToolbarMark
-//         type={useSlatePluginType(MARK_BOLD)}
-//         icon={<Bold />}
-//         tooltip={{ content: 'Bold (⌘B)', ...tooltip }}
-//       />
-//       <ToolbarMark
-//         type={useSlatePluginType(MARK_ITALIC)}
-//         icon={<Italic />}
-//         tooltip={{ content: 'Italic (⌘I)', ...tooltip }}
-//       />
-//       <ToolbarMark
-//         type={useSlatePluginType(MARK_UNDERLINE)}
-//         icon={<Underlined />}
-//         tooltip={{ content: 'Underline (⌘U)', ...tooltip }}
-//       />
-//     </BalloonToolbar>
-//   );
-// };

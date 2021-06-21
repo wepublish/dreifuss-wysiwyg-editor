@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
+import commonjs from '@rollup/plugin-commonjs';
 import includePaths from 'rollup-plugin-includepaths';
 import json from 'rollup-plugin-json';
 import builtins from 'rollup-plugin-node-builtins';
@@ -10,6 +10,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import external from 'rollup-plugin-peer-deps-external';
 import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
+import styles from "rollup-plugin-styles";
 
 const PACKAGE_ROOT_PATH = process.cwd();
 const INPUT_FILE_PATH = path.join(PACKAGE_ROOT_PATH, 'src/index.ts');
@@ -51,9 +52,6 @@ const plugins = [
   // modules by default.
   commonjs({
     include: /node_modules/,
-    namedExports: {
-      'react-is': ['typeOf', 'isElement', 'isValidElementType'],
-    },
   }),
 
   // Convert JSON imports to ES6 modules.
@@ -114,6 +112,8 @@ const plugins = [
     exclude: /node_modules/,
     runtimeHelpers: true,
   }),
+
+  styles(),
 
   // Register Node.js globals for browserify compatibility.
   globals(),

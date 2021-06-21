@@ -1,9 +1,9 @@
 {
-  "name": "@dreifuss-editor/package-character-count",
-  "version": "1.0.0-next.36",
-  "description": "Slate plugins character count",
+  "name": "@dreifuss-wysiwyg-editor/slate-plugins-link-ui",
+  "version": "1.0.0",
+  "description": "Slate plugins Link UI",
   "keywords": [],
-  "homepage": "https://github.com/udecode/slate-plugins/tree/main/packages/link#readme",
+  "homepage": "https://github.com/udecode/slate-plugins/tree/main/packages/alignment-ui#readme",
   "bugs": {
     "url": "https://github.com/udecode/slate-plugins/issues"
   },
@@ -19,7 +19,7 @@
     "dist"
   ],
   "scripts": {
-    "cti": "sh ../../../cti.sh",
+    "cti": "sh ../../cti.sh",
     "prebuild": "rimraf dist",
     "build": "yarn rollup",
     "build:w": "yarn rollup -w",
@@ -27,15 +27,14 @@
     "test": "jest"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
+    "react": ">=16.12.0",
+    "react-dom": ">=16.12.0",
     "slate": ">=0.60.0",
     "slate-react": ">=0.60.0"
   },
   "dependencies": {
-    "@udecode/slate-plugins-common": "1.0.0-next.36",
-    "@udecode/slate-plugins-core": "1.0.0-next.36",
-    "@udecode/slate-plugins-normalizers": "1.0.0-next.36"
+    "@udecode/slate-plugins-core": "1.0.0-alpha.25",
+    "@udecode/slate-plugins-toolbar": "1.0.0-alpha.25"
   },
   "publishConfig": {
     "access": "public"

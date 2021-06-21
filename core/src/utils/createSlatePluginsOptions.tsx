@@ -104,6 +104,7 @@ export type DefaultSlatePluginKey =
 export const createSlatePluginsOptions = <T extends string = string>(
   overrides?: Partial<Record<DefaultSlatePluginKey | T, Partial<SlatePluginOptions>>>
 ) => {
+  //@ts-ignore
   const options: Record<DefaultSlatePluginKey, Partial<SlatePluginOptions>> = {
     [ELEMENT_ALIGN_CENTER]: {},
     [ELEMENT_ALIGN_JUSTIFY]: {},
@@ -149,7 +150,24 @@ export const createSlatePluginsOptions = <T extends string = string>(
     [ELEMENT_TABLE]: {},
     [ELEMENT_TD]: {
       type: 'table-cell',
-      defaultType: 'table-cell'
+      defaultType: 'table-cell',
+      component: (props: any) => {
+        const {element} = props
+        return (
+          <td
+            {...props.attributes}
+            className={props.className}
+            style={{
+              border: '1px solid',
+              borderColor:
+                element.borderColor === 'transparent'
+                  ? `rgb(0, 0, 0, 0.5)`
+                  : (element.borderColor as string)
+            }}>
+            {props.children}
+          </td>
+        )
+      }
     },
     [ELEMENT_TR]: {
       type: 'table-row',

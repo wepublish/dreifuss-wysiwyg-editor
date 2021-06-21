@@ -13,3 +13,4 @@ yarn-error.log
 .env
 .changelog
 coverage/
+bundle.js

@@ -2,6 +2,6 @@
   "compilerOptions": {
     "jsx": "react"
   },
-  "extends": "../tsconfig",
+  "extends": "../../tsconfig",
   "include": ["src"]
 }

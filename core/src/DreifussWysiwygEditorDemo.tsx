@@ -2,7 +2,6 @@ import React from 'react'
 import {render} from 'react-dom'
 import DreifussWysiwygEditor from './DreifussWysiwygEditor'
 
-// TODO: remove this
 const value: any = [
   {
     type: 'ordered-list',
@@ -212,7 +211,7 @@ const value: any = [
 ]
 
 const DreifussWysiwygEditorDemo = () => (
-  <div style={{overflowX: 'hidden'}}>
+  <div style={{overflowX: 'hidden', minHeight: 400}}>
     <h1>RichText Component Demo</h1>
     <DreifussWysiwygEditor
       onChange={(value: any) => {
