@@ -9,12 +9,12 @@
     "dist"
   ],
   "scripts": {
-    "start": "webpack-dev-server --config webpack.demo.config.ts --progress --mode development --hot",
-    "build-demo": "webpack --config webpack.demo.config.ts --progress --mode production",
-    "build-component": "webpack --progress --mode production",
+    "start": "node_modules/.bin/webpack-dev-server --config webpack.demo.config.ts --progress --mode development --hot",
+    "build-demo": "node_modules/.bin/webpack --config webpack.demo.config.ts --progress --mode production",
+    "build-component": "node_modules/.bin/webpack --progress --mode production",
     "build": "npm run build-component && npm run build-demo",
     "build:new": "yarn rollup",
-    "rollup": "rollup -c=../rollup.config.js",
+    "rollup": "rollup -c=../../rollup.config.js",
     "rollup:live": "rollup -c=rollup.config.demo.js",
     "prepublish": "npm run build",
     "test": "BABEL_JEST_STAGE=0 jest",
@@ -136,7 +136,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "../package.json"
+      "../../package.json"
     ],
     "settings": {
       "import/resolver": {

@@ -30,7 +30,7 @@ import {
 import {
   SlatePlugins,
   createHistoryPlugin,
-  createReactPlugin,
+  createReactPlugin
   /* SPEditor */
 } from '@udecode/slate-plugins-core'
 import {ToolbarImage} from '@udecode/slate-plugins-image-ui'
@@ -70,11 +70,11 @@ export default function DreifussWysiwygEditor(props: any) {
     readOnly: props.displayOnly ?? props.disabled ?? false,
     style: props.displayOneLine
       ? {
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        width: 'inherit'
-      }
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          width: 'inherit'
+        }
       : {}
   }
 

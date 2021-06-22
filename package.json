@@ -16,10 +16,6 @@
     "prettier": "prettier --write '{packages,services}/**/*.{js,ts,tsx,json}'",
     "prettier-check": "prettier --check '{packages,services}/**/*.{js,ts,tsx,json}'"
   },
-  "workspaces": [
-    "core",
-    "packages/*"
-  ],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^4.2.0",
