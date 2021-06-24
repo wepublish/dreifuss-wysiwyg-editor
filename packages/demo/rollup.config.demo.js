@@ -1,58 +1,53 @@
-import fs from 'fs';
-import path from 'path';
-import babel from '@rollup/plugin-babel';
-import commonjs from '@rollup/plugin-commonjs';
-import includePaths from 'rollup-plugin-includepaths';
-import json from '@rollup/plugin-json';
-import builtins from 'rollup-plugin-node-builtins';
-import globals from 'rollup-plugin-node-globals';
-import resolve from '@rollup/plugin-node-resolve';
-import external from 'rollup-plugin-peer-deps-external';
-import { terser } from 'rollup-plugin-terser';
-import typescript from 'rollup-plugin-typescript2';
-import styles from "rollup-plugin-styles";
+import fs from 'fs'
+import path from 'path'
+import babel from '@rollup/plugin-babel'
+import commonjs from '@rollup/plugin-commonjs'
+import includePaths from 'rollup-plugin-includepaths'
+import json from '@rollup/plugin-json'
+import builtins from 'rollup-plugin-node-builtins'
+import globals from 'rollup-plugin-node-globals'
+import resolve from '@rollup/plugin-node-resolve'
+import serve from 'rollup-plugin-serve'
+import livereload from 'rollup-plugin-livereload'
+import typescript from 'rollup-plugin-typescript2'
+import styles from 'rollup-plugin-styles'
 
-const PACKAGE_ROOT_PATH = process.cwd();
-const INPUT_FILE_PATH = path.join(PACKAGE_ROOT_PATH, 'src/index.ts');
+const PACKAGE_ROOT_PATH = process.cwd()
+const INPUT_FILE_PATH = path.join(PACKAGE_ROOT_PATH, 'src/DreifussWysiwygEditorDemo.tsx')
 const INPUT_FILE = fs.existsSync(INPUT_FILE_PATH)
   ? INPUT_FILE_PATH
-  : path.join(PACKAGE_ROOT_PATH, 'src/index.tsx');
-const PKG_JSON = require(path.join(PACKAGE_ROOT_PATH, 'package.json'));
-
-const isUmd = false;
+  : path.join(PACKAGE_ROOT_PATH, 'src/index.tsx')
 
 const includePathOptions = {
   include: {},
   paths: [path.join(PACKAGE_ROOT_PATH, 'src')],
   external: [],
-  extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
-};
+  extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
+}
 
 const plugins = [
-  // Automatically externalize peerDependencies
-  external(),
-
   // Let you use relative paths in your import directives
   includePaths(includePathOptions),
 
   // Allow Rollup to resolve modules from `node_modules`, since it only
   // resolves local modules by default.
   resolve({
-    browser: true,
+    browser: true
     // modulesOnly: true,
   }),
 
   typescript({
     clean: true,
     check: false,
-    tsconfig: path.join(PACKAGE_ROOT_PATH, 'tsconfig.build.json'),
-    useTsconfigDeclarationDir: true,
+    tsconfig: path.join(PACKAGE_ROOT_PATH, 'tsconfig.base.json'),
+    useTsconfigDeclarationDir: true
   }),
 
   // Allow Rollup to resolve CommonJS modules, since it only resolves ES2015
   // modules by default.
   commonjs({
     include: /node_modules/,
+    sourceMap: false
   }),
 
   // Convert JSON imports to ES6 modules.
@@ -69,12 +64,12 @@ const plugins = [
         {
           modules: false,
           targets: {
-            node: 'current',
-          },
-        },
+            node: 'current'
+          }
+        }
       ],
       '@babel/preset-react',
-      '@babel/preset-typescript',
+      '@babel/preset-typescript'
     ],
     plugins: [
       '@babel/plugin-proposal-optional-chaining',
@@ -87,31 +82,31 @@ const plugins = [
         {
           libraryName: 'lodash',
           libraryDirectory: '',
-          camel2DashComponentName: false,
+          camel2DashComponentName: false
         },
-        'lodash',
+        'lodash'
       ],
       [
         'import',
         {
           libraryName: 'react-use',
           libraryDirectory: 'lib',
-          camel2DashComponentName: false,
+          camel2DashComponentName: false
         },
-        'react-use',
-      ],
+        'react-use'
+      ]
     ],
     env: {
       test: {
         presets: [
-          ['@babel/preset-react', { modules: '../../../../commonjs' }],
-          ['@babel/preset-env', { modules: '../../../../commonjs' }],
-        ],
-      },
+          ['@babel/preset-react', {modules: '../../../../commonjs'}],
+          ['@babel/preset-env', {modules: '../../../../commonjs'}]
+        ]
+      }
     },
     extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', '.ts', '.tsx'],
     exclude: /node_modules/,
-    babelHelpers: 'inline',
+    babelHelpers: 'inline'
   }),
 
   styles(),
@@ -119,18 +114,20 @@ const plugins = [
   // Register Node.js globals for browserify compatibility.
   globals(),
 
-  // Only minify the output in production, since it is very slow. And only
-  // for UMD builds, since modules will be bundled by the consumer.
-  isUmd && terser(),
-];
+  serve({
+    contentBase: 'demo',
+    port: '8000',
+    verbose: true
+  }),
+  livereload({
+    watch: 'demo'
+  })
+]
 
 export default [
   {
     input: INPUT_FILE,
-    external: [
-      ...Object.keys(PKG_JSON.dependencies || {}),
-      ...Object.keys(PKG_JSON.peerDependencies || {}),
-    ],
+    external: [],
     // external(id) {
     //      return Object.keys(PKG_JSON.dependencies || {})
     //        .concat(Object.keys(PKG_JSON.peerDependnencies || {}))
@@ -139,23 +136,14 @@ export default [
     output: [
       // CommonJS (for Node)
       {
-        file: PKG_JSON.main,
-        format: 'cjs',
-        name: PKG_JSON.name,
-        sourcemap: true,
-      },
-      // ES module (for bundlers)
-      {
-        file: PKG_JSON.module,
-        format: 'es',
-        name: PKG_JSON.name,
-        sourcemap: true,
-      },
+        file: 'demo/bundle.js',
+        format: 'iife'
+      }
     ],
     plugins,
     watch: {
-      include: 'src/**',
+      include: 'src/**'
       // exclude: 'node_modules/**',
-    },
-  },
-];
+    }
+  }
+]

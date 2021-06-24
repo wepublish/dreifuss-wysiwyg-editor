@@ -48,10 +48,13 @@ import {
 // type TEditor = SPEditor & ReactEditor & HistoryEditor
 
 export interface EditableProps {
+  id?: string
   displayOnly?: boolean
   showCharCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
+  initialValue?: any
+  value?: any
   // onChange?: React.Dispatch<React.SetStateAction<V>>
 }
 
@@ -59,7 +62,7 @@ function Imagee(props: any) {
   return <h1>Hi</h1>
 }
 
-export default function DreifussWysiwygEditor(props: any) {
+export default function DreifussWysiwygEditor(props: EditableProps) {
   const components = createSlatePluginsComponents()
   const options = createSlatePluginsOptions()
 
@@ -102,11 +105,10 @@ export default function DreifussWysiwygEditor(props: any) {
     createStrikethroughPlugin(),
     createHeadingPlugin({levels: 3})
   ]
-
+  // onChange={(change: string) => console.log('change', change)}
   return (
     <SlatePlugins
       id={props.id ?? 'main'}
-      onChange={props.onChange}
       plugins={plugins}
       components={components}
       options={options}
@@ -128,16 +130,17 @@ export default function DreifussWysiwygEditor(props: any) {
           <ToolbarButtonsTable editorId={props.id ?? 'main'} />
           <Divider type={DividerType.vertical} />
           <ToolbarLink />
+          <Divider type={DividerType.vertical} />
           <ToolbarEmoji />
           <Divider type={DividerType.vertical} />
           <ToolbarQuotationMarks editorId={props.id ?? 'main'} />
         </HeadingToolbar>
       )}
-      {props.showCharCount && (
+      {/* props.showCharCount && (
         <p style={{textAlign: 'right'}}>
           {'Characters count:'} <CharCount editorId={props.id ?? 'main'} />
         </p>
-      )}
+      ) */}
     </SlatePlugins>
   )
 }

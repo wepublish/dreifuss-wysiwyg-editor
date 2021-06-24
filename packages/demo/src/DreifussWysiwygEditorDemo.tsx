@@ -1,6 +1,6 @@
 import React from 'react'
 import {render} from 'react-dom'
-import DreifussWysiwygEditor from './DreifussWysiwygEditor'
+import {DreifussWysiwygEditor} from '@dreifuss-wysiwyg-editor/core'
 
 const value: any = [
   {
@@ -213,13 +213,7 @@ const value: any = [
 const DreifussWysiwygEditorDemo = () => (
   <div style={{overflowX: 'hidden', minHeight: 400}}>
     <h1>RichText Component Demo</h1>
-    <DreifussWysiwygEditor
-      onChange={(value: any) => {
-        // console.log(value)
-      }}
-      showCharCount
-      initialValue={value}
-    />
+    <DreifussWysiwygEditor showCharCount initialValue={value} />
   </div>
 )
 

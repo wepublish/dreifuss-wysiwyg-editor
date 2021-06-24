@@ -1,6 +1,7 @@
 import React from 'react'
 import './emojiPicker.css'
 
+//@ts-ignore
 import {Picker, BaseEmoji} from 'emoji-mart'
 
 interface EmojiPickerProps {
