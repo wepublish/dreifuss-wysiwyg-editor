@@ -1,7 +1,19 @@
 {
-  "extends": "./tsconfig.build.json",
   "compilerOptions": {
-    "baseUrl": "."
-  },
-  "exclude": ["node_modules", "**/node_modules", "**/dist", "**/*.stories.*", "**/*template*"]
+    "baseUrl": ".",
+
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    "strict": true,
+
+    "skipLibCheck": true,
+
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es2017",
+    "composite": true
+  }
 }

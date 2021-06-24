@@ -1,15 +1,19 @@
 {
   "name": "dreifuss-editor",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "engines": {
     "node": "^16.0.0",
     "yarn": "^1.22.0"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "run-s --print-label build:api build:api-db-mongodb build:api-media-karma build:oauth2 build:editor build:api-example build:media-example",
+    "build": "lerna run build --stream",
+    "clean": "lerna run clean --parallel",
+    "watch": "lerna run watch --parallel",
     "dev": "run-p --print-label watch",
-    "watch": "run-p --print-label watch:*",
     "watch:wysiwyg-editor": "yarn workspace @dreifuss-editor/core start",
     "build:wysiwyg-editor": "yarn workspace @dreifuss-editor/core build",
     "watch:package-character-count": "yarn workspace @dreifuss-editor/package-character-count build:w",

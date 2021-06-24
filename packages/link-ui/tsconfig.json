@@ -1,7 +1,11 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "jsx": "react"
+    "outDir": "dist",
+    "rootDir": "src",
+    "target": "ES2019",
+    "lib": ["dom", "ES2019"],
+    "jsx": "react-jsx"
   },
-  "extends": "../../tsconfig",
-  "include": ["src"]
+  "exclude": ["node_modules", "dist"]
 }

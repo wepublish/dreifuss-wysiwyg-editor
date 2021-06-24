@@ -130,17 +130,16 @@ export default function DreifussWysiwygEditor(props: EditableProps) {
           <ToolbarButtonsTable editorId={props.id ?? 'main'} />
           <Divider type={DividerType.vertical} />
           <ToolbarLink />
-          <Divider type={DividerType.vertical} />
           <ToolbarEmoji />
           <Divider type={DividerType.vertical} />
           <ToolbarQuotationMarks editorId={props.id ?? 'main'} />
         </HeadingToolbar>
       )}
-      {/* props.showCharCount && (
+      {props.showCharCount && (
         <p style={{textAlign: 'right'}}>
           {'Characters count:'} <CharCount editorId={props.id ?? 'main'} />
         </p>
-      ) */}
+      )}
     </SlatePlugins>
   )
 }

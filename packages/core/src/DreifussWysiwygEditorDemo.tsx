@@ -1,6 +1,6 @@
 import React from 'react'
 import {render} from 'react-dom'
-import {DreifussWysiwygEditor} from '@dreifuss-wysiwyg-editor/core'
+import {DreifussWysiwygEditor} from './index'
 
 const value: any = [
   {
@@ -209,6 +209,8 @@ const value: any = [
     ]
   }
 ]
+
+//
 
 const DreifussWysiwygEditorDemo = () => (
   <div style={{overflowX: 'hidden', minHeight: 400}}>
