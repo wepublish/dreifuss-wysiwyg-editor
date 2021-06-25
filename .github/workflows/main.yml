@@ -1,12 +1,9 @@
 name: CI/CD
 
-on:
-  push:
-    branches:
-      - f/initial-codebase
+on: [pull_request]
 
 jobs:
-  release:
+  deployment:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
