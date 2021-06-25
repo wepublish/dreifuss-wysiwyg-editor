@@ -27,8 +27,8 @@ jobs:
           export_default_credentials: true
       - name: Use gcloud CLI
         run: |
-          gsutil cp ./packages/core/dist/index.html gs://dreifuss-wysiwyg-editor.wepublish.dev/${{ GITHUB_REF }}
-          gsutil cp ./packages/core/dist/index_bundle.js gs://dreifuss-wysiwyg-editor.wepublish.dev/${{ GITHUB_REF }}
+          gsutil cp ./packages/core/dist/index.html gs://dreifuss-wysiwyg-editor.wepublish.dev/${{ env.GITHUB_REF }}
+          gsutil cp ./packages/core/dist/index_bundle.js gs://dreifuss-wysiwyg-editor.wepublish.dev/${{ env.GITHUB_REF }}
 #      - name: Slack Notification
 #        uses: rtCamp/action-slack-notify@master
 #        env:
