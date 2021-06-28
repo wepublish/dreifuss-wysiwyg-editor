@@ -3,3 +3,4 @@
  */
 
 export * from "./TableBorder";
+export {TableBackgroundColorPicker} from "./TableBackground";

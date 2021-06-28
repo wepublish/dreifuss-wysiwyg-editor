@@ -45,7 +45,7 @@ import {ToolbarCodeBlock} from '@udecode/slate-plugins-code-block-ui'
 import {LinkToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-link-ui'
 import {ToolbarElement, ToolbarMark} from '@udecode/slate-plugins-toolbar'
 import {useSlatePluginType, useStoreEditor} from '@udecode/slate-plugins-core'
-import {TableColorPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-table-border'
+import {TableColorPicker,TableBackgroundColorPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-table-border'
 import {QuotationMarksPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, ELEMENT_H4} from '@udecode/slate-plugins-heading'
 import {
@@ -147,6 +147,9 @@ export const ToolbarButtonsTable = ({editorId}: {editorId: string}) => (
     <ToolbarTable icon={<BorderRight />} transform={deleteColumn} />
     <Popover Icon={<ToolbarElement type="" icon={'+'} />}>
       {'Border color: '} <TableColorPicker editorId={editorId} />
+      <br></br>
+      <br></br>
+      {'Background color: '} <TableBackgroundColorPicker editorId={editorId} />
     </Popover>
   </>
 )
