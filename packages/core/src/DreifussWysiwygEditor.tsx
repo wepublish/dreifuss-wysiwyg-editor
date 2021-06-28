@@ -33,7 +33,6 @@ import {
   createReactPlugin
   /* SPEditor */
 } from '@udecode/slate-plugins-core'
-import {ToolbarImage} from '@udecode/slate-plugins-image-ui'
 import {
   ToolbarButtonsAlign,
   ToolbarButtonsBasicElements,
@@ -42,6 +41,7 @@ import {
   ToolbarButtonsTable,
   ToolbarEmoji,
   ToolbarLink,
+  ToolbarImage,
   ToolbarQuotationMarks
 } from './Toolbar'
 
@@ -55,14 +55,10 @@ export interface EditableProps {
   disabled?: boolean
   initialValue?: any
   value?: any
-  // onChange?: React.Dispatch<React.SetStateAction<V>>
+  onChange?: React.Dispatch<React.SetStateAction<V>>
 }
 
-function Imagee(props: any) {
-  return <h1>Hi</h1>
-}
-
-export default function DreifussWysiwygEditor(props: EditableProps) {
+export default function DreifussWysiwygEditor(props: any) {
   const components = createSlatePluginsComponents()
   const options = createSlatePluginsOptions()
 
@@ -105,10 +101,11 @@ export default function DreifussWysiwygEditor(props: EditableProps) {
     createStrikethroughPlugin(),
     createHeadingPlugin({levels: 3})
   ]
-  // onChange={(change: string) => console.log('change', change)}
+
   return (
     <SlatePlugins
       id={props.id ?? 'main'}
+      onChange={props.onChange}
       plugins={plugins}
       components={components}
       options={options}
@@ -124,8 +121,7 @@ export default function DreifussWysiwygEditor(props: EditableProps) {
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsAlign />
           <Divider type={DividerType.vertical} />
-          {/* TODO: icon to be changed */}
-          <ToolbarImage icon={<Imagee />} />
+          <ToolbarImage editorId={props.id ?? 'main'} />
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsTable editorId={props.id ?? 'main'} />
           <Divider type={DividerType.vertical} />

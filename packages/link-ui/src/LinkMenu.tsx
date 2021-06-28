@@ -1,7 +1,32 @@
 import React, {useEffect, useState} from 'react'
-import {useStoreEditor} from '@udecode/slate-plugins-core'
-import {BaseEditor, BaseRange, Range, Editor, Node, Transforms} from 'slate'
-// import './link-toolbar.css'
+import {useSlatePluginsStore, useStoreEditor} from '@udecode/slate-plugins-core'
+import {BaseEditor, BaseRange, Range, Editor, Transforms} from 'slate'
+// import './link.css'
+
+function removeLink(editor: any) {
+  Transforms.unwrapNodes(editor, {
+    match: (node: any) => {
+      console.log(node)
+      return node.type === 'link'
+    }
+  })
+}
+
+export function RemoveLinkFormatButton() {
+  const editor = useSlatePluginsStore()
+
+  return (
+    <button
+      // active={WepublishEditor.isFormatActive(editor, InlineFormat.Link)}
+      // disabled={!WepublishEditor.isFormatActive(editor, InlineFormat.Link)}
+      onMouseDown={e => {
+        e.preventDefault()
+        removeLink(editor)
+      }}>
+      Remove
+    </button>
+  )
+}
 
 async function validateURL(url: string) {
   if (url) {
@@ -58,12 +83,6 @@ function insertLink(editor: BaseEditor, selection: BaseRange | null, url: string
     {split: true}
   )
   Transforms.collapse(editor, {edge: 'end'})
-}
-
-function removeLink(editor: Editor) {
-  Transforms.unwrapNodes(editor, {
-    match: (node: any) => node.type === 'link'
-  })
 }
 
 export const LinkToolbar = () => {
@@ -172,8 +191,7 @@ export const LinkToolbar = () => {
           }}>
           Insert
         </button>
-        {/* TODO: uncomment this */}
-        {/* <RemoveLinkFormatButton /> */}
+        <RemoveLinkFormatButton />
       </div>
     </form>
   )

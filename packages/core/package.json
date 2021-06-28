@@ -84,6 +84,7 @@
     "@babel/runtime": "^7.13.10",
     "@dreifuss-wysiwyg-editor/slate-plugins-character-count-ui": "^1.0.0",
     "@dreifuss-wysiwyg-editor/slate-plugins-link-ui": "^1.0.0",
+    "@dreifuss-wysiwyg-editor/slate-plugins-image": "^1.0.0",
     "@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui": "^1.0.0",
     "@dreifuss-wysiwyg-editor/slate-plugins-table-border": "^1.0.0",
     "@udecode/slate-plugins-alignment": "^1.0.0-alpha.25",

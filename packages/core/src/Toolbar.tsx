@@ -3,7 +3,6 @@ import {
   H1,
   H2,
   H3,
-  H4,
   Bold,
   Italic,
   Underline,
@@ -16,7 +15,6 @@ import {
   StrikeThrough,
   Superscript,
   Subscript,
-  //   FileImage,
   ListOL,
   ListUL,
   BorderAll,
@@ -26,7 +24,8 @@ import {
   BorderRight,
   BorderTop,
   Emoji,
-  Link
+  Link,
+  Image
 } from './Icons'
 import {
   ELEMENT_ALIGN_CENTER,
@@ -47,7 +46,8 @@ import {ToolbarElement, ToolbarMark} from '@udecode/slate-plugins-toolbar'
 import {useSlatePluginType, useStoreEditor} from '@udecode/slate-plugins-core'
 import {TableColorPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-table-border'
 import {QuotationMarksPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui'
-import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, ELEMENT_H4} from '@udecode/slate-plugins-heading'
+import {UploadImageMenu} from '@dreifuss-wysiwyg-editor/slate-plugins-image'
+import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
 import {
   insertTable,
   deleteColumn,
@@ -64,6 +64,12 @@ import {
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE
 } from '@udecode/slate-plugins-basic-marks'
+
+export const ToolbarImage = ({editorId}: {editorId: string}) => (
+  <Popover Icon={<ToolbarElement type="" icon={<Image />} />}>
+    <UploadImageMenu editorId={editorId} icon="" />
+  </Popover>
+)
 
 export const ToolbarLink = () => (
   <Popover Icon={<ToolbarElement type="" icon={<Link />} />}>
@@ -92,7 +98,6 @@ export const ToolbarButtonsBasicElements = () => (
     <ToolbarElement type={useSlatePluginType(ELEMENT_H1)} icon={<H1 />} />
     <ToolbarElement type={useSlatePluginType(ELEMENT_H2)} icon={<H2 />} />
     <ToolbarElement type={useSlatePluginType(ELEMENT_H3)} icon={<H3 />} />
-    <ToolbarElement type={useSlatePluginType(ELEMENT_H4)} icon={<H4 />} />
     <ToolbarElement type={useSlatePluginType(ELEMENT_BLOCKQUOTE)} icon={<BlockQuote />} />
     <ToolbarCodeBlock type={useSlatePluginType(ELEMENT_CODE_BLOCK)} icon={<BlockCode />} />
   </>
