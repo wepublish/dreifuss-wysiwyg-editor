@@ -26,7 +26,8 @@ import {
   BorderRight,
   BorderTop,
   Emoji,
-  Link
+  Link,
+  Palette
 } from './Icons'
 import {
   ELEMENT_ALIGN_CENTER,
@@ -145,7 +146,7 @@ export const ToolbarButtonsTable = ({editorId}: {editorId: string}) => (
     <ToolbarTable icon={<BorderTop />} transform={deleteRow} />
     <ToolbarTable icon={<BorderLeft />} transform={addColumn} />
     <ToolbarTable icon={<BorderRight />} transform={deleteColumn} />
-    <Popover Icon={<ToolbarElement type="" icon={'+'} />}>
+    <Popover Icon={<ToolbarElement type="" icon={<Palette />} />}>
       {'Border color: '} <TableColorPicker editorId={editorId} />
       <br></br>
       <br></br>
