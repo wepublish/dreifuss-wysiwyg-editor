@@ -1,11 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import {useEventEditorId, useStoreEditorRef} from '@udecode/slate-plugins-core'
-import {Editor, Transforms} from 'slate'
+import {Editor, Node, Transforms} from 'slate'
 
 export enum TableElementFormat {
   Table = 'table',
   TableRow = 'table-row',
   TableCell = 'table-cell'
+}
+
+type TableNode = Node & {
+  borderColor?: string
+  type: string
 }
 
 export function TableColorPicker() {
@@ -17,9 +22,10 @@ export function TableColorPicker() {
     if (!editor) return
 
     const nodes = Editor.nodes(editor, {
-      match: node => node.type === 'table-cell'
+      match: (node: TableNode) => node.type === 'table-cell'
     })
     for (const [node] of nodes) {
+      // @ts-ignore
       setBorderColor(node.borderColor as string)
       return
     }
@@ -30,11 +36,12 @@ export function TableColorPicker() {
 
     if (borderColor) {
       const nodes = Editor.nodes(editor, {
-        match: node => node.type === TableElementFormat.Table
+        match: (node: TableNode) => node.type === TableElementFormat.Table
       })
       for (const [, path] of nodes) {
         Transforms.setNodes(
           editor,
+          // @ts-ignore
           {borderColor: borderColor ?? '#000'},
           {
             at: path,
