@@ -1,6 +1,4 @@
 import React from 'react'
-/* import {ReactEditor} from 'slate-react'
-import {HistoryEditor} from 'slate-history' */
 import Divider, {DividerType} from './atoms/Divider'
 import {createLinkPlugin} from '@udecode/slate-plugins-link'
 import {HeadingToolbar} from '@udecode/slate-plugins-toolbar'
@@ -27,12 +25,7 @@ import {
   createSubscriptPlugin,
   createSuperscriptPlugin
 } from '@udecode/slate-plugins-basic-marks'
-import {
-  SlatePlugins,
-  createHistoryPlugin,
-  createReactPlugin
-  /* SPEditor */
-} from '@udecode/slate-plugins-core'
+import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
 import {
   ToolbarButtonsAlign,
   ToolbarButtonsBasicElements,
@@ -44,8 +37,7 @@ import {
   ToolbarImage,
   ToolbarQuotationMarks
 } from './Toolbar'
-
-// type TEditor = SPEditor & ReactEditor & HistoryEditor
+import {EditorValue} from './types'
 
 export interface EditableProps {
   id?: string
@@ -53,12 +45,20 @@ export interface EditableProps {
   showCharCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
-  initialValue?: any
-  value?: any
-  onChange?: React.Dispatch<React.SetStateAction<V>>
 }
 
-export default function DreifussWysiwygEditor(props: any) {
+export interface EditorProps {
+  id?: string
+  displayOnly?: boolean
+  showCharCount?: boolean
+  displayOneLine?: boolean
+  disabled?: boolean
+  initialValue?: any
+  value?: EditorValue
+  onChange?: React.Dispatch<React.SetStateAction<any>>
+}
+
+export default function DreifussWysiwygEditor(props: EditorProps) {
   const components = createSlatePluginsComponents()
   const options = createSlatePluginsOptions()
 

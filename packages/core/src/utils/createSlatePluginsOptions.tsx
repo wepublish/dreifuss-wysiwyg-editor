@@ -29,14 +29,7 @@ import {
 } from '@udecode/slate-plugins-code-block'
 import {SlatePluginOptions} from '@udecode/slate-plugins-core'
 import {MARK_SEARCH_HIGHLIGHT} from '@udecode/slate-plugins-find-replace'
-import {
-  ELEMENT_H1,
-  ELEMENT_H2,
-  ELEMENT_H3,
-  ELEMENT_H4,
-  ELEMENT_H5,
-  ELEMENT_H6
-} from '@udecode/slate-plugins-heading'
+import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
 import {DEFAULTS_HIGHLIGHT, MARK_HIGHLIGHT} from '@udecode/slate-plugins-highlight'
 import {ELEMENT_IMAGE} from '@udecode/slate-plugins-image'
 import {MARK_KBD} from '@udecode/slate-plugins-kbd'
@@ -70,9 +63,6 @@ export type DefaultSlatePluginKey =
   | typeof ELEMENT_H1
   | typeof ELEMENT_H2
   | typeof ELEMENT_H3
-  | typeof ELEMENT_H4
-  | typeof ELEMENT_H5
-  | typeof ELEMENT_H6
   | typeof ELEMENT_IMAGE
   | typeof ELEMENT_LI
   | typeof ELEMENT_LINK
@@ -104,7 +94,6 @@ export type DefaultSlatePluginKey =
 export const createSlatePluginsOptions = <T extends string = string>(
   overrides?: Partial<Record<DefaultSlatePluginKey | T, Partial<SlatePluginOptions>>>
 ) => {
-  //@ts-ignore
   const options: Record<DefaultSlatePluginKey, Partial<SlatePluginOptions>> = {
     [ELEMENT_ALIGN_CENTER]: {},
     [ELEMENT_ALIGN_JUSTIFY]: {},

@@ -1,26 +1,25 @@
 import React, {useEffect, useState} from 'react'
-import {useSlatePluginsStore, useStoreEditor} from '@udecode/slate-plugins-core'
-import {BaseEditor, BaseRange, Range, Editor, Transforms} from 'slate'
+import {TEditor, useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
+import {BaseEditor, BaseRange, Range, Editor, Transforms, BaseElement} from 'slate'
 // import './link.css'
 
-function removeLink(editor: any) {
+function removeLink(editor: TEditor) {
   Transforms.unwrapNodes(editor, {
-    match: (node: any) => {
-      console.log(node)
-      return node.type === 'link'
-    }
+    match: node => node.type === 'link'
   })
 }
 
 export function RemoveLinkFormatButton() {
-  const editor = useSlatePluginsStore()
+  const editor = useStoreEditorState(useEventEditorId('focus'))
 
   return (
     <button
       // active={WepublishEditor.isFormatActive(editor, InlineFormat.Link)}
       // disabled={!WepublishEditor.isFormatActive(editor, InlineFormat.Link)}
       onMouseDown={e => {
+        if (!editor) return
         e.preventDefault()
+
         removeLink(editor)
       }}>
       Remove
@@ -50,7 +49,7 @@ function insertLink(editor: BaseEditor, selection: BaseRange | null, url: string
       const nodes = Array.from(
         Editor.nodes(editor, {
           at: selection,
-          match: (node: any) => node.type === 'link'
+          match: node => node.type === 'link'
         })
       )
       const tuple = nodes[0]
@@ -74,19 +73,16 @@ function insertLink(editor: BaseEditor, selection: BaseRange | null, url: string
   }
 
   Transforms.unwrapNodes(editor, {
-    match: (node: any) => node.type === 'link'
+    match: node => node.type === 'link'
   })
-  Transforms.wrapNodes(
-    editor,
-    // @ts-ignore
-    {type: 'link', url, title, children: []},
-    {split: true}
-  )
+  Transforms.wrapNodes(editor, {type: 'link', url, title, children: []} as BaseElement, {
+    split: true
+  })
   Transforms.collapse(editor, {edge: 'end'})
 }
 
 export const LinkToolbar = () => {
-  const editor: any = useStoreEditor()
+  const editor = useStoreEditorState(useEventEditorId('focus'))
 
   const [title, setTitle] = useState('')
   const [url, setURL] = useState('')
@@ -121,17 +117,18 @@ export const LinkToolbar = () => {
   }, [url])
 
   useEffect(() => {
+    if (!editor) return
     setSelection(editor?.selection)
 
     const nodes = Array.from(
       Editor.nodes(editor, {
         at: editor?.selection ?? undefined,
-        match: (node: any) => node.type === 'link'
+        match: node => node.type === 'link'
       })
     )
     const tuple = nodes[0]
     if (tuple) {
-      const [node]: any = tuple
+      const [node] = tuple
       setTitle((node.title as string) ?? '')
 
       const nodeUrl = node.url as string
@@ -181,7 +178,9 @@ export const LinkToolbar = () => {
         <button
           disabled={isDisabled}
           onClick={e => {
+            if (!editor) return
             e.preventDefault()
+
             insertLink(
               editor,
               selection,
