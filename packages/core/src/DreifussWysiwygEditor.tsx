@@ -35,7 +35,8 @@ import {
   ToolbarEmoji,
   ToolbarLink,
   ToolbarImage,
-  ToolbarQuotationMarks
+  ToolbarQuotationMarks,
+  ToolbarFontColor
 } from './Toolbar'
 import {EditorValue} from './types'
 
@@ -74,7 +75,13 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           textOverflow: 'ellipsis',
           width: 'inherit'
         }
-      : {}
+      : {},
+    // TODO: Should be moved to font color plugin
+    renderLeaf: ({attributes, children, leaf}) => (
+      <span {...attributes} style={{color: leaf?.color}}>
+        {children}
+      </span>
+    )
   }
 
   const plugins = [
@@ -119,11 +126,13 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsBasicMarks />
           <Divider type={DividerType.vertical} />
+          <ToolbarFontColor />
+          <Divider type={DividerType.vertical} />
           <ToolbarButtonsAlign />
           <Divider type={DividerType.vertical} />
-          <ToolbarImage editorId={props.id ?? 'main'} />
+          <ToolbarImage />
           <Divider type={DividerType.vertical} />
-          <ToolbarButtonsTable editorId={props.id ?? 'main'} />
+          <ToolbarButtonsTable />
           <Divider type={DividerType.vertical} />
           <ToolbarLink />
           <ToolbarEmoji />
