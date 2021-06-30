@@ -36,7 +36,7 @@ jobs:
           SLACK_CHANNEL: dev
           SLACK_COLOR: '#3278BD'
           SLACK_ICON: https://github.com/wepublish.png?size=48
-          SLACK_MESSAGE: 'Deployment successful! https://dreifuss-wysiwyg.editor.wepublish.dev/${{ github.event.pull_request.head.ref }}'
+          SLACK_MESSAGE: 'Deployment successful! https://dreifuss-wysiwyg-editor.wepublish.dev/${{ github.event.pull_request.head.ref }}'
           SLACK_TITLE: 'dreifuss-wysiwyg-editor Deployment'
           SLACK_USERNAME: 'Github (dreifuss-wysiwyg-editor)'
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_WP_DEV_CHANNEL }}
