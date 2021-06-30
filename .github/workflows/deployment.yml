@@ -13,8 +13,7 @@ jobs:
         id: deployment
         with:
           token: "${{ github.token }}"
-          target_url: https://dreifuss-wysiwyg-editor.wepublish.dev/${GITHUB_REF##*/}
-          environment: development
+          target_url: https://dreifuss-wysiwyg-editor.wepublish.dev/${{ GITHUB_REF##*/ }}
           ref: ${{ github.ref }}
       - uses: actions/setup-node@v2
         with:
