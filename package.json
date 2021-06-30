@@ -1,0 +1,113 @@
+{
+  "name": "dreifuss-editor",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": "^16.0.0",
+    "yarn": "^1.22.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "lerna run build --stream",
+    "clean": "lerna run clean --parallel",
+    "watch": "lerna run watch --parallel",
+    "dev": "run-p --print-label watch",
+    "watch:wysiwyg-editor": "yarn workspace @dreifuss-editor/core start",
+    "build:wysiwyg-editor": "yarn workspace @dreifuss-editor/core build",
+    "watch:package-character-count": "yarn workspace @dreifuss-editor/package-character-count build:w",
+    "build:package-character-count": "yarn workspace @dreifuss-editor/package-character-count build",
+    "prettier": "prettier --write '{packages,services}/**/*.{js,ts,tsx,json}'",
+    "prettier-check": "prettier --check '{packages,services}/**/*.{js,ts,tsx,json}'"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.14.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
+    "@typescript-eslint/parser": "^4.2.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-dynamic-import-node": "^2.3.3",
+    "babel-plugin-import": "^1.13.3",
+    "babel-plugin-inline-json-import": "^0.3.2",
+    "babel-plugin-prismjs": "2.0.1",
+    "babel-plugin-styled-components": "^1.12.0",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-i18next": "^5.0.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.21.2",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^3.0.0",
+    "lerna": "^4.0.0",
+    "lerna-changelog": "^1.0.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.1",
+    "pretty-quick": "^1.11.1",
+    "rollup": "^2.52.2",
+    "rollup-plugin-includepaths": "^0.2.4",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-styles": "^3.14.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "tslib": "^2.3.0",
+    "typescript": "^4.3.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --pattern '{examples,packages,services}/**/*.{js,ts,tsx,json}'"
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint",
+      "react",
+      "standard"
+    ],
+    "extends": [
+      "standard",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "prettier",
+      "prettier/@typescript-eslint",
+      "prettier/react",
+      "prettier/standard"
+    ],
+    "rules": {
+      "no-use-before-define": [
+        0
+      ],
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-use-before-define": [
+        1
+      ]
+    },
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "ignorePatterns": [
+      "node_modules",
+      "dist",
+      "lib",
+      "coverage",
+      "assets"
+    ]
+  }
+}
