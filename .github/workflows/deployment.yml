@@ -34,7 +34,7 @@ jobs:
           token: "${{ github.token }}"
           target_url: https://dreifuss-wysiwyg-editor.wepublish.dev/${GITHUB_REF##*/}
           environment: development
-          ref: ${{GITHUB_REF}}
+          ref: ${GITHUB_REF}
 #      - name: Slack Notification
 #        uses: rtCamp/action-slack-notify@master
 #        env:
