@@ -24,9 +24,11 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY_WEP_DEV }}
           export_default_credentials: true
       - name: Use gcloud CLI
+        env:
+          BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
         run: |
-          gsutil cp ./packages/core/dist/index.html gs://dreifuss-wysiwyg-editor.wepublish.dev/${GITHUB_REF##*/}/index.html
-          gsutil cp ./packages/core/dist/index_bundle.js gs://dreifuss-wysiwyg-editor.wepublish.dev/${GITHUB_REF##*/}/index_bundle.js
+          gsutil cp ./packages/core/dist/index.html gs://dreifuss-wysiwyg-editor.wepublish.dev/${BRANCH_NAME}/index.html
+          gsutil cp ./packages/core/dist/index_bundle.js gs://dreifuss-wysiwyg-editor.wepublish.dev/${BRANCH_NAME}/index_bundle.js
       - name: Slack Notification
         if: success()
         uses: rtCamp/action-slack-notify@master
@@ -34,7 +36,7 @@ jobs:
           SLACK_CHANNEL: dev
           SLACK_COLOR: '#3278BD'
           SLACK_ICON: https://github.com/wepublish.png?size=48
-          SLACK_MESSAGE: 'Deployment for Branch ${{ github.event.pull_request.head.ref }} successful!'
+          SLACK_MESSAGE: 'Deployment successful! https://dreifuss-wysiwyg.editor.wepublish.dev/${{ github.event.pull_request.head.ref }}'
           SLACK_TITLE: 'dreifuss-wysiwyg-editor Deployment'
           SLACK_USERNAME: 'Github (dreifuss-wysiwyg-editor)'
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_WP_DEV_CHANNEL }}
