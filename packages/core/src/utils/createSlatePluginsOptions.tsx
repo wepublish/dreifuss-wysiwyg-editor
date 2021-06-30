@@ -166,7 +166,7 @@ export const createSlatePluginsOptions = <T extends string = string>(
               backgroundColor:
                 element.backgroundColor === 'transparent'
                   ? `rgb(0, 0, 0, 0.5)`
-                  : (element.backgroundColor as string)    
+                  : (element.backgroundColor as string)
             }}>
             {props.children}
           </td>
