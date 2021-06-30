@@ -34,6 +34,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { issue: { number: issue_number }, repo: { owner, repo }, ref  } = context;
+            console.log('githubref', process.env.GITHUB_REF);
             github.issues.createComment({ issue_number, owner, repo, body: `Hello world ! 👋. Deployed to https://dreifuss-wysiwyg-editor.wepublish.dev/${ref} ` });
 
 #      - name: Slack Notification
