@@ -8,6 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: chrnorm/deployment-action@releases/v1
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          token: "${{ github.token }}"
+          target_url: https://dreifuss-wysiwyg-editor.wepublish.dev/${GITHUB_REF##*/}
+          environment: development
+          ref: ${{ github.ref }}
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
@@ -27,15 +35,23 @@ jobs:
         run: |
           gsutil cp ./packages/core/dist/index.html gs://dreifuss-wysiwyg-editor.wepublish.dev/${GITHUB_REF##*/}/index.html
           gsutil cp ./packages/core/dist/index_bundle.js gs://dreifuss-wysiwyg-editor.wepublish.dev/${GITHUB_REF##*/}/index_bundle.js
-      - uses: chrnorm/deployment-action@releases/v1
-        name: Create GitHub deployment
-        id: deployment
+      - name: Update deployment status (success)
+        if: success()
+        uses: chrnorm/deployment-status@releases/v1
         with:
           token: "${{ github.token }}"
           target_url: https://dreifuss-wysiwyg-editor.wepublish.dev/${GITHUB_REF##*/}
-          environment: development
-          ref: ${{ github.ref }}
-          initial_status: "success"
+          state: "success"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+
+      - name: Update deployment status (failure)
+        if: failure()
+        uses: chrnorm/deployment-status@releases/v1
+        with:
+          token: "${{ github.token }}"
+          target_url: https://dreifuss-wysiwyg-editor.wepublish.dev/${GITHUB_REF##*/}
+          state: "failure"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
 #      - name: Slack Notification
 #        uses: rtCamp/action-slack-notify@master
 #        env:
