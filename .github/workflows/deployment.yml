@@ -1,6 +1,7 @@
-name: CI/CD
+name: Deployment
 
 on: [pull_request]
+# implement on Merge
 
 jobs:
   deployment:
@@ -26,6 +27,14 @@ jobs:
         run: |
           gsutil cp ./packages/core/dist/index.html gs://dreifuss-wysiwyg-editor.wepublish.dev/${GITHUB_REF##*/}/index.html
           gsutil cp ./packages/core/dist/index_bundle.js gs://dreifuss-wysiwyg-editor.wepublish.dev/${GITHUB_REF##*/}/index_bundle.js
+      - uses: chrnorm/deployment-action@releases/v1
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          token: "${{ github.token }}"
+          target_url: https://dreifuss-wysiwyg-editor.wepublish.dev/${GITHUB_REF##*/}
+          environment: development
+          ref: ${{GITHUB_REF}}
 #      - name: Slack Notification
 #        uses: rtCamp/action-slack-notify@master
 #        env:
