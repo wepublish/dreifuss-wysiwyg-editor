@@ -13,7 +13,7 @@ type TableNode = Node & {
   type: string
 }
 
-export function TableColorPicker() {
+export function TableCellBorderColorPicker() {
   const editor = useStoreEditorRef(useEventEditorId('focus'))
 
   const [borderColor, setBorderColor] = useState<string>()
@@ -45,6 +45,7 @@ export function TableColorPicker() {
           {borderColor: borderColor ?? '#000'},
           {
             at: path,
+            // @ts-ignore
             match: node => node.type === TableElementFormat.TableCell
           }
         )

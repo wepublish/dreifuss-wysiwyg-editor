@@ -25,7 +25,8 @@ import {
   BorderTop,
   Emoji,
   Link,
-  Image
+  Image,
+  FontColor
 } from './Icons'
 import {
   ELEMENT_ALIGN_CENTER,
@@ -33,7 +34,6 @@ import {
   ELEMENT_ALIGN_RIGHT
 } from '@udecode/slate-plugins-alignment'
 import Popover from './atoms/Popover'
-import {EmojiPicker} from './atoms/EmojiPicker'
 import {ToolbarList} from '@udecode/slate-plugins-list-ui'
 import {ToolbarTable} from '@udecode/slate-plugins-table-ui'
 import {ToolbarAlign} from '@udecode/slate-plugins-alignment-ui'
@@ -43,10 +43,12 @@ import {ELEMENT_BLOCKQUOTE} from '@udecode/slate-plugins-block-quote'
 import {ToolbarCodeBlock} from '@udecode/slate-plugins-code-block-ui'
 import {LinkToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-link-ui'
 import {ToolbarElement, ToolbarMark} from '@udecode/slate-plugins-toolbar'
-import {useSlatePluginType, useStoreEditor} from '@udecode/slate-plugins-core'
-import {TableColorPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-table-border'
+import {getSlatePluginType, useEditorRef} from '@udecode/slate-plugins-core'
+import {TableCellBorderColorPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-table-border'
 import {QuotationMarksPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui'
 import {UploadImageMenu} from '@dreifuss-wysiwyg-editor/slate-plugins-image'
+import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
+import {EmojiPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-emoji-picker'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
 import {
   insertTable,
@@ -58,6 +60,7 @@ import {
 } from '@udecode/slate-plugins-table'
 import {
   MARK_BOLD,
+  MARK_CODE,
   MARK_ITALIC,
   MARK_STRIKETHROUGH,
   MARK_SUBSCRIPT,
@@ -65,9 +68,15 @@ import {
   MARK_UNDERLINE
 } from '@udecode/slate-plugins-basic-marks'
 
-export const ToolbarImage = ({editorId}: {editorId: string}) => (
+export const ToolbarFontColor = () => (
+  <Popover Icon={<ToolbarElement type="" icon={<FontColor />} />}>
+    <FontColorToolbar />
+  </Popover>
+)
+
+export const ToolbarImage = () => (
   <Popover Icon={<ToolbarElement type="" icon={<Image />} />}>
-    <UploadImageMenu editorId={editorId} icon="" />
+    <UploadImageMenu />
   </Popover>
 )
 
@@ -77,72 +86,85 @@ export const ToolbarLink = () => (
   </Popover>
 )
 
-export const ToolbarEmoji = () => {
-  const editor = useStoreEditor()
+export const ToolbarEmoji = () => (
+  <Popover Icon={<ToolbarElement type="" icon={<Emoji />} />}>
+    <EmojiPicker />
+  </Popover>
+)
 
-  return (
-    <Popover Icon={<ToolbarElement type="" icon={<Emoji />} />}>
-      <EmojiPicker setEmoji={emoji => editor?.insertText(emoji)} />
-    </Popover>
-  )
-}
-
-export const ToolbarQuotationMarks = ({editorId}: {editorId: string}) => (
+export const ToolbarQuotationMarks = () => (
   <Popover Icon={<ToolbarElement type="" icon={'<<>>'} />}>
-    <QuotationMarksPicker editorId={editorId} />
+    <QuotationMarksPicker />
   </Popover>
 )
 
 export const ToolbarButtonsBasicElements = () => (
   <>
-    <ToolbarElement type={useSlatePluginType(ELEMENT_H1)} icon={<H1 />} />
-    <ToolbarElement type={useSlatePluginType(ELEMENT_H2)} icon={<H2 />} />
-    <ToolbarElement type={useSlatePluginType(ELEMENT_H3)} icon={<H3 />} />
-    <ToolbarElement type={useSlatePluginType(ELEMENT_BLOCKQUOTE)} icon={<BlockQuote />} />
-    <ToolbarCodeBlock type={useSlatePluginType(ELEMENT_CODE_BLOCK)} icon={<BlockCode />} />
+    <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H1)} icon={<H1 />} />
+    <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H2)} icon={<H2 />} />
+    <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H3)} icon={<H3 />} />
+    <ToolbarElement
+      type={getSlatePluginType(useEditorRef(), ELEMENT_BLOCKQUOTE)}
+      icon={<BlockQuote />}
+    />
+    <ToolbarCodeBlock
+      type={getSlatePluginType(useEditorRef(), ELEMENT_CODE_BLOCK)}
+      icon={<BlockCode />}
+    />
   </>
 )
 
 export const ToolbarButtonsList = () => (
   <>
-    <ToolbarList type={useSlatePluginType(ELEMENT_UL)} icon={<ListUL />} />
-    <ToolbarList type={useSlatePluginType(ELEMENT_OL)} icon={<ListOL />} />
+    <ToolbarList type={getSlatePluginType(useEditorRef(), ELEMENT_UL)} icon={<ListUL />} />
+    <ToolbarList type={getSlatePluginType(useEditorRef(), ELEMENT_OL)} icon={<ListOL />} />
   </>
 )
 
 export const ToolbarButtonsAlign = () => (
   <>
     <ToolbarAlign icon={<AlignLeft />} />
-    <ToolbarAlign type={useSlatePluginType(ELEMENT_ALIGN_CENTER)} icon={<AlignCenter />} />
-    <ToolbarAlign type={useSlatePluginType(ELEMENT_ALIGN_RIGHT)} icon={<AlignRight />} />
-    <ToolbarAlign type={useSlatePluginType(ELEMENT_ALIGN_JUSTIFY)} icon={<AlignJustify />} />
+    <ToolbarAlign
+      type={getSlatePluginType(useEditorRef(), ELEMENT_ALIGN_CENTER)}
+      icon={<AlignCenter />}
+    />
+    <ToolbarAlign
+      type={getSlatePluginType(useEditorRef(), ELEMENT_ALIGN_RIGHT)}
+      icon={<AlignRight />}
+    />
+    <ToolbarAlign
+      type={getSlatePluginType(useEditorRef(), ELEMENT_ALIGN_JUSTIFY)}
+      icon={<AlignJustify />}
+    />
   </>
 )
 
 export const ToolbarButtonsBasicMarks = () => {
   return (
     <>
-      <ToolbarMark type={useSlatePluginType(MARK_BOLD)} icon={<Bold />} />
-      <ToolbarMark type={useSlatePluginType(MARK_ITALIC)} icon={<Italic />} />
-      <ToolbarMark type={useSlatePluginType(MARK_UNDERLINE)} icon={<Underline />} />
-      <ToolbarMark type={useSlatePluginType(MARK_STRIKETHROUGH)} icon={<StrikeThrough />} />
-      {/* <ToolbarMark type={useSlatePluginType(MARK_CODE)} icon={<CodeAlt />} />
-      <ToolbarMark type={useSlatePluginType(MARK_KBD)} icon={<Keyboard />} /> */}
+      <ToolbarMark type={getSlatePluginType(useEditorRef(), MARK_BOLD)} icon={<Bold />} />
+      <ToolbarMark type={getSlatePluginType(useEditorRef(), MARK_ITALIC)} icon={<Italic />} />
+      <ToolbarMark type={getSlatePluginType(useEditorRef(), MARK_UNDERLINE)} icon={<Underline />} />
       <ToolbarMark
-        type={useSlatePluginType(MARK_SUPERSCRIPT)}
-        clear={useSlatePluginType(MARK_SUBSCRIPT)}
+        type={getSlatePluginType(useEditorRef(), MARK_STRIKETHROUGH)}
+        icon={<StrikeThrough />}
+      />
+      <ToolbarMark type={getSlatePluginType(useEditorRef(), MARK_CODE)} icon={'code'} />
+      <ToolbarMark
+        type={getSlatePluginType(useEditorRef(), MARK_SUPERSCRIPT)}
+        clear={getSlatePluginType(useEditorRef(), MARK_SUBSCRIPT)}
         icon={<Superscript />}
       />
       <ToolbarMark
-        type={useSlatePluginType(MARK_SUBSCRIPT)}
-        clear={useSlatePluginType(MARK_SUPERSCRIPT)}
+        type={getSlatePluginType(useEditorRef(), MARK_SUBSCRIPT)}
+        clear={getSlatePluginType(useEditorRef(), MARK_SUPERSCRIPT)}
         icon={<Subscript />}
       />
     </>
   )
 }
 
-export const ToolbarButtonsTable = ({editorId}: {editorId: string}) => (
+export const ToolbarButtonsTable = () => (
   <>
     <ToolbarTable icon={<BorderAll />} transform={insertTable} />
     <ToolbarTable icon={<BorderClear />} transform={deleteTable} />
@@ -151,7 +173,7 @@ export const ToolbarButtonsTable = ({editorId}: {editorId: string}) => (
     <ToolbarTable icon={<BorderLeft />} transform={addColumn} />
     <ToolbarTable icon={<BorderRight />} transform={deleteColumn} />
     <Popover Icon={<ToolbarElement type="" icon={'+'} />}>
-      {'Border color: '} <TableColorPicker editorId={editorId} />
+      {'Border color: '} <TableCellBorderColorPicker />
     </Popover>
   </>
 )

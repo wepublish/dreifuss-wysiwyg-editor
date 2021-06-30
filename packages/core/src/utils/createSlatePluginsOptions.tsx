@@ -80,7 +80,6 @@ export type DefaultSlatePluginKey =
   | typeof MARK_CODE
   | typeof MARK_HIGHLIGHT
   | typeof MARK_ITALIC
-  | typeof MARK_KBD
   | typeof MARK_SEARCH_HIGHLIGHT
   | typeof MARK_STRIKETHROUGH
   | typeof MARK_SUBSCRIPT
@@ -99,8 +98,8 @@ export const createSlatePluginsOptions = <T extends string = string>(
     [ELEMENT_ALIGN_JUSTIFY]: {},
     [ELEMENT_ALIGN_LEFT]: {},
     [ELEMENT_ALIGN_RIGHT]: {},
-    [ELEMENT_BLOCKQUOTE]: DEFAULTS_BLOCKQUOTE,
-    [ELEMENT_CODE_BLOCK]: DEFAULTS_CODE_BLOCK,
+    [ELEMENT_BLOCKQUOTE]: {},
+    [ELEMENT_CODE_BLOCK]: {},
     [ELEMENT_CODE_LINE]: {},
     [ELEMENT_PARAGRAPH]: {
       type: 'paragraph',
@@ -162,18 +161,17 @@ export const createSlatePluginsOptions = <T extends string = string>(
       type: 'table-row',
       defaultType: 'table-row'
     },
-    [ELEMENT_TH]: DEFAULTS_TH,
-    [ELEMENT_TODO_LI]: DEFAULTS_TODO_LIST,
-    [MARK_BOLD]: DEFAULTS_BOLD,
-    [MARK_CODE]: DEFAULTS_CODE,
-    [MARK_HIGHLIGHT]: DEFAULTS_HIGHLIGHT,
-    [MARK_ITALIC]: DEFAULTS_ITALIC,
-    [MARK_KBD]: {},
+    [ELEMENT_TH]: {},
+    [ELEMENT_TODO_LI]: {},
+    [MARK_BOLD]: {},
+    [MARK_CODE]: {},
+    [MARK_HIGHLIGHT]: {},
+    [MARK_ITALIC]: {},
     [MARK_SEARCH_HIGHLIGHT]: {},
-    [MARK_STRIKETHROUGH]: DEFAULTS_STRIKETHROUGH,
-    [MARK_SUBSCRIPT]: DEFAULTS_SUBSCRIPT,
-    [MARK_SUPERSCRIPT]: DEFAULTS_SUPERSCRIPT,
-    [MARK_UNDERLINE]: DEFAULTS_UNDERLINE,
+    [MARK_STRIKETHROUGH]: {},
+    [MARK_SUBSCRIPT]: {},
+    [MARK_SUPERSCRIPT]: {},
+    [MARK_UNDERLINE]: {},
     [ELEMENT_IMAGE]: {}
   }
 

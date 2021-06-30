@@ -137,7 +137,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <ToolbarLink />
           <ToolbarEmoji />
           <Divider type={DividerType.vertical} />
-          <ToolbarQuotationMarks editorId={props.id ?? 'main'} />
+          <ToolbarQuotationMarks />
         </HeadingToolbar>
       )}
       {props.showCharCount && (

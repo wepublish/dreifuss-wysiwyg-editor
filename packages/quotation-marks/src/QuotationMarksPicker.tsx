@@ -1,6 +1,6 @@
-import { useSlatePluginsStore } from "@udecode/slate-plugins-core";
-import React, { useEffect, useState } from "react";
-import { BaseEditor, BaseRange, Range, Editor, Transforms } from "slate";
+import React, {useEffect, useState} from 'react'
+import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
+import {BaseEditor, BaseRange, Range, Editor, Transforms} from 'slate'
 
 function insertQuotationMarks(
   editor: BaseEditor,
@@ -10,54 +10,54 @@ function insertQuotationMarks(
   if (selection) {
     const nodes = Array.from(
       Editor.nodes(editor, {
-        at: selection,
+        at: selection
       })
-    );
-    const tuple = nodes[0];
+    )
+    const tuple = nodes[0]
     if (tuple) {
       Transforms.setSelection(editor, {
         anchor: {
           path: selection.anchor.path,
-          offset: selection.anchor.offset,
+          offset: selection.anchor.offset
         },
-        focus: { path: selection.focus.path, offset: selection.focus.offset },
-      });
+        focus: {path: selection.focus.path, offset: selection.focus.offset}
+      })
       if (Range.isCollapsed(selection)) {
         switch (selectedQuotationMarks) {
           case '""': {
             Transforms.insertText(editor, '"', {
-              at: selection.anchor,
-            });
+              at: selection.anchor
+            })
             Transforms.insertText(editor, '"', {
-              at: selection.focus,
-            });
-            break;
+              at: selection.focus
+            })
+            break
           }
-          case "‹›": {
-            Transforms.insertText(editor, "›", {
-              at: selection.anchor,
-            });
-            Transforms.insertText(editor, "‹", {
-              at: selection.focus,
-            });
-            break;
+          case '‹›': {
+            Transforms.insertText(editor, '›', {
+              at: selection.anchor
+            })
+            Transforms.insertText(editor, '‹', {
+              at: selection.focus
+            })
+            break
           }
-          case "’’": {
-            Transforms.insertText(editor, "’", {
-              at: selection.anchor,
-            });
-            Transforms.insertText(editor, "’", {
-              at: selection.focus,
-            });
-            break;
+          case '’’': {
+            Transforms.insertText(editor, '’', {
+              at: selection.anchor
+            })
+            Transforms.insertText(editor, '’', {
+              at: selection.focus
+            })
+            break
           }
           default: {
-            Transforms.insertText(editor, "»", {
-              at: selection.anchor,
-            });
-            Transforms.insertText(editor, "«", {
-              at: selection.focus,
-            });
+            Transforms.insertText(editor, '»', {
+              at: selection.anchor
+            })
+            Transforms.insertText(editor, '«', {
+              at: selection.focus
+            })
           }
         }
       } else {
@@ -65,156 +65,150 @@ function insertQuotationMarks(
           case '""': {
             if (selection.anchor.offset > selection.focus.offset) {
               Transforms.insertText(editor, '"', {
-                at: selection.anchor,
-              });
+                at: selection.anchor
+              })
               Transforms.insertText(editor, '"', {
-                at: selection.focus,
-              });
-              break;
+                at: selection.focus
+              })
+              break
             } else {
               Transforms.insertText(editor, '"', {
-                at: selection.focus,
-              });
+                at: selection.focus
+              })
               Transforms.insertText(editor, '"', {
-                at: selection.anchor,
-              });
-              break;
+                at: selection.anchor
+              })
+              break
             }
           }
-          case "‹›": {
+          case '‹›': {
             if (selection.anchor.offset > selection.focus.offset) {
-              Transforms.insertText(editor, "›", {
-                at: selection.anchor,
-              });
-              Transforms.insertText(editor, "‹", {
-                at: selection.focus,
-              });
-              break;
+              Transforms.insertText(editor, '›', {
+                at: selection.anchor
+              })
+              Transforms.insertText(editor, '‹', {
+                at: selection.focus
+              })
+              break
             } else {
-              Transforms.insertText(editor, "›", {
-                at: selection.focus,
-              });
-              Transforms.insertText(editor, "‹", {
-                at: selection.anchor,
-              });
-              break;
+              Transforms.insertText(editor, '›', {
+                at: selection.focus
+              })
+              Transforms.insertText(editor, '‹', {
+                at: selection.anchor
+              })
+              break
             }
           }
-          case "’’": {
+          case '’’': {
             if (selection.anchor.offset > selection.focus.offset) {
-              Transforms.insertText(editor, "’", {
-                at: selection.anchor,
-              });
-              Transforms.insertText(editor, "’", {
-                at: selection.focus,
-              });
-              break;
+              Transforms.insertText(editor, '’', {
+                at: selection.anchor
+              })
+              Transforms.insertText(editor, '’', {
+                at: selection.focus
+              })
+              break
             } else {
-              Transforms.insertText(editor, "’", {
-                at: selection.focus,
-              });
-              Transforms.insertText(editor, "’", {
-                at: selection.anchor,
-              });
-              break;
+              Transforms.insertText(editor, '’', {
+                at: selection.focus
+              })
+              Transforms.insertText(editor, '’', {
+                at: selection.anchor
+              })
+              break
             }
           }
           default: {
             if (selection.anchor.offset > selection.focus.offset) {
-              Transforms.insertText(editor, "»", {
-                at: selection.anchor,
-              });
-              Transforms.insertText(editor, "«", {
-                at: selection.focus,
-              });
+              Transforms.insertText(editor, '»', {
+                at: selection.anchor
+              })
+              Transforms.insertText(editor, '«', {
+                at: selection.focus
+              })
             } else {
-              Transforms.insertText(editor, "»", {
-                at: selection.focus,
-              });
-              Transforms.insertText(editor, "«", {
-                at: selection.anchor,
-              });
+              Transforms.insertText(editor, '»', {
+                at: selection.focus
+              })
+              Transforms.insertText(editor, '«', {
+                at: selection.anchor
+              })
             }
           }
         }
       }
     } else {
-      Transforms.insertText(editor, selectedQuotationMarks);
+      Transforms.insertText(editor, selectedQuotationMarks)
       Transforms.select(editor, {
         anchor: {
           path: selection.anchor.path,
-          offset: selection.anchor.offset,
+          offset: selection.anchor.offset
         },
-        focus: { path: selection.focus.path, offset: selection.focus.offset },
-      });
+        focus: {path: selection.focus.path, offset: selection.focus.offset}
+      })
     }
   }
 }
 
-export function QuotationMarksPicker({ editorId }: any) {
-  const dreifussStore = useSlatePluginsStore();
-
-  const editor = dreifussStore[editorId]?.editor;
+export function QuotationMarksPicker() {
+  const editor = useStoreEditorState(useEventEditorId('focus'))
 
   if (!editor) {
-    return null;
+    return null
   }
 
-  const [selection, setSelection] = useState<BaseRange | null>(null);
-  let selectedQuotationMarks = "";
+  const [selection, setSelection] = useState<BaseRange | null>(null)
+  let selectedQuotationMarks = ''
 
   useEffect(() => {
-    setSelection(editor?.selection);
-  }, []);
+    setSelection(editor?.selection)
+  }, [])
 
   return (
     <menu>
       <button
-        onClick={(e) => {
-          e.preventDefault();
-          selectedQuotationMarks = "«»";
-          insertQuotationMarks(editor, selection, selectedQuotationMarks);
+        onClick={e => {
+          e.preventDefault()
+          selectedQuotationMarks = '«»'
+          insertQuotationMarks(editor, selection, selectedQuotationMarks)
         }}
-        className="button"
-      >
-        {"« »"}
+        className="button">
+        {'« »'}
       </button>
 
       <button
-        onClick={(e) => {
-          e.preventDefault();
-          selectedQuotationMarks = "‹›";
-          insertQuotationMarks(editor, selection, selectedQuotationMarks);
+        onClick={e => {
+          e.preventDefault()
+          selectedQuotationMarks = '‹›'
+          insertQuotationMarks(editor, selection, selectedQuotationMarks)
         }}
-        className="button"
-      >
-        {" "}
-        {"‹ ›"}{" "}
+        className="button">
+        {' '}
+        {'‹ ›'}{' '}
       </button>
 
       <button
-        onClick={(e) => {
-          e.preventDefault();
-          selectedQuotationMarks = "’’";
-          insertQuotationMarks(editor, selection, selectedQuotationMarks);
+        onClick={e => {
+          e.preventDefault()
+          selectedQuotationMarks = '’’'
+          insertQuotationMarks(editor, selection, selectedQuotationMarks)
         }}
-        className="button"
-      >
-        {" "}
-        {"’ ’"}{" "}
+        className="button">
+        {' '}
+        {'’ ’'}{' '}
       </button>
 
       <button
-        onClick={(e) => {
-          e.preventDefault();
-          selectedQuotationMarks = '""';
-          insertQuotationMarks(editor, selection, selectedQuotationMarks);
+        onClick={e => {
+          e.preventDefault()
+          selectedQuotationMarks = '""'
+          insertQuotationMarks(editor, selection, selectedQuotationMarks)
         }}
-        className="button"
-      >
-        {" "}
-        {'" "'}{" "}
+        className="button">
+        {' '}
+        {'" "'}{' '}
       </button>
     </menu>
-  );
+  )
 }
