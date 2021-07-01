@@ -6,13 +6,6 @@ import {
   ELEMENT_ALIGN_RIGHT
 } from '@udecode/slate-plugins-alignment'
 import {
-  DEFAULTS_BOLD,
-  DEFAULTS_CODE,
-  DEFAULTS_ITALIC,
-  DEFAULTS_STRIKETHROUGH,
-  DEFAULTS_SUBSCRIPT,
-  DEFAULTS_SUPERSCRIPT,
-  DEFAULTS_UNDERLINE,
   MARK_BOLD,
   MARK_CODE,
   MARK_ITALIC,
@@ -21,36 +14,19 @@ import {
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE
 } from '@udecode/slate-plugins-basic-marks'
-import {DEFAULTS_BLOCKQUOTE, ELEMENT_BLOCKQUOTE} from '@udecode/slate-plugins-block-quote'
-import {
-  DEFAULTS_CODE_BLOCK,
-  ELEMENT_CODE_BLOCK,
-  ELEMENT_CODE_LINE
-} from '@udecode/slate-plugins-code-block'
+import {ELEMENT_BLOCKQUOTE} from '@udecode/slate-plugins-block-quote'
+import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/slate-plugins-code-block'
 import {SlatePluginOptions} from '@udecode/slate-plugins-core'
 import {MARK_SEARCH_HIGHLIGHT} from '@udecode/slate-plugins-find-replace'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
-import {DEFAULTS_HIGHLIGHT, MARK_HIGHLIGHT} from '@udecode/slate-plugins-highlight'
+import {MARK_HIGHLIGHT} from '@udecode/slate-plugins-highlight'
 import {ELEMENT_IMAGE} from '@udecode/slate-plugins-image'
-import {MARK_KBD} from '@udecode/slate-plugins-kbd'
 import {ELEMENT_LINK} from '@udecode/slate-plugins-link'
-import {
-  DEFAULTS_TODO_LIST,
-  ELEMENT_LI,
-  ELEMENT_OL,
-  ELEMENT_TODO_LI,
-  ELEMENT_UL
-} from '@udecode/slate-plugins-list'
+import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/slate-plugins-list'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/slate-plugins-media-embed'
 import {ELEMENT_MENTION} from '@udecode/slate-plugins-mention'
 import {ELEMENT_PARAGRAPH} from '@udecode/slate-plugins-paragraph'
-import {
-  DEFAULTS_TH,
-  ELEMENT_TABLE,
-  ELEMENT_TD,
-  ELEMENT_TH,
-  ELEMENT_TR
-} from '@udecode/slate-plugins-table'
+import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@udecode/slate-plugins-table'
 
 export type DefaultSlatePluginKey =
   | typeof ELEMENT_ALIGN_CENTER

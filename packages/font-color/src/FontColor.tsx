@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
-import {TEditor, useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
-import {BaseEditor, BaseRange, Range, Editor, Transforms, BaseElement} from 'slate'
+import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
+import {Editor, Transforms} from 'slate'
 // import './font-color.css'
 
 function changeColor(editor: Editor, color?: string) {
@@ -22,24 +22,26 @@ export const FontColorToolbar = () => {
 
   const [color, setColor] = useState<string>()
 
-  // useEffect(() => {
-  //   const nodes: Array<any> | null = Array.from(
-  //     Editor.nodes(editor, {
-  //       at: editor.selection ?? undefined,
-  //       // @ts-ignore
-  //       match: node => !!node.color
-  //     })
-  //   )
-  //   if (nodes?.length) {
-  //     setColor(nodes[0][0].color)
-  //   }
-  // }, [checkColor])
+  useEffect(() => {
+    const nodes: Array<any> | null = Array.from(
+      Editor.nodes(editor, {
+        at: editor.selection ?? undefined,
+        // @ts-ignore
+        match: node => !!node.color
+      })
+    )
+    if (nodes?.length) {
+      setColor(nodes[0][0].color)
+    }
+  }, [checkColor])
 
   return (
     <input
       type="color"
       value={color}
       onChange={e => {
+        if (!editor) return
+
         const color = e.target.value
         if (color) setColor(color)
 
