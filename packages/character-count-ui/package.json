@@ -21,7 +21,7 @@
   "scripts": {
     "build": "tsc -b",
     "clean": "rimraf dist tsconfig.tsbuildinfo",
-    "watch": "tsc -b -w --preserveWatchOutput",
+    "watch": "webpack --watch --progress --mode development",
     "test": "jest"
   },
   "peerDependencies": {

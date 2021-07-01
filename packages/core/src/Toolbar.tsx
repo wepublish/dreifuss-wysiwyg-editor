@@ -81,11 +81,14 @@ export const ToolbarEmoji = () => {
   )
 }
 
-export const ToolbarQuotationMarks = ({editorId}: {editorId: string}) => (
-  <Popover Icon={<ToolbarElement type="" icon={'<<>>'} />}>
-    <QuotationMarksPicker editorId={editorId} />
-  </Popover>
-)
+export const ToolbarQuotationMarks = ({editorId}: {editorId: string}) => {
+  console.log('test', QuotationMarksPicker({editorId: 'main'}))
+  return (
+    <Popover Icon={<ToolbarElement type="" icon={'<<>>'} />}>
+      <QuotationMarksPicker editorId={editorId} />
+    </Popover>
+  )
+}
 
 export const ToolbarButtonsBasicElements = () => (
   <>

@@ -1,1 +1,1 @@
-export * from "./QuotationMarksPicker";
+export {QuotationMarksPicker} from './QuotationMarksPicker'
