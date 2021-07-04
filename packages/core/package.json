@@ -83,6 +83,7 @@
   "dependencies": {
     "@babel/runtime": "^7.13.10",
     "@dreifuss-wysiwyg-editor/slate-plugins-character-count-ui": "^1.0.0",
+    "@dreifuss-wysiwyg-editor/slate-plugins-link": "^1.0.0",
     "@dreifuss-wysiwyg-editor/slate-plugins-link-ui": "^1.0.0",
     "@dreifuss-wysiwyg-editor/slate-plugins-emoji-picker": "^1.0.0",
     "@dreifuss-wysiwyg-editor/slate-plugins-image": "^1.0.0",
@@ -108,7 +109,6 @@
     "@udecode/slate-plugins-image": "^1.0.0-next.36",
     "@udecode/slate-plugins-image-ui": "^1.0.0-next.36",
     "@udecode/slate-plugins-kbd": "^1.0.0-next.36",
-    "@udecode/slate-plugins-link": "^1.0.0-next.36",
     "@udecode/slate-plugins-link-ui": "^1.0.0-next.36",
     "@udecode/slate-plugins-list": "^1.0.0-next.36",
     "@udecode/slate-plugins-list-ui": "^1.0.0-next.36",

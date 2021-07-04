@@ -24,7 +24,9 @@ export const FontColorToolbar = () => {
 
   useEffect(() => {
     const nodes: Array<any> | null = Array.from(
+      // @ts-ignore
       Editor.nodes(editor, {
+        // @ts-ignore
         at: editor.selection ?? undefined,
         // @ts-ignore
         match: node => !!node.color
@@ -33,7 +35,7 @@ export const FontColorToolbar = () => {
     if (nodes?.length) {
       setColor(nodes[0][0].color)
     }
-  }, [checkColor])
+  }, [])
 
   return (
     <input

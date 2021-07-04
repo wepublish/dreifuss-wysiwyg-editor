@@ -21,10 +21,10 @@ import {MARK_SEARCH_HIGHLIGHT} from '@udecode/slate-plugins-find-replace'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
 import {MARK_HIGHLIGHT} from '@udecode/slate-plugins-highlight'
 import {ELEMENT_IMAGE} from '@udecode/slate-plugins-image'
-import {ELEMENT_LINK} from '@udecode/slate-plugins-link'
+import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/slate-plugins-link'
 import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/slate-plugins-list'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/slate-plugins-media-embed'
-import {ELEMENT_MENTION} from '@udecode/slate-plugins-mention'
+// import {ELEMENT_MENTION} from '@udecode/slate-plugins-mention'
 import {ELEMENT_PARAGRAPH} from '@udecode/slate-plugins-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@udecode/slate-plugins-table'
 
@@ -43,7 +43,7 @@ export type DefaultSlatePluginKey =
   | typeof ELEMENT_LI
   | typeof ELEMENT_LINK
   | typeof ELEMENT_MEDIA_EMBED
-  | typeof ELEMENT_MENTION
+  // | typeof ELEMENT_MENTION
   | typeof ELEMENT_OL
   | typeof ELEMENT_PARAGRAPH
   | typeof ELEMENT_TABLE
@@ -106,7 +106,7 @@ export const createSlatePluginsOptions = <T extends string = string>(
       defaultType: 'link'
     },
     [ELEMENT_MEDIA_EMBED]: {},
-    [ELEMENT_MENTION]: {},
+    // [ELEMENT_MENTION]: {},
     [ELEMENT_OL]: {
       type: 'ordered-list',
       defaultType: 'ordered-list'

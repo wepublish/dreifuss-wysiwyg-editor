@@ -22,6 +22,7 @@ export function TableCellBorderColorPicker() {
     if (!editor) return
 
     const nodes = Editor.nodes(editor, {
+      // @ts-ignore
       match: (node: TableNode) => node.type === 'table-cell'
     })
     for (const [node] of nodes) {
@@ -36,6 +37,7 @@ export function TableCellBorderColorPicker() {
 
     if (borderColor) {
       const nodes = Editor.nodes(editor, {
+        // @ts-ignore
         match: (node: TableNode) => node.type === TableElementFormat.Table
       })
       for (const [, path] of nodes) {

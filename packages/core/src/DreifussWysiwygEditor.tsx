@@ -1,6 +1,6 @@
 import React from 'react'
 import Divider, {DividerType} from './atoms/Divider'
-import {createLinkPlugin} from '@udecode/slate-plugins-link'
+import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/slate-plugins-link'
 import {HeadingToolbar} from '@udecode/slate-plugins-toolbar'
 import {createImagePlugin} from '@udecode/slate-plugins-image'
 import {createTablePlugin} from '@udecode/slate-plugins-table'
@@ -16,6 +16,7 @@ import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
 import {CharCount} from '@dreifuss-wysiwyg-editor/slate-plugins-character-count-ui'
+import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -25,7 +26,6 @@ import {
   createSubscriptPlugin,
   createSuperscriptPlugin
 } from '@udecode/slate-plugins-basic-marks'
-import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
 import {
   ToolbarButtonsAlign,
   ToolbarButtonsBasicElements,
