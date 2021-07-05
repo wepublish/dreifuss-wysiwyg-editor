@@ -1,4 +1,3 @@
-  
 export * from './createBorderColorPlugin'
 export * from './defaults'
 export * from './getBorderColorDeserialize'
