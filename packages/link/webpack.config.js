@@ -1,7 +1,7 @@
 const config = require('../../webpack.config')
 const path = require('path')
 
-config.entry = ['@babel/polyfill', './src/index.ts']
+config.entry = './src/index.ts'
 config.output = {
   libraryTarget: 'umd',
   library: 'LinkUi',
