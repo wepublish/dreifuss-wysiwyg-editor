@@ -33,7 +33,7 @@ import {
   ELEMENT_ALIGN_JUSTIFY,
   ELEMENT_ALIGN_RIGHT
 } from '@udecode/slate-plugins-alignment'
-import Popover from './Popover'
+import Popover from './atoms/Popover'
 import {ToolbarList} from '@udecode/slate-plugins-list-ui'
 import {ToolbarTable} from '@udecode/slate-plugins-table-ui'
 import {ToolbarAlign} from '@udecode/slate-plugins-alignment-ui'
@@ -50,7 +50,7 @@ import {getSlatePluginType, useEditorRef} from '@udecode/slate-plugins-core'
 // import {UploadImageMenu} from '@dreifuss-wysiwyg-editor/slate-plugins-image'
 // import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
 // import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color-ui'
-import {EmojiPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-emoji-picker'
+// import {EmojiPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-emoji-picker'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
 import {
   insertTable,
@@ -97,11 +97,11 @@ export const ToolbarLink = () => (
   </Popover>
 )
 
-export const ToolbarEmoji = () => (
-  <Popover Icon={<ToolbarElement type="" icon={<Emoji />} />}>
-    <EmojiPicker />
-  </Popover>
-)
+// export const ToolbarEmoji = () => (
+//   <Popover Icon={<ToolbarElement type="" icon={<Emoji />} />}>
+//     <EmojiPicker />
+//   </Popover>
+// )
 
 // export const ToolbarQuotationMarks = () => (
 //   <Popover Icon={<ToolbarElement type="" icon={'<<>>'} />}>

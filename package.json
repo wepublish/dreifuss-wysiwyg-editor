@@ -14,6 +14,10 @@
     "clean": "lerna run clean --parallel",
     "watch": "lerna run watch --parallel",
     "dev": "run-p --print-label watch",
+    "watch:wysiwyg-editor": "yarn workspace @dreifuss-editor/core start",
+    "build:wysiwyg-editor": "yarn workspace @dreifuss-editor/core build",
+    "watch:package-character-count": "yarn workspace @dreifuss-editor/package-character-count build:w",
+    "build:package-character-count": "yarn workspace @dreifuss-editor/package-character-count build",
     "prettier": "prettier --write '{packages,services}/**/*.{js,ts,tsx,json}'",
     "prettier-check": "prettier --check '{packages,services}/**/*.{js,ts,tsx,json}'"
   },
