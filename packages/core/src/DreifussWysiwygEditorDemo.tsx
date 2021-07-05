@@ -215,13 +215,7 @@ const value: any = [
 const DreifussWysiwygEditorDemo = () => (
   <div style={{overflowX: 'hidden', minHeight: 400}}>
     <h1>RichText Component Demo</h1>
-    <DreifussWysiwygEditor
-      onChange={data => {
-        console.log(data)
-      }}
-      showCharCount
-      initialValue={value}
-    />
+    <DreifussWysiwygEditor showCharCount initialValue={value} />
   </div>
 )
 
