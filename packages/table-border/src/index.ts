@@ -3,3 +3,4 @@
  */
 
 export * from "./TableBorder";
+export * from './RenderLeaf'

@@ -2641,6 +2641,14 @@
     "@udecode/slate-plugins-core" "^1.0.0-alpha.25"
     prismjs "^1.23.0"
 
+"@udecode/slate-plugins-common@1.0.0-next.40":
+  version "1.0.0-next.40"
+  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-common/-/slate-plugins-common-1.0.0-next.40.tgz#19526682f4821e5af483e45fcb963a9968c5558b"
+  integrity sha512-6BpFpcnVxZp73M+xjE3PALPWThZLDcqn+Ik3Y1lG4CqAV26dY2RbDwRggZ3eIsqZ5qSpuEc20ZYx0kjLmGbt5w==
+  dependencies:
+    "@udecode/slate-plugins-core" "1.0.0-next.40"
+    is-hotkey "^0.1.6"
+
 "@udecode/slate-plugins-common@^1.0.0-alpha.25":
   version "1.0.0-alpha.25"
   resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-common/-/slate-plugins-common-1.0.0-alpha.25.tgz#ccadcacb6de06189d744f2fa42acca4bcc81563f"
@@ -2656,6 +2664,14 @@
   dependencies:
     lodash "^4.17.21"
     zustand "^3.3.2"
+
+"@udecode/slate-plugins-core@1.0.0-next.40", "@udecode/slate-plugins-core@^1.0.0-next.36":
+  version "1.0.0-next.40"
+  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-core/-/slate-plugins-core-1.0.0-next.40.tgz#cfb7ef939b31b87542fd2db29b0fcb6517f25963"
+  integrity sha512-58MAb2VbUlOptJbBTP6K7fZRaOLKc2v/yqLMqgqXh0Kihr6FykqLHj77bPcYTXbqw5NNuEGR323juYOefRBiRQ==
+  dependencies:
+    lodash "^4.17.21"
+    zustand "^3.4.2"
 
 "@udecode/slate-plugins-find-replace-ui@^1.0.0-alpha.25":
   version "1.0.0-alpha.25"
@@ -2861,6 +2877,17 @@
     "@udecode/slate-plugins-ui-fluent" "^1.0.0-alpha.25"
     react-use "^17.1.1"
 
+"@udecode/slate-plugins-toolbar@^1.0.0-next.36":
+  version "1.0.0-next.40"
+  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-toolbar/-/slate-plugins-toolbar-1.0.0-next.40.tgz#5d00e78dc9fff688d429110441c556de28c8de38"
+  integrity sha512-sxoF5VDv54rYW8H3zaT9MQx8YSYrgECsGxeEh/Mj73zua3MMxok4PJof8eMLjNR19QQ4BLCG+CKi11AXqaQuOA==
+  dependencies:
+    "@tippyjs/react" "^4.2.0"
+    "@udecode/slate-plugins-common" "1.0.0-next.40"
+    "@udecode/slate-plugins-core" "1.0.0-next.40"
+    "@udecode/slate-plugins-ui-fluent" "1.0.0-next.40"
+    react-use "^17.1.1"
+
 "@udecode/slate-plugins-trailing-block@^1.0.0-alpha.25":
   version "1.0.0-alpha.25"
   resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-trailing-block/-/slate-plugins-trailing-block-1.0.0-alpha.25.tgz#026c66826a96da31cf0ae46f263af16802ca96a4"
@@ -2868,6 +2895,16 @@
   dependencies:
     "@udecode/slate-plugins-common" "^1.0.0-alpha.25"
     "@udecode/slate-plugins-core" "^1.0.0-alpha.25"
+
+"@udecode/slate-plugins-ui-fluent@1.0.0-next.40":
+  version "1.0.0-next.40"
+  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-ui-fluent/-/slate-plugins-ui-fluent-1.0.0-next.40.tgz#6d3429ee271e00743d858bfde3016208b121a2a5"
+  integrity sha512-fCN7VDUH+J/jjsf9s4+ZKU59zH8iiYtHijnQwXX0otKhiXP5To9IvWJC1on3oLdSl+No5Hb2G1scwiCcyajYBQ==
+  dependencies:
+    "@udecode/slate-plugins-common" "1.0.0-next.40"
+    "@udecode/slate-plugins-core" "1.0.0-next.40"
+    "@uifabric/styling" "^7.18.0"
+    "@uifabric/utilities" "^7.33.4"
 
 "@udecode/slate-plugins-ui-fluent@^1.0.0-alpha.25":
   version "1.0.0-alpha.25"
@@ -12987,3 +13024,8 @@ zustand@^3.3.2:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.5.4.tgz#9050a15042ced663b10588327b9210df91f0e13e"
   integrity sha512-EtS3D83il8eiydRS+xUcpczffT0MpD9ePIqAT10ns2tfzPvq85nmMmYJl9mOLOJjPLaXAMK8lgk0iCz2h7CxGg==
+
+zustand@^3.4.2:
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.5.5.tgz#628458ad70621ddc2a17dbee49be963e5c0dccb5"
+  integrity sha512-iTiJoxzYFtiD7DhscgwK2P4Kft1JcZEI2U7mG8IxiOFM4KpBAiJZfFop3r/3wbCuyltXI6ph1Fx90e4j/S43XA==
