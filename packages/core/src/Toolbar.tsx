@@ -33,7 +33,7 @@ import {
   ELEMENT_ALIGN_JUSTIFY,
   ELEMENT_ALIGN_RIGHT
 } from '@udecode/slate-plugins-alignment'
-import Popover from './Popover'
+import Popover from './atoms/Popover'
 import {ToolbarList} from '@udecode/slate-plugins-list-ui'
 import {ToolbarTable} from '@udecode/slate-plugins-table-ui'
 import {ToolbarAlign} from '@udecode/slate-plugins-alignment-ui'
