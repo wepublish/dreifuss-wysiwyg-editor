@@ -32,12 +32,12 @@ import {
   ToolbarButtonsBasicMarks,
   ToolbarButtonsList,
   ToolbarButtonsTable,
-  ToolbarEmoji,
+  // ToolbarEmoji,
   ToolbarLink
   // ToolbarImage,
   // ToolbarQuotationMarks,
   // ToolbarFontColor
-} from './atoms/Toolbar'
+} from './Toolbar'
 import {EditorValue} from './types'
 
 export interface EditableProps {
@@ -131,7 +131,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <ToolbarButtonsTable />
           <Divider type={DividerType.vertical} />
           <ToolbarLink />
-          <ToolbarEmoji />
+          {/* <ToolbarEmoji /> */}
           {/* <Divider type={DividerType.vertical} />
           <ToolbarQuotationMarks /> */}
         </HeadingToolbar>
