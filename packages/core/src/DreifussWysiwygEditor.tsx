@@ -16,7 +16,6 @@ import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
 import {CharCount} from '@dreifuss-wysiwyg-editor/slate-plugins-character-count-ui'
-import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
 import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
 import {
   createBoldPlugin,
@@ -34,13 +33,12 @@ import {
   ToolbarButtonsList,
   ToolbarButtonsTable,
   ToolbarEmoji,
-  ToolbarLink,
-  ToolbarImage,
-  ToolbarQuotationMarks,
-  ToolbarFontColor
+  ToolbarLink
+  // ToolbarImage,
+  // ToolbarQuotationMarks,
+  // ToolbarFontColor
 } from './atoms/Toolbar'
 import {EditorValue} from './types'
-import {renderLeaf} from './utils/RenderElementLeaf'
 
 export interface EditableProps {
   id?: string
@@ -95,7 +93,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createTablePlugin(),
     createItalicPlugin(),
     createTodoListPlugin(),
-    createFontColorPlugin(),
     createParagraphPlugin(),
     createHighlightPlugin(),
     createCodeBlockPlugin(),
@@ -124,19 +121,19 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <ToolbarButtonsList />
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsBasicMarks />
-          <Divider type={DividerType.vertical} />
-          <ToolbarFontColor />
+          {/* <Divider type={DividerType.vertical} />
+          <ToolbarFontColor /> */}
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsAlign />
           <Divider type={DividerType.vertical} />
-          <ToolbarImage />
-          <Divider type={DividerType.vertical} />
+          {/* <ToolbarImage />
+          <Divider type={DividerType.vertical} /> */}
           <ToolbarButtonsTable />
           <Divider type={DividerType.vertical} />
           <ToolbarLink />
           <ToolbarEmoji />
-          <Divider type={DividerType.vertical} />
-          <ToolbarQuotationMarks />
+          {/* <Divider type={DividerType.vertical} />
+          <ToolbarQuotationMarks /> */}
         </HeadingToolbar>
       )}
       {props.showCharCount && (

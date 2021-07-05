@@ -24,9 +24,9 @@ import {
   BorderRight,
   BorderTop,
   Emoji,
-  Link,
-  Image,
-  FontColor
+  Link
+  // Image,
+  // FontColor
 } from './Icons'
 import {
   ELEMENT_ALIGN_CENTER,
@@ -45,11 +45,11 @@ import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/slate-plugins-link'
 import {LinkToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-link-ui'
 import {ToolbarElement, ToolbarMark} from '@udecode/slate-plugins-toolbar'
 import {getSlatePluginType, useEditorRef} from '@udecode/slate-plugins-core'
-import {TableCellBorderColorPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-table-border'
-import {QuotationMarksPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui'
-import {UploadImageMenu} from '@dreifuss-wysiwyg-editor/slate-plugins-image'
-import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
-import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color-ui'
+// import {TableCellBorderColorPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-table-border'
+// import {QuotationMarksPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui'
+// import {UploadImageMenu} from '@dreifuss-wysiwyg-editor/slate-plugins-image'
+// import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
+// import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color-ui'
 import {EmojiPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-emoji-picker'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
 import {
@@ -70,23 +70,23 @@ import {
   MARK_UNDERLINE
 } from '@udecode/slate-plugins-basic-marks'
 
-export const ToolbarFontColor = () => (
-  <Popover
-    Icon={
-      <ToolbarElement
-        type={getSlatePluginType(useEditorRef(), ELEMENT_FONT_COLOR)}
-        icon={<FontColor />}
-      />
-    }>
-    <FontColorToolbar />
-  </Popover>
-)
+// export const ToolbarFontColor = () => (
+//   <Popover
+//     Icon={
+//       <ToolbarElement
+//         type={getSlatePluginType(useEditorRef(), ELEMENT_FONT_COLOR)}
+//         icon={<FontColor />}
+//       />
+//     }>
+//     <FontColorToolbar />
+//   </Popover>
+// )
 
-export const ToolbarImage = () => (
-  <Popover Icon={<ToolbarElement type="" icon={<Image />} />}>
-    <UploadImageMenu />
-  </Popover>
-)
+// export const ToolbarImage = () => (
+//   <Popover Icon={<ToolbarElement type="" icon={<Image />} />}>
+//     <UploadImageMenu />
+//   </Popover>
+// )
 
 export const ToolbarLink = () => (
   <Popover
@@ -103,11 +103,11 @@ export const ToolbarEmoji = () => (
   </Popover>
 )
 
-export const ToolbarQuotationMarks = () => (
-  <Popover Icon={<ToolbarElement type="" icon={'<<>>'} />}>
-    <QuotationMarksPicker />
-  </Popover>
-)
+// export const ToolbarQuotationMarks = () => (
+//   <Popover Icon={<ToolbarElement type="" icon={'<<>>'} />}>
+//     <QuotationMarksPicker />
+//   </Popover>
+// )
 
 export const ToolbarButtonsBasicElements = () => (
   <>
@@ -183,8 +183,8 @@ export const ToolbarButtonsTable = () => (
     <ToolbarTable icon={<BorderTop />} transform={deleteRow} />
     <ToolbarTable icon={<BorderLeft />} transform={addColumn} />
     <ToolbarTable icon={<BorderRight />} transform={deleteColumn} />
-    <Popover Icon={<ToolbarElement type="" icon={'+'} />}>
+    {/* <Popover Icon={<ToolbarElement type="" icon={'+'} />}>
       {'Border color: '} <TableCellBorderColorPicker />
-    </Popover>
+    </Popover> */}
   </>
 )
