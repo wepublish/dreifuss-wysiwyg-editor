@@ -1,0 +1,55 @@
+{
+  "name": "@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui",
+  "version": "1.0.0",
+  "description": "Slate plugins for quotation marks ui",
+  "keywords": [],
+  "homepage": "https://github.com/udecode/slate-plugins/tree/main/packages/block-quote-ui#readme",
+  "bugs": {
+    "url": "https://github.com/udecode/slate-plugins/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/udecode/slate-plugins.git"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rimraf dist tsconfig.tsbuildinfo",
+    "watch": "webpack --watch --progress --mode development",
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "slate": "^0.60.0",
+    "slate-react": "^0.60.0"
+  },
+  "dependencies": {
+    "@udecode/slate-plugins-block-quote": "^1.0.0-alpha.25",
+    "@udecode/slate-plugins-core": "^1.0.0-alpha.25",
+    "@udecode/slate-plugins-ui-fluent": "^1.0.0-alpha.25"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.16",
+    "@types/react-dom": "^16.9.4",
+    "@types/slate": "^0.47.8",
+    "@types/slate-react": "^0.50.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "slate": "^0.62.0",
+    "slate-react": "^0.62.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "eslintConfig": {
+    "extends": [
+      "../../package.json"
+    ]
+  }
+}
