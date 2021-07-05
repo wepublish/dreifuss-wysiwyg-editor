@@ -1,9 +1,9 @@
 {
-  "name": "@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui",
+  "name": "@dreifuss-wysiwyg-editor/slate-plugins-emoji-picker",
   "version": "1.0.0",
-  "description": "Slate plugins for quotation marks ui",
+  "description": "Slate plugins Emoji Picker",
   "keywords": [],
-  "homepage": "https://github.com/udecode/slate-plugins/tree/main/packages/block-quote-ui#readme",
+  "homepage": "https://github.com/udecode/slate-plugins/tree/main/packages/alignment-ui#readme",
   "bugs": {
     "url": "https://github.com/udecode/slate-plugins/issues"
   },
@@ -13,6 +13,7 @@
   },
   "license": "MIT",
   "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -20,7 +21,7 @@
   "scripts": {
     "build": "tsc -b",
     "clean": "rimraf dist tsconfig.tsbuildinfo",
-    "watch": "webpack --watch --progress --mode development",
+    "watch": "tsc -b -w --preserveWatchOutput",
     "test": "jest"
   },
   "peerDependencies": {
@@ -30,9 +31,9 @@
     "slate-react": "^0.60.0"
   },
   "dependencies": {
-    "@udecode/slate-plugins-block-quote": "^1.0.0-alpha.25",
-    "@udecode/slate-plugins-core": "^1.0.0-alpha.25",
-    "@udecode/slate-plugins-ui-fluent": "^1.0.0-alpha.25"
+    "@udecode/slate-plugins-core": "^1.0.0-next.36",
+    "@udecode/slate-plugins-toolbar": "^1.0.0-next.36",
+    "emoji-mart": "^3.0.1"
   },
   "devDependencies": {
     "@types/react": "^16.9.16",

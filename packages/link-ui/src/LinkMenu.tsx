@@ -1,73 +1,15 @@
 import React, {useEffect, useState} from 'react'
-import {useStoreEditor} from '@udecode/slate-plugins-core'
-import {BaseEditor, BaseRange, Range, Editor, Node, Transforms} from 'slate'
-// import './link-toolbar.css'
-
-async function validateURL(url: string) {
-  if (url) {
-    const pattern = new RegExp(
-      '^(https?:\\/\\/)?' + // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-        '(\\#[-a-z\\d_]*)?$',
-      'i'
-    )
-    return pattern.test(url)
-  }
-  return false
-}
-
-function insertLink(editor: BaseEditor, selection: BaseRange | null, url: string, title?: string) {
-  if (selection) {
-    if (Range.isCollapsed(selection)) {
-      const nodes = Array.from(
-        Editor.nodes(editor, {
-          at: selection,
-          match: (node: any) => node.type === 'link'
-        })
-      )
-      const tuple = nodes[0]
-
-      if (tuple) {
-        const [, path] = tuple
-        Transforms.select(editor, path)
-      } else {
-        Transforms.insertText(editor, title ?? '')
-        Transforms.select(editor, {
-          anchor: {
-            path: selection.anchor.path,
-            offset: selection.anchor.offset + (title?.length ?? 0)
-          },
-          focus: {path: selection.focus.path, offset: selection.focus.offset}
-        })
-      }
-    } else {
-      Transforms.select(editor, selection)
-    }
-  }
-
-  Transforms.unwrapNodes(editor, {
-    match: (node: any) => node.type === 'link'
-  })
-  Transforms.wrapNodes(
-    editor,
-    // @ts-ignore
-    {type: 'link', url, title, children: []},
-    {split: true}
-  )
-  Transforms.collapse(editor, {edge: 'end'})
-}
-
-function removeLink(editor: Editor) {
-  Transforms.unwrapNodes(editor, {
-    match: (node: any) => node.type === 'link'
-  })
-}
+import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
+import {BaseRange, Editor} from 'slate'
+import {
+  removeLink,
+  upsertLinkAtSelection,
+  validateUrl
+} from '@dreifuss-wysiwyg-editor/slate-plugins-link'
+// import './link.css'
 
 export const LinkToolbar = () => {
-  const editor: any = useStoreEditor()
+  const editor = useStoreEditorState(useEventEditorId('focus'))
 
   const [title, setTitle] = useState('')
   const [url, setURL] = useState('')
@@ -87,7 +29,7 @@ export const LinkToolbar = () => {
   const isDisabled = !url || !title
 
   useEffect(() => {
-    validateURL(url).then(value => setIsValidURL(value))
+    validateUrl(url).then((value: boolean) => setIsValidURL(value))
 
     if (url.startsWith(prefixType.https)) {
       setPrefix(prefixType.https)
@@ -102,19 +44,22 @@ export const LinkToolbar = () => {
   }, [url])
 
   useEffect(() => {
+    if (!editor) return
     setSelection(editor?.selection)
 
     const nodes = Array.from(
       Editor.nodes(editor, {
         at: editor?.selection ?? undefined,
-        match: (node: any) => node.type === 'link'
+        // @ts-ignore
+        match: node => node.type === 'link'
       })
     )
     const tuple = nodes[0]
     if (tuple) {
-      const [node]: any = tuple
+      const [node] = tuple
+      // @ts-ignore
       setTitle((node.title as string) ?? '')
-
+      // @ts-ignore
       const nodeUrl = node.url as string
       if (
         !nodeUrl.startsWith(prefixType.https) ||
@@ -162,18 +107,26 @@ export const LinkToolbar = () => {
         <button
           disabled={isDisabled}
           onClick={e => {
+            if (!editor) return
             e.preventDefault()
-            insertLink(
-              editor,
-              selection,
-              prefix !== prefixType.other ? prefix + url : url,
-              title || undefined
-            )
+
+            upsertLinkAtSelection(editor, {
+              url: prefix !== prefixType.other ? prefix + url : url,
+              wrap: false,
+              selection
+            })
           }}>
           Insert
         </button>
-        {/* TODO: uncomment this */}
-        {/* <RemoveLinkFormatButton /> */}
+        <button
+          onMouseDown={e => {
+            if (!editor) return
+            e.preventDefault()
+
+            removeLink(editor)
+          }}>
+          Remove
+        </button>
       </div>
     </form>
   )

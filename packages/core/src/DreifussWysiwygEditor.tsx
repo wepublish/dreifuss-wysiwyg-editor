@@ -1,8 +1,6 @@
 import React from 'react'
-/* import {ReactEditor} from 'slate-react'
-import {HistoryEditor} from 'slate-history' */
 import Divider, {DividerType} from './atoms/Divider'
-import {createLinkPlugin} from '@udecode/slate-plugins-link'
+import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/slate-plugins-link'
 import {HeadingToolbar} from '@udecode/slate-plugins-toolbar'
 import {createImagePlugin} from '@udecode/slate-plugins-image'
 import {createTablePlugin} from '@udecode/slate-plugins-table'
@@ -18,6 +16,8 @@ import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
 import {CharCount} from '@dreifuss-wysiwyg-editor/slate-plugins-character-count-ui'
+import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
+import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -28,13 +28,6 @@ import {
   createSuperscriptPlugin
 } from '@udecode/slate-plugins-basic-marks'
 import {
-  SlatePlugins,
-  createHistoryPlugin,
-  createReactPlugin
-  /* SPEditor */
-} from '@udecode/slate-plugins-core'
-import {ToolbarImage} from '@udecode/slate-plugins-image-ui'
-import {
   ToolbarButtonsAlign,
   ToolbarButtonsBasicElements,
   ToolbarButtonsBasicMarks,
@@ -42,10 +35,12 @@ import {
   ToolbarButtonsTable,
   ToolbarEmoji,
   ToolbarLink,
-  ToolbarQuotationMarks
-} from './Toolbar'
-
-// type TEditor = SPEditor & ReactEditor & HistoryEditor
+  ToolbarImage,
+  ToolbarQuotationMarks,
+  ToolbarFontColor
+} from './atoms/Toolbar'
+import {EditorValue} from './types'
+import {renderLeaf} from './utils/RenderElementLeaf'
 
 export interface EditableProps {
   id?: string
@@ -53,16 +48,20 @@ export interface EditableProps {
   showCharCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
+}
+
+export interface EditorProps {
+  id?: string
+  displayOnly?: boolean
+  showCharCount?: boolean
+  displayOneLine?: boolean
+  disabled?: boolean
   initialValue?: any
-  value?: any
-  // onChange?: React.Dispatch<React.SetStateAction<V>>
+  value?: EditorValue
+  onChange?: React.Dispatch<React.SetStateAction<any>>
 }
 
-function Imagee(props: any) {
-  return <h1>Hi</h1>
-}
-
-export default function DreifussWysiwygEditor(props: EditableProps) {
+export default function DreifussWysiwygEditor(props: EditorProps) {
   const components = createSlatePluginsComponents()
   const options = createSlatePluginsOptions()
 
@@ -79,6 +78,8 @@ export default function DreifussWysiwygEditor(props: EditableProps) {
           width: 'inherit'
         }
       : {}
+    // TODO: Should be moved to font color plugin
+    // renderLeaf
   }
 
   const plugins = [
@@ -94,6 +95,7 @@ export default function DreifussWysiwygEditor(props: EditableProps) {
     createTablePlugin(),
     createItalicPlugin(),
     createTodoListPlugin(),
+    createFontColorPlugin(),
     createParagraphPlugin(),
     createHighlightPlugin(),
     createCodeBlockPlugin(),
@@ -105,10 +107,11 @@ export default function DreifussWysiwygEditor(props: EditableProps) {
     createStrikethroughPlugin(),
     createHeadingPlugin({levels: 3})
   ]
-  // onChange={(change: string) => console.log('change', change)}
+
   return (
     <SlatePlugins
       id={props.id ?? 'main'}
+      onChange={props.onChange}
       plugins={plugins}
       components={components}
       options={options}
@@ -122,17 +125,18 @@ export default function DreifussWysiwygEditor(props: EditableProps) {
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsBasicMarks />
           <Divider type={DividerType.vertical} />
+          <ToolbarFontColor />
+          <Divider type={DividerType.vertical} />
           <ToolbarButtonsAlign />
           <Divider type={DividerType.vertical} />
-          {/* TODO: icon to be changed */}
-          <ToolbarImage icon={<Imagee />} />
+          <ToolbarImage />
           <Divider type={DividerType.vertical} />
-          <ToolbarButtonsTable editorId={props.id ?? 'main'} />
+          <ToolbarButtonsTable />
           <Divider type={DividerType.vertical} />
           <ToolbarLink />
           <ToolbarEmoji />
           <Divider type={DividerType.vertical} />
-          <ToolbarQuotationMarks editorId={props.id ?? 'main'} />
+          <ToolbarQuotationMarks />
         </HeadingToolbar>
       )}
       {props.showCharCount && (

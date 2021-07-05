@@ -1,9 +1,9 @@
 {
-  "name": "@dreifuss-wysiwyg-editor/slate-plugins-table-border",
+  "name": "@dreifuss-wysiwyg-editor/slate-plugins-link",
   "version": "1.0.0",
-  "description": "Slate plugins Table Border",
+  "description": "Slate plugins Link",
   "keywords": [],
-  "homepage": "https://github.com/udecode/slate-plugins/tree/main/packages/basic-marks#readme",
+  "homepage": "https://github.com/udecode/slate-plugins/tree/main/packages/alignment-ui#readme",
   "bugs": {
     "url": "https://github.com/udecode/slate-plugins/issues"
   },
@@ -21,7 +21,7 @@
   "scripts": {
     "build": "tsc -b",
     "clean": "rimraf dist tsconfig.tsbuildinfo",
-    "watch": "webpack --watch --progress --mode development",
+    "watch": "tsc -b -w --preserveWatchOutput",
     "test": "jest"
   },
   "peerDependencies": {
@@ -31,8 +31,8 @@
     "slate-react": "^0.60.0"
   },
   "dependencies": {
-    "@udecode/slate-plugins-common": "^1.0.0-alpha.25",
-    "@udecode/slate-plugins-core": "^1.0.0-alpha.25"
+    "@udecode/slate-plugins-core": "^1.0.0-next.36",
+    "@udecode/slate-plugins-toolbar": "^1.0.0-next.36"
   },
   "devDependencies": {
     "@types/react": "^16.9.16",
