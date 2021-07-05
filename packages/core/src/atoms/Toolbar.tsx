@@ -33,7 +33,7 @@ import {
   ELEMENT_ALIGN_JUSTIFY,
   ELEMENT_ALIGN_RIGHT
 } from '@udecode/slate-plugins-alignment'
-import Popover from './atoms/Popover'
+import Popover from './Popover'
 import {ToolbarList} from '@udecode/slate-plugins-list-ui'
 import {ToolbarTable} from '@udecode/slate-plugins-table-ui'
 import {ToolbarAlign} from '@udecode/slate-plugins-alignment-ui'
@@ -41,13 +41,15 @@ import {ELEMENT_OL, ELEMENT_UL} from '@udecode/slate-plugins-list'
 import {ELEMENT_CODE_BLOCK} from '@udecode/slate-plugins-code-block'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/slate-plugins-block-quote'
 import {ToolbarCodeBlock} from '@udecode/slate-plugins-code-block-ui'
+import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/slate-plugins-link'
 import {LinkToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-link-ui'
 import {ToolbarElement, ToolbarMark} from '@udecode/slate-plugins-toolbar'
 import {getSlatePluginType, useEditorRef} from '@udecode/slate-plugins-core'
 import {TableCellBorderColorPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-table-border'
 import {QuotationMarksPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui'
 import {UploadImageMenu} from '@dreifuss-wysiwyg-editor/slate-plugins-image'
-import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
+import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
+import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color-ui'
 import {EmojiPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-emoji-picker'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
 import {
@@ -69,7 +71,13 @@ import {
 } from '@udecode/slate-plugins-basic-marks'
 
 export const ToolbarFontColor = () => (
-  <Popover Icon={<ToolbarElement type="" icon={<FontColor />} />}>
+  <Popover
+    Icon={
+      <ToolbarElement
+        type={getSlatePluginType(useEditorRef(), ELEMENT_FONT_COLOR)}
+        icon={<FontColor />}
+      />
+    }>
     <FontColorToolbar />
   </Popover>
 )
@@ -81,7 +89,10 @@ export const ToolbarImage = () => (
 )
 
 export const ToolbarLink = () => (
-  <Popover Icon={<ToolbarElement type="" icon={<Link />} />}>
+  <Popover
+    Icon={
+      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_LINK)} icon={<Link />} />
+    }>
     <LinkToolbar />
   </Popover>
 )

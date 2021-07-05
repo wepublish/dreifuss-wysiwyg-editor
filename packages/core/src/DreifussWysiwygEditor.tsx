@@ -16,6 +16,7 @@ import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
 import {CharCount} from '@dreifuss-wysiwyg-editor/slate-plugins-character-count-ui'
+import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
 import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
 import {
   createBoldPlugin,
@@ -37,8 +38,9 @@ import {
   ToolbarImage,
   ToolbarQuotationMarks,
   ToolbarFontColor
-} from './Toolbar'
+} from './atoms/Toolbar'
 import {EditorValue} from './types'
+import {renderLeaf} from './utils/RenderElementLeaf'
 
 export interface EditableProps {
   id?: string
@@ -75,13 +77,9 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           textOverflow: 'ellipsis',
           width: 'inherit'
         }
-      : {},
+      : {}
     // TODO: Should be moved to font color plugin
-    renderLeaf: ({attributes, children, leaf}) => (
-      <span {...attributes} style={{color: leaf?.color}}>
-        {children}
-      </span>
-    )
+    // renderLeaf
   }
 
   const plugins = [
@@ -97,6 +95,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createTablePlugin(),
     createItalicPlugin(),
     createTodoListPlugin(),
+    createFontColorPlugin(),
     createParagraphPlugin(),
     createHighlightPlugin(),
     createCodeBlockPlugin(),
