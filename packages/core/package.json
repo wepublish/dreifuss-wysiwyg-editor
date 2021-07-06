@@ -9,9 +9,10 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc -b",
+    "build": "webpack --mode production",
+    "build:deployment": "webpack --mode development",
     "clean": "rimraf dist tsconfig.tsbuildinfo",
-    "watch": "webpack serve",
+    "watch": "webpack serve --mode development",
     "test": "BABEL_JEST_STAGE=0 jest",
     "prepublish": "npm run build",
     "lint": "eslint 'src/**/*.{ts,tsx,js}' '__tests__/**/*.{ts,tsx,js}'",

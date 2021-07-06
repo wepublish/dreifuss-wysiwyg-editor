@@ -6,7 +6,7 @@ const path = require('path')
 module.exports = function (env, argv) {
   return {
     mode: env.production ? 'production' : 'development',
-    devtool: env.production ? 'source-map' : 'eval',
+    devtool: env.production ? 'source-map' : 'inline-source-map',
 
     devServer: {
       historyApiFallback: true
@@ -66,6 +66,9 @@ module.exports = function (env, argv) {
       path: path.resolve(__dirname, './dist'),
       filename: 'index_bundle.js'
     },
+    /*externals: {
+      '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui': '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-u'
+    },*/
 
     plugins: [
       new HtmlWebpackPlugin({

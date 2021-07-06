@@ -13,7 +13,6 @@
   },
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -21,7 +20,7 @@
   "scripts": {
     "build": "tsc -b",
     "clean": "rimraf dist tsconfig.tsbuildinfo",
-    "watch": "tsc -b -w --preserveWatchOutput",
+    "watch": "webpack --watch --progress --mode development",
     "test": "jest"
   },
   "peerDependencies": {
