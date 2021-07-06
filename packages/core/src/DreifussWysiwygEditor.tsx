@@ -17,7 +17,6 @@ import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
-import {CharCount} from '@dreifuss-wysiwyg-editor/slate-plugins-character-count-ui'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -40,9 +39,7 @@ import {
   ToolbarButtonsList,
   ToolbarButtonsTable,
   ToolbarEmoji,
-  ToolbarLink,
-  ToolbarImage,
-  ToolbarQuotationMarks
+  ToolbarLink
 } from './Toolbar'
 
 // type TEditor = SPEditor & ReactEditor & HistoryEditor
@@ -121,20 +118,13 @@ export default function DreifussWysiwygEditor(props: any) {
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsAlign />
           <Divider type={DividerType.vertical} />
-          <ToolbarImage editorId={props.id ?? 'main'} />
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsTable editorId={props.id ?? 'main'} />
           <Divider type={DividerType.vertical} />
           <ToolbarLink />
           <ToolbarEmoji />
           <Divider type={DividerType.vertical} />
-          <ToolbarQuotationMarks editorId={props.id ?? 'main'} />
         </HeadingToolbar>
-      )}
-      {props.showCharCount && (
-        <p style={{textAlign: 'right'}}>
-          {'Characters count:'} <CharCount editorId={props.id ?? 'main'} />
-        </p>
       )}
     </SlatePlugins>
   )

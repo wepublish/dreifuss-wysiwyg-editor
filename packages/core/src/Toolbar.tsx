@@ -44,9 +44,6 @@ import {ToolbarCodeBlock} from '@udecode/slate-plugins-code-block-ui'
 import {LinkToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-link-ui'
 import {ToolbarElement, ToolbarMark} from '@udecode/slate-plugins-toolbar'
 import {useSlatePluginType, useStoreEditor} from '@udecode/slate-plugins-core'
-import {TableColorPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-table-border'
-import {QuotationMarksPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui'
-import {UploadImageMenu} from '@dreifuss-wysiwyg-editor/slate-plugins-image'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
 import {
   insertTable,
@@ -65,12 +62,6 @@ import {
   MARK_UNDERLINE
 } from '@udecode/slate-plugins-basic-marks'
 
-export const ToolbarImage = ({editorId}: {editorId: string}) => (
-  <Popover Icon={<ToolbarElement type="" icon={<Image />} />}>
-    <UploadImageMenu editorId={editorId} icon="" />
-  </Popover>
-)
-
 export const ToolbarLink = () => (
   <Popover Icon={<ToolbarElement type="" icon={<Link />} />}>
     <LinkToolbar />
@@ -86,12 +77,6 @@ export const ToolbarEmoji = () => {
     </Popover>
   )
 }
-
-export const ToolbarQuotationMarks = ({editorId}: {editorId: string}) => (
-  <Popover Icon={<ToolbarElement type="" icon={'<<>>'} />}>
-    <QuotationMarksPicker editorId={editorId} />
-  </Popover>
-)
 
 export const ToolbarButtonsBasicElements = () => (
   <>
@@ -150,8 +135,5 @@ export const ToolbarButtonsTable = ({editorId}: {editorId: string}) => (
     <ToolbarTable icon={<BorderTop />} transform={deleteRow} />
     <ToolbarTable icon={<BorderLeft />} transform={addColumn} />
     <ToolbarTable icon={<BorderRight />} transform={deleteColumn} />
-    <Popover Icon={<ToolbarElement type="" icon={'+'} />}>
-      {'Border color: '} <TableColorPicker editorId={editorId} />
-    </Popover>
   </>
 )
