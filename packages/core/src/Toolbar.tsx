@@ -23,7 +23,7 @@ import {
   BorderLeft,
   BorderRight,
   BorderTop,
-  Emoji,
+  // Emoji,
   Link
   // Image,
   // FontColor

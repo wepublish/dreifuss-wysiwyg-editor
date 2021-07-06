@@ -6,7 +6,7 @@ import {
   upsertLinkAtSelection,
   validateUrl
 } from '@dreifuss-wysiwyg-editor/slate-plugins-link'
-import './link.css'
+// import './link.css'
 
 export const LinkToolbar = () => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
@@ -109,6 +109,7 @@ export const LinkToolbar = () => {
           onClick={e => {
             if (!editor) return
             e.preventDefault()
+            console.log('editor:        ', editor)
 
             upsertLinkAtSelection(editor, {
               url: prefix !== prefixType.other ? prefix + url : url,

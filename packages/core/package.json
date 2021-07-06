@@ -107,6 +107,7 @@
     "@udecode/slate-plugins-image-ui": "^1.0.0-next.36",
     "@udecode/slate-plugins-kbd": "^1.0.0-next.36",
     "@udecode/slate-plugins-link-ui": "^1.0.0-next.36",
+    "@udecode/slate-plugins-link": "^1.0.0-next.36",
     "@udecode/slate-plugins-list": "^1.0.0-next.36",
     "@udecode/slate-plugins-list-ui": "^1.0.0-next.36",
     "@udecode/slate-plugins-md-serializer": "^1.0.0-next.36",
