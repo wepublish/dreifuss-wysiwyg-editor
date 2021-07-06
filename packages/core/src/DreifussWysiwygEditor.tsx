@@ -15,7 +15,6 @@ import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/slate-plugins-link'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
-import {CharCount} from '@dreifuss-wysiwyg-editor/slate-plugins-character-count-ui'
 import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
 import {
   createBoldPlugin,
@@ -135,11 +134,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           {/* <Divider type={DividerType.vertical} />
           <ToolbarQuotationMarks /> */}
         </HeadingToolbar>
-      )}
-      {props.showCharCount && (
-        <p style={{textAlign: 'right'}}>
-          {'Characters count:'} <CharCount editorId={props.id ?? 'main'} />
-        </p>
       )}
     </SlatePlugins>
   )
