@@ -2805,7 +2805,7 @@
     "@udecode/slate-plugins-link" "1.0.0-next.40"
     "@udecode/slate-plugins-toolbar" "1.0.0-next.40"
 
-"@udecode/slate-plugins-link@1.0.0-next.40":
+"@udecode/slate-plugins-link@1.0.0-next.40", "@udecode/slate-plugins-link@^1.0.0-next.36":
   version "1.0.0-next.40"
   resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-link/-/slate-plugins-link-1.0.0-next.40.tgz#9c3868dffb5c5a996f120a98534b0dcd086534b3"
   integrity sha512-PPmVIQ2jQ4tHi/M9zeoBXYic3sZf2L4Dcju0qihAsL8JRYSgpNV70A+SVqatrL60aNST28tilR5qLKdOgudkdw==

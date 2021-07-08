@@ -13,14 +13,16 @@
   },
   "license": "MIT",
   "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc -b",
     "clean": "rimraf dist tsconfig.tsbuildinfo",
-    "watch": "webpack --watch --progress --mode development",
+    "build": "tsc && yarn rollup",
+    "watch": "yarn rollup -w",
+    "rollup": "rollup -c=../../rollup.config.js",
     "test": "jest"
   },
   "peerDependencies": {
