@@ -86,7 +86,7 @@ export const ToolbarLink = ({ref}: any) => {
   }, [editor?.selection])
 
   return (
-    <form ref={ref} className="link-toolbar">
+    <form className="link-toolbar">
       <div className="form-group">
         <label>Link</label>
         <div className="input-group">
@@ -103,7 +103,7 @@ export const ToolbarLink = ({ref}: any) => {
             <option value={prefixType.mailto}>{prefixType.mailto}</option>
             <option value={prefixType.other}>{prefixType.other}</option>
           </select>
-          <input ref={ref} name="url" value={url} onChange={(e: any) => setURL(e.target.value)} />
+          <input name="url" value={url} onChange={(e: any) => setURL(e.target.value)} />
         </div>
         <p>{url && !isValidURL ? 'Invalid Link' : undefined}</p>
       </div>
