@@ -4,7 +4,7 @@ import {PopoverContext} from './PopoverContext'
 
 export interface PopoverProps {
   readonly children: any
-  readonly Icon: any
+  readonly icon: any
 }
 
 export interface PopoverState {
@@ -57,7 +57,7 @@ export class Popover extends React.Component<PopoverProps, PopoverState> {
             this.node = node
           }}>
           <div role="presentation" onClick={this.handleClick}>
-            {this.props.Icon}
+            {this.props.icon}
           </div>
           {this.state.isVisible && <div className="popover">{this.props.children}</div>}
         </div>

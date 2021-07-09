@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from 'react'
-import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
 import {BaseRange, Editor} from 'slate'
+import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
 import {
-  removeLink,
   upsertLinkAtSelection,
-  validateUrl
+  validateUrl,
+  removeLink
 } from '@dreifuss-wysiwyg-editor/slate-plugins-link'
-// import './link.css'
 
-export const LinkToolbar = () => {
+export const ToolbarLink = ({ref}: any) => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
 
   const [title, setTitle] = useState('')
@@ -29,17 +28,19 @@ export const LinkToolbar = () => {
   const isDisabled = !url || !title
 
   useEffect(() => {
-    validateUrl(url).then((value: boolean) => setIsValidURL(value))
+    if (url) {
+      validateUrl(url).then((value: boolean) => setIsValidURL(value))
 
-    if (url.startsWith(prefixType.https)) {
-      setPrefix(prefixType.https)
-      setURL(url.replace(prefixType.https, ''))
-    } else if (url.startsWith(prefixType.http)) {
-      setPrefix(prefixType.http)
-      setURL(url.replace(prefixType.http, ''))
-    } else if (url.startsWith(prefixType.mailto)) {
-      setPrefix(prefixType.mailto)
-      setURL(url.replace(prefixType.mailto, ''))
+      if (url.startsWith(prefixType.https)) {
+        setPrefix(prefixType.https)
+        setURL(url.replace(prefixType.https, ''))
+      } else if (url.startsWith(prefixType.http)) {
+        setPrefix(prefixType.http)
+        setURL(url.replace(prefixType.http, ''))
+      } else if (url.startsWith(prefixType.mailto)) {
+        setPrefix(prefixType.mailto)
+        setURL(url.replace(prefixType.mailto, ''))
+      }
     }
   }, [url])
 
@@ -54,6 +55,7 @@ export const LinkToolbar = () => {
         match: node => node.type === 'link'
       })
     )
+
     const tuple = nodes[0]
     if (tuple) {
       const [node] = tuple
@@ -61,22 +63,30 @@ export const LinkToolbar = () => {
       setTitle((node.title as string) ?? '')
       // @ts-ignore
       const nodeUrl = node.url as string
-      if (
-        !nodeUrl.startsWith(prefixType.https) ||
-        !nodeUrl.startsWith(prefixType.http) ||
-        !nodeUrl.startsWith(prefixType.mailto)
-      ) {
-        setPrefix(prefixType.other)
+      if (nodeUrl) {
+        if (
+          !nodeUrl.startsWith(prefixType.https) ||
+          !nodeUrl.startsWith(prefixType.http) ||
+          !nodeUrl.startsWith(prefixType.mailto)
+        ) {
+          setPrefix(prefixType.other)
+        }
       }
       setURL((nodeUrl as string) ?? '')
     } else if (editor.selection) {
       const text = Editor.string(editor, editor.selection)
       setTitle(text ?? '')
     }
-  }, [])
+  }, [selection])
+
+  useEffect(() => {
+    if (editor?.selection) {
+      setSelection(editor.selection)
+    }
+  }, [editor?.selection])
 
   return (
-    <form className="link-toolbar">
+    <form ref={ref} className="link-toolbar">
       <div className="form-group">
         <label>Link</label>
         <div className="input-group">
@@ -93,7 +103,7 @@ export const LinkToolbar = () => {
             <option value={prefixType.mailto}>{prefixType.mailto}</option>
             <option value={prefixType.other}>{prefixType.other}</option>
           </select>
-          <input name="url" value={url} onChange={(e: any) => setURL(e.target.value)} />
+          <input ref={ref} name="url" value={url} onChange={(e: any) => setURL(e.target.value)} />
         </div>
         <p>{url && !isValidURL ? 'Invalid Link' : undefined}</p>
       </div>
@@ -109,11 +119,10 @@ export const LinkToolbar = () => {
           onClick={e => {
             if (!editor) return
             e.preventDefault()
-            console.log('editor:        ', editor)
 
             upsertLinkAtSelection(editor, {
               url: prefix !== prefixType.other ? prefix + url : url,
-              wrap: false,
+              wrap: true,
               selection
             })
           }}>

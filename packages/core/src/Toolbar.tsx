@@ -22,9 +22,8 @@ import {
   BorderClear,
   BorderLeft,
   BorderRight,
-  BorderTop,
+  BorderTop
   // Emoji,
-  Link
   // Image,
   // FontColor
 } from './Icons'
@@ -33,7 +32,6 @@ import {
   ELEMENT_ALIGN_JUSTIFY,
   ELEMENT_ALIGN_RIGHT
 } from '@udecode/slate-plugins-alignment'
-import Popover from './atoms/Popover'
 import {ToolbarList} from '@udecode/slate-plugins-list-ui'
 import {ToolbarTable} from '@udecode/slate-plugins-table-ui'
 import {ToolbarAlign} from '@udecode/slate-plugins-alignment-ui'
@@ -41,8 +39,6 @@ import {ELEMENT_OL, ELEMENT_UL} from '@udecode/slate-plugins-list'
 import {ELEMENT_CODE_BLOCK} from '@udecode/slate-plugins-code-block'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/slate-plugins-block-quote'
 import {ToolbarCodeBlock} from '@udecode/slate-plugins-code-block-ui'
-import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/slate-plugins-link'
-import {LinkToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-link-ui'
 import {ToolbarElement, ToolbarMark} from '@udecode/slate-plugins-toolbar'
 import {getSlatePluginType, useEditorRef} from '@udecode/slate-plugins-core'
 // import {TableCellBorderColorPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-table-border'
@@ -87,15 +83,6 @@ import {
 //     <UploadImageMenu />
 //   </Popover>
 // )
-
-export const ToolbarLink = () => (
-  <Popover
-    Icon={
-      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_LINK)} icon={<Link />} />
-    }>
-    <LinkToolbar />
-  </Popover>
-)
 
 // export const ToolbarEmoji = () => (
 //   <Popover Icon={<ToolbarElement type="" icon={<Emoji />} />}>
