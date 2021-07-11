@@ -6,8 +6,9 @@ import {
   validateUrl,
   removeLink
 } from '@dreifuss-wysiwyg-editor/slate-plugins-link'
+import './link.css'
 
-export const ToolbarLink = ({ref}: any) => {
+export const ToolbarLink = () => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
 
   const [title, setTitle] = useState('')
