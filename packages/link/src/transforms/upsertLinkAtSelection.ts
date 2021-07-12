@@ -52,9 +52,10 @@ export const upsertLinkAtSelection = (
 
 export function removeLink(editor: SPEditor) {
   if (!editor.selection) return null
+  const type = getSlatePluginType(editor, ELEMENT_LINK)
 
   unwrapNodes(editor, {
-    at: editor?.selection,
-    match: {type: getSlatePluginType(editor, ELEMENT_LINK)}
+    at: editor.selection,
+    match: {type}
   })
 }

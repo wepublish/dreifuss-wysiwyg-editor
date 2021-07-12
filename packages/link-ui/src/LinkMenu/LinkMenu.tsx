@@ -1,12 +1,31 @@
 import React, {useEffect, useState} from 'react'
-import {BaseRange, Editor} from 'slate'
-import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
+import {BaseRange, Editor, Element, BaseEditor} from 'slate'
+import {
+  getSlatePluginType,
+  useEventEditorId,
+  useStoreEditorState
+} from '@udecode/slate-plugins-core'
 import {
   upsertLinkAtSelection,
   validateUrl,
-  removeLink
+  removeLink,
+  ELEMENT_LINK
 } from '@dreifuss-wysiwyg-editor/slate-plugins-link'
 import './link.css'
+
+import {ReactEditor} from 'slate-react'
+import {HistoryEditor} from 'slate-history'
+
+type CustomElement = {type: 'link'; title: string; url?: string; children: CustomText[]}
+type CustomText = {title: string; url?: string; text: string}
+
+declare module 'slate' {
+  interface CustomTypes {
+    Editor: BaseEditor & ReactEditor & HistoryEditor
+    Element: CustomElement
+    Text: CustomText
+  }
+}
 
 export const ToolbarLink = () => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
@@ -47,33 +66,34 @@ export const ToolbarLink = () => {
 
   useEffect(() => {
     if (!editor) return
-    setSelection(editor?.selection)
 
     const nodes = Array.from(
       Editor.nodes(editor, {
-        at: editor?.selection ?? undefined,
-        // @ts-ignore
-        match: node => node.type === 'link'
+        at: editor.selection ?? undefined,
+        match: node =>
+          Element.isElement(node) && node.type === getSlatePluginType(editor, ELEMENT_LINK)
       })
     )
 
     const tuple = nodes[0]
     if (tuple) {
       const [node] = tuple
-      // @ts-ignore
-      setTitle((node.title as string) ?? '')
-      // @ts-ignore
-      const nodeUrl = node.url as string
-      if (nodeUrl) {
-        if (
-          !nodeUrl.startsWith(prefixType.https) ||
-          !nodeUrl.startsWith(prefixType.http) ||
-          !nodeUrl.startsWith(prefixType.mailto)
-        ) {
+      if (Element.isElement(node)) {
+        setTitle((node.title || (node?.children[0]?.text as string)) ?? '')
+
+        const nodeUrl = node.url as string
+        if (nodeUrl.startsWith(prefixType.https)) {
+          setPrefix(prefixType.https)
+        } else if (nodeUrl.startsWith(prefixType.http)) {
+          setPrefix(prefixType.http)
+        } else if (nodeUrl.startsWith(prefixType.mailto)) {
+          setPrefix(prefixType.mailto)
+        } else {
           setPrefix(prefixType.other)
         }
+
+        setURL((nodeUrl as string) ?? '')
       }
-      setURL((nodeUrl as string) ?? '')
     } else if (editor.selection) {
       const text = Editor.string(editor, editor.selection)
       setTitle(text ?? '')
@@ -130,7 +150,7 @@ export const ToolbarLink = () => {
           Insert
         </button>
         <button
-          onMouseDown={e => {
+          onClick={e => {
             if (!editor) return
             e.preventDefault()
 
