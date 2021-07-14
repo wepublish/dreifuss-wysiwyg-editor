@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar, ToolbarElement} from '@udecode/slate-plugins-toolbar'
 import {createImagePlugin} from '@udecode/slate-plugins-image'
@@ -15,6 +15,10 @@ import {createLinkPlugin, ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/slate-plu
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
+import {
+  CharCountToolbar,
+  useCharacterCount
+} from '@dreifuss-wysiwyg-editor/slate-plugins-character-count-ui'
 import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
 import {
   createBoldPlugin,
@@ -57,6 +61,7 @@ export interface EditorProps {
   disabled?: boolean
   initialValue?: any
   value?: EditorValue
+  charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
 }
 
@@ -80,6 +85,12 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     // TODO: Should be moved to font color plugin
     // renderLeaf
   }
+
+  const charCount = useCharacterCount()
+
+  useEffect(() => {
+    props.charactersCount(charCount)
+  }, [charCount])
 
   const plugins = [
     ...createBasicElementPlugins(),
@@ -135,6 +146,11 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             <LinkToolbar />
           </Popover>
         </HeadingToolbar>
+      )}
+      {props.showCharCount && (
+        <p style={{textAlign: 'right'}}>
+          {'Characters count:'} <CharCountToolbar />
+        </p>
       )}
     </SlatePlugins>
   )
