@@ -118,7 +118,6 @@ export const ToolbarLink = (props: ToolbarLinkProps) => {
       setSelection(editor.selection)
     }
   }, [editor?.selection])
-  console.log('props.icon: ', props.icon)
 
   return (
     <Modal icon={props.icon || <Link />}>
