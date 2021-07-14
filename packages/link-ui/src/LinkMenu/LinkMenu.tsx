@@ -30,6 +30,8 @@ declare module 'slate' {
 export const ToolbarLink = () => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
 
+  const [selection, setSelection] = useState<BaseRange | null>(null)
+
   const [title, setTitle] = useState('')
   const [url, setURL] = useState('')
 
@@ -42,10 +44,7 @@ export const ToolbarLink = () => {
 
   const [prefix, setPrefix] = useState<prefixType | string>(prefixType.http)
 
-  const [selection, setSelection] = useState<BaseRange | null>(null)
-
   const [isValidURL, setIsValidURL] = useState(false)
-  const isDisabled = !url || !title
 
   useEffect(() => {
     if (url) {
@@ -63,6 +62,16 @@ export const ToolbarLink = () => {
       }
     }
   }, [url])
+
+  const [isInsertBtnDisabled, setIsInsertBtnDisabled] = useState(false)
+
+  useEffect(() => {
+    if (!url || !title || !isValidURL) {
+      setIsInsertBtnDisabled(true)
+    } else {
+      setIsInsertBtnDisabled(false)
+    }
+  }, [title, url, isValidURL])
 
   useEffect(() => {
     if (!editor) return
@@ -136,8 +145,8 @@ export const ToolbarLink = () => {
       </div>
       <div className="toolbar" role="toolbar">
         <button
-          className={`${isDisabled ? 'disabled' : 'insert'}`}
-          disabled={isDisabled}
+          className={`${isInsertBtnDisabled ? 'disabled' : 'insert'}`}
+          disabled={isInsertBtnDisabled}
           onClick={e => {
             if (!editor) return
             e.preventDefault()
