@@ -124,14 +124,14 @@ export const ToolbarLink = () => {
             <option value={prefixType.mailto}>{prefixType.mailto}</option>
             <option value={prefixType.other}>{prefixType.other}</option>
           </select>
-          <input name="url" value={url} onChange={(e: any) => setURL(e.target.value)} />
+          <input name="url" value={url} onChange={e => setURL(e.target.value)} />
         </div>
         <p>{url && !isValidURL ? 'Invalid Link' : undefined}</p>
       </div>
       <div className="form-group">
         <label>Selected Text</label>
         <div className="input-group">
-          <input name="text" value={title} onChange={(e: any) => setTitle(e.target.value)} />
+          <input name="text" value={title} onChange={e => setTitle(e.target.value)} />
         </div>
       </div>
       <div className="toolbar" role="toolbar">
