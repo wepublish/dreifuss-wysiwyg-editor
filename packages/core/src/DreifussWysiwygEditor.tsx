@@ -1,6 +1,6 @@
 import React from 'react'
 import Divider, {DividerType} from './atoms/Divider'
-import {HeadingToolbar, ToolbarElement} from '@udecode/slate-plugins-toolbar'
+import {HeadingToolbar} from '@udecode/slate-plugins-toolbar'
 import {createImagePlugin} from '@udecode/slate-plugins-image'
 import {createTablePlugin} from '@udecode/slate-plugins-table'
 import {createAlignPlugin} from '@udecode/slate-plugins-alignment'
@@ -11,10 +11,11 @@ import {createCodeBlockPlugin} from '@udecode/slate-plugins-code-block'
 import {createBlockquotePlugin} from '@udecode/slate-plugins-block-quote'
 import {createMediaEmbedPlugin} from '@udecode/slate-plugins-media-embed'
 import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
-import {createLinkPlugin, ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/slate-plugins-link'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
+import {ToolbarLink} from '@dreifuss-wysiwyg-editor/slate-plugins-link-ui'
+import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/slate-plugins-link'
 import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
 import {
   createBoldPlugin,
@@ -37,9 +38,6 @@ import {
   // ToolbarFontColor
 } from './Toolbar'
 import {EditorValue} from './types'
-import {Popover} from './atoms/Popover'
-import {ToolbarLink as LinkToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-link-ui'
-import {Link} from './Icons'
 
 export interface EditableProps {
   id?: string
@@ -131,9 +129,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <Divider type={DividerType.vertical} /> */}
           <ToolbarButtonsTable />
           <Divider type={DividerType.vertical} />
-          <Popover icon={<ToolbarElement type={ELEMENT_LINK} icon={<Link />} />}>
-            <LinkToolbar />
-          </Popover>
+          <ToolbarLink />
         </HeadingToolbar>
       )}
     </SlatePlugins>

@@ -258,6 +258,8 @@ export const BorderTop = () => (
 
 export const Link = () => (
   <svg
+    width="1rem"
+    height="1rem"
     aria-hidden="true"
     focusable="false"
     data-prefix="fas"

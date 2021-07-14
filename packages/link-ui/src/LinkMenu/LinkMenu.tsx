@@ -12,7 +12,7 @@ import {
   ELEMENT_LINK
 } from '@dreifuss-wysiwyg-editor/slate-plugins-link'
 import './link.css'
-
+import {Modal, Link} from '@dreifuss-wysiwyg-editor/slate-plugins-common'
 import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
 
@@ -27,7 +27,11 @@ declare module 'slate' {
   }
 }
 
-export const ToolbarLink = () => {
+interface ToolbarLinkProps {
+  icon: React.Component
+}
+
+export const ToolbarLink = (props: ToolbarLinkProps) => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
 
   const [selection, setSelection] = useState<BaseRange | null>(null)
@@ -46,6 +50,8 @@ export const ToolbarLink = () => {
 
   const [isValidURL, setIsValidURL] = useState(false)
 
+  const [isInsertBtnDisabled, setIsInsertBtnDisabled] = useState(false)
+
   useEffect(() => {
     if (url) {
       validateUrl(url).then((value: boolean) => setIsValidURL(value))
@@ -62,8 +68,6 @@ export const ToolbarLink = () => {
       }
     }
   }, [url])
-
-  const [isInsertBtnDisabled, setIsInsertBtnDisabled] = useState(false)
 
   useEffect(() => {
     if (!url || !title || !isValidURL) {
@@ -114,62 +118,65 @@ export const ToolbarLink = () => {
       setSelection(editor.selection)
     }
   }, [editor?.selection])
+  console.log('props.icon: ', props.icon)
 
   return (
-    <form className="link-toolbar">
-      <div className="form-group">
-        <label>Link</label>
-        <div className="input-group">
-          <select
-            style={{
-              backgroundColor: 'white',
-              border: 'none',
-              boxShadow: 'none'
-            }}
-            value={prefix}
-            onChange={e => setPrefix(e.target.value)}>
-            <option value={prefixType.http}>{prefixType.http}</option>
-            <option value={prefixType.https}>{prefixType.https}</option>
-            <option value={prefixType.mailto}>{prefixType.mailto}</option>
-            <option value={prefixType.other}>{prefixType.other}</option>
-          </select>
-          <input name="url" value={url} onChange={e => setURL(e.target.value)} />
+    <Modal icon={props.icon || <Link />}>
+      <form className="link-toolbar">
+        <div className="form-group">
+          <label>Link</label>
+          <div className="input-group">
+            <select
+              style={{
+                backgroundColor: 'white',
+                border: 'none',
+                boxShadow: 'none'
+              }}
+              value={prefix}
+              onChange={e => setPrefix(e.target.value)}>
+              <option value={prefixType.http}>{prefixType.http}</option>
+              <option value={prefixType.https}>{prefixType.https}</option>
+              <option value={prefixType.mailto}>{prefixType.mailto}</option>
+              <option value={prefixType.other}>{prefixType.other}</option>
+            </select>
+            <input name="url" value={url} onChange={e => setURL(e.target.value)} />
+          </div>
+          <p>{url && !isValidURL ? 'Invalid Link' : undefined}</p>
         </div>
-        <p>{url && !isValidURL ? 'Invalid Link' : undefined}</p>
-      </div>
-      <div className="form-group">
-        <label>Selected Text</label>
-        <div className="input-group">
-          <input name="text" value={title} onChange={e => setTitle(e.target.value)} />
+        <div className="form-group">
+          <label>Selected Text</label>
+          <div className="input-group">
+            <input name="text" value={title} onChange={e => setTitle(e.target.value)} />
+          </div>
         </div>
-      </div>
-      <div className="toolbar" role="toolbar">
-        <button
-          className={`${isInsertBtnDisabled ? 'disabled' : 'insert'}`}
-          disabled={isInsertBtnDisabled}
-          onClick={e => {
-            if (!editor) return
-            e.preventDefault()
+        <div className="toolbar" role="toolbar">
+          <button
+            className={`${isInsertBtnDisabled ? 'disabled' : 'insert'}`}
+            disabled={isInsertBtnDisabled}
+            onClick={e => {
+              if (!editor) return
+              e.preventDefault()
 
-            upsertLinkAtSelection(editor, {
-              url: prefix !== prefixType.other ? prefix + url : url,
-              wrap: true,
-              selection
-            })
-          }}>
-          Insert
-        </button>
-        <button
-          className={`${url ? 'cancel' : 'disabled'}`}
-          onClick={e => {
-            if (!editor) return
-            e.preventDefault()
+              upsertLinkAtSelection(editor, {
+                url: prefix !== prefixType.other ? prefix + url : url,
+                wrap: true,
+                selection
+              })
+            }}>
+            Insert
+          </button>
+          <button
+            className={`${url ? 'cancel' : 'disabled'}`}
+            onClick={e => {
+              if (!editor) return
+              e.preventDefault()
 
-            removeLink(editor)
-          }}>
-          Remove
-        </button>
-      </div>
-    </form>
+              removeLink(editor)
+            }}>
+            Remove
+          </button>
+        </div>
+      </form>
+    </Modal>
   )
 }
