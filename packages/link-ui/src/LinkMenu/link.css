@@ -12,10 +12,8 @@
 }
 
 .link-toolbar .toolbar button {
-  color: #c5c6c7;
-  background-color: #f7f7fa;
-
   margin-bottom: 0;
+  margin:auto 5px;
   font-weight: normal;
   text-align: center;
   vertical-align: middle;
@@ -29,3 +27,22 @@
   line-height: 1.42857143;
   border-radius: 6px;
 }
+
+
+.link-toolbar .toolbar button.insert {
+  color: white;
+  background-color:#0078d4;
+}
+
+.link-toolbar .toolbar button.cancel {
+  color: red;
+  background-color: #f7f7fa;
+}
+
+
+
+.link-toolbar .toolbar button.disabled {
+  color: #c5c6c7;
+  background-color: #f7f7fa;
+}
+

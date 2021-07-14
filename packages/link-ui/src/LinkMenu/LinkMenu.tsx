@@ -136,6 +136,7 @@ export const ToolbarLink = () => {
       </div>
       <div className="toolbar" role="toolbar">
         <button
+          className={`${isDisabled ? 'disabled' : 'insert'}`}
           disabled={isDisabled}
           onClick={e => {
             if (!editor) return
@@ -150,6 +151,7 @@ export const ToolbarLink = () => {
           Insert
         </button>
         <button
+          className={`${url ? 'cancel' : 'disabled'}`}
           onClick={e => {
             if (!editor) return
             e.preventDefault()
