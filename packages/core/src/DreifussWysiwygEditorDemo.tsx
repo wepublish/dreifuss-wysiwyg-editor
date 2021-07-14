@@ -4,27 +4,6 @@ import {DreifussWysiwygEditor} from './index'
 
 const value: any = [
   {
-    type: 'ordered-list',
-    children: [
-      {
-        type: 'list-item',
-        children: [
-          {
-            text: 'Numbered List: Insert a numbered list.'
-          }
-        ]
-      },
-      {
-        type: 'paragraph',
-        children: [
-          {
-            text: ''
-          }
-        ]
-      }
-    ]
-  },
-  {
     type: 'paragraph',
     children: [
       {
@@ -37,21 +16,6 @@ const value: any = [
         ]
       }
     ]
-  },
-  {
-    type: 'paragraph',
-    children: [
-      {
-        type: 'a',
-        url: 'http://google.com',
-        children: [
-          {
-            text: 'A link.'
-          }
-        ]
-      }
-    ]
-    // title: 'Links: Add links.'
   },
   {
     type: 'paragraph',
@@ -209,8 +173,6 @@ const value: any = [
     ]
   }
 ]
-
-//
 
 const DreifussWysiwygEditorDemo = () => (
   <div style={{overflowX: 'hidden', minHeight: 400}}>
