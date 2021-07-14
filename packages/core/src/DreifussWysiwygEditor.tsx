@@ -41,7 +41,7 @@ import {
   // ToolbarQuotationMarks,
   // ToolbarFontColor
 } from './Toolbar'
-import {EditorValue} from './types'
+import {EditorValue} from '@dreifuss-wysiwyg-editor/slate-plugins-common'
 
 export interface EditableProps {
   id?: string

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {Node} from 'slate'
 import {toArray} from 'lodash'
 import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
-import {TEditor} from '@dreifuss-wysiwyg-editor/core'
+import {TEditor} from '@dreifuss-wysiwyg-editor/slate-plugins-common'
 
 const getTextString = (editor: TEditor) => {
   // get all text nodes and append them to each other in one string
@@ -13,7 +13,7 @@ const getTextString = (editor: TEditor) => {
   }, '')
 }
 
-const calculateCharCount = (editor: TEditor) => {
+const calculateCharCount = (editor?: TEditor) => {
   if (!editor) return 0
   // using lodash toArray to get correct length for characters like emojis
   return toArray(getTextString(editor)).length
