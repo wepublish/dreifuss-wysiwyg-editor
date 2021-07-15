@@ -1,7 +1,3 @@
-# slate-plugins-alignment-ui
+# slate-plugins-link-ui
 
-See [README](https://github.com/udecode/slate-plugins).
-
-## License
-
-[MIT](../../../LICENSE)
+This plugin is based on @udecode/slate-plugins-link-ui
