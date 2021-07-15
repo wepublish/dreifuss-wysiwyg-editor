@@ -1,0 +1,16 @@
+.modal {
+    background: #fff;
+    border-radius: 4px;
+    width: 300px;
+    margin: 20px auto;
+    padding: 15px;
+    position: absolute;
+    top: 100%;
+    left: -50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+.modal-container {
+    position: relative;
+}

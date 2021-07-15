@@ -1,7 +1,7 @@
 {
-  "name": "@dreifuss-wysiwyg-editor/slate-plugins-link-ui",
+  "name": "@dreifuss-wysiwyg-editor/slate-plugins-link",
   "version": "1.0.0",
-  "description": "Slate plugins Link UI",
+  "description": "Slate plugins Link",
   "keywords": [],
   "homepage": "https://github.com/udecode/slate-plugins/tree/main/packages/alignment-ui#readme",
   "bugs": {
@@ -32,11 +32,8 @@
     "slate-react": "^0.60.0"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
     "@udecode/slate-plugins-core": "^1.0.0-next.36",
-    "@udecode/slate-plugins-toolbar": "^1.0.0-next.36",
-    "@dreifuss-wysiwyg-editor/slate-plugins-link": "^1.0.0",
-    "@dreifuss-wysiwyg-editor/slate-plugins-common": "^1.0.0"
+    "@udecode/slate-plugins-toolbar": "^1.0.0-next.36"
   },
   "devDependencies": {
     "@types/react": "^16.9.16",

@@ -1,17 +1,17 @@
 import React from 'react'
-import './popover.css'
-import {PopoverContext} from './PopoverContext'
+import './modal.css'
+import {ModalContext} from './ModalContext'
 
-export interface PopoverProps {
+export interface ModalProps {
   readonly children: any
   readonly icon: any
 }
 
-export interface PopoverState {
+export interface ModalState {
   isVisible: boolean
 }
 
-export class Popover extends React.Component<PopoverProps, PopoverState> {
+export class Modal extends React.Component<ModalProps, ModalState> {
   node: any
   constructor(props: any) {
     super(props)
@@ -47,22 +47,22 @@ export class Popover extends React.Component<PopoverProps, PopoverState> {
 
   render() {
     return (
-      <PopoverContext.Provider
+      <ModalContext.Provider
         value={{
-          togglePopover: this.handleClick
+          toggleModal: this.handleClick
         }}>
         <div
-          className="popover-container"
+          className="modal-container"
           ref={node => {
             this.node = node
           }}>
           <div role="presentation" onClick={this.handleClick}>
             {this.props.icon}
           </div>
-          {this.state.isVisible && <div className="popover">{this.props.children}</div>}
+          {this.state.isVisible && <div className="modal">{this.props.children}</div>}
         </div>
-      </PopoverContext.Provider>
+      </ModalContext.Provider>
     )
   }
 }
-export default Popover
+export default Modal
