@@ -1,6 +1,6 @@
 {
   "name": "@dreifuss-wysiwyg-editor/link",
-  "version": "1.0.1-alpha.0",
+  "version": "1.0.2-alpha.0",
   "description": "Dreifuss wysiwyg Editor Link plugin",
   "keywords": [],
   "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/link",
@@ -53,5 +53,6 @@
     "extends": [
       "../../package.json"
     ]
-  }
+  },
+  "gitHead": "86b71bff4c9b87a901ef6ed530aa1b5882697797"
 }
