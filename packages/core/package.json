@@ -87,6 +87,8 @@
     "@dreifuss-wysiwyg-editor/slate-plugins-link": "^1.0.0",
     "@dreifuss-wysiwyg-editor/slate-plugins-link-ui": "^1.0.0",
     "@dreifuss-wysiwyg-editor/slate-plugins-character-count-ui": "^1.0.0",
+    "@dreifuss-wysiwyg-editor/slate-plugins-font-color": "^1.0.0",
+    "@dreifuss-wysiwyg-editor/slate-plugins-font-color-ui": "^1.0.0",
     "@udecode/slate-plugins-alignment": "^1.0.0-next.36",
     "@udecode/slate-plugins-alignment-ui": "^1.0.0-next.36",
     "@udecode/slate-plugins-autoformat": "^1.0.0-next.36",

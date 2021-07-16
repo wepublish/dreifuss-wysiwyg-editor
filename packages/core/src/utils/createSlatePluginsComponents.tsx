@@ -45,6 +45,8 @@ import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@udecode/slate-
 import {TableElement} from '@udecode/slate-plugins-table-ui'
 import {StyledElement, StyledLeaf} from '@udecode/slate-plugins-ui-fluent'
 import {DefaultSlatePluginKey} from './createSlatePluginsOptions'
+import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
+import {RenderFontColorLeaf} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color-ui'
 
 export const createSlatePluginsComponents = <T extends string = string>(
   overrides?: Partial<Record<DefaultSlatePluginKey | T, FunctionComponent<any>>>
@@ -271,7 +273,8 @@ export const createSlatePluginsComponents = <T extends string = string>(
     [MARK_STRIKETHROUGH]: withProps(StyledLeaf, {as: 's'}),
     [MARK_SUBSCRIPT]: withProps(StyledLeaf, {as: 'sub'}),
     [MARK_SUPERSCRIPT]: withProps(StyledLeaf, {as: 'sup'}),
-    [MARK_UNDERLINE]: withProps(StyledLeaf, {as: 'u'})
+    [MARK_UNDERLINE]: withProps(StyledLeaf, {as: 'u'}),
+    [ELEMENT_FONT_COLOR]: RenderFontColorLeaf
   }
 
   if (overrides) {

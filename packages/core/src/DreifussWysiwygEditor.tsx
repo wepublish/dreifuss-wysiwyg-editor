@@ -20,6 +20,8 @@ import {
 } from '@dreifuss-wysiwyg-editor/slate-plugins-character-count-ui'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/slate-plugins-link-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/slate-plugins-link'
+import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color-ui'
+import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
 import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
 import {
   createBoldPlugin,
@@ -103,6 +105,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createTablePlugin(),
     createItalicPlugin(),
     createTodoListPlugin(),
+    createFontColorPlugin(),
     createParagraphPlugin(),
     createHighlightPlugin(),
     createCodeBlockPlugin(),
@@ -131,8 +134,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <ToolbarButtonsList />
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsBasicMarks />
-          {/* <Divider type={DividerType.vertical} />
-          <ToolbarFontColor /> */}
+          <Divider type={DividerType.vertical} />
+          <FontColorToolbar />
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsAlign />
           <Divider type={DividerType.vertical} />
