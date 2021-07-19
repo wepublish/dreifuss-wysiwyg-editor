@@ -1,15 +1,16 @@
 {
-  "name": "@dreifuss-wysiwyg-editor/slate-plugins-link",
-  "version": "1.0.0",
-  "description": "Slate plugins Link",
+  "name": "@dreifuss-wysiwyg-editor/link",
+  "version": "1.0.2-alpha.0",
+  "description": "Dreifuss wysiwyg Editor Link plugin",
   "keywords": [],
-  "homepage": "https://github.com/udecode/slate-plugins/tree/main/packages/alignment-ui#readme",
+  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/link",
   "bugs": {
-    "url": "https://github.com/udecode/slate-plugins/issues"
+    "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/udecode/slate-plugins.git"
+    "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor.git",
+    "directory": "packages/link"
   },
   "license": "MIT",
   "main": "dist/index.js",
@@ -52,5 +53,6 @@
     "extends": [
       "../../package.json"
     ]
-  }
+  },
+  "gitHead": "86b71bff4c9b87a901ef6ed530aa1b5882697797"
 }
