@@ -1,5 +1,5 @@
 {
-  "name": "@dreifuss-wysiwyg-editor/slate-plugins-character-count-ui",
+  "name": "@dreifuss-wysiwyg-editor/character-count-ui",
   "version": "1.0.0",
   "description": "Slate plugins Character Count UI",
   "keywords": [],
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@udecode/slate-plugins-core": "^1.0.0-next.36",
-    "@dreifuss-wysiwyg-editor/slate-plugins-common": "^1.0.0"
+    "@dreifuss-wysiwyg-editor/common": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.16",
