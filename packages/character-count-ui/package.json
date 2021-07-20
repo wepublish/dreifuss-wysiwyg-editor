@@ -1,6 +1,6 @@
 {
   "name": "@dreifuss-wysiwyg-editor/character-count-ui",
-  "version": "1.0.0",
+  "version": "1.0.2-alpha.0",
   "description": "Slate plugins Character Count UI",
   "keywords": [],
   "homepage": "https://github.com/udecode/slate-plugins/tree/main/packages/character-count-ui#readme",

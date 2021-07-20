@@ -3,8 +3,8 @@ import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
 import {Editor, Element, BaseEditor} from 'slate'
 import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
-import {FontColor} from '@dreifuss-wysiwyg-editor/slate-plugins-common'
-import {upsertFontColor} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
+import {FontColor} from '@dreifuss-wysiwyg-editor/common'
+import {upsertFontColor} from '@dreifuss-wysiwyg-editor/font-color'
 
 type CustomElement = {type: 'link'; title: string; color?: string; children: CustomText[]}
 type CustomText = {title: string; text: string}

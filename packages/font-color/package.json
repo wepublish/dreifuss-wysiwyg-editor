@@ -1,6 +1,6 @@
 {
-  "name": "@dreifuss-wysiwyg-editor/slate-plugins-font-color",
-  "version": "1.0.0",
+  "name": "@dreifuss-wysiwyg-editor/font-color",
+  "version": "1.0.2-alpha.0",
   "description": "Slate plugins Font Color",
   "keywords": [],
   "homepage": "https://github.com/udecode/slate-plugins/tree/main/packages/alignment-ui#readme",
