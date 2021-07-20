@@ -1,15 +1,16 @@
 {
   "name": "@dreifuss-wysiwyg-editor/character-count-ui",
-  "version": "1.0.0",
-  "description": "Slate plugins Character Count UI",
+  "version": "1.0.2-alpha.0",
+  "description": "Dreifuss wysiwyg Editor character count plugin",
   "keywords": [],
-  "homepage": "https://github.com/udecode/slate-plugins/tree/main/packages/character-count-ui#readme",
+  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/character-count-ui#readme",
   "bugs": {
-    "url": "https://github.com/udecode/slate-plugins/issues"
+    "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/udecode/slate-plugins.git"
+    "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor.git",
+    "directory": "packages/character-count-ui"
   },
   "license": "MIT",
   "main": "dist/index.js",
@@ -32,6 +33,7 @@
     "slate-react": "^0.60.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@udecode/slate-plugins-core": "^1.0.0-next.36",
     "@dreifuss-wysiwyg-editor/common": "^1.0.2-alpha.0"
   },
@@ -52,5 +54,6 @@
     "extends": [
       "../../package.json"
     ]
-  }
+  },
+  "gitHead": "86b71bff4c9b87a901ef6ed530aa1b5882697797"
 }
