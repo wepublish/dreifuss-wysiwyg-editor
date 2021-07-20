@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {Node} from 'slate'
 import {toArray} from 'lodash'
 import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
-import {TEditor} from '@dreifuss-wysiwyg-editor/slate-plugins-common'
+import {TEditor} from '@dreifuss-wysiwyg-editor/common'
 
 const getTextString = (editor: TEditor) => {
   // get all text nodes and append them to each other in one string
