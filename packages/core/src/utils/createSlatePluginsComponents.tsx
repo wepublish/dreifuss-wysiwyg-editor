@@ -41,8 +41,8 @@ import {MediaEmbedElement} from '@udecode/slate-plugins-media-embed-ui'
 // import {ELEMENT_MENTION} from '@udecode/slate-plugins-mention'
 // import {MentionElement} from '@udecode/slate-plugins-mention-ui'
 import {ELEMENT_PARAGRAPH} from '@udecode/slate-plugins-paragraph'
-import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@udecode/slate-plugins-table'
-import {TableElement} from '@udecode/slate-plugins-table-ui'
+import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
+import {TableElement, TableDataCell} from '@dreifuss-wysiwyg-editor/table-ui'
 import {StyledElement, StyledLeaf} from '@udecode/slate-plugins-ui-fluent'
 import {DefaultSlatePluginKey} from './createSlatePluginsOptions'
 import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font-color'
@@ -186,22 +186,7 @@ export const createSlatePluginsComponents = <T extends string = string>(
       }
     }),
     [ELEMENT_TABLE]: TableElement,
-    [ELEMENT_TD]: withProps(StyledElement, {
-      as: 'td',
-      styles: {
-        root: {
-          backgroundColor: 'rgb(255, 255, 255)',
-          border: '1px solid rgb(193, 199, 208)',
-          padding: '8px',
-          minWidth: '48px',
-          selectors: {
-            '> *': {
-              margin: 0
-            }
-          }
-        }
-      }
-    }),
+    [ELEMENT_TD]: TableDataCell,
     [ELEMENT_TH]: withProps(StyledElement, {
       as: 'th',
       styles: {
@@ -219,8 +204,8 @@ export const createSlatePluginsComponents = <T extends string = string>(
         }
       }
     }),
-    [ELEMENT_TODO_LI]: TodoListElement,
     [ELEMENT_TR]: withProps(StyledElement, {as: 'tr'}),
+    [ELEMENT_TODO_LI]: TodoListElement,
     [MARK_BOLD]: withProps(StyledLeaf, {as: 'strong'}),
     [MARK_CODE]: withProps(StyledLeaf, {
       as: 'code',

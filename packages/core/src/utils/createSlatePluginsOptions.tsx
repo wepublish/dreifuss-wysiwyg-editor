@@ -26,7 +26,8 @@ import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/slat
 import {ELEMENT_MEDIA_EMBED} from '@udecode/slate-plugins-media-embed'
 // import {ELEMENT_MENTION} from '@udecode/slate-plugins-mention'
 import {ELEMENT_PARAGRAPH} from '@udecode/slate-plugins-paragraph'
-import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@udecode/slate-plugins-table'
+import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
+import {TableData} from '@dreifuss-wysiwyg-editor/table-ui'
 
 export type DefaultSlatePluginKey =
   | typeof ELEMENT_ALIGN_CENTER
@@ -115,23 +116,24 @@ export const createSlatePluginsOptions = <T extends string = string>(
     [ELEMENT_TD]: {
       type: 'table-cell',
       defaultType: 'table-cell',
-      component: (props: any) => {
-        const {element} = props
-        return (
-          <td
-            {...props.attributes}
-            className={props.className}
-            style={{
-              border: '1px solid',
-              borderColor:
-                element.borderColor === 'transparent'
-                  ? `rgb(0, 0, 0, 0.5)`
-                  : (element.borderColor as string)
-            }}>
-            {props.children}
-          </td>
-        )
-      }
+      component: TableData
+      //    (props: any) => {
+      //     const {element} = props
+      //     return (
+      //       <td
+      //         {...props.attributes}
+      //         className={props.className}
+      //         style={{
+      //           border: '1px solid',
+      //           borderColor:
+      //             element.borderColor === 'transparent'
+      //               ? `rgb(0, 0, 0, 0.5)`
+      //               : (element.borderColor as string)
+      //         }}>
+      //         {props.children}
+      //       </td>
+      //     )
+      //   }
     },
     [ELEMENT_TR]: {
       type: 'table-row',

@@ -56,3 +56,21 @@ export const TableDataCell = styled<StyledElementProps, ClassName, RootStyleSet>
     scope: 'TableDataCell'
   }
 )
+
+export const TableData = (props: any) => {
+  const {element} = props
+  return (
+    <td
+      {...props.attributes}
+      className={props.className}
+      style={{
+        border: '1px solid',
+        borderColor:
+          element.borderColor === 'transparent'
+            ? `rgb(0, 0, 0, 0.5)`
+            : (element.borderColor as string)
+      }}>
+      {props.children}
+    </td>
+  )
+}

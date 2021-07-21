@@ -1,42 +1,30 @@
+import {Editor, Element} from 'slate'
 import {getSlatePluginType} from '@udecode/slate-plugins-core'
-import {insertNodes, wrapNodes, setNodes} from '@udecode/slate-plugins-common'
-// import {Editor, Transforms} from 'slate'
-import {ELEMENT_TD} from '../defaults'
+import {setNodes} from '@udecode/slate-plugins-common'
+import {TEditor} from '@dreifuss-wysiwyg-editor/common'
+import {ELEMENT_TABLE, ELEMENT_TD} from '../defaults'
 
-export function upsertBorderColor(editor: any, borderColor: string) {
+export function upsertBorderColor(editor: TEditor, borderColor: string) {
   if (!editor?.selection || !borderColor) return
 
-  const type = getSlatePluginType(editor, ELEMENT_TD)
+  const tdType = getSlatePluginType(editor, ELEMENT_TD)
+  const tableType = getSlatePluginType(editor, ELEMENT_TABLE)
 
-  // insertNodes(
-  //   editor,
-  //   {
-  //     type,
-  //     borderColor,
-  //     children: []
-  //   },
-  //   {at: editor.selection}
-  // )
-  setNodes(editor, {
-    type,
-    borderColor
+  const nodes = Editor.nodes(editor, {
+    // @ts-ignore
+    match: node => Element.isElement(node) && node.type === tableType
   })
-
-  // const nodes = Editor.nodes(editor, {
-  //   // @ts-ignore
-  //   match: (node: TableNode) => node.type === TableElementFormat.Table
-  // })
-  // for (const [, path] of nodes) {
-  //   Transforms.setNodes(
-  //     editor,
-  //     // @ts-ignore
-  //     {borderColor: borderColor ?? '#000'},
-  //     {
-  //       at: path,
-  //       // @ts-ignore
-  //       match: node => node.type === TableElementFormat.TableCell
-  //     }
-  //   )
-  //   return
-  // }
+  for (const [, path] of nodes) {
+    setNodes(
+      editor,
+      {
+        borderColor
+      },
+      {
+        at: path,
+        match: node => node.type === tdType
+      }
+    )
+    return
+  }
 }
