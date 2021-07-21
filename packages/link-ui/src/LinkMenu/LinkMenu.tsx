@@ -10,9 +10,9 @@ import {
   validateUrl,
   removeLink,
   ELEMENT_LINK
-} from '@dreifuss-wysiwyg-editor/slate-plugins-link'
+} from '@dreifuss-wysiwyg-editor/link'
 import './link.css'
-import {Modal, Link} from '@dreifuss-wysiwyg-editor/slate-plugins-common'
+import {Modal, Link} from '@dreifuss-wysiwyg-editor/common'
 import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
 
@@ -28,7 +28,7 @@ declare module 'slate' {
 }
 
 interface ToolbarLinkProps {
-  icon: React.Component
+  icon?: React.Component
 }
 
 export const ToolbarLink = (props: ToolbarLinkProps) => {

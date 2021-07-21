@@ -2660,14 +2660,6 @@
     "@udecode/slate-plugins-common" "1.0.0-next.40"
     "@udecode/slate-plugins-core" "1.0.0-next.40"
 
-"@udecode/slate-plugins-block-quote@^1.0.0-alpha.25":
-  version "1.0.0-alpha.25"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-block-quote/-/slate-plugins-block-quote-1.0.0-alpha.25.tgz#112aa4ea3e52c87960656af97e4d2b73a380cf2e"
-  integrity sha512-GjoeBT8xKOMqR3/0KlYuolxssAA+Z0+glz2xtpy8MDM4jxTl0jLPuO45dKhVsR4I2r+W9mEAQdAiBwaU6s5LSQ==
-  dependencies:
-    "@udecode/slate-plugins-common" "^1.0.0-alpha.25"
-    "@udecode/slate-plugins-core" "^1.0.0-alpha.25"
-
 "@udecode/slate-plugins-break@^1.0.0-next.36":
   version "1.0.0-next.40"
   resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-break/-/slate-plugins-break-1.0.0-next.40.tgz#35b0476b9038c8619adbcc8405244dccd64e3fa9"
@@ -2703,14 +2695,6 @@
     "@udecode/slate-plugins-core" "1.0.0-next.40"
     is-hotkey "^0.1.6"
 
-"@udecode/slate-plugins-common@^1.0.0-alpha.25":
-  version "1.0.0-alpha.25"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-common/-/slate-plugins-common-1.0.0-alpha.25.tgz#ccadcacb6de06189d744f2fa42acca4bcc81563f"
-  integrity sha512-tiyXH5z3rwQM7zswfwW9aOKx0yt577+H8SN6cqrEH2yeEA1D3xSQ0CDqNc+tps58rTaJU+I0x6ogdMJ4alJD7g==
-  dependencies:
-    "@udecode/slate-plugins-core" "^1.0.0-alpha.25"
-    is-hotkey "^0.1.6"
-
 "@udecode/slate-plugins-core@1.0.0-next.40", "@udecode/slate-plugins-core@^1.0.0-next.36":
   version "1.0.0-next.40"
   resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-core/-/slate-plugins-core-1.0.0-next.40.tgz#cfb7ef939b31b87542fd2db29b0fcb6517f25963"
@@ -2718,14 +2702,6 @@
   dependencies:
     lodash "^4.17.21"
     zustand "^3.4.2"
-
-"@udecode/slate-plugins-core@^1.0.0-alpha.25":
-  version "1.0.0-alpha.25"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-core/-/slate-plugins-core-1.0.0-alpha.25.tgz#e49f6539f07addf6765fb2ac75dc5c50a76ca056"
-  integrity sha512-54MdrMJ2qgJSBoKCGxeH5RZeVJJZHv7Eo6qgUizsr1rzCduQ1zzdgSSJi63mgvpE2ieRqSF+fCNxXo4AK3cNvQ==
-  dependencies:
-    lodash "^4.17.21"
-    zustand "^3.3.2"
 
 "@udecode/slate-plugins-find-replace-ui@^1.0.0-next.36":
   version "1.0.0-next.40"
@@ -2962,16 +2938,6 @@
   dependencies:
     "@udecode/slate-plugins-common" "1.0.0-next.40"
     "@udecode/slate-plugins-core" "1.0.0-next.40"
-    "@uifabric/styling" "^7.18.0"
-    "@uifabric/utilities" "^7.33.4"
-
-"@udecode/slate-plugins-ui-fluent@^1.0.0-alpha.25":
-  version "1.0.0-alpha.25"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-ui-fluent/-/slate-plugins-ui-fluent-1.0.0-alpha.25.tgz#676281548a0a9d3f48500f79a1205789581f210b"
-  integrity sha512-a7El8/gwHntt5FWpAkm24bfEM3vN0GnMEwaBOBoHxlGsYzZeftjabciBXAkoTgsPGXJPBOIixfrOtzk3NUmXFA==
-  dependencies:
-    "@udecode/slate-plugins-common" "^1.0.0-alpha.25"
-    "@udecode/slate-plugins-core" "^1.0.0-alpha.25"
     "@uifabric/styling" "^7.18.0"
     "@uifabric/utilities" "^7.33.4"
 
@@ -13190,11 +13156,6 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
-
-zustand@^3.3.2:
-  version "3.5.5"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-3.5.5.tgz#628458ad70621ddc2a17dbee49be963e5c0dccb5"
-  integrity sha512-iTiJoxzYFtiD7DhscgwK2P4Kft1JcZEI2U7mG8IxiOFM4KpBAiJZfFop3r/3wbCuyltXI6ph1Fx90e4j/S43XA==
 
 zustand@^3.4.2:
   version "3.5.4"

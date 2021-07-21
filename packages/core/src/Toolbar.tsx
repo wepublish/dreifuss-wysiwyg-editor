@@ -26,7 +26,7 @@ import {
   // Emoji,
   // Image,
   // FontColor
-} from '@dreifuss-wysiwyg-editor/slate-plugins-common'
+} from '@dreifuss-wysiwyg-editor/common'
 import {
   ELEMENT_ALIGN_CENTER,
   ELEMENT_ALIGN_JUSTIFY,
