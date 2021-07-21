@@ -1,6 +1,6 @@
 {
   "name": "@dreifuss-wysiwyg-editor/link-ui",
-  "version": "1.0.2-alpha.0",
+  "version": "1.0.2-alpha.1",
   "description": "Dreifuss wysiwyg Editor link ui plugin",
   "keywords": [],
   "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/alignment-ui#readme",
@@ -34,8 +34,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@dreifuss-wysiwyg-editor/common": "^1.0.2-alpha.0",
-    "@dreifuss-wysiwyg-editor/link": "^1.0.2-alpha.0",
+    "@dreifuss-wysiwyg-editor/common": "^1.0.2-alpha.1",
+    "@dreifuss-wysiwyg-editor/link": "^1.0.2-alpha.1",
     "@udecode/slate-plugins-core": "^1.0.0-next.36",
     "@udecode/slate-plugins-toolbar": "^1.0.0-next.36"
   },
