@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "build": "tsc && yarn rollup",
+    "build:deployment": "webpack --mode development",
     "rollup": "rollup -c=../../rollup.config.js",
     "clean": "rimraf dist tsconfig.tsbuildinfo",
     "watch": "webpack serve --mode development",
