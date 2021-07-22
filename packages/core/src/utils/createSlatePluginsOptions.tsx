@@ -115,8 +115,7 @@ export const createSlatePluginsOptions = <T extends string = string>(
     [ELEMENT_TABLE]: {},
     [ELEMENT_TD]: {
       type: 'table-cell',
-      defaultType: 'table-cell',
-      component: TableData
+      defaultType: 'table-cell'
     },
     [ELEMENT_TR]: {
       type: 'table-row',
