@@ -40,6 +40,7 @@ import {
   // ToolbarQuotationMarks,
   // ToolbarFontColor
 } from './Toolbar'
+// @ts-ignore
 import {EditorValue} from '@dreifuss-wysiwyg-editor/common'
 
 export interface EditableProps {
@@ -79,8 +80,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           width: 'inherit'
         }
       : {}
-    // TODO: Should be moved to font color plugin
-    // renderLeaf
   }
 
   const charCount = useCharacterCount()
