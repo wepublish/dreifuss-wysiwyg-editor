@@ -64,7 +64,9 @@ module.exports = function (env, argv) {
 
     output: {
       path: path.resolve(__dirname, './dist'),
-      filename: 'index_bundle.js'
+      filename: 'index_bundle.js',
+      libraryTarget: 'umd',
+      library: 'my-design-system'
     },
     /*externals: {
       '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui': '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-u'
