@@ -77,15 +77,13 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           width: 'inherit'
         }
       : {}
-    // TODO: Should be moved to font color plugin
-    // renderLeaf
   }
 
-  const charCount = useCharacterCount()
+  // const charCount = useCharacterCount()
 
-  useEffect(() => {
-    props.charactersCount(charCount)
-  }, [charCount])
+  // useEffect(() => {
+  //   props.charactersCount(charCount)
+  // }, [charCount])
 
   const plugins = [
     ...createBasicElementPlugins(),
