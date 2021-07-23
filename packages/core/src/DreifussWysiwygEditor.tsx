@@ -14,7 +14,7 @@ import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
-import {CharCountToolbar, useCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
+import {CharCountToolbar} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
@@ -38,6 +38,7 @@ import {
   // ToolbarQuotationMarks,
   // ToolbarFontColor
 } from './Toolbar'
+// @ts-ignore
 import {EditorValue} from '@dreifuss-wysiwyg-editor/common'
 
 export interface EditableProps {
