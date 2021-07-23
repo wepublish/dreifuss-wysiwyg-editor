@@ -28,7 +28,7 @@ declare module 'slate' {
 }
 
 interface ToolbarLinkProps {
-  icon: React.Component
+  icon?: React.Component
 }
 
 export const ToolbarLink = (props: ToolbarLinkProps) => {
