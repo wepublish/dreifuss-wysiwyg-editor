@@ -30,7 +30,11 @@ import {
   ELEMENT_ALIGN_RIGHT
 } from '@udecode/slate-plugins-alignment'
 import {ToolbarList} from '@udecode/slate-plugins-list-ui'
-import {ToolbarTable, TableBorderColorToolbar} from '@dreifuss-wysiwyg-editor/table-ui'
+import {
+  ToolbarTable,
+  TableBorderColorToolbar,
+  TableBgColorToolbar
+} from '@dreifuss-wysiwyg-editor/table-ui'
 import {ToolbarAlign} from '@udecode/slate-plugins-alignment-ui'
 import {ELEMENT_OL, ELEMENT_UL} from '@udecode/slate-plugins-list'
 import {ELEMENT_CODE_BLOCK} from '@udecode/slate-plugins-code-block'
@@ -132,5 +136,6 @@ export const ToolbarButtonsTable = () => (
     <ToolbarTable icon={<BorderLeft />} transform={addColumn} />
     <ToolbarTable icon={<BorderRight />} transform={deleteColumn} />
     <TableBorderColorToolbar />
+    <TableBgColorToolbar />
   </>
 )

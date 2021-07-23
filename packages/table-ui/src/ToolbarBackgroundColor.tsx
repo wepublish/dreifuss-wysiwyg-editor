@@ -3,8 +3,8 @@ import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
 import {Editor, Element, BaseEditor} from 'slate'
 import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
-import {BorderColor} from '@dreifuss-wysiwyg-editor/common'
-import {upsertBorderColor} from '@dreifuss-wysiwyg-editor/table'
+import {BackgroundColor} from '@dreifuss-wysiwyg-editor/common'
+import {upsertBgColor} from '@dreifuss-wysiwyg-editor/table'
 
 type CustomElement = {type: 'link'; title: string; color?: string; children: CustomText[]}
 type CustomText = {title: string; text: string}
@@ -16,14 +16,14 @@ declare module 'slate' {
   }
 }
 
-interface TableBorderColorToolbarProps {
+interface ToolbarBackgroundColorProps {
   icon?: any
 }
 
-export const TableBorderColorToolbar = (props: TableBorderColorToolbarProps) => {
+export const TableBgColorToolbar = (props: ToolbarBackgroundColorProps) => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
 
-  const [color, setColor] = useState<string>('#fff')
+  const [bgColor, setBgColor] = useState<string>('#fff')
 
   const textInput = useRef<HTMLInputElement>(null)
 
@@ -36,28 +36,28 @@ export const TableBorderColorToolbar = (props: TableBorderColorToolbarProps) => 
       })
     )
     if (nodes?.length) {
-      setColor(nodes[0][0].color)
+      setBgColor(nodes[0][0].color)
     }
   }, [])
 
   useEffect(() => {
     // textInput.current?.click()
-  }, [color])
+  }, [bgColor])
 
   return (
     <div onClick={() => textInput.current?.click()}>
-      {props.icon ?? <BorderColor />}
+      {props.icon ?? <BackgroundColor />}
       <input
         type="color"
         ref={textInput}
-        value={color}
+        value={bgColor}
         onChange={e => {
           if (!editor) return
 
           const color = e.target.value
-          if (color) setColor(color)
+          if (color) setBgColor(color)
 
-          upsertBorderColor(editor, color)
+          upsertBgColor(editor, color)
         }}
         style={{
           width: 0,
