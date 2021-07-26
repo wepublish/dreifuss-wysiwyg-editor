@@ -2457,6 +2457,13 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
 
+"@types/react-dom@^16.9.4":
+  version "16.9.14"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.14.tgz#674b8f116645fe5266b40b525777fc6bb8eb3bcd"
+  integrity sha512-FIX2AVmPTGP30OUJ+0vadeIFJJ07Mh1m+U0rxfgyW34p3rTlXI+nlenvAxNn4BP36YyI9IJ/+UJ7Wu22N1pI7A==
+  dependencies:
+    "@types/react" "^16"
+
 "@types/react-dom@^17.0.9":
   version "17.0.9"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.9.tgz#441a981da9d7be117042e1a6fd3dac4b30f55add"
@@ -2468,6 +2475,15 @@
   version "17.0.11"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.11.tgz#67fcd0ddbf5a0b083a0f94e926c7d63f3b836451"
   integrity sha512-yFRQbD+whVonItSk7ZzP/L+gPTJVBkL/7shLEF+i9GC/1cV3JmUxEQz6+9ylhUpWSDuqo1N9qEvqS6vTj4USUA==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@^16", "@types/react@^16.9.16":
+  version "16.14.11"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.14.11.tgz#992a0cd4b66b9f27315042b5d96e976717368f04"
+  integrity sha512-Don0MtsZZ3fjwTJ2BsoqkyOy7e176KplEAKOpr/4XDdzinlyJBn9yfsKn5mcSgn4kh1B22+3tBnzBC1z63ybtQ==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -2687,6 +2703,14 @@
     "@udecode/slate-plugins-core" "1.0.0-next.40"
     prismjs "^1.23.0"
 
+"@udecode/slate-plugins-common@1.0.0-next.36":
+  version "1.0.0-next.36"
+  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-common/-/slate-plugins-common-1.0.0-next.36.tgz#ddd7fbc74e363b3f7a4af022e1b60802750912fb"
+  integrity sha512-Nvn1V5tvid5gfhSS790Mqg0fPUOAC4VjWN3gmVt3Q5q8vVbZ2DM5nLkslQKO2LWZweQNurYrW8icTkj+6Ab0qw==
+  dependencies:
+    "@udecode/slate-plugins-core" "1.0.0-next.36"
+    is-hotkey "^0.1.6"
+
 "@udecode/slate-plugins-common@1.0.0-next.40", "@udecode/slate-plugins-common@^1.0.0-next.36":
   version "1.0.0-next.40"
   resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-common/-/slate-plugins-common-1.0.0-next.40.tgz#19526682f4821e5af483e45fcb963a9968c5558b"
@@ -2694,6 +2718,14 @@
   dependencies:
     "@udecode/slate-plugins-core" "1.0.0-next.40"
     is-hotkey "^0.1.6"
+
+"@udecode/slate-plugins-core@1.0.0-next.36":
+  version "1.0.0-next.36"
+  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-core/-/slate-plugins-core-1.0.0-next.36.tgz#3470e55e215dfff45ad7062006aedab7a96d966e"
+  integrity sha512-YJw7dZvca3DKfb2if8a8EiNGkZJRWhpyNE6tt9YcmOujJzCBLJkDnS1acjCgsAzKiBpQUg5ntueNXFm1gqin9g==
+  dependencies:
+    lodash "^4.17.21"
+    zustand "^3.4.2"
 
 "@udecode/slate-plugins-core@1.0.0-next.40", "@udecode/slate-plugins-core@^1.0.0-next.36":
   version "1.0.0-next.40"
@@ -2890,24 +2922,6 @@
   version "1.0.0-next.40"
   resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-select/-/slate-plugins-select-1.0.0-next.40.tgz#682d6dec5c60e3e3ab8200b7ec4bcea49e7cfff1"
   integrity sha512-QegtePHRtFtSuRn5HUq6UNKjI+OKM6zbf/REy29wEKsM3S2hy4h2hjSXRoYJF1IP+OJfumusJSDc83jg/lPdcg==
-  dependencies:
-    "@udecode/slate-plugins-common" "1.0.0-next.40"
-    "@udecode/slate-plugins-core" "1.0.0-next.40"
-
-"@udecode/slate-plugins-table-ui@^1.0.0-next.36":
-  version "1.0.0-next.40"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-table-ui/-/slate-plugins-table-ui-1.0.0-next.40.tgz#883aa065b00798964c76b826da35b78f64b69014"
-  integrity sha512-8++42d02LuTFU3Fijm0njYjXy9VVs/m//s1oGOZHIvt6YH6L+MvdswFO47/tpNGz7dRABraIiLV0hEEjJEPPxg==
-  dependencies:
-    "@udecode/slate-plugins-common" "1.0.0-next.40"
-    "@udecode/slate-plugins-core" "1.0.0-next.40"
-    "@udecode/slate-plugins-table" "1.0.0-next.40"
-    "@udecode/slate-plugins-toolbar" "1.0.0-next.40"
-
-"@udecode/slate-plugins-table@1.0.0-next.40", "@udecode/slate-plugins-table@^1.0.0-next.36":
-  version "1.0.0-next.40"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-table/-/slate-plugins-table-1.0.0-next.40.tgz#e094bb447cf8daf92d3bbbb75a2c661a9faadb3a"
-  integrity sha512-EdtDeaJFOXNNNuTqI1xUHtK6z55XIRAmsm14bsBJsGOjciwoY1sf9dvj2rAQyc8CxQNfpwZg4WmCHb9MG7KYvQ==
   dependencies:
     "@udecode/slate-plugins-common" "1.0.0-next.40"
     "@udecode/slate-plugins-core" "1.0.0-next.40"
@@ -10363,6 +10377,16 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-dom@^16.12.0:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
+  integrity sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.19.1"
+
 react-dom@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
@@ -10425,6 +10449,15 @@ react-use@^17.1.1:
     throttle-debounce "^3.0.1"
     ts-easing "^0.2.0"
     tslib "^2.1.0"
+
+react@^16.12.0:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
+  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
 
 react@^17.0.2:
   version "17.0.2"
@@ -11095,6 +11128,14 @@ scheduler@^0.18.0:
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.18.0.tgz#5901ad6659bc1d8f3fdaf36eb7a67b0d6746b1c4"
   integrity sha512-agTSHR1Nbfi6ulI0kYNK0203joW2Y5W4po4l+v03tOoiJKpTBbxpNhWDvqc/4IcOw+KLmSiQLTasZ4cab2/UWQ==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
+scheduler@^0.19.1:
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.19.1.tgz#4f3e2ed2c1a7d65681f4c854fa8c5a1ccb40f196"
+  integrity sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

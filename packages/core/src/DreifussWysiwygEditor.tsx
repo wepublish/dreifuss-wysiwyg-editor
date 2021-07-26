@@ -1,8 +1,8 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/slate-plugins-toolbar'
 import {createImagePlugin} from '@udecode/slate-plugins-image'
-import {createTablePlugin} from '@udecode/slate-plugins-table'
+import {createTablePlugin} from '@dreifuss-wysiwyg-editor/table'
 import {createAlignPlugin} from '@udecode/slate-plugins-alignment'
 import {createHeadingPlugin} from '@udecode/slate-plugins-heading'
 import {createHighlightPlugin} from '@udecode/slate-plugins-highlight'
@@ -14,11 +14,14 @@ import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
+import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
-import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
+import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
+import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
+import {CharCountToolbar, useCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -29,17 +32,16 @@ import {
   createSuperscriptPlugin
 } from '@udecode/slate-plugins-basic-marks'
 import {
+  ToolbarBalloon,
   ToolbarButtonsAlign,
   ToolbarButtonsBasicElements,
   ToolbarButtonsBasicMarks,
   ToolbarButtonsList,
   ToolbarButtonsTable
-  // ToolbarEmoji,
-  // ToolbarImage,
-  // ToolbarQuotationMarks,
-  // ToolbarFontColor
 } from './Toolbar'
-import {EditorValue} from './types'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import {EditorValue} from '@dreifuss-wysiwyg-editor/common'
 
 export interface EditableProps {
   id?: string
@@ -57,6 +59,7 @@ export interface EditorProps {
   disabled?: boolean
   initialValue?: any
   value?: EditorValue
+  charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
 }
 
@@ -81,6 +84,12 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     // renderLeaf
   }
 
+  const charCount = useCharacterCount()
+
+  useEffect(() => {
+    props.charactersCount(charCount)
+  }, [charCount])
+
   const plugins = [
     ...createBasicElementPlugins(),
     createReactPlugin(),
@@ -94,6 +103,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createTablePlugin(),
     createItalicPlugin(),
     createTodoListPlugin(),
+    createFontColorPlugin(),
     createParagraphPlugin(),
     createHighlightPlugin(),
     createCodeBlockPlugin(),
@@ -115,6 +125,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
       options={options}
       editableProps={editableProps as EditableProps}
       initialValue={props.value || props.initialValue}>
+      <ToolbarBalloon />
       {!props.displayOnly && (
         <HeadingToolbar>
           <ToolbarButtonsBasicElements />
@@ -122,8 +133,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <ToolbarButtonsList />
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsBasicMarks />
-          {/* <Divider type={DividerType.vertical} />
-          <ToolbarFontColor /> */}
+          <Divider type={DividerType.vertical} />
+          <FontColorToolbar />
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsAlign />
           <Divider type={DividerType.vertical} />
@@ -133,6 +144,11 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <Divider type={DividerType.vertical} />
           <ToolbarLink />
         </HeadingToolbar>
+      )}
+      {props.showCharCount && (
+        <p style={{textAlign: 'right'}}>
+          {'Characters count:'} <CharCountToolbar />
+        </p>
       )}
     </SlatePlugins>
   )
