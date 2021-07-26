@@ -1,48 +1,39 @@
 import React, {useEffect, useRef, useState} from 'react'
-import {ReactEditor} from 'slate-react'
-import {HistoryEditor} from 'slate-history'
-import {Editor, Element, BaseEditor} from 'slate'
-import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
+import {Editor, Element} from 'slate'
+import {
+  getSlatePluginType,
+  useEventEditorId,
+  useStoreEditorState
+} from '@udecode/slate-plugins-core'
 import {BorderColor} from '@dreifuss-wysiwyg-editor/common'
-import {upsertBorderColor} from '@dreifuss-wysiwyg-editor/table'
-
-type CustomElement = {type: 'link'; title: string; color?: string; children: CustomText[]}
-type CustomText = {title: string; text: string}
-declare module 'slate' {
-  interface CustomTypes {
-    Editor: BaseEditor & ReactEditor & HistoryEditor
-    Element: CustomElement
-    Text: CustomText
-  }
-}
+import {ELEMENT_TD, upsertBorderColor} from '@dreifuss-wysiwyg-editor/table'
 
 interface TableBorderColorToolbarProps {
   icon?: any
 }
 
+const DEFAULT_TD_BORDER_COLOR = '#000'
+
 export const TableBorderColorToolbar = (props: TableBorderColorToolbarProps) => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
 
-  const [color, setColor] = useState<string>('#fff')
+  const [borderColor, setBorderColor] = useState<string>(DEFAULT_TD_BORDER_COLOR)
 
   const textInput = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    if (!editor) return
+    if (!editor?.selection) return
     const nodes: Array<any> | null = Array.from(
       Editor.nodes(editor, {
-        at: editor.selection ?? undefined,
-        match: node => Element.isElement(node) && !!node.color
+        at: editor.selection,
+        match: node =>
+          Element.isElement(node) && node.type === getSlatePluginType(editor, ELEMENT_TD)
       })
     )
     if (nodes?.length) {
-      setColor(nodes[0][0].color)
+      setBorderColor(nodes[0][0].borderColor || DEFAULT_TD_BORDER_COLOR)
     }
-  }, [])
-
-  useEffect(() => {
-    // textInput.current?.click()
-  }, [color])
+  }, [editor?.selection])
 
   return (
     <div onClick={() => textInput.current?.click()}>
@@ -50,12 +41,12 @@ export const TableBorderColorToolbar = (props: TableBorderColorToolbarProps) => 
       <input
         type="color"
         ref={textInput}
-        value={color}
+        value={borderColor}
         onChange={e => {
           if (!editor) return
 
           const color = e.target.value
-          if (color) setColor(color)
+          if (color) setBorderColor(color)
 
           upsertBorderColor(editor, color)
         }}

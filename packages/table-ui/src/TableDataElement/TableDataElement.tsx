@@ -1,7 +1,8 @@
 import * as React from 'react'
 
 export const TableDataElement = (props: any) => {
-  const {backgroundColor = 'transparent', borderColor} = props?.element
+  const {backgroundColor = 'rgb(255, 255, 255)', borderColor = 'rgb(0, 0, 0, 0.5)'} = props?.element
+
   return (
     <td
       {...props.attributes}
@@ -15,9 +16,8 @@ export const TableDataElement = (props: any) => {
             margin: 0
           }
         },
-        borderColor: borderColor === 'transparent' ? `rgb(0, 0, 0, 0.5)` : (borderColor as string),
-        backgroundColor:
-          backgroundColor === 'transparent' ? `rgb(255, 255, 255)` : (backgroundColor as string)
+        borderColor: borderColor,
+        backgroundColor: backgroundColor
       }}>
       {props.children}
     </td>
