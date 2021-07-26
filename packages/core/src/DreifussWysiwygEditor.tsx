@@ -14,9 +14,9 @@ import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
-import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
-import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
@@ -78,8 +78,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           width: 'inherit'
         }
       : {}
-    // TODO: Should be moved to font color plugin
-    // renderLeaf
   }
 
   const charCount = useCharacterCount()

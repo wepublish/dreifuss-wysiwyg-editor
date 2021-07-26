@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import {Node} from 'slate'
 import {toArray} from 'lodash'
 import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
@@ -21,18 +21,12 @@ const calculateCharCount = (editor?: TEditor) => {
 
 export function useCharacterCount(): number {
   const editor = useStoreEditorState(useEventEditorId('focus'))
-
-  const [charCount, setCharCount] = useState<number>(0)
-
-  useEffect(() => {
-    setCharCount(calculateCharCount(editor))
-  }, [editor?.children])
-
-  return charCount
+  return calculateCharCount(editor)
 }
 
 export const CharCountToolbar = () => {
-  const charCount = useCharacterCount()
+  const editor = useStoreEditorState(useEventEditorId('focus'))
+  const charCount = calculateCharCount(editor)
 
   return <span>{charCount}</span>
 }
