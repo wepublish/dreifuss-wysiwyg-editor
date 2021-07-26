@@ -85,7 +85,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
   const charCount = useCharacterCount()
 
   useEffect(() => {
-    props.charactersCount(charCount)
+    if (props?.charactersCount) props.charactersCount(charCount)
   }, [charCount])
 
   const plugins = [
