@@ -4,17 +4,16 @@ import {
   useEventEditorId,
   useStoreEditorState
 } from '@udecode/slate-plugins-core'
-import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {ToolbarButtonProps, ToolbarElement} from '@udecode/slate-plugins-toolbar'
 
-export const LinkToolbarIcon = (props: ToolbarButtonProps) => {
+export const SubMenuIcon = (props: ToolbarButtonProps & {type: string}) => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
 
   return (
     <ToolbarElement
-      type={getSlatePluginType(editor, ELEMENT_LINK)}
-      onMouseDown={e => e.preventDefault()}
       {...props}
+      onMouseDown={e => e.preventDefault()}
+      type={getSlatePluginType(editor, props.type)}
     />
   )
 }
