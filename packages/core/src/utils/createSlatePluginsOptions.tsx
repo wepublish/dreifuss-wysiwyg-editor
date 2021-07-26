@@ -26,7 +26,6 @@ import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/slat
 import {ELEMENT_MEDIA_EMBED} from '@udecode/slate-plugins-media-embed'
 // import {ELEMENT_MENTION} from '@udecode/slate-plugins-mention'
 import {ELEMENT_PARAGRAPH} from '@udecode/slate-plugins-paragraph'
-import {TableData} from '@dreifuss-wysiwyg-editor/table-ui'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 
 export type DefaultSlatePluginKey =
