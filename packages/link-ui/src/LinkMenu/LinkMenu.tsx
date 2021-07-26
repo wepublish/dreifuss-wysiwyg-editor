@@ -15,6 +15,7 @@ import './link.css'
 import {Modal, Link} from '@dreifuss-wysiwyg-editor/common'
 import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
+import {LinkToolbarIcon} from './ToolbarIcon'
 
 type CustomElement = {type: 'link'; title: string; url?: string; children: CustomText[]}
 type CustomText = {title: string; url?: string; text: string}
@@ -120,7 +121,7 @@ export const ToolbarLink = (props: ToolbarLinkProps) => {
   }, [editor?.selection])
 
   return (
-    <Modal icon={props.icon || <Link />}>
+    <Modal icon={<LinkToolbarIcon icon={props?.icon || <Link />} />}>
       <form className="link-toolbar">
         <div className="form-group">
           <label>Link</label>
