@@ -48,7 +48,6 @@ import {
   useStoreEditorState
 } from '@udecode/slate-plugins-core'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
-import {getPlatePluginType} from '@udecode/plate-core'
 import {
   insertTable,
   deleteColumn,
@@ -161,19 +160,19 @@ export const ToolbarBalloon = () => {
   return (
     <BalloonToolbar direction="top" hiddenDelay={0} theme="light" arrow={arrow}>
       <ToolbarMark
-        type={getPlatePluginType(editor, MARK_BOLD)}
+        type={getSlatePluginType(editor, MARK_BOLD)}
         icon={<Bold />}
         // @ts-ignore
         tooltip={{content: 'Bold (⌘B)', ...tooltip}}
       />
       <ToolbarMark
-        type={getPlatePluginType(editor, MARK_ITALIC)}
+        type={getSlatePluginType(editor, MARK_ITALIC)}
         icon={<Italic />}
         // @ts-ignore
         tooltip={{content: 'Italic (⌘I)', ...tooltip}}
       />
       <ToolbarMark
-        type={getPlatePluginType(editor, MARK_UNDERLINE)}
+        type={getSlatePluginType(editor, MARK_UNDERLINE)}
         icon={<Underline />}
         // @ts-ignore
         tooltip={{content: 'Underline (⌘U)', ...tooltip}}
