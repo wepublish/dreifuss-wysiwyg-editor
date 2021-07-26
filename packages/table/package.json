@@ -1,9 +1,9 @@
 {
   "name": "@dreifuss-wysiwyg-editor/table",
-  "version": "1.0.2-alpha.0",
-  "description": "Dreifuss wysiwyg Editor Table plugin",
+  "version": "1.0.2-alpha.1",
+  "description": "Dreifuss wysiwyg Editor table plugin",
   "keywords": [],
-  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/table",
+  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/table#readme",
   "bugs": {
     "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor/issues"
   },
@@ -27,23 +27,24 @@
     "test": "jest"
   },
   "peerDependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "slate": "^0.60.0",
     "slate-react": "^0.60.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@udecode/slate-plugins-common": "1.0.0-next.36",
     "@udecode/slate-plugins-core": "1.0.0-next.36",
-    "@dreifuss-wysiwyg-editor/common": "^1.0.2-alpha.0"
+    "@dreifuss-wysiwyg-editor/common": "^1.0.2-alpha.1"
   },
   "devDependencies": {
-    "@types/react": "^16.9.16",
-    "@types/react-dom": "^16.9.4",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
     "@types/slate": "^0.47.8",
     "@types/slate-react": "^0.50.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "slate": "^0.62.0",
     "slate-react": "^0.62.0"
   },
