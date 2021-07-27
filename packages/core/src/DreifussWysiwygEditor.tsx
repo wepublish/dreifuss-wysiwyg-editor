@@ -39,7 +39,7 @@ import {
   // ToolbarFontColor
 } from './Toolbar'
 // @ts-ignore
-import {EditorValue} from '@dreifuss-wysiwyg-editor/common'
+import {EditorValue, CharactersCountIcon} from '@dreifuss-wysiwyg-editor/common'
 
 export interface EditableProps {
   id?: string
@@ -140,8 +140,14 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
         </HeadingToolbar>
       )}
       {props.showCharCount && (
-        <p style={{textAlign: 'right'}}>
-          {'Characters count:'} <CharCountToolbar />
+        <p
+          style={{
+            textAlign: 'right',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center'
+          }}>
+          <CharactersCountIcon /> <CharCountToolbar />
         </p>
       )}
     </SlatePlugins>
