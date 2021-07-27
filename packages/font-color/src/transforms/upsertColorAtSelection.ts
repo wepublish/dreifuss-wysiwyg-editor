@@ -1,12 +1,18 @@
 import {TEditor} from '@udecode/slate-plugins-core'
-import {Transforms} from 'slate'
+import {setNodes} from '@udecode/slate-plugins-common'
 
 export function upsertFontColor(editor: TEditor, color: string) {
+  if (!editor) {
+    console.error('error in @dreifuss-wysiwyg-editor/fontcolor')
+    return
+  }
+
   if (color) {
-    Transforms.setNodes(
+    setNodes(
       editor,
-      //@ts-ignore
-      {color},
+      {
+        color
+      },
       {
         match: () => true,
         split: true
