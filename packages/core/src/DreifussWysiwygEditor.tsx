@@ -14,7 +14,7 @@ import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
-import {CharCountToolbar, useCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
+import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
@@ -80,7 +80,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
       : {}
   }
 
-  const charCount = useCharacterCount()
+  const charCount = getCharacterCount()
 
   useEffect(() => {
     if (props?.charactersCount) props.charactersCount(charCount)

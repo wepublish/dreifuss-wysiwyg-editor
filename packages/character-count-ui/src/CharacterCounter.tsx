@@ -19,14 +19,13 @@ const calculateCharCount = (editor?: TEditor) => {
   return toArray(getTextString(editor)).length
 }
 
-export function useCharacterCount(): number {
+export function getCharacterCount(): number {
   const editor = useStoreEditorState(useEventEditorId('focus'))
   return calculateCharCount(editor)
 }
 
 export const CharCountToolbar = () => {
-  const editor = useStoreEditorState(useEventEditorId('focus'))
-  const charCount = calculateCharCount(editor)
+  const charCount = getCharacterCount()
 
   return <span>{charCount}</span>
 }
