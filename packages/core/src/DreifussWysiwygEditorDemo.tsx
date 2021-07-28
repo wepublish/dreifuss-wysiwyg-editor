@@ -184,6 +184,16 @@ const DreifussWysiwygEditorDemo = () => (
       showCharCount
       initialValue={value}
     />
+    <hr />
+    <hr />
+    <DreifussWysiwygEditor
+      id="two"
+      charactersCount={count => {
+        // console.log(count)
+      }}
+      showCharCount
+      initialValue={value}
+    />
   </div>
 )
 
