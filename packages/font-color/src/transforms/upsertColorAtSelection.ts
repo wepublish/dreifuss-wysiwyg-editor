@@ -1,5 +1,6 @@
 import {TEditor} from '@udecode/slate-plugins-core'
-import {setNodes} from '@udecode/slate-plugins-common'
+import {setNodes, isCollapsed} from '@udecode/slate-plugins-common'
+import {Editor, Transforms} from 'slate'
 
 export function upsertFontColor(editor: TEditor, color: string) {
   if (!editor) {
@@ -7,7 +8,17 @@ export function upsertFontColor(editor: TEditor, color: string) {
     return
   }
 
+  console.log('selection: ', editor.selection)
+
   if (color) {
+    if (!editor.selection) return
+
+    if (isCollapsed(editor?.selection)) {
+      const linkLeaf = Editor.leaf(editor, editor.selection)
+      const [, inlinePath] = linkLeaf
+      Transforms.select(editor, inlinePath)
+    }
+
     setNodes(
       editor,
       {
@@ -18,5 +29,7 @@ export function upsertFontColor(editor: TEditor, color: string) {
         split: true
       }
     )
+
+    Transforms.collapse(editor, {edge: 'end'})
   }
 }
