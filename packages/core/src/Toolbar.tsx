@@ -47,6 +47,7 @@ import {getSlatePluginType, useEditorRef} from '@udecode/slate-plugins-core'
 // import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
 // import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color-ui'
 // import {EmojiPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-emoji-picker'import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
+import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
 import {
   insertTable,
   deleteColumn,
