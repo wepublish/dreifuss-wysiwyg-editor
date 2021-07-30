@@ -1,9 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
 import {Editor, BaseEditor} from 'slate'
 import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
-import {FontColor} from '@dreifuss-wysiwyg-editor/common'
+import {FontColor, ColorPicker} from '@dreifuss-wysiwyg-editor/common'
 import {upsertFontColor} from '@dreifuss-wysiwyg-editor/font-color'
 
 type CustomElement = {type: 'link'; title: string; color?: string; children: CustomText[]}
@@ -27,7 +27,7 @@ export const FontColorToolbar = (props: FontColorToolbarProps) => {
 
   const [isSelectingColoredNode, setSelectingColoredNode] = useState<boolean>(false)
 
-  const textInput = useRef<HTMLInputElement>(null)
+  const [isPickerOpen, setIsPickerOpen] = useState<boolean>(false)
 
   useEffect(() => {
     if (!editor?.selection) return
@@ -49,24 +49,27 @@ export const FontColorToolbar = (props: FontColorToolbarProps) => {
   }, [editor?.selection])
 
   return (
-    <div onClick={() => textInput.current?.click()}>
+    <div onClick={() => setIsPickerOpen(!isPickerOpen)}>
       {/* TODO: enhance it for props.icon */}
       {props?.icon || <FontColor active={!!isSelectingColoredNode} />}
-      <input
-        type="color"
-        ref={textInput}
-        value={color}
-        onChange={e => {
+      <ColorPicker
+        color={color}
+        style={
+          !isPickerOpen
+            ? {
+                width: 0,
+                height: 0,
+                visibility: 'hidden'
+              }
+            : {position: 'absolute', zIndex: '9999'}
+        }
+        onChange={(e: any) => {
           if (!editor) return
 
-          const color = e.target.value
+          const color = e.hex
           if (color) setColor(color)
 
           upsertFontColor(editor, color)
-        }}
-        style={{
-          width: 0,
-          visibility: 'hidden'
         }}
       />
     </div>
