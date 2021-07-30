@@ -14,7 +14,7 @@ import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
-import {CharCountToolbar, useCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
+import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
@@ -62,6 +62,7 @@ export interface EditorProps {
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
+  const {id = 'main'} = props
   const components = createSlatePluginsComponents()
   const options = createSlatePluginsOptions()
 
@@ -80,7 +81,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
       : {}
   }
 
-  const charCount = useCharacterCount()
+  const charCount = getCharacterCount(id)
 
   useEffect(() => {
     if (props?.charactersCount) props.charactersCount(charCount)
@@ -113,13 +114,13 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
 
   return (
     <SlatePlugins
-      id={props.id ?? 'main'}
+      id={props.id}
       onChange={props.onChange}
       plugins={plugins}
       components={components}
       options={options}
       editableProps={editableProps as EditableProps}
-      initialValue={props.value || props.initialValue}>
+      initialValue={JSON.parse(JSON.stringify(props.value || props.initialValue))}>
       {!props.displayOnly && (
         <HeadingToolbar>
           <ToolbarButtonsBasicElements />
@@ -140,14 +141,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
         </HeadingToolbar>
       )}
       {props.showCharCount && (
-        <p
-          style={{
-            textAlign: 'right',
-            display: 'flex',
-            justifyContent: 'flex-end',
-            alignItems: 'center'
-          }}>
-          <CharactersCountIcon /> <CharCountToolbar />
+        <p style={{textAlign: 'right'}}>
+          <CharactersCountIcon /> <CharCountToolbar id={id} />
         </p>
       )}
     </SlatePlugins>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Node} from 'slate'
 import {toArray} from 'lodash'
-import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
+import {useStoreEditorState} from '@udecode/slate-plugins-core'
 import {TEditor} from '@dreifuss-wysiwyg-editor/common'
 
 const getTextString = (editor: TEditor) => {
@@ -19,14 +19,13 @@ const calculateCharCount = (editor?: TEditor) => {
   return toArray(getTextString(editor)).length
 }
 
-export function useCharacterCount(): number {
-  const editor = useStoreEditorState(useEventEditorId('focus'))
+export function getCharacterCount(id: string): number {
+  const editor = useStoreEditorState(id)
   return calculateCharCount(editor)
 }
 
-export const CharCountToolbar = () => {
-  const editor = useStoreEditorState(useEventEditorId('focus'))
-  const charCount = calculateCharCount(editor)
+export const CharCountToolbar = ({id}: {id: string}) => {
+  const charCount = getCharacterCount(id)
 
   return <span>{charCount}</span>
 }
