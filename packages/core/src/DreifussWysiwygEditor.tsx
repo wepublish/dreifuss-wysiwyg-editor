@@ -44,7 +44,7 @@ import {EditorValue, CharactersCountIcon} from '@dreifuss-wysiwyg-editor/common'
 export interface EditableProps {
   id?: string
   displayOnly?: boolean
-  showCharCount?: boolean
+  showCharactersCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
 }
@@ -52,7 +52,7 @@ export interface EditableProps {
 export interface EditorProps {
   id?: string
   displayOnly?: boolean
-  showCharCount?: boolean
+  showCharactersCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
   initialValue?: any
@@ -62,7 +62,7 @@ export interface EditorProps {
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
-  const {id = 'main'} = props
+  const {id = 'main', showCharactersCount = true} = props
   const components = createSlatePluginsComponents()
   const options = createSlatePluginsOptions()
 
@@ -140,7 +140,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <ToolbarLink />
         </HeadingToolbar>
       )}
-      {props.showCharCount && (
+      {showCharactersCount && (
         <p style={{textAlign: 'right'}}>
           <CharactersCountIcon /> <CharCountToolbar id={id} />
         </p>
