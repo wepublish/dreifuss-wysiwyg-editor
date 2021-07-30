@@ -3,7 +3,10 @@ import {ColorPicker as BaseColorPicker, useColor} from 'react-color-palette'
 import './styles.css'
 
 export const ColorPicker = (props: any) => {
-  const {type = 'hex', color = '#eee', onChange} = props
+  const {type = 'hex', color = '#eee', onChange, style = {}, hideHSV = true} = props
+
+  const {width, height} = style
+
   const [currentColor, setCurrentColor] = useColor(type, color)
 
   useEffect(() => {
@@ -13,13 +16,16 @@ export const ColorPicker = (props: any) => {
   }, [currentColor])
 
   return (
-    <BaseColorPicker
-      //   dark
-      //   hideHSV
-      width={456}
-      height={228}
-      color={currentColor}
-      onChange={setCurrentColor}
-    />
+    <div style={style}>
+      <BaseColorPicker
+        hideHSV={hideHSV}
+        //   dark
+        //   hideHSV
+        width={width ?? 400}
+        height={height ?? 200}
+        color={currentColor}
+        onChange={setCurrentColor}
+      />
+    </div>
   )
 }
