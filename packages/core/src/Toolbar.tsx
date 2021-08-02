@@ -41,12 +41,6 @@ import {ELEMENT_BLOCKQUOTE} from '@udecode/slate-plugins-block-quote'
 import {ToolbarCodeBlock} from '@udecode/slate-plugins-code-block-ui'
 import {ToolbarElement, ToolbarMark} from '@udecode/slate-plugins-toolbar'
 import {getSlatePluginType, useEditorRef} from '@udecode/slate-plugins-core'
-// import {TableCellBorderColorPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-table-border'
-// import {QuotationMarksPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui'
-// import {UploadImageMenu} from '@dreifuss-wysiwyg-editor/slate-plugins-image'
-// import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color'
-// import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/slate-plugins-font-color-ui'
-// import {EmojiPicker} from '@dreifuss-wysiwyg-editor/slate-plugins-emoji-picker'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
 import {
   insertTable,

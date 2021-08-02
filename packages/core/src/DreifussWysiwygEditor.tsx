@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/slate-plugins-toolbar'
 import {createImagePlugin} from '@udecode/slate-plugins-image'
@@ -14,6 +14,7 @@ import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
+import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
@@ -37,12 +38,13 @@ import {
   // ToolbarQuotationMarks,
   // ToolbarFontColor
 } from './Toolbar'
-import {EditorValue} from './types'
+// @ts-ignore
+import {EditorValue, CharactersCountIcon} from '@dreifuss-wysiwyg-editor/common'
 
 export interface EditableProps {
   id?: string
   displayOnly?: boolean
-  showCharCount?: boolean
+  showCharactersCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
 }
@@ -50,15 +52,17 @@ export interface EditableProps {
 export interface EditorProps {
   id?: string
   displayOnly?: boolean
-  showCharCount?: boolean
+  showCharactersCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
   initialValue?: any
   value?: EditorValue
+  charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
+  const {id = 'main', showCharactersCount = true} = props
   const components = createSlatePluginsComponents()
   const options = createSlatePluginsOptions()
 
@@ -75,9 +79,13 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           width: 'inherit'
         }
       : {}
-    // TODO: Should be moved to font color plugin
-    // renderLeaf
   }
+
+  const charCount = getCharacterCount(id)
+
+  useEffect(() => {
+    if (props?.charactersCount) props.charactersCount(charCount)
+  }, [charCount])
 
   const plugins = [
     ...createBasicElementPlugins(),
@@ -106,13 +114,13 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
 
   return (
     <SlatePlugins
-      id={props.id ?? 'main'}
+      id={props.id}
       onChange={props.onChange}
       plugins={plugins}
       components={components}
       options={options}
       editableProps={editableProps as EditableProps}
-      initialValue={props.value || props.initialValue}>
+      initialValue={JSON.parse(JSON.stringify(props.value || props.initialValue))}>
       {!props.displayOnly && (
         <HeadingToolbar>
           <ToolbarButtonsBasicElements />
@@ -131,6 +139,11 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <Divider type={DividerType.vertical} />
           <ToolbarLink />
         </HeadingToolbar>
+      )}
+      {showCharactersCount && (
+        <p style={{textAlign: 'right'}}>
+          <CharactersCountIcon /> <CharCountToolbar id={id} />
+        </p>
       )}
     </SlatePlugins>
   )

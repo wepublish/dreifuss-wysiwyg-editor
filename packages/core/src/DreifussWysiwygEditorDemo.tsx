@@ -177,7 +177,12 @@ const value: any = [
 const DreifussWysiwygEditorDemo = () => (
   <div style={{overflowX: 'hidden', minHeight: 400}}>
     <h1>RichText Component Demo</h1>
-    <DreifussWysiwygEditor showCharCount initialValue={value} />
+    <DreifussWysiwygEditor
+      charactersCount={count => {
+        // console.log(count)
+      }}
+      initialValue={value}
+    />
   </div>
 )
 
