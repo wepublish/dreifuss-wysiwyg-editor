@@ -181,7 +181,6 @@ const DreifussWysiwygEditorDemo = () => (
       charactersCount={count => {
         // console.log(count)
       }}
-      showCharCount
       initialValue={value}
     />
   </div>
