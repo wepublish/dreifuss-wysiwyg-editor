@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/slate-plugins-toolbar'
 import {createImagePlugin} from '@udecode/slate-plugins-image'
-import {createTablePlugin} from '@udecode/slate-plugins-table'
+import {createTablePlugin} from '@dreifuss-wysiwyg-editor/table'
 import {createAlignPlugin} from '@udecode/slate-plugins-alignment'
 import {createHeadingPlugin} from '@udecode/slate-plugins-heading'
 import {createHighlightPlugin} from '@udecode/slate-plugins-highlight'
@@ -42,7 +42,6 @@ import {
   // ToolbarQuotationMarks,
   // ToolbarFontColor
 } from './Toolbar'
-// @ts-ignore
 
 export interface EditableProps {
   id?: string

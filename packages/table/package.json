@@ -1,0 +1,60 @@
+{
+  "name": "@dreifuss-wysiwyg-editor/table",
+  "version": "0.0.0",
+  "description": "Dreifuss wysiwyg Editor table plugin",
+  "keywords": [],
+  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/table#readme",
+  "bugs": {
+    "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor.git",
+    "directory": "packages/table"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist tsconfig.tsbuildinfo",
+    "build": "tsc && yarn rollup",
+    "watch": "yarn rollup -w",
+    "rollup": "rollup -c=../../rollup.config.js",
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "slate": "^0.60.0",
+    "slate-react": "^0.60.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@udecode/slate-plugins-common": "1.0.0-next.36",
+    "@udecode/slate-plugins-core": "1.0.0-next.36",
+    "@dreifuss-wysiwyg-editor/common": "^1.0.2-alpha.1"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "@types/slate": "^0.47.8",
+    "@types/slate-react": "^0.50.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "slate": "^0.62.0",
+    "slate-react": "^0.62.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "eslintConfig": {
+    "extends": [
+      "../../package.json"
+    ]
+  },
+  "gitHead": "86b71bff4c9b87a901ef6ed530aa1b5882697797"
+}

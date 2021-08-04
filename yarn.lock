@@ -2687,6 +2687,14 @@
     "@udecode/slate-plugins-core" "1.0.0-next.40"
     prismjs "^1.23.0"
 
+"@udecode/slate-plugins-common@1.0.0-next.36":
+  version "1.0.0-next.36"
+  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-common/-/slate-plugins-common-1.0.0-next.36.tgz#ddd7fbc74e363b3f7a4af022e1b60802750912fb"
+  integrity sha512-Nvn1V5tvid5gfhSS790Mqg0fPUOAC4VjWN3gmVt3Q5q8vVbZ2DM5nLkslQKO2LWZweQNurYrW8icTkj+6Ab0qw==
+  dependencies:
+    "@udecode/slate-plugins-core" "1.0.0-next.36"
+    is-hotkey "^0.1.6"
+
 "@udecode/slate-plugins-common@1.0.0-next.40", "@udecode/slate-plugins-common@^1.0.0-next.36":
   version "1.0.0-next.40"
   resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-common/-/slate-plugins-common-1.0.0-next.40.tgz#19526682f4821e5af483e45fcb963a9968c5558b"
@@ -2694,6 +2702,14 @@
   dependencies:
     "@udecode/slate-plugins-core" "1.0.0-next.40"
     is-hotkey "^0.1.6"
+
+"@udecode/slate-plugins-core@1.0.0-next.36":
+  version "1.0.0-next.36"
+  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-core/-/slate-plugins-core-1.0.0-next.36.tgz#3470e55e215dfff45ad7062006aedab7a96d966e"
+  integrity sha512-YJw7dZvca3DKfb2if8a8EiNGkZJRWhpyNE6tt9YcmOujJzCBLJkDnS1acjCgsAzKiBpQUg5ntueNXFm1gqin9g==
+  dependencies:
+    lodash "^4.17.21"
+    zustand "^3.4.2"
 
 "@udecode/slate-plugins-core@1.0.0-next.40", "@udecode/slate-plugins-core@^1.0.0-next.36":
   version "1.0.0-next.40"
@@ -2890,24 +2906,6 @@
   version "1.0.0-next.40"
   resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-select/-/slate-plugins-select-1.0.0-next.40.tgz#682d6dec5c60e3e3ab8200b7ec4bcea49e7cfff1"
   integrity sha512-QegtePHRtFtSuRn5HUq6UNKjI+OKM6zbf/REy29wEKsM3S2hy4h2hjSXRoYJF1IP+OJfumusJSDc83jg/lPdcg==
-  dependencies:
-    "@udecode/slate-plugins-common" "1.0.0-next.40"
-    "@udecode/slate-plugins-core" "1.0.0-next.40"
-
-"@udecode/slate-plugins-table-ui@^1.0.0-next.36":
-  version "1.0.0-next.40"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-table-ui/-/slate-plugins-table-ui-1.0.0-next.40.tgz#883aa065b00798964c76b826da35b78f64b69014"
-  integrity sha512-8++42d02LuTFU3Fijm0njYjXy9VVs/m//s1oGOZHIvt6YH6L+MvdswFO47/tpNGz7dRABraIiLV0hEEjJEPPxg==
-  dependencies:
-    "@udecode/slate-plugins-common" "1.0.0-next.40"
-    "@udecode/slate-plugins-core" "1.0.0-next.40"
-    "@udecode/slate-plugins-table" "1.0.0-next.40"
-    "@udecode/slate-plugins-toolbar" "1.0.0-next.40"
-
-"@udecode/slate-plugins-table@1.0.0-next.40", "@udecode/slate-plugins-table@^1.0.0-next.36":
-  version "1.0.0-next.40"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-table/-/slate-plugins-table-1.0.0-next.40.tgz#e094bb447cf8daf92d3bbbb75a2c661a9faadb3a"
-  integrity sha512-EdtDeaJFOXNNNuTqI1xUHtK6z55XIRAmsm14bsBJsGOjciwoY1sf9dvj2rAQyc8CxQNfpwZg4WmCHb9MG7KYvQ==
   dependencies:
     "@udecode/slate-plugins-common" "1.0.0-next.40"
     "@udecode/slate-plugins-core" "1.0.0-next.40"
