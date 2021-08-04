@@ -11,13 +11,17 @@ import {createCodeBlockPlugin} from '@udecode/slate-plugins-code-block'
 import {createBlockquotePlugin} from '@udecode/slate-plugins-block-quote'
 import {createMediaEmbedPlugin} from '@udecode/slate-plugins-media-embed'
 import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
+import {EditorValue, CharactersCountIcon} from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
+import {createHistoryPlugin, createReactPlugin, SlatePlugins} from '@udecode/slate-plugins-core'
+// @ts-ignore
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
-import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
+import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
+import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -39,7 +43,6 @@ import {
   // ToolbarFontColor
 } from './Toolbar'
 // @ts-ignore
-import {EditorValue, CharactersCountIcon} from '@dreifuss-wysiwyg-editor/common'
 
 export interface EditableProps {
   id?: string
@@ -100,6 +103,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createTablePlugin(),
     createItalicPlugin(),
     createTodoListPlugin(),
+    createFontColorPlugin(),
     createParagraphPlugin(),
     createHighlightPlugin(),
     createCodeBlockPlugin(),
@@ -128,8 +132,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <ToolbarButtonsList />
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsBasicMarks />
-          {/* <Divider type={DividerType.vertical} />
-          <ToolbarFontColor /> */}
+          <Divider type={DividerType.vertical} />
+          <FontColorToolbar />
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsAlign />
           <Divider type={DividerType.vertical} />

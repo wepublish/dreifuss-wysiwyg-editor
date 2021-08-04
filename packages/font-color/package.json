@@ -1,16 +1,16 @@
 {
-  "name": "@dreifuss-wysiwyg-editor/common",
-  "version": "1.0.2-alpha.1",
-  "description": "Dreifuss wysiwyg Editor common plugin",
+  "name": "@dreifuss-wysiwyg-editor/font-color",
+  "version": "0.0.0",
+  "description": "Dreifuss wysiwyg Editor font color plugin",
   "keywords": [],
-  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/common",
+  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/font-color#readme",
   "bugs": {
     "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor/issues"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor.git",
-    "directory": "packages/common"
+    "directory": "packages/font-color"
   },
   "license": "MIT",
   "main": "dist/index.js",
@@ -34,10 +34,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "react-color-palette": "^6.1.0",
     "@udecode/slate-plugins-core": "^1.0.0-next.36",
-    "@udecode/slate-plugins-toolbar": "^1.0.0-next.36",
-    "@udecode/slate-plugins-ui-fluent": "^1.0.0-next.36"
+    "@udecode/slate-plugins-toolbar": "^1.0.0-next.36"
   },
   "devDependencies": {
     "@types/react": "^17.0.14",
