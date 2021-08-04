@@ -8,9 +8,6 @@ export function upsertFontColor(editor: TEditor, color: string) {
     return
   }
 
-  // clone to store selection
-  const previousSelection = Object.assign({}, editor.selection)
-
   if (color) {
     if (!editor.selection) return
 
@@ -30,18 +27,5 @@ export function upsertFontColor(editor: TEditor, color: string) {
         split: true
       }
     )
-    console.log(previousSelection)
-
-    // restore selection
-    // Transforms.setSelection(editor, previousSelection)
-
-    setTimeout(() => {
-      console.log('5')
-      Transforms.setPoint(editor, previousSelection.focus, {edge: 'focus'})
-      // Transforms.move(editor)
-    }, 0)
-    Transforms.setPoint(editor, previousSelection.focus, {edge: 'focus'})
-
-    // Transforms.collapse(editor, {edge: 'end'})
   }
 }

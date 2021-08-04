@@ -6,8 +6,6 @@ import {
 } from '@udecode/slate-plugins-core'
 import {ELEMENT_FONT_COLOR} from './defaults'
 import {getFontColorLeafDeserialize} from './getFontColorDeserialize'
-// import {WithFontColorOptions} from './types'
-// import {withFontColor} from './withFontColor'
 
 /**
  * Enables support for font color.
