@@ -120,7 +120,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
       components={components}
       options={options}
       editableProps={editableProps as EditableProps}
-      initialValue={props.value || props.initialValue}>
+      initialValue={JSON.parse(JSON.stringify(props.value || props.initialValue))}>
       <ToolbarBalloon />
       {!props.displayOnly && (
         <HeadingToolbar>
