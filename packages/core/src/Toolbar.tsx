@@ -177,6 +177,10 @@ export const ToolbarBalloon = () => {
         // @ts-ignore
         tooltip={{content: 'Underline (⌘U)', ...tooltip}}
       />
+      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H1)} icon={<H1 />} />
+      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H2)} icon={<H2 />} />
+      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H3)} icon={<H3 />} />
+      <ToolbarList type={getSlatePluginType(useEditorRef(), ELEMENT_UL)} icon={<ListUL />} />
     </BalloonToolbar>
   )
 }
