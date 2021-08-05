@@ -1,3 +1,3 @@
-export * from './FontColor'
+export * from './FontColorToolbar'
 
 export * from './RenderLeaf'

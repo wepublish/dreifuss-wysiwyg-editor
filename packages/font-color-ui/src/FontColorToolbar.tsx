@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
-import {Editor, Element, BaseEditor} from 'slate'
+import {Editor, BaseEditor} from 'slate'
 import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
 import {FontColor} from '@dreifuss-wysiwyg-editor/common'
 import {upsertFontColor} from '@dreifuss-wysiwyg-editor/font-color'
@@ -25,29 +25,32 @@ export const FontColorToolbar = (props: FontColorToolbarProps) => {
 
   const [color, setColor] = useState<string>('#fff')
 
+  const [isSelectingColoredNode, setSelectingColoredNode] = useState<boolean>(false)
+
   const textInput = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    if (!editor) return
+    if (!editor?.selection) return
+
     const nodes: Array<any> | null = Array.from(
       Editor.nodes(editor, {
-        at: editor.selection ?? undefined,
-        match: node => Element.isElement(node) && !!node.color
+        at: editor.selection,
+        // @ts-ignore
+        match: node => !!node.color
       })
     )
-    if (nodes?.length) {
-      // console.log(nodes[0][0])
-      setColor(nodes[0][0].color)
-    }
-  }, [])
 
-  useEffect(() => {
-    // textInput.current?.click()
-  }, [color])
+    if (nodes?.length) {
+      setColor(nodes[0][0].color)
+      setSelectingColoredNode(true)
+    } else {
+      setSelectingColoredNode(false)
+    }
+  }, [editor?.selection])
 
   return (
     <div onClick={() => textInput.current?.click()}>
-      {props.icon ?? <FontColor />}
+      {props?.icon || <FontColor active={!!isSelectingColoredNode} />}
       <input
         type="color"
         ref={textInput}

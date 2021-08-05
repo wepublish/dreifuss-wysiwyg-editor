@@ -11,17 +11,17 @@ import {createCodeBlockPlugin} from '@udecode/slate-plugins-code-block'
 import {createBlockquotePlugin} from '@udecode/slate-plugins-block-quote'
 import {createMediaEmbedPlugin} from '@udecode/slate-plugins-media-embed'
 import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
+import {EditorValue, CharactersCountIcon} from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
-import {SlatePlugins, createHistoryPlugin, createReactPlugin} from '@udecode/slate-plugins-core'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
+import {createHistoryPlugin, createReactPlugin, SlatePlugins} from '@udecode/slate-plugins-core'
 // @ts-ignore
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
 import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
-import {CharCountToolbar, useCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -39,12 +39,11 @@ import {
   ToolbarButtonsList,
   ToolbarButtonsTable
 } from './Toolbar'
-import {EditorValue} from '@dreifuss-wysiwyg-editor/common'
 
 export interface EditableProps {
   id?: string
   displayOnly?: boolean
-  showCharCount?: boolean
+  showCharactersCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
 }
@@ -52,7 +51,7 @@ export interface EditableProps {
 export interface EditorProps {
   id?: string
   displayOnly?: boolean
-  showCharCount?: boolean
+  showCharactersCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
   initialValue?: any
@@ -62,6 +61,7 @@ export interface EditorProps {
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
+  const {id = 'main', showCharactersCount = true} = props
   const components = createSlatePluginsComponents()
   const options = createSlatePluginsOptions()
 
@@ -80,7 +80,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
       : {}
   }
 
-  const charCount = useCharacterCount()
+  const charCount = getCharacterCount(id)
 
   useEffect(() => {
     if (props?.charactersCount) props.charactersCount(charCount)
@@ -114,13 +114,13 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
 
   return (
     <SlatePlugins
-      id={props.id ?? 'main'}
+      id={props.id}
       onChange={props.onChange}
       plugins={plugins}
       components={components}
       options={options}
       editableProps={editableProps as EditableProps}
-      initialValue={props.value || props.initialValue}>
+      initialValue={JSON.parse(JSON.stringify(props.value || props.initialValue))}>
       <ToolbarBalloon />
       {!props.displayOnly && (
         <HeadingToolbar>
@@ -141,9 +141,9 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <ToolbarLink />
         </HeadingToolbar>
       )}
-      {props.showCharCount && (
+      {showCharactersCount && (
         <p style={{textAlign: 'right'}}>
-          {'Characters count:'} <CharCountToolbar />
+          <CharactersCountIcon /> <CharCountToolbar id={id} />
         </p>
       )}
     </SlatePlugins>
