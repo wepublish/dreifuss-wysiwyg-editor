@@ -2703,6 +2703,14 @@
     "@udecode/slate-plugins-core" "1.0.0-next.40"
     is-hotkey "^0.1.6"
 
+"@udecode/slate-plugins-common@1.0.0-next.46":
+  version "1.0.0-next.46"
+  resolved "https://registry.npmjs.org/@udecode/slate-plugins-common/-/slate-plugins-common-1.0.0-next.46.tgz#1c7ff7559169d0052b501275a019b305d71a97d1"
+  integrity sha512-DuMZN9k5Bn1A93M4L8p8GrICeLHeL6NNeTM2rSPDvDeP7qROZQKgVh+W8uwZMwfQip34fAZHt80c4VPkKLcwuA==
+  dependencies:
+    "@udecode/slate-plugins-core" "1.0.0-next.40"
+    is-hotkey "^0.1.6"
+
 "@udecode/slate-plugins-core@1.0.0-next.36":
   version "1.0.0-next.36"
   resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-core/-/slate-plugins-core-1.0.0-next.36.tgz#3470e55e215dfff45ad7062006aedab7a96d966e"
@@ -2935,6 +2943,16 @@
   integrity sha512-fCN7VDUH+J/jjsf9s4+ZKU59zH8iiYtHijnQwXX0otKhiXP5To9IvWJC1on3oLdSl+No5Hb2G1scwiCcyajYBQ==
   dependencies:
     "@udecode/slate-plugins-common" "1.0.0-next.40"
+    "@udecode/slate-plugins-core" "1.0.0-next.40"
+    "@uifabric/styling" "^7.18.0"
+    "@uifabric/utilities" "^7.33.4"
+
+"@udecode/slate-plugins-ui-fluent@^1.0.0-next.36":
+  version "1.0.0-next.48"
+  resolved "https://registry.npmjs.org/@udecode/slate-plugins-ui-fluent/-/slate-plugins-ui-fluent-1.0.0-next.48.tgz#4dc0cb9fde28a93885e330655ad34185278bb3b8"
+  integrity sha512-NqXaYAeg2OZ+PItPOxU3LW2m/ZOcHVymj1Jz9DN/3tpBcQNNYEBOtgQS9bMdrK8UlzeNSBObWF/39CMPQTnnog==
+  dependencies:
+    "@udecode/slate-plugins-common" "1.0.0-next.46"
     "@udecode/slate-plugins-core" "1.0.0-next.40"
     "@uifabric/styling" "^7.18.0"
     "@uifabric/utilities" "^7.33.4"
@@ -10360,6 +10378,11 @@ raw-body@2.4.0:
     http-errors "1.7.2"
     iconv-lite "0.4.24"
     unpipe "1.0.0"
+
+react-color-palette@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.npmjs.org/react-color-palette/-/react-color-palette-6.1.0.tgz#1b3ba6212b54bacaed4f82c972576656bfd14406"
+  integrity sha512-Bj3qcKg5jLwpFmNYDsV6x+ZpUmBrkOAvxMFktGsaHr36qMUA2Wq6R5ltrjGlvp+iAw2+MMcI6PnEmUhE0gmrMA==
 
 react-dom@^17.0.2:
   version "17.0.2"
