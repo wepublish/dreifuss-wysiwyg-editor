@@ -27,28 +27,51 @@ export function BackgroundColor() {
   )
 }
 
-export function FontColor() {
+export function CharactersCountIcon() {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="1.2em"
-      height="1.2em"
-      viewBox="0 0 52.000000 52.000000"
-      preserveAspectRatio="xMidYMid meet">
-      <g
-        transform="translate(0.000000,52.000000) scale(0.100000,-0.100000)"
-        fill="#000000"
-        stroke="none">
-        <path
-          d="M219 433 c-14 -38 -96 -254 -104 -275 -6 -15 -2 -18 22 -18 26 0 32
+      style={{
+        transform: 'rotate(360deg)'
+      }}
+      width="1.4em"
+      height="1.4em"
+      focusable="false"
+      aria-hidden="true"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m0 2v12h7V6H4m16 12V6h-1.24c.24.54.19 1.07.19 1.13c-.07.67-.54 1.37-.71 1.62l-2.33 2.55l3.32-.02l.01 1.22l-5.2-.03l-.04-1s3.05-3.23 3.2-3.52c.14-.28.71-1.95-.7-1.95c-1.23.05-1.09 1.3-1.09 1.3l-1.54.01s.01-.66.38-1.31H13v12h2.58l-.01-.86l.97-.01s.91-.16.92-1.05c.04-1-.81-1-.96-1c-.13 0-1.07.05-1.07.87h-1.52s.04-2.06 2.59-2.06c2.6 0 2.46 2.02 2.46 2.02s.04 1.25-1.11 1.72l.52.37H20M8.92 16h-1.5v-5.8l-1.8.56V9.53l3.14-1.12h.16V16z"
+        fill="#626262"
+      />
+    </svg>
+  )
+}
+
+export function FontColor({active}: {active: boolean}) {
+  return (
+    <span style={{color: active ? 'rgb(0, 102, 204)' : 'inherit'}}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="1.2em"
+        height="1.2em"
+        viewBox="0 0 52.000000 52.000000"
+        preserveAspectRatio="xMidYMid meet">
+        <g
+          transform="translate(0.000000,52.000000) scale(0.100000,-0.100000)"
+          fill="currentColor"
+          stroke="none">
+          <path
+            d="M219 433 c-14 -38 -96 -254 -104 -275 -6 -15 -2 -18 22 -18 26 0 32
 5 43 40 l13 40 67 0 67 0 12 -40 c10 -35 16 -40 41 -40 17 0 30 1 30 3 0 1
 -27 72 -59 157 -58 151 -60 155 -90 158 -26 3 -33 -1 -42 -25z m64 -96 c9 -30
 17 -57 17 -60 0 -4 -20 -7 -44 -7 l-45 0 21 60 c11 33 23 60 27 60 4 0 15 -24
 24 -53z"
-        />
-        <path d="M100 40 l0 -40 160 0 160 0 0 40 0 40 -160 0 -160 0 0 -40z" />
-      </g>
-    </svg>
+          />
+          <path d="M100 40 l0 -40 160 0 160 0 0 40 0 40 -160 0 -160 0 0 -40z" />
+        </g>
+      </svg>
+    </span>
   )
 }
 

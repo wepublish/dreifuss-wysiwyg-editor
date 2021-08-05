@@ -87,7 +87,6 @@ const DreifussWysiwygEditorDemo = () => (
         // console.log(data)
         // console.log(JSON.stringify(data))
       }}
-      showCharCount
       initialValue={value}
     />
   </div>
