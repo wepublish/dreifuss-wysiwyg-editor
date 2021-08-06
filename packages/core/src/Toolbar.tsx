@@ -40,8 +40,13 @@ import {ELEMENT_OL, ELEMENT_UL} from '@udecode/slate-plugins-list'
 import {ELEMENT_CODE_BLOCK} from '@udecode/slate-plugins-code-block'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/slate-plugins-block-quote'
 import {ToolbarCodeBlock} from '@udecode/slate-plugins-code-block-ui'
-import {ToolbarElement, ToolbarMark} from '@udecode/slate-plugins-toolbar'
-import {getSlatePluginType, useEditorRef} from '@udecode/slate-plugins-core'
+import {ToolbarElement, ToolbarMark, BalloonToolbar} from '@udecode/slate-plugins-toolbar'
+import {
+  getSlatePluginType,
+  useEditorRef,
+  useEventEditorId,
+  useStoreEditorState
+} from '@udecode/slate-plugins-core'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
 import {
   insertTable,
@@ -139,3 +144,43 @@ export const ToolbarButtonsTable = () => (
     <TableBgColorToolbar />
   </>
 )
+
+export const ToolbarBalloon = () => {
+  const arrow = true
+  const tooltip = {
+    arrow,
+    delay: 0,
+    duration: [200, 0],
+    hideOnClick: false,
+    offset: [0, 17],
+    placement: 'top'
+  }
+  const editor = useStoreEditorState(useEventEditorId('focus'))
+
+  return (
+    <BalloonToolbar direction="top" hiddenDelay={0} theme="light" arrow={arrow}>
+      <ToolbarMark
+        type={getSlatePluginType(editor, MARK_BOLD)}
+        icon={<Bold />}
+        // @ts-ignore
+        tooltip={{content: 'Bold (⌘B)', ...tooltip}}
+      />
+      <ToolbarMark
+        type={getSlatePluginType(editor, MARK_ITALIC)}
+        icon={<Italic />}
+        // @ts-ignore
+        tooltip={{content: 'Italic (⌘I)', ...tooltip}}
+      />
+      <ToolbarMark
+        type={getSlatePluginType(editor, MARK_UNDERLINE)}
+        icon={<Underline />}
+        // @ts-ignore
+        tooltip={{content: 'Underline (⌘U)', ...tooltip}}
+      />
+      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H1)} icon={<H1 />} />
+      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H2)} icon={<H2 />} />
+      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H3)} icon={<H3 />} />
+      <ToolbarList type={getSlatePluginType(useEditorRef(), ELEMENT_UL)} icon={<ListUL />} />
+    </BalloonToolbar>
+  )
+}

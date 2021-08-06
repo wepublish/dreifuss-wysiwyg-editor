@@ -32,15 +32,12 @@ import {
   createSuperscriptPlugin
 } from '@udecode/slate-plugins-basic-marks'
 import {
+  ToolbarBalloon,
   ToolbarButtonsAlign,
   ToolbarButtonsBasicElements,
   ToolbarButtonsBasicMarks,
   ToolbarButtonsList,
   ToolbarButtonsTable
-  // ToolbarEmoji,
-  // ToolbarImage,
-  // ToolbarQuotationMarks,
-  // ToolbarFontColor
 } from './Toolbar'
 
 export interface EditableProps {
@@ -124,6 +121,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
       options={options}
       editableProps={editableProps as EditableProps}
       initialValue={JSON.parse(JSON.stringify(props.value || props.initialValue))}>
+      <ToolbarBalloon />
       {!props.displayOnly && (
         <HeadingToolbar>
           <ToolbarButtonsBasicElements />
