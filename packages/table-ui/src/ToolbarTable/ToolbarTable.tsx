@@ -1,17 +1,13 @@
 import * as React from 'react'
-import {getPreventDefaultHandler, someNode} from '@udecode/slate-plugins-common'
-import {
-  getSlatePluginType,
-  useEventEditorId,
-  useStoreEditorState
-} from '@udecode/slate-plugins-core'
+import {getPreventDefaultHandler, someNode} from '@udecode/plate-common'
+import {getPlatePluginType, useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
 import {ELEMENT_TABLE} from '@dreifuss-wysiwyg-editor/table'
-import {ToolbarButton} from '@udecode/slate-plugins-toolbar'
+import {ToolbarButton} from '@udecode/plate-toolbar'
 import {ToolbarTableProps} from './ToolbarTable.types'
 
 export const ToolbarTable = ({transform, header, ...props}: ToolbarTableProps) => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
-  const type = getSlatePluginType(editor, ELEMENT_TABLE)
+  const type = getPlatePluginType(editor, ELEMENT_TABLE)
 
   return (
     <ToolbarButton

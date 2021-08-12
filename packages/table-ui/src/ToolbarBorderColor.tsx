@@ -1,10 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {Editor, Element} from 'slate'
-import {
-  getSlatePluginType,
-  useEventEditorId,
-  useStoreEditorState
-} from '@udecode/slate-plugins-core'
+import {getPlatePluginType, useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
 import {BorderColor} from '@dreifuss-wysiwyg-editor/common'
 import {ELEMENT_TD, upsertBorderColor} from '@dreifuss-wysiwyg-editor/table'
 
@@ -27,7 +23,7 @@ export const TableBorderColorToolbar = (props: TableBorderColorToolbarProps) => 
       Editor.nodes(editor, {
         at: editor.selection,
         match: node =>
-          Element.isElement(node) && node.type === getSlatePluginType(editor, ELEMENT_TD)
+          Element.isElement(node) && node.type === getPlatePluginType(editor, ELEMENT_TD)
       })
     )
     if (nodes?.length) {

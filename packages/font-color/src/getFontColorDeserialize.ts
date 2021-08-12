@@ -1,9 +1,9 @@
-import {getNodeDeserializer} from '@udecode/slate-plugins-common'
-import {Deserialize, getSlatePluginOptions} from '@udecode/slate-plugins-core'
+import {getNodeDeserializer} from '@udecode/plate-common'
+import {Deserialize, getPlatePluginOptions} from '@udecode/plate-core'
 import {ELEMENT_FONT_COLOR} from './defaults'
 
 export const getFontColorLeafDeserialize = (): Deserialize => editor => {
-  const options = getSlatePluginOptions(editor, ELEMENT_FONT_COLOR)
+  const options = getPlatePluginOptions(editor, ELEMENT_FONT_COLOR)
 
   return {
     leaf: getNodeDeserializer({
