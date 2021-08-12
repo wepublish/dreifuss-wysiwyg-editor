@@ -11,19 +11,19 @@ import {createCodeBlockPlugin} from '@udecode/slate-plugins-code-block'
 import {createBlockquotePlugin} from '@udecode/slate-plugins-block-quote'
 import {createMediaEmbedPlugin} from '@udecode/slate-plugins-media-embed'
 import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
-import {EditorValue, CharactersCountIcon} from '@dreifuss-wysiwyg-editor/common'
+import {EditorValue, CharactersCountIcon, ImageIcon} from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {createHistoryPlugin, createReactPlugin, SlatePlugins} from '@udecode/slate-plugins-core'
+import {ToolbarImage} from '@udecode/slate-plugins-image-ui'
 // @ts-ignore
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
 import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
-// import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -127,6 +127,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
       {!props.displayOnly && (
         <HeadingToolbar>
           <ToolbarButtonsBasicElements />
+          <QuotationMarksMenu />
           <Divider type={DividerType.vertical} />
           <ToolbarButtonsList />
           <Divider type={DividerType.vertical} />
@@ -141,7 +142,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <ToolbarButtonsTable />
           <Divider type={DividerType.vertical} />
           <ToolbarLink />
-          <QuotationMarksMenu />
+          <Divider type={DividerType.vertical} />
+          <ToolbarImage icon={<ImageIcon />} />
         </HeadingToolbar>
       )}
       {showCharactersCount && (

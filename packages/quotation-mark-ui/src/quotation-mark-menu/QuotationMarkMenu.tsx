@@ -18,7 +18,7 @@ export function QuotationMarksMenu(props: any) {
   }, [editor?.selection])
 
   return (
-    <Modal icon={<SubMenuIcon type={ELEMENT_QUOTATION_MARK} icon={props?.icon || '< >'} />}>
+    <Modal icon={<SubMenuIcon type={ELEMENT_QUOTATION_MARK} icon={props?.icon || '«»'} />}>
       <div className="quotation-mark-menu">
         <button
           onClick={e => {
