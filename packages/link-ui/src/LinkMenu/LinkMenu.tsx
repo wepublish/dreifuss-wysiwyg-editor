@@ -169,6 +169,7 @@ export const ToolbarLink = () => {
             e.preventDefault()
 
             removeLink(editor)
+            toggleMenu()
           }}>
           Remove
         </button>
