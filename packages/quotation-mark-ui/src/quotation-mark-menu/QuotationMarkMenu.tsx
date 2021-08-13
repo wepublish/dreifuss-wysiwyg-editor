@@ -24,6 +24,7 @@ export function QuotationMarksMenu(props: any) {
           onClick={e => {
             e.preventDefault()
             selectedQuotationMarks = '«»'
+            if (!editor) return
             insertQuotationMarks(editor, selection, selectedQuotationMarks)
           }}
           className="button">
@@ -34,6 +35,7 @@ export function QuotationMarksMenu(props: any) {
           onClick={e => {
             e.preventDefault()
             selectedQuotationMarks = '‹›'
+            if (!editor) return
             insertQuotationMarks(editor, selection, selectedQuotationMarks)
           }}
           className="button">
@@ -44,6 +46,7 @@ export function QuotationMarksMenu(props: any) {
           onClick={e => {
             e.preventDefault()
             selectedQuotationMarks = '’’'
+            if (!editor) return
             insertQuotationMarks(editor, selection, selectedQuotationMarks)
           }}
           className="button">
@@ -54,6 +57,7 @@ export function QuotationMarksMenu(props: any) {
           onClick={e => {
             e.preventDefault()
             selectedQuotationMarks = '""'
+            if (!editor) return
             insertQuotationMarks(editor, selection, selectedQuotationMarks)
           }}
           className="button">
