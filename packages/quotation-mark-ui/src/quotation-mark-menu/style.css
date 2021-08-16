@@ -1,0 +1,16 @@
+.quotation-mark-menu button {
+  margin-bottom: 0;
+  margin:auto 5px;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: 0 !important;
+  white-space: nowrap;
+  border: none;
+  user-select: none;
+  padding: 8px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 6px;
+}
