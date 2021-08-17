@@ -3,6 +3,7 @@ import {ELEMENT_LINK} from './defaults'
 import {getLinkDeserialize} from './getLinkDeserialize'
 import {WithLinkOptions} from './types'
 import {withLink} from './withLink'
+import {onKeyDown} from './transforms'
 
 /**
  * Enables support for hyperlinks.
@@ -12,5 +13,6 @@ export const createLinkPlugin = (options?: WithLinkOptions): SlatePlugin => ({
   renderElement: getRenderElement(ELEMENT_LINK),
   deserialize: getLinkDeserialize(),
   inlineTypes: getSlatePluginTypes(ELEMENT_LINK),
-  withOverrides: withLink(options)
+  withOverrides: withLink(options),
+  onKeyDown
 })
