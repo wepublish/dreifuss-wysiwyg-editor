@@ -19,7 +19,8 @@
     "lint": "eslint 'src/**/*.{ts,tsx,js}' '__tests__/**/*.{ts,tsx,js}'",
     "fix": "eslint 'src/**/*.{ts,tsx,js}' '__tests__/**/*.{ts,tsx,js}' --fix",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test:generate-output": "jest --json --outputFile=.jest-test-results.json"
   },
   "keywords": [
     "rich-text",
@@ -82,7 +83,9 @@
     "@storybook/addon-links": "^6.3.6",
     "@storybook/react": "^6.3.6",
     "@storybook/testing-react": "0.0.22",
-    "@testing-library/react": "12.0.0"
+    "@testing-library/react": "12.0.0",
+    "@storybook/addon-jest": "^6.3.7",
+    "jest": "^27.0.6"
   },
   "dependencies": {
     "@babel/runtime": "^7.13.10",
