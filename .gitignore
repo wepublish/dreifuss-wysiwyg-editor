@@ -2,7 +2,6 @@
 .idea/
 lib/
 dist/
-assets/
 packages/**/LICENSE
 packages/**/dist
 node_modules
