@@ -14,7 +14,8 @@
     "rollup": "rollup -c=../../rollup.config.js",
     "clean": "rimraf dist tsconfig.tsbuildinfo",
     "watch": "webpack serve --mode development",
-    "test": "BABEL_JEST_STAGE=0 jest",
+    "testtt": "BABEL_JEST_STAGE=0 jest",
+    "test": "jest --env=jsdom",
     "prepublish": "npm run build",
     "lint": "eslint 'src/**/*.{ts,tsx,js}' '__tests__/**/*.{ts,tsx,js}'",
     "fix": "eslint 'src/**/*.{ts,tsx,js}' '__tests__/**/*.{ts,tsx,js}' --fix",
@@ -45,7 +46,7 @@
       "<rootDir>/node_modules/react-addons-test-utils"
     ],
     "transform": {
-      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+      "^.+\\.(ts|tsx|js|jsx)$": "ts-jest"
     },
     "moduleFileExtensions": [
       "js",
@@ -60,6 +61,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "ts-jest": "^27.0.5",
     "@hot-loader/react-dom": "16.12.0",
     "@types/emoji-mart": "^3.0.4",
     "@types/flux": "^3.1.9",
