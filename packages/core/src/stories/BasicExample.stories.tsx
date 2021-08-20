@@ -16,7 +16,8 @@ const Template = args => <BasicExample {...args} />
 export const Primary = Template.bind({})
 Primary.args = {
   primary: true,
-  label: 'Button'
+  label: 'Editor',
+  count: BasicExample.charCount
 }
 
 export const Secondary = Template.bind({})

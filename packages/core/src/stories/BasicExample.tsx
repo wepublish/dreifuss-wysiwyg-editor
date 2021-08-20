@@ -26,6 +26,8 @@ export const BasicExample = () => {
   )
 }
 
+BasicExample.charCount = value.length
+
 BasicExample.propTypes = {
   /**
    * BasicExample contents
