@@ -40,6 +40,9 @@
     "url": "https://github.com"
   },
   "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/react-dom",
