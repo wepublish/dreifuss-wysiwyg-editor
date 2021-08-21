@@ -1,28 +1,28 @@
 import React from 'react'
 import {
-  H1,
-  H2,
-  H3,
-  Bold,
-  Italic,
-  Underline,
-  BlockCode,
-  BlockQuote,
-  AlignLeft,
-  AlignRight,
-  AlignCenter,
-  AlignJustify,
-  StrikeThrough,
-  Superscript,
-  Subscript,
-  ListOL,
-  ListUL,
-  BorderAll,
-  BorderBottom,
-  BorderClear,
-  BorderLeft,
-  BorderRight,
-  BorderTop
+  H1Icon,
+  H2Icon,
+  H3Icon,
+  BoldIcon,
+  ItalicIcon,
+  UnderlineIcon,
+  BlockCodeIcon,
+  BlockQuoteIcon,
+  AlignLeftIcon,
+  AlignRightIcon,
+  AlignCenterIcon,
+  AlignJustifyIcon,
+  StrikeThroughIcon,
+  SuperscriptIcon,
+  SubscriptIcon,
+  ListOLIcon,
+  ListULIcon,
+  BorderAllIcon,
+  BorderBottomIcon,
+  BorderClearIcon,
+  BorderLeftIcon,
+  BorderRightIcon,
+  BorderTopIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {
   ELEMENT_ALIGN_CENTER,
@@ -68,41 +68,41 @@ import {
 
 export const ToolbarButtonsBasicElements = () => (
   <>
-    <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H1)} icon={<H1 />} />
-    <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H2)} icon={<H2 />} />
-    <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H3)} icon={<H3 />} />
+    <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H1)} icon={<H1Icon />} />
+    <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H2)} icon={<H2Icon />} />
+    <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H3)} icon={<H3Icon />} />
     <ToolbarElement
       type={getSlatePluginType(useEditorRef(), ELEMENT_BLOCKQUOTE)}
-      icon={<BlockQuote />}
+      icon={<BlockQuoteIcon />}
     />
     <ToolbarCodeBlock
       type={getSlatePluginType(useEditorRef(), ELEMENT_CODE_BLOCK)}
-      icon={<BlockCode />}
+      icon={<BlockCodeIcon />}
     />
   </>
 )
 
 export const ToolbarButtonsList = () => (
   <>
-    <ToolbarList type={getSlatePluginType(useEditorRef(), ELEMENT_UL)} icon={<ListUL />} />
-    <ToolbarList type={getSlatePluginType(useEditorRef(), ELEMENT_OL)} icon={<ListOL />} />
+    <ToolbarList type={getSlatePluginType(useEditorRef(), ELEMENT_UL)} icon={<ListULIcon />} />
+    <ToolbarList type={getSlatePluginType(useEditorRef(), ELEMENT_OL)} icon={<ListOLIcon />} />
   </>
 )
 
 export const ToolbarButtonsAlign = () => (
   <>
-    <ToolbarAlign icon={<AlignLeft />} />
+    <ToolbarAlign icon={<AlignLeftIcon />} />
     <ToolbarAlign
       type={getSlatePluginType(useEditorRef(), ELEMENT_ALIGN_CENTER)}
-      icon={<AlignCenter />}
+      icon={<AlignCenterIcon />}
     />
     <ToolbarAlign
       type={getSlatePluginType(useEditorRef(), ELEMENT_ALIGN_RIGHT)}
-      icon={<AlignRight />}
+      icon={<AlignRightIcon />}
     />
     <ToolbarAlign
       type={getSlatePluginType(useEditorRef(), ELEMENT_ALIGN_JUSTIFY)}
-      icon={<AlignJustify />}
+      icon={<AlignJustifyIcon />}
     />
   </>
 )
@@ -110,23 +110,26 @@ export const ToolbarButtonsAlign = () => (
 export const ToolbarButtonsBasicMarks = () => {
   return (
     <>
-      <ToolbarMark type={getSlatePluginType(useEditorRef(), MARK_BOLD)} icon={<Bold />} />
-      <ToolbarMark type={getSlatePluginType(useEditorRef(), MARK_ITALIC)} icon={<Italic />} />
-      <ToolbarMark type={getSlatePluginType(useEditorRef(), MARK_UNDERLINE)} icon={<Underline />} />
+      <ToolbarMark type={getSlatePluginType(useEditorRef(), MARK_BOLD)} icon={<BoldIcon />} />
+      <ToolbarMark type={getSlatePluginType(useEditorRef(), MARK_ITALIC)} icon={<ItalicIcon />} />
+      <ToolbarMark
+        type={getSlatePluginType(useEditorRef(), MARK_UNDERLINE)}
+        icon={<UnderlineIcon />}
+      />
       <ToolbarMark
         type={getSlatePluginType(useEditorRef(), MARK_STRIKETHROUGH)}
-        icon={<StrikeThrough />}
+        icon={<StrikeThroughIcon />}
       />
       <ToolbarMark type={getSlatePluginType(useEditorRef(), MARK_CODE)} icon={'code'} />
       <ToolbarMark
         type={getSlatePluginType(useEditorRef(), MARK_SUPERSCRIPT)}
         clear={getSlatePluginType(useEditorRef(), MARK_SUBSCRIPT)}
-        icon={<Superscript />}
+        icon={<SuperscriptIcon />}
       />
       <ToolbarMark
         type={getSlatePluginType(useEditorRef(), MARK_SUBSCRIPT)}
         clear={getSlatePluginType(useEditorRef(), MARK_SUPERSCRIPT)}
-        icon={<Subscript />}
+        icon={<SubscriptIcon />}
       />
     </>
   )
@@ -134,12 +137,12 @@ export const ToolbarButtonsBasicMarks = () => {
 
 export const ToolbarButtonsTable = () => (
   <>
-    <ToolbarTable icon={<BorderAll />} transform={insertTable} />
-    <ToolbarTable icon={<BorderClear />} transform={deleteTable} />
-    <ToolbarTable icon={<BorderBottom />} transform={addRow} />
-    <ToolbarTable icon={<BorderTop />} transform={deleteRow} />
-    <ToolbarTable icon={<BorderLeft />} transform={addColumn} />
-    <ToolbarTable icon={<BorderRight />} transform={deleteColumn} />
+    <ToolbarTable icon={<BorderAllIcon />} transform={insertTable} />
+    <ToolbarTable icon={<BorderClearIcon />} transform={deleteTable} />
+    <ToolbarTable icon={<BorderBottomIcon />} transform={addRow} />
+    <ToolbarTable icon={<BorderTopIcon />} transform={deleteRow} />
+    <ToolbarTable icon={<BorderLeftIcon />} transform={addColumn} />
+    <ToolbarTable icon={<BorderRightIcon />} transform={deleteColumn} />
     <TableBorderColorToolbar />
     <TableBgColorToolbar />
   </>
@@ -161,26 +164,26 @@ export const ToolbarBalloon = () => {
     <BalloonToolbar direction="top" hiddenDelay={0} theme="light" arrow={arrow}>
       <ToolbarMark
         type={getSlatePluginType(editor, MARK_BOLD)}
-        icon={<Bold />}
+        icon={<BoldIcon />}
         // @ts-ignore
         tooltip={{content: 'Bold (⌘B)', ...tooltip}}
       />
       <ToolbarMark
         type={getSlatePluginType(editor, MARK_ITALIC)}
-        icon={<Italic />}
+        icon={<ItalicIcon />}
         // @ts-ignore
         tooltip={{content: 'Italic (⌘I)', ...tooltip}}
       />
       <ToolbarMark
         type={getSlatePluginType(editor, MARK_UNDERLINE)}
-        icon={<Underline />}
+        icon={<UnderlineIcon />}
         // @ts-ignore
         tooltip={{content: 'Underline (⌘U)', ...tooltip}}
       />
-      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H1)} icon={<H1 />} />
-      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H2)} icon={<H2 />} />
-      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H3)} icon={<H3 />} />
-      <ToolbarList type={getSlatePluginType(useEditorRef(), ELEMENT_UL)} icon={<ListUL />} />
+      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H1)} icon={<H1Icon />} />
+      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H2)} icon={<H2Icon />} />
+      <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H3)} icon={<H3Icon />} />
+      <ToolbarList type={getSlatePluginType(useEditorRef(), ELEMENT_UL)} icon={<ListULIcon />} />
     </BalloonToolbar>
   )
 }

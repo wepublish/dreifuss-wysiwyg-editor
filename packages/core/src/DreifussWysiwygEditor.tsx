@@ -16,7 +16,7 @@ import {
   CharactersCountIcon,
   ImageIcon,
   Modal,
-  Link
+  LinkIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
@@ -147,7 +147,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <Divider type={DividerType.vertical} /> */}
           <ToolbarButtonsTable />
           <Divider type={DividerType.vertical} />
-          <Modal type={ELEMENT_LINK} Icon={<Link />}>
+          <Modal type={ELEMENT_LINK} Icon={<LinkIcon />}>
             <ToolbarLink />
           </Modal>
           <Divider type={DividerType.vertical} />
