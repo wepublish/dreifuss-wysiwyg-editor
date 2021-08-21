@@ -41,11 +41,11 @@ import {
 } from '@udecode/slate-plugins-basic-marks'
 import {
   ToolbarBalloon,
-  ToolbarButtonsAlign,
-  ToolbarButtonsBasicElements,
-  ToolbarButtonsBasicMarks,
-  ToolbarButtonsList,
-  ToolbarButtonsTable
+  ToolbarAlignButtons,
+  ToolbarBasicElementsButtons,
+  ToolbarBasicMarksButtons,
+  ToolbarListButtons,
+  ToolbarTableButtons
 } from './Toolbar'
 
 export interface EditableProps {
@@ -132,20 +132,20 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
       <ToolbarBalloon />
       {!props.displayOnly && (
         <HeadingToolbar>
-          <ToolbarButtonsBasicElements />
+          <ToolbarBasicElementsButtons />
           <QuotationMarksMenu />
           <Divider type={DividerType.vertical} />
-          <ToolbarButtonsList />
+          <ToolbarListButtons />
           <Divider type={DividerType.vertical} />
-          <ToolbarButtonsBasicMarks />
+          <ToolbarBasicMarksButtons />
           <Divider type={DividerType.vertical} />
           <FontColorToolbar />
           <Divider type={DividerType.vertical} />
-          <ToolbarButtonsAlign />
+          <ToolbarAlignButtons />
           <Divider type={DividerType.vertical} />
           {/* <ToolbarImage />
           <Divider type={DividerType.vertical} /> */}
-          <ToolbarButtonsTable />
+          <ToolbarTableButtons />
           <Divider type={DividerType.vertical} />
           <Modal type={ELEMENT_LINK} Icon={<LinkIcon />}>
             <ToolbarLink />

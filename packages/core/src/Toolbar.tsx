@@ -66,7 +66,7 @@ import {
   MARK_UNDERLINE
 } from '@udecode/slate-plugins-basic-marks'
 
-export const ToolbarButtonsBasicElements = () => (
+export const ToolbarBasicElementsButtons = () => (
   <>
     <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H1)} icon={<H1Icon />} />
     <ToolbarElement type={getSlatePluginType(useEditorRef(), ELEMENT_H2)} icon={<H2Icon />} />
@@ -82,14 +82,14 @@ export const ToolbarButtonsBasicElements = () => (
   </>
 )
 
-export const ToolbarButtonsList = () => (
+export const ToolbarListButtons = () => (
   <>
     <ToolbarList type={getSlatePluginType(useEditorRef(), ELEMENT_UL)} icon={<ListULIcon />} />
     <ToolbarList type={getSlatePluginType(useEditorRef(), ELEMENT_OL)} icon={<ListOLIcon />} />
   </>
 )
 
-export const ToolbarButtonsAlign = () => (
+export const ToolbarAlignButtons = () => (
   <>
     <ToolbarAlign icon={<AlignLeftIcon />} />
     <ToolbarAlign
@@ -107,7 +107,7 @@ export const ToolbarButtonsAlign = () => (
   </>
 )
 
-export const ToolbarButtonsBasicMarks = () => {
+export const ToolbarBasicMarksButtons = () => {
   return (
     <>
       <ToolbarMark type={getSlatePluginType(useEditorRef(), MARK_BOLD)} icon={<BoldIcon />} />
@@ -135,7 +135,7 @@ export const ToolbarButtonsBasicMarks = () => {
   )
 }
 
-export const ToolbarButtonsTable = () => (
+export const ToolbarTableButtons = () => (
   <>
     <ToolbarTable icon={<BorderAllIcon />} transform={insertTable} />
     <ToolbarTable icon={<BorderClearIcon />} transform={deleteTable} />
