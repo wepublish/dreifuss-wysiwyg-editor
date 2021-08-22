@@ -19,6 +19,8 @@ export const withImageUpload =
       const text = data.getData('text/plain')
       const {files} = data
       if (files && files.length > 0) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         for (const file of files) {
           const reader = new FileReader()
           const [mime] = file.type.split('/')
