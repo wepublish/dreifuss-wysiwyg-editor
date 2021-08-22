@@ -1,7 +1,7 @@
 import isHotkey from 'is-hotkey'
 import {TEditor} from './types'
 
-export function verifyHotkey(e: any, keys: string[]) {
+export function verifyHotkey(e: any, keys: string | string[]) {
   return isHotkey(keys, e)
 }
 
