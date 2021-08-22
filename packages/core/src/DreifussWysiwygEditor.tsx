@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/slate-plugins-toolbar'
-import {createImagePlugin} from '@udecode/slate-plugins-image'
 import {createTablePlugin} from '@dreifuss-wysiwyg-editor/table'
 import {createAlignPlugin} from '@udecode/slate-plugins-alignment'
 import {createHeadingPlugin} from '@udecode/slate-plugins-heading'
@@ -23,9 +22,9 @@ import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {createHistoryPlugin, createReactPlugin, SlatePlugins} from '@udecode/slate-plugins-core'
-import {ToolbarImage} from '@udecode/slate-plugins-image-ui'
-// @ts-ignore
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
+import {createImagePlugin} from '@dreifuss-wysiwyg-editor/image'
+import {ToolbarImage} from '@dreifuss-wysiwyg-editor/image-ui'
 import {createLinkPlugin, ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
 import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
@@ -143,8 +142,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <Divider type={DividerType.vertical} />
           <ToolbarAlignButtons />
           <Divider type={DividerType.vertical} />
-          {/* <ToolbarImage />
-          <Divider type={DividerType.vertical} /> */}
           <ToolbarTableButtons />
           <Divider type={DividerType.vertical} />
           <Modal type={ELEMENT_LINK} Icon={<LinkIcon />}>
