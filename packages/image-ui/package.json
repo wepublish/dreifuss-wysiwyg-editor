@@ -34,11 +34,13 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@dreifuss-wysiwyg-editor/font-color": "0.0.0",
+    "@dreifuss-wysiwyg-editor/image": "0.0.0",
     "@udecode/slate-plugins-core": "^1.0.0-next.36",
     "@udecode/slate-plugins-toolbar": "^1.0.0-next.36",
     "@dreifuss-wysiwyg-editor/common": "^1.0.2-alpha.1",
-    "@udecode/slate-plugins-ui-fluent": "^1.0.0-next.36"
+    "@udecode/slate-plugins-ui-fluent": "^1.0.0-next.36",
+    "@testing-library/react": "^12.0.0",
+    "@udecode/slate-plugins-test-utils": "^1.0.0-alpha.18"
   },
   "devDependencies": {
     "@types/react": "^17.0.14",
