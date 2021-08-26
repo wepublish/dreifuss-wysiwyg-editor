@@ -102,7 +102,7 @@ export const createSlatePluginsOptions = <T extends string = string>(
       defaultType: 'list-item'
     },
     [ELEMENT_LINK]: {
-      hotkey: ['ctrl+v']
+      hotkey: ['ctrl+v', 'mod+v']
     },
     [ELEMENT_MEDIA_EMBED]: {},
     // [ELEMENT_MENTION]: {},
