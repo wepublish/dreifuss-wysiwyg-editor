@@ -6,7 +6,7 @@ import {validateUrl} from '../utils'
 export const onKeyDown =
   (editor: any): any =>
   async (event: any) => {
-    if (!event.ctrlKey || !editor) return
+    if (!editor) return
 
     const hotKey = getPluginHotkey(editor, ELEMENT_LINK)
 
@@ -21,7 +21,8 @@ export const onKeyDown =
         if (isValid) {
           upsertLinkAtSelection(editor, {
             url,
-            selection: editor.selection
+            selection: editor.selection,
+            wrap: true
           })
         }
       })
