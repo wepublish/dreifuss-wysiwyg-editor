@@ -6,5 +6,5 @@ export function verifyHotkey(e: any, keys: string | string[]) {
 }
 
 export function getPluginHotkey(editor: TEditor, pluginKey: string) {
-  return editor?.options?.[pluginKey]?.hotkey
+  return editor.options?.[pluginKey]?.hotkey
 }

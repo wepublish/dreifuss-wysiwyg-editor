@@ -5,7 +5,7 @@ import {
   useEventEditorId,
   useStoreEditorState
 } from '@udecode/slate-plugins-core'
-import {BorderColor} from '@dreifuss-wysiwyg-editor/common'
+import {BorderColorIcon} from '@dreifuss-wysiwyg-editor/common'
 import {ELEMENT_TD, upsertBorderColor} from '@dreifuss-wysiwyg-editor/table'
 
 interface TableBorderColorToolbarProps {
@@ -37,7 +37,7 @@ export const TableBorderColorToolbar = (props: TableBorderColorToolbarProps) => 
 
   return (
     <div onClick={() => textInput.current?.click()}>
-      {props.icon ?? <BorderColor />}
+      {props.icon ?? <BorderColorIcon />}
       <input
         type="color"
         ref={textInput}

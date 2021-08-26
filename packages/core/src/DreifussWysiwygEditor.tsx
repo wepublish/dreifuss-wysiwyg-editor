@@ -29,6 +29,7 @@ import {createLinkPlugin, ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
 import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
+import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -132,7 +133,9 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
       {!props.displayOnly && (
         <HeadingToolbar>
           <ToolbarBasicElementsButtons />
-          <QuotationMarksMenu />
+          <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
+            <QuotationMarksMenu />
+          </Modal>
           <Divider type={DividerType.vertical} />
           <ToolbarListButtons />
           <Divider type={DividerType.vertical} />

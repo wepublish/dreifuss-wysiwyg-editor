@@ -93,18 +93,19 @@ export const ToolbarLink = () => {
         setTitle((node.title || (node?.children[0]?.text as string)) ?? '')
 
         const nodeUrl = node.url as string
-        if (nodeUrl) {
-          if (nodeUrl.startsWith(prefixType.https)) {
-            setPrefix(prefixType.https)
-          } else if (nodeUrl.startsWith(prefixType.http)) {
-            setPrefix(prefixType.http)
-          } else if (nodeUrl.startsWith(prefixType.mailto)) {
-            setPrefix(prefixType.mailto)
-          } else {
-            setPrefix(prefixType.other)
-          }
-          setURL(nodeUrl as string)
+
+        if (!nodeUrl) return
+
+        if (nodeUrl.startsWith(prefixType.https)) {
+          setPrefix(prefixType.https)
+        } else if (nodeUrl.startsWith(prefixType.http)) {
+          setPrefix(prefixType.http)
+        } else if (nodeUrl.startsWith(prefixType.mailto)) {
+          setPrefix(prefixType.mailto)
+        } else {
+          setPrefix(prefixType.other)
         }
+        setURL(nodeUrl as string)
       }
     } else if (editor.selection) {
       const text = Editor.string(editor, editor.selection)
