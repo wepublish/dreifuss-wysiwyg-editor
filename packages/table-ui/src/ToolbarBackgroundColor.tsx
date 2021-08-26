@@ -7,7 +7,7 @@ import {
   useEventEditorId,
   useStoreEditorState
 } from '@udecode/slate-plugins-core'
-import {BackgroundColor} from '@dreifuss-wysiwyg-editor/common'
+import {BackgroundColorIcon} from '@dreifuss-wysiwyg-editor/common'
 import {ELEMENT_TD, upsertBgColor} from '@dreifuss-wysiwyg-editor/table'
 
 type CustomElement = {
@@ -55,7 +55,7 @@ export const TableBgColorToolbar = (props: ToolbarBackgroundColorProps) => {
 
   return (
     <div onClick={() => textInput.current?.click()}>
-      {props.icon ?? <BackgroundColor />}
+      {props.icon ?? <BackgroundColorIcon />}
       <input
         type="color"
         ref={textInput}
