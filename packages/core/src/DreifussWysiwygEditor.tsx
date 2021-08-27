@@ -47,6 +47,7 @@ import {
   ToolbarListButtons,
   ToolbarTableButtons
 } from './Toolbar'
+import {ELEMENT_IMAGE} from '@udecode/slate-plugins-image'
 
 export interface EditableProps {
   id?: string
@@ -66,10 +67,11 @@ export interface EditorProps {
   value?: EditorValue
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
+  toolbars: any
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
-  const {id = 'main', showCharactersCount = true} = props
+  const {id = 'main', showCharactersCount = true, toolbars} = props
   const components = createSlatePluginsComponents()
   const options = createSlatePluginsOptions()
 
@@ -151,7 +153,9 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             <ToolbarLink />
           </Modal>
           <Divider type={DividerType.vertical} />
-          <ToolbarImage icon={<ImageIcon />} />
+          <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
+            <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
+          </Modal>
         </HeadingToolbar>
       )}
       {showCharactersCount && (
