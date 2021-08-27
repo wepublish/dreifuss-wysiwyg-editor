@@ -15,7 +15,8 @@ import {
   CharactersCountIcon,
   ImageIcon,
   Modal,
-  LinkIcon
+  LinkIcon,
+  SearchIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
@@ -30,6 +31,9 @@ import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
 import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
+import {useFindReplacePlugin} from '@udecode/slate-plugins-find-replace'
+import {ToolbarSearchHighlight} from '@udecode/slate-plugins-find-replace-ui'
+
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -75,6 +79,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
   const components = createSlatePluginsComponents()
   const options = createSlatePluginsOptions()
 
+  const {setSearch, plugin: searchHighlightPlugin} = useFindReplacePlugin()
+
   const editableProps = {
     placeholder: "What's on your mind?",
     spellCheck: false,
@@ -119,7 +125,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createBlockquotePlugin(),
     createSuperscriptPlugin(),
     createStrikethroughPlugin(),
-    createHeadingPlugin({levels: 3})
+    createHeadingPlugin({levels: 3}),
+    searchHighlightPlugin
   ]
 
   return (
@@ -148,13 +155,20 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <ToolbarAlignButtons />
           <Divider type={DividerType.vertical} />
           <ToolbarTableButtons />
+
           <Divider type={DividerType.vertical} />
           <Modal type={ELEMENT_LINK} Icon={<LinkIcon />}>
             <ToolbarLink />
           </Modal>
+
           <Divider type={DividerType.vertical} />
           <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
             <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
+          </Modal>
+
+          <Divider type={DividerType.vertical} />
+          <Modal type={ELEMENT_IMAGE} Icon={<SearchIcon />}>
+            <ToolbarSearchHighlight icon={() => <></>} setSearch={setSearch} />
           </Modal>
         </HeadingToolbar>
       )}
