@@ -67,7 +67,7 @@ export interface EditorProps {
   value?: EditorValue
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
-  toolbars: any
+  toolbars?: any
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
