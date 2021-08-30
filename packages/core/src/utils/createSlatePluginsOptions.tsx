@@ -22,7 +22,13 @@ import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading
 import {MARK_HIGHLIGHT} from '@udecode/slate-plugins-highlight'
 import {ELEMENT_IMAGE} from '@udecode/slate-plugins-image'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
-import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/slate-plugins-list'
+import {
+  ELEMENT_LI,
+  ELEMENT_OL,
+  ELEMENT_TODO_LI,
+  ELEMENT_UL,
+  ELEMENT_LIC
+} from '@udecode/slate-plugins-list'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/slate-plugins-media-embed'
 // import {ELEMENT_MENTION} from '@udecode/slate-plugins-mention'
 import {ELEMENT_PARAGRAPH} from '@udecode/slate-plugins-paragraph'
@@ -52,6 +58,7 @@ export type DefaultSlatePluginKey =
   | typeof ELEMENT_TODO_LI
   | typeof ELEMENT_TR
   | typeof ELEMENT_UL
+  | typeof ELEMENT_LIC
   | typeof MARK_BOLD
   | typeof MARK_CODE
   | typeof MARK_HIGHLIGHT
@@ -70,13 +77,25 @@ export const createSlatePluginsOptions = <T extends string = string>(
   overrides?: Partial<Record<DefaultSlatePluginKey | T, Partial<SlatePluginOptions>>>
 ) => {
   const options: Record<DefaultSlatePluginKey, Partial<SlatePluginOptions>> = {
-    [ELEMENT_ALIGN_CENTER]: {},
+    [ELEMENT_ALIGN_CENTER]: {
+      type: 'align-center'
+    },
     [ELEMENT_ALIGN_JUSTIFY]: {},
-    [ELEMENT_ALIGN_LEFT]: {},
-    [ELEMENT_ALIGN_RIGHT]: {},
-    [ELEMENT_BLOCKQUOTE]: {},
-    [ELEMENT_CODE_BLOCK]: {},
-    [ELEMENT_CODE_LINE]: {},
+    [ELEMENT_ALIGN_LEFT]: {
+      type: 'align-left'
+    },
+    [ELEMENT_ALIGN_RIGHT]: {
+      type: 'align-right'
+    },
+    [ELEMENT_BLOCKQUOTE]: {
+      type: 'block-quote'
+    },
+    [ELEMENT_CODE_BLOCK]: {
+      type: 'code-block'
+    },
+    [ELEMENT_CODE_LINE]: {
+      type: 'code-line'
+    },
     [ELEMENT_PARAGRAPH]: {
       type: 'paragraph',
       defaultType: 'paragraph'
@@ -109,6 +128,9 @@ export const createSlatePluginsOptions = <T extends string = string>(
     [ELEMENT_OL]: {
       type: 'ordered-list',
       defaultType: 'ordered-list'
+    },
+    [ELEMENT_LIC]: {
+      type: 'list-item-cell'
     },
     [ELEMENT_TABLE]: {},
     [ELEMENT_TD]: {
