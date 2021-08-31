@@ -7,7 +7,7 @@ import {
   someNode,
   unwrapNodes
 } from '@udecode/plate-common'
-import {getSlatePluginType, SPEditor, WithOverride} from '@udecode/plate-core'
+import {getPlatePluginType, SPEditor, WithOverride} from '@udecode/plate-core'
 import {withRemoveEmptyNodes} from '@udecode/plate-normalizers'
 import {Range} from 'slate'
 import {ReactEditor} from 'slate-react'
@@ -28,7 +28,7 @@ const upsertLink = (
 ) => {
   unwrapNodes(editor, {
     at,
-    match: {type: getSlatePluginType(editor, ELEMENT_LINK)}
+    match: {type: getPlatePluginType(editor, ELEMENT_LINK)}
   })
 
   const newSelection = editor.selection as Range
@@ -74,7 +74,7 @@ export const withLink =
   editor => {
     const {insertData, insertText} = editor
 
-    const type = getSlatePluginType(editor, ELEMENT_LINK)
+    const type = getPlatePluginType(editor, ELEMENT_LINK)
 
     editor.insertText = text => {
       if (text === ' ' && isCollapsed(editor.selection)) {

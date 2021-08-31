@@ -1,3 +1,2 @@
-# plate-link
+# plate-quotation-mark
 
-This plugin is based on @udecode/plate-link

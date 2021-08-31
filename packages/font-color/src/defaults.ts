@@ -1,7 +1,7 @@
-import {SlatePluginOptions} from '@udecode/plate-core'
+import {PlatePluginOptions} from '@udecode/plate-core'
 
 export const ELEMENT_FONT_COLOR = 'color'
 
-export const DEFAULTS_FONT_COLOR: Partial<SlatePluginOptions> = {
+export const DEFAULTS_FONT_COLOR: Partial<PlatePluginOptions> = {
   getNodeProps: ({element}) => ({color: element?.color})
 }

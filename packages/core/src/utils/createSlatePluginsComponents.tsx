@@ -29,8 +29,6 @@ import {
   ELEMENT_H6
 } from '@udecode/plate-heading'
 import {MARK_HIGHLIGHT} from '@udecode/plate-highlight'
-import {ELEMENT_IMAGE} from '@udecode/plate-image'
-import {ImageElement} from '@udecode/plate-image-ui'
 import {MARK_KBD} from '@udecode/plate-kbd'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {LinkElement} from '@dreifuss-wysiwyg-editor/link-ui'
@@ -44,12 +42,12 @@ import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 import {TableElement, TableDataElement} from '@dreifuss-wysiwyg-editor/table-ui'
 import {StyledElement, StyledLeaf} from '@udecode/plate-ui-fluent'
-import {DefaultSlatePluginKey} from './createPlateOptions'
+import {DefaultPlatePluginKey} from './createPlateOptions'
 import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font-color'
 import {RenderFontColorLeaf} from '@dreifuss-wysiwyg-editor/font-color-ui'
 
 export const createPlateComponents = <T extends string = string>(
-  overrides?: Partial<Record<DefaultSlatePluginKey | T, FunctionComponent<any>>>
+  overrides?: Partial<Record<DefaultPlatePluginKey | T, FunctionComponent<any>>>
 ) => {
   const components = {
     [ELEMENT_ALIGN_CENTER]: withProps(StyledElement, {
@@ -153,7 +151,6 @@ export const createPlateComponents = <T extends string = string>(
         }
       }
     }),
-    [ELEMENT_IMAGE]: ImageElement,
     [ELEMENT_LI]: withProps(StyledElement, {as: 'li'}),
     [ELEMENT_LINK]: LinkElement,
     [ELEMENT_MEDIA_EMBED]: MediaEmbedElement,
@@ -268,5 +265,5 @@ export const createPlateComponents = <T extends string = string>(
     })
   }
 
-  return components as Record<DefaultSlatePluginKey | T, FunctionComponent>
+  return components as Record<DefaultPlatePluginKey | T, FunctionComponent>
 }

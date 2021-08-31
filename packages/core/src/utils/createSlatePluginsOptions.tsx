@@ -16,11 +16,10 @@ import {
 } from '@udecode/plate-basic-marks'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
 import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
-import {SlatePluginOptions} from '@udecode/plate-core'
+import {PlatePluginOptions} from '@udecode/plate-core'
 import {MARK_SEARCH_HIGHLIGHT} from '@udecode/plate-find-replace'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
 import {MARK_HIGHLIGHT} from '@udecode/plate-highlight'
-import {ELEMENT_IMAGE} from '@udecode/plate-image'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/plate-list'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
@@ -28,7 +27,7 @@ import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 
-export type DefaultSlatePluginKey =
+export type DefaultPlatePluginKey =
   | typeof ELEMENT_ALIGN_CENTER
   | typeof ELEMENT_ALIGN_JUSTIFY
   | typeof ELEMENT_ALIGN_LEFT
@@ -67,9 +66,9 @@ export type DefaultSlatePluginKey =
  * @param overrides merge into the default options
  */
 export const createPlateOptions = <T extends string = string>(
-  overrides?: Partial<Record<DefaultSlatePluginKey | T, Partial<SlatePluginOptions>>>
+  overrides?: Partial<Record<DefaultPlatePluginKey | T, Partial<PlatePluginOptions>>>
 ) => {
-  const options: Record<DefaultSlatePluginKey, Partial<SlatePluginOptions>> = {
+  const options: Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>> = {
     [ELEMENT_ALIGN_CENTER]: {},
     [ELEMENT_ALIGN_JUSTIFY]: {},
     [ELEMENT_ALIGN_LEFT]: {},
@@ -129,8 +128,7 @@ export const createPlateOptions = <T extends string = string>(
     [MARK_STRIKETHROUGH]: {},
     [MARK_SUBSCRIPT]: {},
     [MARK_SUPERSCRIPT]: {},
-    [MARK_UNDERLINE]: {},
-    [ELEMENT_IMAGE]: {}
+    [MARK_UNDERLINE]: {}
   }
 
   if (overrides) {
@@ -145,5 +143,5 @@ export const createPlateOptions = <T extends string = string>(
     }
   })
 
-  return options as Record<DefaultSlatePluginKey | T, SlatePluginOptions>
+  return options as Record<DefaultPlatePluginKey | T, PlatePluginOptions>
 }

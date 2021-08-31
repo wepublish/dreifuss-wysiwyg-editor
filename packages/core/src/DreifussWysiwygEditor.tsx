@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/plate-toolbar'
-import {createImagePlugin} from '@udecode/plate-image'
 import {createTablePlugin} from '@dreifuss-wysiwyg-editor/table'
 import {createAlignPlugin} from '@udecode/plate-alignment'
 import {createHeadingPlugin} from '@udecode/plate-heading'
@@ -11,19 +10,12 @@ import {createCodeBlockPlugin} from '@udecode/plate-code-block'
 import {createBlockquotePlugin} from '@udecode/plate-block-quote'
 import {createMediaEmbedPlugin} from '@udecode/plate-media-embed'
 import {createPlateOptions} from './utils/createPlateOptions'
-import {
-  EditorValue,
-  CharactersCountIcon,
-  ImageIcon,
-  Modal,
-  LinkIcon
-} from '@dreifuss-wysiwyg-editor/common'
+import {EditorValue, CharactersCountIcon, Modal, LinkIcon} from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
 import {createPlateComponents} from './utils/createPlateComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {createHistoryPlugin, createReactPlugin, Plate} from '@udecode/plate-core'
-import {ToolbarImage} from '@udecode/plate-image-ui'
 // @ts-ignore
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin, ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
@@ -104,7 +96,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createBoldPlugin(),
     createCodePlugin(),
     createAlignPlugin(),
-    createImagePlugin(),
     createTablePlugin(),
     createItalicPlugin(),
     createTodoListPlugin(),
@@ -154,7 +145,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             <ToolbarLink />
           </Modal>
           <Divider type={DividerType.vertical} />
-          <ToolbarImage icon={<ImageIcon />} />
         </HeadingToolbar>
       )}
       {showCharactersCount && (

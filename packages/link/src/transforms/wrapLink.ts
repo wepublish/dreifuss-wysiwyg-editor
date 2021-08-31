@@ -1,5 +1,5 @@
 import {wrapNodes} from '@udecode/plate-common'
-import {getSlatePluginType, SPEditor} from '@udecode/plate-core'
+import {getPlatePluginType, SPEditor} from '@udecode/plate-core'
 import {Location} from 'slate'
 import {ELEMENT_LINK} from '../defaults'
 
@@ -10,7 +10,7 @@ export const wrapLink = (editor: SPEditor, {at, url}: {url: string; at?: Locatio
   wrapNodes(
     editor,
     {
-      type: getSlatePluginType(editor, ELEMENT_LINK),
+      type: getPlatePluginType(editor, ELEMENT_LINK),
       url,
       children: []
     },

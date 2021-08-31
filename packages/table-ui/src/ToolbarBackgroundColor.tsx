@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
 import {Editor, Element, BaseEditor} from 'slate'
-import {getSlatePluginType, useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
+import {getPlatePluginType, useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
 import {BackgroundColorIcon} from '@dreifuss-wysiwyg-editor/common'
 import {ELEMENT_TD, upsertBgColor} from '@dreifuss-wysiwyg-editor/table'
 
@@ -41,7 +41,7 @@ export const TableBgColorToolbar = (props: ToolbarBackgroundColorProps) => {
       Editor.nodes(editor, {
         at: editor.selection,
         match: node =>
-          Element.isElement(node) && node.type === getSlatePluginType(editor, ELEMENT_TD)
+          Element.isElement(node) && node.type === getPlatePluginType(editor, ELEMENT_TD)
       })
     )
     if (nodes?.length) {

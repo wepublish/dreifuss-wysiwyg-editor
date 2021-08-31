@@ -36,8 +36,8 @@
     "is-hotkey": "^0.2.0",
     "@babel/polyfill": "^7.12.1",
     "react-color-palette": "^6.1.0",
-    "@udecode/plate-core": "^1.0.0-next.36",
-    "@udecode/plate-toolbar": "^1.0.0-next.36",
+    "@udecode/plate-core": "^1.0.0",
+    "@udecode/plate-toolbar": "^3.0.1",
     "@udecode/plate-ui-fluent": "^1.0.0-next.36"
   },
   "devDependencies": {

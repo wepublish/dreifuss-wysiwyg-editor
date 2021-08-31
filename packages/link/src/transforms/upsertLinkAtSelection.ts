@@ -1,5 +1,5 @@
 import {insertNodes, isCollapsed, unwrapNodes} from '@udecode/plate-common'
-import {getSlatePluginType, SPEditor, TElement} from '@udecode/plate-core'
+import {getPlatePluginType, SPEditor, TElement} from '@udecode/plate-core'
 import {Editor, Transforms} from 'slate'
 import {ELEMENT_LINK} from '../defaults'
 import {wrapLink} from './wrapLink'
@@ -26,7 +26,7 @@ export const upsertLinkAtSelection = (
 ) => {
   if (!selection) return
 
-  const type = getSlatePluginType(editor, ELEMENT_LINK)
+  const type = getPlatePluginType(editor, ELEMENT_LINK)
 
   if (!wrap && isCollapsed(selection)) {
     return insertNodes<TElement>(editor, {
@@ -52,7 +52,7 @@ export const upsertLinkAtSelection = (
 
 export function removeLink(editor: SPEditor) {
   if (!editor.selection) return null
-  const type = getSlatePluginType(editor, ELEMENT_LINK)
+  const type = getPlatePluginType(editor, ELEMENT_LINK)
 
   unwrapNodes(editor, {
     at: editor.selection,
