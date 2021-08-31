@@ -11,17 +11,26 @@ import {createCodeBlockPlugin} from '@udecode/slate-plugins-code-block'
 import {createBlockquotePlugin} from '@udecode/slate-plugins-block-quote'
 import {createMediaEmbedPlugin} from '@udecode/slate-plugins-media-embed'
 import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
-import {EditorValue, CharactersCountIcon} from '@dreifuss-wysiwyg-editor/common'
+import {
+  EditorValue,
+  CharactersCountIcon,
+  ImageIcon,
+  Modal,
+  LinkIcon
+} from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {createHistoryPlugin, createReactPlugin, SlatePlugins} from '@udecode/slate-plugins-core'
+import {ToolbarImage} from '@udecode/slate-plugins-image-ui'
 // @ts-ignore
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
-import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
+import {createLinkPlugin, ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
 import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
+import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
+import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -33,11 +42,11 @@ import {
 } from '@udecode/slate-plugins-basic-marks'
 import {
   ToolbarBalloon,
-  ToolbarButtonsAlign,
-  ToolbarButtonsBasicElements,
-  ToolbarButtonsBasicMarks,
-  ToolbarButtonsList,
-  ToolbarButtonsTable
+  ToolbarAlignButtons,
+  ToolbarBasicElementsButtons,
+  ToolbarBasicMarksButtons,
+  ToolbarListButtons,
+  ToolbarTableButtons
 } from './Toolbar'
 
 export interface EditableProps {
@@ -124,21 +133,28 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
       <ToolbarBalloon />
       {!props.displayOnly && (
         <HeadingToolbar>
-          <ToolbarButtonsBasicElements />
+          <ToolbarBasicElementsButtons />
+          <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
+            <QuotationMarksMenu />
+          </Modal>
           <Divider type={DividerType.vertical} />
-          <ToolbarButtonsList />
+          <ToolbarListButtons />
           <Divider type={DividerType.vertical} />
-          <ToolbarButtonsBasicMarks />
+          <ToolbarBasicMarksButtons />
           <Divider type={DividerType.vertical} />
           <FontColorToolbar />
           <Divider type={DividerType.vertical} />
-          <ToolbarButtonsAlign />
+          <ToolbarAlignButtons />
           <Divider type={DividerType.vertical} />
           {/* <ToolbarImage />
           <Divider type={DividerType.vertical} /> */}
-          <ToolbarButtonsTable />
+          <ToolbarTableButtons />
           <Divider type={DividerType.vertical} />
-          <ToolbarLink />
+          <Modal type={ELEMENT_LINK} Icon={<LinkIcon />}>
+            <ToolbarLink />
+          </Modal>
+          <Divider type={DividerType.vertical} />
+          <ToolbarImage icon={<ImageIcon />} />
         </HeadingToolbar>
       )}
       {showCharactersCount && (

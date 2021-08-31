@@ -1,7 +1,7 @@
 import {createContext} from 'react'
 
 interface ModalContextProps {
-  toggleModal: () => void
+  toggleMenu: () => void
 }
 
 const emptyFn = () => {
@@ -9,7 +9,5 @@ const emptyFn = () => {
 }
 
 export const ModalContext = createContext<ModalContextProps>({
-  toggleModal: emptyFn
+  toggleMenu: emptyFn
 })
-
-export default ModalContext

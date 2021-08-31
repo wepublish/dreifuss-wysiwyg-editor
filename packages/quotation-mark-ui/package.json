@@ -1,16 +1,16 @@
 {
-  "name": "@dreifuss-wysiwyg-editor/link",
-  "version": "1.0.2-alpha.1",
-  "description": "Dreifuss wysiwyg Editor Link plugin",
+  "name": "@dreifuss-wysiwyg-editor/quotation-mark-ui",
+  "version": "0.0.0",
+  "description": "Dreifuss wysiwyg Editor quotation mark ui plugin",
   "keywords": [],
-  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/link",
+  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/quotation-mark-ui#readme",
   "bugs": {
     "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor/issues"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor.git",
-    "directory": "packages/link"
+    "directory": "packages/quotation-mark-ui"
   },
   "license": "MIT",
   "main": "dist/index.js",
@@ -33,9 +33,12 @@
     "slate-react": "^0.60.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@dreifuss-wysiwyg-editor/common": "^1.0.2-alpha.1",
+    "@dreifuss-wysiwyg-editor/quotation-mark": "0.0.0",
     "@udecode/slate-plugins-core": "^1.0.0-next.36",
     "@udecode/slate-plugins-toolbar": "^1.0.0-next.36",
-    "@dreifuss-wysiwyg-editor/common": "1.0.2-alpha.1"
+    "@udecode/slate-plugins-ui-fluent": "^1.0.0-next.36"
   },
   "devDependencies": {
     "@types/react": "^17.0.14",

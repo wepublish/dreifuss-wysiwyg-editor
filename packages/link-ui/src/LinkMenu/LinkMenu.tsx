@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {BaseRange, Editor, Element, BaseEditor} from 'slate'
 import {
   getSlatePluginType,
@@ -12,7 +12,7 @@ import {
   ELEMENT_LINK
 } from '@dreifuss-wysiwyg-editor/link'
 import './link.css'
-import {Modal, Link} from '@dreifuss-wysiwyg-editor/common'
+import {ModalContext} from '@dreifuss-wysiwyg-editor/common'
 import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
 
@@ -27,11 +27,7 @@ declare module 'slate' {
   }
 }
 
-interface ToolbarLinkProps {
-  icon?: React.Component
-}
-
-export const ToolbarLink = (props: ToolbarLinkProps) => {
+export const ToolbarLink = () => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
 
   const [selection, setSelection] = useState<BaseRange | null>(null)
@@ -51,6 +47,8 @@ export const ToolbarLink = (props: ToolbarLinkProps) => {
   const [isValidURL, setIsValidURL] = useState(false)
 
   const [isInsertBtnDisabled, setIsInsertBtnDisabled] = useState(false)
+
+  const {toggleMenu} = useContext(ModalContext)
 
   useEffect(() => {
     if (url) {
@@ -95,6 +93,9 @@ export const ToolbarLink = (props: ToolbarLinkProps) => {
         setTitle((node.title || (node?.children[0]?.text as string)) ?? '')
 
         const nodeUrl = node.url as string
+
+        if (!nodeUrl) return
+
         if (nodeUrl.startsWith(prefixType.https)) {
           setPrefix(prefixType.https)
         } else if (nodeUrl.startsWith(prefixType.http)) {
@@ -104,8 +105,7 @@ export const ToolbarLink = (props: ToolbarLinkProps) => {
         } else {
           setPrefix(prefixType.other)
         }
-
-        setURL((nodeUrl as string) ?? '')
+        setURL(nodeUrl as string)
       }
     } else if (editor.selection) {
       const text = Editor.string(editor, editor.selection)
@@ -120,62 +120,62 @@ export const ToolbarLink = (props: ToolbarLinkProps) => {
   }, [editor?.selection])
 
   return (
-    <Modal icon={props.icon || <Link />}>
-      <form className="link-toolbar">
-        <div className="form-group">
-          <label>Link</label>
-          <div className="input-group">
-            <select
-              style={{
-                backgroundColor: 'white',
-                border: 'none',
-                boxShadow: 'none'
-              }}
-              value={prefix}
-              onChange={e => setPrefix(e.target.value)}>
-              <option value={prefixType.http}>{prefixType.http}</option>
-              <option value={prefixType.https}>{prefixType.https}</option>
-              <option value={prefixType.mailto}>{prefixType.mailto}</option>
-              <option value={prefixType.other}>{prefixType.other}</option>
-            </select>
-            <input name="url" value={url} onChange={e => setURL(e.target.value)} />
-          </div>
-          <p>{url && !isValidURL ? 'Invalid Link' : undefined}</p>
+    <form className="link-toolbar">
+      <div className="form-group">
+        <label>Link</label>
+        <div className="input-group">
+          <select
+            style={{
+              backgroundColor: 'white',
+              border: 'none',
+              boxShadow: 'none'
+            }}
+            value={prefix}
+            onChange={e => setPrefix(e.target.value)}>
+            <option value={prefixType.http}>{prefixType.http}</option>
+            <option value={prefixType.https}>{prefixType.https}</option>
+            <option value={prefixType.mailto}>{prefixType.mailto}</option>
+            <option value={prefixType.other}>{prefixType.other}</option>
+          </select>
+          <input name="url" value={url} onChange={e => setURL(e.target.value)} />
         </div>
-        <div className="form-group">
-          <label>Selected Text</label>
-          <div className="input-group">
-            <input name="text" value={title} onChange={e => setTitle(e.target.value)} />
-          </div>
+        <p>{url && !isValidURL ? 'Invalid Link' : undefined}</p>
+      </div>
+      <div className="form-group">
+        <label>Selected Text</label>
+        <div className="input-group">
+          <input name="text" value={title} onChange={e => setTitle(e.target.value)} />
         </div>
-        <div className="toolbar" role="toolbar">
-          <button
-            className={`${isInsertBtnDisabled ? 'disabled' : 'insert'}`}
-            disabled={isInsertBtnDisabled}
-            onClick={e => {
-              if (!editor) return
-              e.preventDefault()
+      </div>
+      <div className="toolbar" role="toolbar">
+        <button
+          className={`${isInsertBtnDisabled ? 'disabled' : 'insert'}`}
+          disabled={isInsertBtnDisabled}
+          onClick={e => {
+            if (!editor) return
+            e.preventDefault()
 
-              upsertLinkAtSelection(editor, {
-                url: prefix !== prefixType.other ? prefix + url : url,
-                wrap: true,
-                selection
-              })
-            }}>
-            Insert
-          </button>
-          <button
-            className={`${url ? 'cancel' : 'disabled'}`}
-            onClick={e => {
-              if (!editor) return
-              e.preventDefault()
+            upsertLinkAtSelection(editor, {
+              url: prefix !== prefixType.other ? prefix + url : url,
+              wrap: true,
+              selection
+            })
+            toggleMenu()
+          }}>
+          Insert
+        </button>
+        <button
+          className={`${url ? 'cancel' : 'disabled'}`}
+          onClick={e => {
+            if (!editor) return
+            e.preventDefault()
 
-              removeLink(editor)
-            }}>
-            Remove
-          </button>
-        </div>
-      </form>
-    </Modal>
+            removeLink(editor)
+            toggleMenu()
+          }}>
+          Remove
+        </button>
+      </div>
+    </form>
   )
 }
