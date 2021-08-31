@@ -1,5 +1,5 @@
-import {insertNodes, isCollapsed, unwrapNodes} from '@udecode/slate-plugins-common'
-import {getSlatePluginType, SPEditor, TElement} from '@udecode/slate-plugins-core'
+import {insertNodes, isCollapsed, unwrapNodes} from '@udecode/plate-common'
+import {getSlatePluginType, SPEditor, TElement} from '@udecode/plate-core'
 import {Editor, Transforms} from 'slate'
 import {ELEMENT_LINK} from '../defaults'
 import {wrapLink} from './wrapLink'

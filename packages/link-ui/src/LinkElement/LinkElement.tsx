@@ -1,11 +1,11 @@
 import * as React from 'react'
-import {LinkNodeData} from '@udecode/slate-plugins-link'
+import {LinkNodeData} from '@udecode/plate-link'
 import {
   ClassName,
   getRootClassNames,
   RootStyleSet,
   StyledElementProps
-} from '@udecode/slate-plugins-ui-fluent'
+} from '@udecode/plate-ui-fluent'
 import {styled} from '@uifabric/utilities'
 import {getLinkElementStyles} from './LinkElement.styles'
 

@@ -1,5 +1,5 @@
-import {insertNodes, someNode} from '@udecode/slate-plugins-common'
-import {getSlatePluginType, SPEditor, TElement} from '@udecode/slate-plugins-core'
+import {insertNodes, someNode} from '@udecode/plate-common'
+import {getSlatePluginType, SPEditor, TElement} from '@udecode/plate-core'
 import {ELEMENT_TABLE} from '../defaults'
 import {TablePluginOptions} from '../types'
 import {getEmptyTableNode} from '../utils/getEmptyTableNode'

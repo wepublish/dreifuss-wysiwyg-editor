@@ -36,9 +36,9 @@
     "@babel/polyfill": "^7.12.1",
     "@dreifuss-wysiwyg-editor/common": "^1.0.2-alpha.1",
     "@dreifuss-wysiwyg-editor/link": "^1.0.2-alpha.1",
-    "@udecode/slate-plugins-core": "^1.0.0-next.36",
-    "@udecode/slate-plugins-toolbar": "^1.0.0-next.36",
-    "@udecode/slate-plugins-ui-fluent": "^1.0.0-next.36"
+    "@udecode/plate-core": "^1.0.0-next.36",
+    "@udecode/plate-toolbar": "^1.0.0-next.36",
+    "@udecode/plate-ui-fluent": "^1.0.0-next.36"
   },
   "devDependencies": {
     "@types/react": "^17.0.14",

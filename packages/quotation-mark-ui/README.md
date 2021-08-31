@@ -1,2 +1,2 @@
-# slate-plugins-quotation-mark-ui
+# plate-quotation-mark-ui
 

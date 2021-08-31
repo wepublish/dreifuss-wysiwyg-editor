@@ -3,7 +3,7 @@ import {
   getRenderLeaf,
   getSlatePluginTypes,
   SlatePlugin
-} from '@udecode/slate-plugins-core'
+} from '@udecode/plate-core'
 import {ELEMENT_FONT_COLOR} from './defaults'
 import {getFontColorLeafDeserialize} from './getFontColorDeserialize'
 

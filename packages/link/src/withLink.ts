@@ -6,9 +6,9 @@ import {
   isUrl as isUrlProtocol,
   someNode,
   unwrapNodes
-} from '@udecode/slate-plugins-common'
-import {getSlatePluginType, SPEditor, WithOverride} from '@udecode/slate-plugins-core'
-import {withRemoveEmptyNodes} from '@udecode/slate-plugins-normalizers'
+} from '@udecode/plate-common'
+import {getSlatePluginType, SPEditor, WithOverride} from '@udecode/plate-core'
+import {withRemoveEmptyNodes} from '@udecode/plate-normalizers'
 import {Range} from 'slate'
 import {ReactEditor} from 'slate-react'
 import {upsertLinkAtSelection} from './transforms/upsertLinkAtSelection'

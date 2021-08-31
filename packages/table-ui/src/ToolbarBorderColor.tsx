@@ -1,10 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {Editor, Element} from 'slate'
-import {
-  getSlatePluginType,
-  useEventEditorId,
-  useStoreEditorState
-} from '@udecode/slate-plugins-core'
+import {getSlatePluginType, useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
 import {BorderColorIcon} from '@dreifuss-wysiwyg-editor/common'
 import {ELEMENT_TD, upsertBorderColor} from '@dreifuss-wysiwyg-editor/table'
 

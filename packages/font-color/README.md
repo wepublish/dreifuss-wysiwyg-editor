@@ -1,3 +1,3 @@
-# slate-plugins-font-color
+# plate-font-color
 
-This plugin is based on @udecode/slate-plugins-font-color
+This plugin is based on @udecode/plate-font-color

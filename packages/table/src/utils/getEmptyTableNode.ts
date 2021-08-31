@@ -1,4 +1,4 @@
-import {getSlatePluginType, SPEditor} from '@udecode/slate-plugins-core'
+import {getSlatePluginType, SPEditor} from '@udecode/plate-core'
 import {ELEMENT_TABLE} from '../defaults'
 import {TablePluginOptions} from '../types'
 import {getEmptyRowNode} from './getEmptyRowNode'

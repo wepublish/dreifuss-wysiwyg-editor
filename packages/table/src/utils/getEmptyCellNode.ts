@@ -1,5 +1,5 @@
-import {ELEMENT_DEFAULT} from '@udecode/slate-plugins-common'
-import {getSlatePluginType, SPEditor} from '@udecode/slate-plugins-core'
+import {ELEMENT_DEFAULT} from '@udecode/plate-common'
+import {getSlatePluginType, SPEditor} from '@udecode/plate-core'
 import {ELEMENT_TD} from '../defaults'
 import {TablePluginOptions} from '../types'
 

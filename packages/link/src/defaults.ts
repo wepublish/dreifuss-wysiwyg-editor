@@ -1,4 +1,4 @@
-import {SlatePluginOptions} from '@udecode/slate-plugins-core'
+import {SlatePluginOptions} from '@udecode/plate-core'
 
 export const ELEMENT_LINK = 'link'
 

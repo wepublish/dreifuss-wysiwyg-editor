@@ -2,11 +2,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
 import {Editor, Element, BaseEditor} from 'slate'
-import {
-  getSlatePluginType,
-  useEventEditorId,
-  useStoreEditorState
-} from '@udecode/slate-plugins-core'
+import {getSlatePluginType, useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
 import {BackgroundColorIcon} from '@dreifuss-wysiwyg-editor/common'
 import {ELEMENT_TD, upsertBgColor} from '@dreifuss-wysiwyg-editor/table'
 

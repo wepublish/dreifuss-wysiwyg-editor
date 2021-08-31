@@ -1,4 +1,4 @@
-import {ClassName, RootStyleSet} from '@udecode/slate-plugins-ui-fluent'
+import {ClassName, RootStyleSet} from '@udecode/plate-ui-fluent'
 
 export const getTableElementStyles = ({className}: ClassName): RootStyleSet => ({
   root: [

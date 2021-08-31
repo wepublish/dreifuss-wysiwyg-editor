@@ -28,26 +28,26 @@ import {
   ELEMENT_ALIGN_CENTER,
   ELEMENT_ALIGN_JUSTIFY,
   ELEMENT_ALIGN_RIGHT
-} from '@udecode/slate-plugins-alignment'
-import {ToolbarList} from '@udecode/slate-plugins-list-ui'
+} from '@udecode/plate-alignment'
+import {ToolbarList} from '@udecode/plate-list-ui'
 import {
   ToolbarTable,
   TableBorderColorToolbar,
   TableBgColorToolbar
 } from '@dreifuss-wysiwyg-editor/table-ui'
-import {ToolbarAlign} from '@udecode/slate-plugins-alignment-ui'
-import {ELEMENT_OL, ELEMENT_UL} from '@udecode/slate-plugins-list'
-import {ELEMENT_CODE_BLOCK} from '@udecode/slate-plugins-code-block'
-import {ELEMENT_BLOCKQUOTE} from '@udecode/slate-plugins-block-quote'
-import {ToolbarCodeBlock} from '@udecode/slate-plugins-code-block-ui'
-import {ToolbarElement, ToolbarMark, BalloonToolbar} from '@udecode/slate-plugins-toolbar'
+import {ToolbarAlign} from '@udecode/plate-alignment-ui'
+import {ELEMENT_OL, ELEMENT_UL} from '@udecode/plate-list'
+import {ELEMENT_CODE_BLOCK} from '@udecode/plate-code-block'
+import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
+import {ToolbarCodeBlock} from '@udecode/plate-code-block-ui'
+import {ToolbarElement, ToolbarMark, BalloonToolbar} from '@udecode/plate-toolbar'
 import {
   getSlatePluginType,
   useEditorRef,
   useEventEditorId,
   useStoreEditorState
-} from '@udecode/slate-plugins-core'
-import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
+} from '@udecode/plate-core'
+import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
 import {
   insertTable,
   deleteColumn,
@@ -64,7 +64,7 @@ import {
   MARK_SUBSCRIPT,
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE
-} from '@udecode/slate-plugins-basic-marks'
+} from '@udecode/plate-basic-marks'
 
 export const ToolbarBasicElementsButtons = () => (
   <>

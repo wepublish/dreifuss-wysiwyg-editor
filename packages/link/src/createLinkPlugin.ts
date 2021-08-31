@@ -1,4 +1,4 @@
-import {getRenderElement, getSlatePluginTypes, SlatePlugin} from '@udecode/slate-plugins-core'
+import {getRenderElement, getSlatePluginTypes, SlatePlugin} from '@udecode/plate-core'
 import {ELEMENT_LINK} from './defaults'
 import {getLinkDeserialize} from './getLinkDeserialize'
 import {WithLinkOptions} from './types'

@@ -1,5 +1,5 @@
-import {wrapNodes} from '@udecode/slate-plugins-common'
-import {getSlatePluginType, SPEditor} from '@udecode/slate-plugins-core'
+import {wrapNodes} from '@udecode/plate-common'
+import {getSlatePluginType, SPEditor} from '@udecode/plate-core'
 import {Location} from 'slate'
 import {ELEMENT_LINK} from '../defaults'
 

@@ -4,7 +4,7 @@ import {
   getRootClassNames,
   RootStyleSet,
   StyledElementProps
-} from '@udecode/slate-plugins-ui-fluent'
+} from '@udecode/plate-ui-fluent'
 import {styled} from '@uifabric/utilities'
 import {getTableElementStyles} from './TableElement.styles'
 

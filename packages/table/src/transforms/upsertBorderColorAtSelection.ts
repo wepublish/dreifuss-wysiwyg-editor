@@ -1,6 +1,6 @@
 import {Editor, Element} from 'slate'
-import {getSlatePluginType} from '@udecode/slate-plugins-core'
-import {setNodes} from '@udecode/slate-plugins-common'
+import {getSlatePluginType} from '@udecode/plate-core'
+import {setNodes} from '@udecode/plate-common'
 import {TEditor} from '@dreifuss-wysiwyg-editor/common'
 import {ELEMENT_TABLE, ELEMENT_TD} from '../defaults'
 

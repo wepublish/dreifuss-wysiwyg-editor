@@ -1,11 +1,5 @@
-import {isCollapsed} from '@udecode/slate-plugins-common'
-import {
-  getSlatePluginType,
-  isElement,
-  SPEditor,
-  TElement,
-  WithOverride
-} from '@udecode/slate-plugins-core'
+import {isCollapsed} from '@udecode/plate-common'
+import {getSlatePluginType, isElement, SPEditor, TElement, WithOverride} from '@udecode/plate-core'
 import {Editor, Node, Point, Transforms} from 'slate'
 import {ELEMENT_TD} from './defaults'
 

@@ -1,4 +1,4 @@
-import {getRenderElement, SlatePlugin} from '@udecode/slate-plugins-core'
+import {getRenderElement, SlatePlugin} from '@udecode/plate-core'
 import {KEYS_TABLE} from './defaults'
 import {getTableDeserialize} from './getTableDeserialize'
 import {getTableOnKeyDown} from './getTableOnKeyDown'

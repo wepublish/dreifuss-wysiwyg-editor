@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
-import {HeadingToolbar} from '@udecode/slate-plugins-toolbar'
-import {createImagePlugin} from '@udecode/slate-plugins-image'
+import {HeadingToolbar} from '@udecode/plate-toolbar'
+import {createImagePlugin} from '@udecode/plate-image'
 import {createTablePlugin} from '@dreifuss-wysiwyg-editor/table'
-import {createAlignPlugin} from '@udecode/slate-plugins-alignment'
-import {createHeadingPlugin} from '@udecode/slate-plugins-heading'
-import {createHighlightPlugin} from '@udecode/slate-plugins-highlight'
-import {createParagraphPlugin} from '@udecode/slate-plugins-paragraph'
-import {createCodeBlockPlugin} from '@udecode/slate-plugins-code-block'
-import {createBlockquotePlugin} from '@udecode/slate-plugins-block-quote'
-import {createMediaEmbedPlugin} from '@udecode/slate-plugins-media-embed'
+import {createAlignPlugin} from '@udecode/plate-alignment'
+import {createHeadingPlugin} from '@udecode/plate-heading'
+import {createHighlightPlugin} from '@udecode/plate-highlight'
+import {createParagraphPlugin} from '@udecode/plate-paragraph'
+import {createCodeBlockPlugin} from '@udecode/plate-code-block'
+import {createBlockquotePlugin} from '@udecode/plate-block-quote'
+import {createMediaEmbedPlugin} from '@udecode/plate-media-embed'
 import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
 import {
   EditorValue,
@@ -18,12 +18,12 @@ import {
   Modal,
   LinkIcon
 } from '@dreifuss-wysiwyg-editor/common'
-import {createBasicElementPlugins} from '@udecode/slate-plugins-basic-elements'
+import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
 import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
-import {createListPlugin, createTodoListPlugin} from '@udecode/slate-plugins-list'
+import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
-import {createHistoryPlugin, createReactPlugin, SlatePlugins} from '@udecode/slate-plugins-core'
-import {ToolbarImage} from '@udecode/slate-plugins-image-ui'
+import {createHistoryPlugin, createReactPlugin, SlatePlugins} from '@udecode/plate-core'
+import {ToolbarImage} from '@udecode/plate-image-ui'
 // @ts-ignore
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin, ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
@@ -39,7 +39,7 @@ import {
   createStrikethroughPlugin,
   createSubscriptPlugin,
   createSuperscriptPlugin
-} from '@udecode/slate-plugins-basic-marks'
+} from '@udecode/plate-basic-marks'
 import {
   ToolbarBalloon,
   ToolbarAlignButtons,

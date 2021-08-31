@@ -1,2 +1,2 @@
-# slate-plugins-common
+# plate-common
 

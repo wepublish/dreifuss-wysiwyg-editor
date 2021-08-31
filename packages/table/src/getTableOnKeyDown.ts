@@ -1,10 +1,5 @@
-import {getAbove} from '@udecode/slate-plugins-common'
-import {
-  getSlatePluginOptions,
-  KeyboardHandler,
-  SPEditor,
-  TElement
-} from '@udecode/slate-plugins-core'
+import {getAbove} from '@udecode/plate-common'
+import {getSlatePluginOptions, KeyboardHandler, SPEditor, TElement} from '@udecode/plate-core'
 import {Transforms} from 'slate'
 import {getNextTableCell} from './queries/getNextTableCell'
 import {getPreviousTableCell} from './queries/getPreviousTableCell'

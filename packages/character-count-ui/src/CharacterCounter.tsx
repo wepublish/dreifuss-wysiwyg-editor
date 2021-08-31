@@ -1,7 +1,7 @@
 import React from 'react'
 import {Node} from 'slate'
 import {toArray} from 'lodash'
-import {useStoreEditorState} from '@udecode/slate-plugins-core'
+import {useStoreEditorState} from '@udecode/plate-core'
 import {TEditor} from '@dreifuss-wysiwyg-editor/common'
 
 const getTextString = (editor: TEditor) => {

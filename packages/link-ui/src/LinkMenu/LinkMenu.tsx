@@ -1,10 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {BaseRange, Editor, Element, BaseEditor} from 'slate'
-import {
-  getSlatePluginType,
-  useEventEditorId,
-  useStoreEditorState
-} from '@udecode/slate-plugins-core'
+import {getSlatePluginType, useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
 import {
   upsertLinkAtSelection,
   validateUrl,

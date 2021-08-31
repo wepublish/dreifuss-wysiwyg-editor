@@ -1,5 +1,5 @@
-import {getAbove, someNode} from '@udecode/slate-plugins-common'
-import {getSlatePluginType, SPEditor} from '@udecode/slate-plugins-core'
+import {getAbove, someNode} from '@udecode/plate-common'
+import {getSlatePluginType, SPEditor} from '@udecode/plate-core'
 import {Transforms} from 'slate'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TR} from '../defaults'
 

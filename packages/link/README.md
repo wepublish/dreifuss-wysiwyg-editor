@@ -1,3 +1,3 @@
-# slate-plugins-link
+# plate-link
 
-This plugin is based on @udecode/slate-plugins-link
+This plugin is based on @udecode/plate-link
