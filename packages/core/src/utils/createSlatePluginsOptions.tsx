@@ -66,7 +66,7 @@ export type DefaultSlatePluginKey =
  * Get slate plugins options.
  * @param overrides merge into the default options
  */
-export const createSlatePluginsOptions = <T extends string = string>(
+export const createPlateOptions = <T extends string = string>(
   overrides?: Partial<Record<DefaultSlatePluginKey | T, Partial<SlatePluginOptions>>>
 ) => {
   const options: Record<DefaultSlatePluginKey, Partial<SlatePluginOptions>> = {

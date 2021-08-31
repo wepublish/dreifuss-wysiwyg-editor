@@ -10,7 +10,7 @@ import {createParagraphPlugin} from '@udecode/plate-paragraph'
 import {createCodeBlockPlugin} from '@udecode/plate-code-block'
 import {createBlockquotePlugin} from '@udecode/plate-block-quote'
 import {createMediaEmbedPlugin} from '@udecode/plate-media-embed'
-import {createSlatePluginsOptions} from './utils/createSlatePluginsOptions'
+import {createPlateOptions} from './utils/createPlateOptions'
 import {
   EditorValue,
   CharactersCountIcon,
@@ -19,10 +19,10 @@ import {
   LinkIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
-import {createSlatePluginsComponents} from './utils/createSlatePluginsComponents'
+import {createPlateComponents} from './utils/createPlateComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
-import {createHistoryPlugin, createReactPlugin, SlatePlugins} from '@udecode/plate-core'
+import {createHistoryPlugin, createReactPlugin, Plate} from '@udecode/plate-core'
 import {ToolbarImage} from '@udecode/plate-image-ui'
 // @ts-ignore
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
@@ -71,8 +71,8 @@ export interface EditorProps {
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
   const {id = 'main', showCharactersCount = true} = props
-  const components = createSlatePluginsComponents()
-  const options = createSlatePluginsOptions()
+  const components = createPlateComponents()
+  const options = createPlateOptions()
 
   const editableProps = {
     placeholder: "What's on your mind?",
@@ -122,7 +122,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
   ]
 
   return (
-    <SlatePlugins
+    <Plate
       id={props.id}
       onChange={props.onChange}
       plugins={plugins}
@@ -162,6 +162,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <CharactersCountIcon /> <CharCountToolbar id={id} />
         </p>
       )}
-    </SlatePlugins>
+    </Plate>
   )
 }

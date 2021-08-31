@@ -44,11 +44,11 @@ import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 import {TableElement, TableDataElement} from '@dreifuss-wysiwyg-editor/table-ui'
 import {StyledElement, StyledLeaf} from '@udecode/plate-ui-fluent'
-import {DefaultSlatePluginKey} from './createSlatePluginsOptions'
+import {DefaultSlatePluginKey} from './createPlateOptions'
 import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font-color'
 import {RenderFontColorLeaf} from '@dreifuss-wysiwyg-editor/font-color-ui'
 
-export const createSlatePluginsComponents = <T extends string = string>(
+export const createPlateComponents = <T extends string = string>(
   overrides?: Partial<Record<DefaultSlatePluginKey | T, FunctionComponent<any>>>
 ) => {
   const components = {
