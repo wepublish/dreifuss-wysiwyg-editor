@@ -38,7 +38,7 @@
     "@dreifuss-wysiwyg-editor/link": "^1.0.2-alpha.1",
     "@udecode/plate-core": "^1.0.0",
     "@udecode/plate-toolbar": "^3.0.1",
-    "@udecode/plate-ui-fluent": "^1.0.0-next.36"
+    "styled-components": "^5.3.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.14",
@@ -48,7 +48,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "slate": "^0.62.0",
-    "slate-react": "^0.62.0"
+    "slate-react": "^0.62.0",
+    "@types/styled-components": "^5.1.13"
   },
   "publishConfig": {
     "access": "public"

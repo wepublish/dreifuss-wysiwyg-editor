@@ -38,7 +38,6 @@ export type DefaultPlatePluginKey =
   | typeof ELEMENT_H1
   | typeof ELEMENT_H2
   | typeof ELEMENT_H3
-  | typeof ELEMENT_IMAGE
   | typeof ELEMENT_LI
   | typeof ELEMENT_LINK
   | typeof ELEMENT_MEDIA_EMBED

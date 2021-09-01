@@ -41,7 +41,7 @@ import {MediaEmbedElement} from '@udecode/plate-media-embed-ui'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 import {TableElement, TableDataElement} from '@dreifuss-wysiwyg-editor/table-ui'
-import {StyledElement, StyledLeaf} from '@udecode/plate-ui-fluent'
+import {StyledElement, StyledLeaf} from '@udecode/plate-styled-components'
 import {DefaultPlatePluginKey} from './createPlateOptions'
 import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font-color'
 import {RenderFontColorLeaf} from '@dreifuss-wysiwyg-editor/font-color-ui'
@@ -87,7 +87,7 @@ export const createPlateComponents = <T extends string = string>(
         root: {
           margin: '2em 0 4px',
           fontSize: '1.875em',
-          fontWeight: '500',
+          fontWeight: 500,
           lineHeight: '1.3'
         }
       }
@@ -98,7 +98,7 @@ export const createPlateComponents = <T extends string = string>(
         root: {
           margin: '1.4em 0 1px',
           fontSize: '1.5em',
-          fontWeight: '500',
+          fontWeight: 500,
           lineHeight: '1.3'
         }
       }
@@ -110,7 +110,7 @@ export const createPlateComponents = <T extends string = string>(
           margin: '1em 0 1px',
           color: '#434343',
           fontSize: '1.25em',
-          fontWeight: '500',
+          fontWeight: 500,
           lineHeight: '1.3'
         }
       }
@@ -122,7 +122,7 @@ export const createPlateComponents = <T extends string = string>(
           margin: '0.75em 0 0',
           color: '#666666',
           fontSize: '1.1em',
-          fontWeight: '500',
+          fontWeight: 500,
           lineHeight: '1.3'
         }
       }
@@ -134,7 +134,7 @@ export const createPlateComponents = <T extends string = string>(
           margin: '0.75em 0 0',
           color: '#666666',
           fontSize: '1.1em',
-          fontWeight: '500',
+          fontWeight: 500,
           lineHeight: '1.3'
         }
       }
@@ -146,7 +146,7 @@ export const createPlateComponents = <T extends string = string>(
           margin: '0.75em 0 0',
           color: '#666666',
           fontSize: '1.1em',
-          fontWeight: '500',
+          fontWeight: 500,
           lineHeight: '1.3'
         }
       }
