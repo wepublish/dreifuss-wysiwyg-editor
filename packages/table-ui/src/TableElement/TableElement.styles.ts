@@ -1,4 +1,4 @@
-// import {createStyles, StyledElementProps} from '@udecode/plate-styled-components'
+import {createStyles, StyledElementProps} from '@udecode/plate-styled-components'
 // import tw from 'twin.macro'
 
 // TODO: should uncomment and use this.
