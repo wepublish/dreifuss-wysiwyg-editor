@@ -7,19 +7,26 @@ import {
 } from '@udecode/plate-alignment'
 import {
   MARK_BOLD,
+  DEFAULTS_BOLD,
   MARK_CODE,
+  DEFAULTS_CODE as DEFAULTS_MARK_CODE,
   MARK_ITALIC,
+  DEFAULTS_ITALIC,
   MARK_STRIKETHROUGH,
+  DEFAULTS_STRIKETHROUGH,
   MARK_SUBSCRIPT,
+  DEFAULTS_SUBSCRIPT,
   MARK_SUPERSCRIPT,
-  MARK_UNDERLINE
+  DEFAULTS_SUPERSCRIPT,
+  MARK_UNDERLINE,
+  DEFAULTS_UNDERLINE
 } from '@udecode/plate-basic-marks'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
-import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
+import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE, DEFAULTS_CODE_BLOCK} from '@udecode/plate-code-block'
 import {PlatePluginOptions} from '@udecode/plate-core'
 import {MARK_SEARCH_HIGHLIGHT} from '@udecode/plate-find-replace'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
-import {MARK_HIGHLIGHT} from '@udecode/plate-highlight'
+import {DEFAULTS_HIGHLIGHT, MARK_HIGHLIGHT} from '@udecode/plate-highlight'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/plate-list'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
@@ -73,7 +80,7 @@ export const createPlateOptions = <T extends string = string>(
     [ELEMENT_ALIGN_LEFT]: {},
     [ELEMENT_ALIGN_RIGHT]: {},
     [ELEMENT_BLOCKQUOTE]: {},
-    [ELEMENT_CODE_BLOCK]: {},
+    [ELEMENT_CODE_BLOCK]: {...DEFAULTS_CODE_BLOCK},
     [ELEMENT_CODE_LINE]: {},
     [ELEMENT_PARAGRAPH]: {
       type: 'paragraph',
@@ -119,15 +126,33 @@ export const createPlateOptions = <T extends string = string>(
     },
     [ELEMENT_TH]: {},
     [ELEMENT_TODO_LI]: {},
-    [MARK_BOLD]: {},
-    [MARK_CODE]: {},
-    [MARK_HIGHLIGHT]: {},
-    [MARK_ITALIC]: {},
-    [MARK_SEARCH_HIGHLIGHT]: {},
-    [MARK_STRIKETHROUGH]: {},
-    [MARK_SUBSCRIPT]: {},
-    [MARK_SUPERSCRIPT]: {},
-    [MARK_UNDERLINE]: {}
+    [MARK_BOLD]: {
+      ...DEFAULTS_BOLD
+    },
+    [MARK_CODE]: {
+      ...DEFAULTS_MARK_CODE
+    },
+    [MARK_HIGHLIGHT]: {
+      ...DEFAULTS_HIGHLIGHT
+    },
+    [MARK_ITALIC]: {
+      ...DEFAULTS_ITALIC
+    },
+    [MARK_SEARCH_HIGHLIGHT]: {
+      ...DEFAULTS_HIGHLIGHT
+    },
+    [MARK_STRIKETHROUGH]: {
+      ...DEFAULTS_STRIKETHROUGH
+    },
+    [MARK_SUBSCRIPT]: {
+      ...DEFAULTS_SUBSCRIPT
+    },
+    [MARK_SUPERSCRIPT]: {
+      ...DEFAULTS_SUPERSCRIPT
+    },
+    [MARK_UNDERLINE]: {
+      ...DEFAULTS_UNDERLINE
+    }
   }
 
   if (overrides) {

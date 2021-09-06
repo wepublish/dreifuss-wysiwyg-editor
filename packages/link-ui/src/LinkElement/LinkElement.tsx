@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {LinkNodeData} from '@udecode/plate-link'
+import {LinkNodeData} from '@dreifuss-wysiwyg-editor/link'
 import {StyledElementProps} from '@udecode/plate-styled-components'
 import {getLinkElementStyles} from './LinkElement.styles'
 

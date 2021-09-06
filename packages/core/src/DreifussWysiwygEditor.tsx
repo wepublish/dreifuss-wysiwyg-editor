@@ -23,6 +23,7 @@ import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
 import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
+import {createDeserializeMDPlugin} from '@udecode/plate-md-serializer'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -109,7 +110,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createBlockquotePlugin(),
     createSuperscriptPlugin(),
     createStrikethroughPlugin(),
-    createHeadingPlugin({levels: 3})
+    createHeadingPlugin({levels: 3}),
+    createDeserializeMDPlugin()
   ]
 
   return (

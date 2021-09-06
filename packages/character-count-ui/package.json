@@ -30,7 +30,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "slate": "^0.60.0",
-    "slate-react": "^0.60.0"
+    "slate-react": "^0.60.0",
+    "lodash": "^4.17.21"
   },
   "dependencies": {
     "@udecode/plate-core": "^1.0.0",
@@ -38,9 +39,7 @@
   },
   "devDependencies": {
     "@types/react": "^17.0.14",
-    "@types/react-dom": "^17.0.9",
     "@types/slate": "^0.47.8",
-    "@types/slate-react": "^0.50.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "slate": "^0.62.0",
