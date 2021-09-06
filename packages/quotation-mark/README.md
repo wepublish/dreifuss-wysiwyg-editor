@@ -1,2 +1,2 @@
-# plate-quotation-mark
+# @dreifuss-wysiwyg-editor/quotation-mark
 

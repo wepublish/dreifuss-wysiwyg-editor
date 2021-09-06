@@ -1,3 +1,2 @@
-# plate-font-color-ui
+# @dreifuss-wysiwyg-editor/font-color-ui
 
-This plugin is based on @udecode/plate-font-color-ui

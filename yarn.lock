@@ -4345,7 +4345,7 @@
     "@udecode/plate-common" "2.0.0"
     "@udecode/plate-core" "1.0.0"
 
-"@udecode/plate-normalizers@2.0.0":
+"@udecode/plate-normalizers@2.0.0", "@udecode/plate-normalizers@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@udecode/plate-normalizers/-/plate-normalizers-2.0.0.tgz#5560c4794241e6bcf367d32995b074ea589e7598"
   integrity sha512-3pzguGkyoOo27tab/9nXnawgisni+SjBzZwg1OJJLDK1rjt02nBry+SCIlrTg6xfbD+s0vVpKy7mA3z8vgi+VA==

@@ -1,2 +1,2 @@
-# plate-common
+# @dreifuss-wysiwyg-editor/common
 
