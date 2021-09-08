@@ -33,6 +33,7 @@ import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 // import {ELEMENT_MENTION} from '@udecode/plate-mention'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
+import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 
 export type DefaultPlatePluginKey =
   | typeof ELEMENT_ALIGN_CENTER
@@ -66,6 +67,7 @@ export type DefaultPlatePluginKey =
   | typeof MARK_SUBSCRIPT
   | typeof MARK_SUPERSCRIPT
   | typeof MARK_UNDERLINE
+  | typeof ELEMENT_IMAGE
 
 /**
  * Get slate plugins options.
@@ -152,6 +154,9 @@ export const createPlateOptions = <T extends string = string>(
     },
     [MARK_UNDERLINE]: {
       ...DEFAULTS_UNDERLINE
+    },
+    [ELEMENT_IMAGE]: {
+      // ...DEFAULTS_IM
     }
   }
 

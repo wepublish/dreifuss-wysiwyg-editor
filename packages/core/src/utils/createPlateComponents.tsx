@@ -32,6 +32,7 @@ import {MARK_HIGHLIGHT} from '@udecode/plate-highlight'
 import {MARK_KBD} from '@udecode/plate-kbd'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {LinkElement} from '@dreifuss-wysiwyg-editor/link-ui'
+import {ImageElement} from '@dreifuss-wysiwyg-editor/image-ui'
 import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/plate-list'
 import {TodoListElement} from '@udecode/plate-list-ui'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
@@ -45,6 +46,7 @@ import {StyledElement, StyledLeaf} from '@udecode/plate-styled-components'
 import {DefaultPlatePluginKey} from './createPlateOptions'
 import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font-color'
 import {RenderFontColorLeaf} from '@dreifuss-wysiwyg-editor/font-color-ui'
+import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 
 export const createPlateComponents = <T extends string = string>(
   overrides?: Partial<Record<DefaultPlatePluginKey | T, FunctionComponent<any>>>
@@ -256,7 +258,8 @@ export const createPlateComponents = <T extends string = string>(
     [MARK_SUBSCRIPT]: withProps(StyledLeaf, {as: 'sub'}),
     [MARK_SUPERSCRIPT]: withProps(StyledLeaf, {as: 'sup'}),
     [MARK_UNDERLINE]: withProps(StyledLeaf, {as: 'u'}),
-    [ELEMENT_FONT_COLOR]: RenderFontColorLeaf
+    [ELEMENT_FONT_COLOR]: RenderFontColorLeaf,
+    [ELEMENT_IMAGE]: ImageElement
   }
 
   if (overrides) {
