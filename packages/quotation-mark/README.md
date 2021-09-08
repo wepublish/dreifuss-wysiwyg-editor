@@ -1,3 +1,2 @@
-# slate-plugins-link
+# @dreifuss-wysiwyg-editor/quotation-mark
 
-This plugin is based on @udecode/slate-plugins-link

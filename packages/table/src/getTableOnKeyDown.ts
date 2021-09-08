@@ -1,10 +1,5 @@
-import {getAbove} from '@udecode/slate-plugins-common'
-import {
-  getSlatePluginOptions,
-  KeyboardHandler,
-  SPEditor,
-  TElement
-} from '@udecode/slate-plugins-core'
+import {getAbove} from '@udecode/plate-common'
+import {getPlatePluginOptions, KeyboardHandler, SPEditor, TElement} from '@udecode/plate-core'
 import {Transforms} from 'slate'
 import {getNextTableCell} from './queries/getNextTableCell'
 import {getPreviousTableCell} from './queries/getPreviousTableCell'
@@ -42,7 +37,7 @@ export const getTableOnKeyDown =
 
     // FIXME: would prefer this as mod+a, but doesn't work
     if (e.key === 'a' && (e.metaKey || e.ctrlKey)) {
-      const options = getSlatePluginOptions(editor, ELEMENT_TABLE)
+      const options = getPlatePluginOptions(editor, ELEMENT_TABLE)
 
       const res = getAbove<TElement>(editor, {match: {type: options.type}})
       if (!res) return

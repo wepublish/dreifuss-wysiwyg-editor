@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {BaseRange} from 'slate'
-import {useEventEditorId, useStoreEditorState} from '@udecode/slate-plugins-core'
+import {useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
 import {insertQuotationMarks} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {ModalContext} from '@dreifuss-wysiwyg-editor/common'
 import './style.css'

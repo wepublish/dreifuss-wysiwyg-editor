@@ -1,5 +1,5 @@
-import {TEditor} from '@udecode/slate-plugins-core'
-import {setNodes, isCollapsed} from '@udecode/slate-plugins-common'
+import {TEditor} from '@udecode/plate-core'
+import {setNodes, isCollapsed} from '@udecode/plate-common'
 import {Editor, Transforms} from 'slate'
 
 export function upsertFontColor(editor: TEditor, color: string) {

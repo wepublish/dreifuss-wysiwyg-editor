@@ -33,13 +33,12 @@
     "slate-react": "^0.60.0"
   },
   "dependencies": {
-    "@udecode/slate-plugins-core": "^1.0.0-next.36",
-    "@udecode/slate-plugins-toolbar": "^1.0.0-next.36",
-    "@dreifuss-wysiwyg-editor/common": "1.0.2-alpha.1"
+    "@udecode/plate-core": "^1.0.0",
+    "@dreifuss-wysiwyg-editor/common": "1.0.2-alpha.1",
+    "@udecode/plate-common": "^2.0.0",
+    "@udecode/plate-normalizers": "^2.0.0"
   },
   "devDependencies": {
-    "@types/react": "^17.0.14",
-    "@types/react-dom": "^17.0.9",
     "@types/slate": "^0.47.8",
     "@types/slate-react": "^0.50.1",
     "react": "^17.0.2",

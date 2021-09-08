@@ -1,4 +1,4 @@
-import {SPEditor} from '@udecode/slate-plugins-core'
+import {SPEditor} from '@udecode/plate-core'
 import {BaseEditor} from 'slate'
 import {HistoryEditor} from 'slate-history'
 import {ReactEditor} from 'slate-react'
