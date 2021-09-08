@@ -1,5 +1,5 @@
 module.exports = {
-    plugins: [],
+    plugins: ['macros'],
     presets: [
         ['@babel/preset-react', { runtime: 'automatic' }],
         '@babel/preset-typescript'

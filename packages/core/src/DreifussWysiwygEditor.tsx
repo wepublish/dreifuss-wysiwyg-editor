@@ -23,7 +23,6 @@ import {createPlateComponents} from './utils/createPlateComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {createHistoryPlugin, createReactPlugin, Plate} from '@udecode/plate-core'
-// @ts-ignore
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createImagePlugin, ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 import {ToolbarImage} from '@dreifuss-wysiwyg-editor/image-ui'
@@ -33,6 +32,8 @@ import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {createDeserializeMDPlugin} from '@udecode/plate-md-serializer'
+import {useFindReplacePlugin} from '@udecode/plate-find-replace'
+import {ToolbarSearchHighlight} from '@udecode/plate-find-replace-ui'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -50,7 +51,6 @@ import {
   ToolbarListButtons,
   ToolbarTableButtons
 } from './Toolbar'
-import {ToolbarSearchHighlight} from '@udecode/plate-find-replace-ui'
 
 export interface EditableProps {
   id?: string
@@ -74,7 +74,7 @@ export interface EditorProps {
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
-  const {id = 'main', showCharactersCount = true} = props
+  const {id = 'main', showCharactersCount = true, toolbars} = props
   const components = createPlateComponents()
   const options = createPlateOptions()
 

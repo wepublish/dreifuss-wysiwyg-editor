@@ -1,6 +1,6 @@
 import * as React from 'react'
-import {useEventEditorId, useStoreEditorRef} from '@udecode/slate-plugins-core'
-import {insertImage} from '@udecode/slate-plugins-image'
+import {useEventEditorId, useStoreEditorRef} from '@udecode/plate-core'
+import {insertImage} from '@dreifuss-wysiwyg-editor/image'
 import {useContext, useEffect, useState} from 'react'
 import {ModalContext} from '@dreifuss-wysiwyg-editor/common'
 import {BaseRange} from 'slate'
