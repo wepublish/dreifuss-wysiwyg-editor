@@ -80,7 +80,8 @@
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",
     "@storybook/addon-links": "^6.3.6",
-    "@storybook/react": "^6.3.6"
+    "@storybook/react": "^6.3.6",
+    "@types/styled-components": "^5.1.14"
   },
   "dependencies": {
     "@babel/runtime": "^7.13.10",
@@ -127,7 +128,8 @@
     "slate": "^0.62.0",
     "slate-history": "^0.62.0",
     "slate-hyperscript": "^0.62.0",
-    "slate-react": "^0.62.0"
+    "slate-react": "^0.62.0",
+    "twin.macro": "^2.7.0"
   },
   "publishConfig": {
     "access": "public"
