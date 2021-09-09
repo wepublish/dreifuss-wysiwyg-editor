@@ -80,7 +80,8 @@
     "@storybook/addon-actions": "^6.3.6",
     "@storybook/addon-essentials": "^6.3.6",
     "@storybook/addon-links": "^6.3.6",
-    "@storybook/react": "^6.3.6"
+    "@storybook/react": "^6.3.6",
+    "@types/styled-components": "^5.1.14"
   },
   "dependencies": {
     "@babel/runtime": "^7.13.10",
