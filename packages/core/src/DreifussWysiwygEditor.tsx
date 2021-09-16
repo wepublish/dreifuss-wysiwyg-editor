@@ -16,7 +16,6 @@ import {createPlateComponents} from './utils/createPlateComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {createHistoryPlugin, createReactPlugin, Plate} from '@udecode/plate-core'
-// @ts-ignore
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin, ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
