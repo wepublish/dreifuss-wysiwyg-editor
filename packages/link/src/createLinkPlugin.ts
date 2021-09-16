@@ -1,9 +1,9 @@
 import {getRenderElement, getPlatePluginTypes, PlatePlugin} from '@udecode/plate-core'
 import {ELEMENT_LINK} from './defaults'
 import {getLinkDeserialize} from './getLinkDeserialize'
+import {getLinkOnKeyDown} from './transforms'
 import {WithLinkOptions} from './types'
 import {withLink} from './withLink'
-import {onKeyDown} from './transforms'
 
 /**
  * Enables support for hyperlinks.
@@ -14,5 +14,5 @@ export const createLinkPlugin = (options?: WithLinkOptions): PlatePlugin => ({
   deserialize: getLinkDeserialize(),
   inlineTypes: getPlatePluginTypes(ELEMENT_LINK),
   withOverrides: withLink(options),
-  onKeyDown
+  onKeyDown: getLinkOnKeyDown()
 })
