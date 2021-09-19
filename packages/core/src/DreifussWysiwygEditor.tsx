@@ -15,8 +15,7 @@ import {
   CharactersCountIcon,
   Modal,
   LinkIcon,
-  SearchIcon,
-  ImageIcon
+  SearchIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
 import {createPlateComponents} from './utils/createPlateComponents'
@@ -24,8 +23,6 @@ import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {createHistoryPlugin, createReactPlugin, Plate} from '@udecode/plate-core'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
-import {createImagePlugin, ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
-import {ToolbarImage} from '@dreifuss-wysiwyg-editor/image-ui'
 import {createLinkPlugin, ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
 import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
@@ -125,8 +122,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createStrikethroughPlugin(),
     createHeadingPlugin({levels: 3}),
     searchHighlightPlugin,
-    createDeserializeMDPlugin(),
-    createImagePlugin()
+    createDeserializeMDPlugin()
   ]
 
   return (
@@ -162,12 +158,9 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           </Modal>
 
           <Divider type={DividerType.vertical} />
-          <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
-            <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
-          </Modal>
 
           <Divider type={DividerType.vertical} />
-          <Modal type={ELEMENT_IMAGE} Icon={<SearchIcon />}>
+          <Modal type={'ELEMENT_IMAGE'} Icon={<SearchIcon />}>
             <ToolbarSearchHighlight icon={() => <></>} setSearch={setSearch} />
           </Modal>
         </HeadingToolbar>
