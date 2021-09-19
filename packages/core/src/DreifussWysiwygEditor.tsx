@@ -32,8 +32,6 @@ import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {createDeserializeMDPlugin} from '@udecode/plate-md-serializer'
-import {useFindReplacePlugin} from '@udecode/plate-find-replace'
-import {ToolbarSearchHighlight} from '@udecode/plate-find-replace-ui'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -77,8 +75,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
   const {id = 'main', showCharactersCount = true, toolbars} = props
   const components = createPlateComponents()
   const options = createPlateOptions()
-
-  const {setSearch, plugin: searchHighlightPlugin} = useFindReplacePlugin()
 
   const editableProps = {
     placeholder: "What's on your mind?",
@@ -124,7 +120,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createSuperscriptPlugin(),
     createStrikethroughPlugin(),
     createHeadingPlugin({levels: 3}),
-    searchHighlightPlugin,
     createDeserializeMDPlugin(),
     createImagePlugin()
   ]
@@ -167,9 +162,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           </Modal>
 
           <Divider type={DividerType.vertical} />
-          <Modal type={ELEMENT_IMAGE} Icon={<SearchIcon />}>
-            <ToolbarSearchHighlight icon={() => <></>} setSearch={setSearch} />
-          </Modal>
         </HeadingToolbar>
       )}
       {showCharactersCount && (
