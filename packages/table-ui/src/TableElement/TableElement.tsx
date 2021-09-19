@@ -8,6 +8,9 @@ export const TableElement = (props: StyledElementProps) => {
   const {root} = getTableElementStyles(props)
 
   return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // TODO: fix css attr
     <table {...attributes} css={root.css} className={root.className} {...nodeProps}>
       <tbody>{children}</tbody>
     </table>
