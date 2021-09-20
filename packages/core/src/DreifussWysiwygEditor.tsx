@@ -15,7 +15,6 @@ import {
   CharactersCountIcon,
   Modal,
   LinkIcon,
-  SearchIcon,
   ImageIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
