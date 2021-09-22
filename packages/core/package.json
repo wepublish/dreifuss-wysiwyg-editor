@@ -128,8 +128,7 @@
     "slate": "^0.62.0",
     "slate-history": "^0.62.0",
     "slate-hyperscript": "^0.62.0",
-    "slate-react": "^0.62.0",
-    "twin.macro": "^2.7.0"
+    "slate-react": "^0.62.0"
   },
   "publishConfig": {
     "access": "public"
