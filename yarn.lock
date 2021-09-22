@@ -4216,10 +4216,26 @@
     "@udecode/plate-core" "1.0.0"
     is-hotkey "^0.1.6"
 
+"@udecode/plate-common@3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-common/-/plate-common-3.4.0.tgz#0bfe809f8359ff3d3cb8a0b4af948c6b2868986e"
+  integrity sha512-U185lbX/9B87zt+ADUqiJmalxhn0rOwN13LNFvl5kZXT6YNaxCzjq5lf5s3oxZ43sp3YMiB7EbqGDcQ/nMVaJA==
+  dependencies:
+    "@udecode/plate-core" "3.4.0"
+    is-hotkey "^0.1.6"
+
 "@udecode/plate-core@1.0.0", "@udecode/plate-core@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@udecode/plate-core/-/plate-core-1.0.0.tgz#783b9de0ddeba3adda9e5c3c978c393fd3cdd7f0"
   integrity sha512-L4YHPtJM3alaDk1h17WvjISiGObU4Fk9XJCi4Ge5ZKhd45JwW5RhGsZ8WWBAfmPam96V8Ysv1JkNbR7VmkJ02w==
+  dependencies:
+    lodash "^4.17.21"
+    zustand "^3.4.2"
+
+"@udecode/plate-core@3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-core/-/plate-core-3.4.0.tgz#5f98f9818b98f04d651e26487b7d8e9b1ecea7c3"
+  integrity sha512-4hQ3H/elhjC1Ao3Bo3QRQAPseTE2+pYlxpnlOU0oj+ykynWGZsvAVLGWJBehbsqOtAw6sVU3ujxl0tEjJBIucg==
   dependencies:
     lodash "^4.17.21"
     zustand "^3.4.2"
@@ -4382,6 +4398,14 @@
   dependencies:
     "@udecode/plate-common" "2.0.0"
     "@udecode/plate-core" "1.0.0"
+
+"@udecode/plate-select@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-select/-/plate-select-3.4.0.tgz#b2c658c1a43a6b7c2dcaa863b484e101c2f96e4a"
+  integrity sha512-1V0sayCYtXVGM2kWbEJb5dKpuaHDR25Y4P3iDPMOFUFg1ISX+pk2AEAOc0pNT2d9bsQOsdw6HS0BvRxseedoDw==
+  dependencies:
+    "@udecode/plate-common" "3.4.0"
+    "@udecode/plate-core" "3.4.0"
 
 "@udecode/plate-serializer@2.0.0":
   version "2.0.0"

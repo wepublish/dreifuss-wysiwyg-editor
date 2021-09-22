@@ -8,14 +8,15 @@ import {createHighlightPlugin} from '@udecode/plate-highlight'
 import {createParagraphPlugin} from '@udecode/plate-paragraph'
 import {createCodeBlockPlugin} from '@udecode/plate-code-block'
 import {createBlockquotePlugin} from '@udecode/plate-block-quote'
-import {createMediaEmbedPlugin} from '@udecode/plate-media-embed'
+import {createMediaEmbedPlugin, ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {createPlateOptions} from './utils/createPlateOptions'
 import {
   EditorValue,
   CharactersCountIcon,
   Modal,
   LinkIcon,
-  SearchIcon
+  SearchIcon,
+  MediaEmbedIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
 import {createPlateComponents} from './utils/createPlateComponents'
@@ -31,6 +32,8 @@ import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {createDeserializeMDPlugin} from '@udecode/plate-md-serializer'
 import {useFindReplacePlugin} from '@udecode/plate-find-replace'
 import {ToolbarSearchHighlight} from '@udecode/plate-find-replace-ui'
+import MediaEmbedToolbar from './atoms/MediaEmbedToolbar'
+import {createSelectOnBackspacePlugin} from '@udecode/plate-select'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -122,7 +125,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createStrikethroughPlugin(),
     createHeadingPlugin({levels: 3}),
     searchHighlightPlugin,
-    createDeserializeMDPlugin()
+    createDeserializeMDPlugin(),
+    createSelectOnBackspacePlugin({allow: [ELEMENT_MEDIA_EMBED]})
   ]
 
   return (
@@ -159,9 +163,13 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
 
           <Divider type={DividerType.vertical} />
 
-          <Divider type={DividerType.vertical} />
           <Modal type={'ELEMENT_IMAGE'} Icon={<SearchIcon />}>
             <ToolbarSearchHighlight icon={() => <></>} setSearch={setSearch} />
+          </Modal>
+
+          <Divider type={DividerType.vertical} />
+          <Modal type={ELEMENT_LINK} Icon={<MediaEmbedIcon />}>
+            <MediaEmbedToolbar />
           </Modal>
         </HeadingToolbar>
       )}
