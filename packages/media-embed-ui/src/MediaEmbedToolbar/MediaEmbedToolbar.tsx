@@ -3,7 +3,7 @@ import {BaseRange} from 'slate'
 import {useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
 import {ModalContext} from '@dreifuss-wysiwyg-editor/common'
 import {insertMediaEmbed} from '@udecode/plate-media-embed'
-import {MediaEmbedUrlInput} from '@udecode/plate-media-embed-ui'
+import {MediaEmbedUrlInput} from '../MediaEmbedElement'
 import './media-embed-toolbar.css'
 
 const transformUrl = (newUrl: string) => {
