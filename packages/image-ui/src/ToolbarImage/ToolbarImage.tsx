@@ -23,8 +23,13 @@ export const ToolbarImage = ({CustomComponent}: any) => {
   if (CustomComponent)
     return (
       <CustomComponent
-        onChange={(url: string) => {
-          setURL(url)
+        onChange={(newUrl: string) => {
+          setURL(newUrl)
+          if (!editor) return
+
+          insertImage({...editor, selection}, newUrl)
+
+          toggleMenu()
         }}
       />
     )

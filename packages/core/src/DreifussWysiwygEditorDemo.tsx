@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {render} from 'react-dom'
 import {DreifussWysiwygEditor} from './index'
 
@@ -75,12 +75,36 @@ const value: any = [
   // },
   // {type: 'paragraph', children: [{text: 'Emojis: 😄'}]}
 ]
+
+/**
+ *   these are just examples on how to pass custom toolbars
+ */
 const toolbars = {
-  // ImageToolbar: () => (
-  //   <>
-  //     <h4>Image Uploader</h4>
-  //   </>
-  // )
+  ImageToolbar: ({onChange}: any) => {
+    const [url, setURL] = useState('')
+
+    return (
+      <>
+        <form className="link-toolbar">
+          <div className="form-group">
+            <h4>Image Uploader</h4>
+            <div className="input-group">
+              <input name="url" value={url} onChange={e => setURL(e.target.value)} />
+            </div>
+          </div>
+          <div className="toolbar" role="toolbar">
+            <button
+              onClick={e => {
+                e.preventDefault()
+                onChange(url)
+              }}>
+              Insert
+            </button>
+          </div>
+        </form>
+      </>
+    )
+  }
 }
 
 const DreifussWysiwygEditorDemo = () => (
