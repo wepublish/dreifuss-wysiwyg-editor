@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {ReactNode, useEffect} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/plate-toolbar'
 import {createTablePlugin} from '@dreifuss-wysiwyg-editor/table'
@@ -57,6 +57,10 @@ export interface EditableProps {
   disabled?: boolean
 }
 
+export interface Toolbars {
+  ImageToolbar: ReactNode
+}
+
 export interface EditorProps {
   id?: string
   displayOnly?: boolean
@@ -67,7 +71,7 @@ export interface EditorProps {
   value?: EditorValue
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
-  toolbars?: any
+  toolbars?: Toolbars
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {

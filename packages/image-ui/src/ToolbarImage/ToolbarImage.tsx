@@ -57,3 +57,7 @@ export const ToolbarImage = ({CustomComponent}: any) => {
     </form>
   )
 }
+
+export interface CustomImageToolbarProps {
+  onChange: React.Dispatch<React.SetStateAction<any>>
+}

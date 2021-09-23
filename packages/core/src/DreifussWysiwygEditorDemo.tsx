@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, ReactNode} from 'react'
+
 import {render} from 'react-dom'
 import {DreifussWysiwygEditor} from './index'
+import {CustomImageToolbarProps} from '@dreifuss-wysiwyg-editor/image-ui'
 
 const value: any = [
   // {
@@ -80,7 +82,7 @@ const value: any = [
  *   these are just examples on how to pass custom toolbars
  */
 const toolbars = {
-  ImageToolbar: ({onChange}: any) => {
+  ImageToolbar: ({onChange}: CustomImageToolbarProps): ReactNode => {
     const [url, setURL] = useState('')
 
     return (
