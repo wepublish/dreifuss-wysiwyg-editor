@@ -42,7 +42,10 @@ export const MediaEmbedToolbar = () => {
       <div className="form-group">
         <label>Media Embed</label>
         <div className="input-group">
-          <MediaEmbedUrlInput onChange={newUrl => setURL(transformUrl(newUrl))} url={url} />
+          <MediaEmbedUrlInput
+            onChange={(newUrl: string) => setURL(transformUrl(newUrl))}
+            url={url}
+          />
         </div>
         {/* <p>{url && !isValidURL ? 'Invalid Link' : undefined}</p> */}
       </div>
@@ -51,7 +54,7 @@ export const MediaEmbedToolbar = () => {
           className={`${!url ? 'disabled' : 'insert'}`}
           disabled={!url}
           onClick={e => {
-            if (!editor) return
+            if (!editor || !selection) return
             e.preventDefault()
 
             insertMediaEmbed({...editor, selection}, {url})
