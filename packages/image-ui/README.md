@@ -1,3 +1,3 @@
-# slate-plugins-font-color-ui
+# @dreifuss-wysiwyg-editor/image-ui
 
-This plugin is based on @udecode/slate-plugins-font-color-ui
+This plugin is based on @udecode/plate-image-ui

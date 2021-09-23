@@ -155,9 +155,7 @@ export const createPlateOptions = <T extends string = string>(
     [MARK_UNDERLINE]: {
       ...DEFAULTS_UNDERLINE
     },
-    [ELEMENT_IMAGE]: {
-      // ...DEFAULTS_IM
-    }
+    [ELEMENT_IMAGE]: {}
   }
 
   if (overrides) {
