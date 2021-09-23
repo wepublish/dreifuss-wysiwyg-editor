@@ -32,7 +32,7 @@ import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {createDeserializeMDPlugin} from '@udecode/plate-md-serializer'
 import {useFindReplacePlugin} from '@udecode/plate-find-replace'
 import {ToolbarSearchHighlight} from '@udecode/plate-find-replace-ui'
-import MediaEmbedToolbar from './atoms/MediaEmbedToolbar'
+import {MediaEmbedToolbar} from '@dreifuss-wysiwyg-editor/media-embed-ui'
 import {createSelectOnBackspacePlugin} from '@udecode/plate-select'
 import {
   createBoldPlugin,

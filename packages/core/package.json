@@ -117,7 +117,7 @@
     "@udecode/plate-list-ui": "^3.0.4",
     "@udecode/plate-md-serializer": "^3.0.5",
     "@udecode/plate-media-embed": "^2.0.0",
-    "@udecode/plate-media-embed-ui": "^3.0.1",
+    "@dreifuss-wysiwyg-editor/media-embed-ui": "0.0.0",
     "@udecode/plate-mention": "^2.0.0",
     "@udecode/plate-mention-ui": "^3.0.1",
     "@udecode/plate-styled-components": "^3.0.1",
