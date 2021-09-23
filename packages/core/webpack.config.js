@@ -69,7 +69,7 @@ module.exports = function (env, argv) {
       library: 'my-design-system'
     },
     /*externals: {
-      '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-ui': '@dreifuss-wysiwyg-editor/slate-plugins-quotation-marks-u'
+      '@dreifuss-wysiwyg-editor/plate-quotation-marks-ui': '@dreifuss-wysiwyg-editor/plate-quotation-marks-u'
     },*/
 
     plugins: [

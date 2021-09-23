@@ -4,7 +4,7 @@ import {
   ELEMENT_ALIGN_JUSTIFY,
   ELEMENT_ALIGN_LEFT,
   ELEMENT_ALIGN_RIGHT
-} from '@udecode/slate-plugins-alignment'
+} from '@udecode/plate-alignment'
 import {
   MARK_BOLD,
   MARK_CODE,
@@ -13,13 +13,13 @@ import {
   MARK_SUBSCRIPT,
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE
-} from '@udecode/slate-plugins-basic-marks'
-import {ELEMENT_BLOCKQUOTE} from '@udecode/slate-plugins-block-quote'
-import {BlockquoteElement} from '@udecode/slate-plugins-block-quote-ui'
-import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/slate-plugins-code-block'
-import {CodeBlockElement, CodeLineElement} from '@udecode/slate-plugins-code-block-ui'
-import {withProps} from '@udecode/slate-plugins-common'
-import {MARK_SEARCH_HIGHLIGHT} from '@udecode/slate-plugins-find-replace'
+} from '@udecode/plate-basic-marks'
+import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
+import {BlockquoteElement} from '@udecode/plate-block-quote-ui'
+import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
+import {CodeBlockElement, CodeLineElement} from '@udecode/plate-code-block-ui'
+import {withProps} from '@udecode/plate-common'
+import {MARK_SEARCH_HIGHLIGHT} from '@udecode/plate-find-replace'
 import {
   ELEMENT_H1,
   ELEMENT_H2,
@@ -27,29 +27,27 @@ import {
   ELEMENT_H4,
   ELEMENT_H5,
   ELEMENT_H6
-} from '@udecode/slate-plugins-heading'
-import {MARK_HIGHLIGHT} from '@udecode/slate-plugins-highlight'
-import {ELEMENT_IMAGE} from '@udecode/slate-plugins-image'
-import {ImageElement} from '@udecode/slate-plugins-image-ui'
-import {MARK_KBD} from '@udecode/slate-plugins-kbd'
+} from '@udecode/plate-heading'
+import {MARK_HIGHLIGHT} from '@udecode/plate-highlight'
+import {MARK_KBD} from '@udecode/plate-kbd'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {LinkElement} from '@dreifuss-wysiwyg-editor/link-ui'
-import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/slate-plugins-list'
-import {TodoListElement} from '@udecode/slate-plugins-list-ui'
-import {ELEMENT_MEDIA_EMBED} from '@udecode/slate-plugins-media-embed'
-import {MediaEmbedElement} from '@udecode/slate-plugins-media-embed-ui'
-// import {ELEMENT_MENTION} from '@udecode/slate-plugins-mention'
-// import {MentionElement} from '@udecode/slate-plugins-mention-ui'
-import {ELEMENT_PARAGRAPH} from '@udecode/slate-plugins-paragraph'
+import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/plate-list'
+import {TodoListElement} from '@udecode/plate-list-ui'
+import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
+import {MediaEmbedElement} from '@udecode/plate-media-embed-ui'
+// import {ELEMENT_MENTION} from '@udecode/plate-mention'
+// import {MentionElement} from '@udecode/plate-mention-ui'
+import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 import {TableElement, TableDataElement} from '@dreifuss-wysiwyg-editor/table-ui'
-import {StyledElement, StyledLeaf} from '@udecode/slate-plugins-ui-fluent'
-import {DefaultSlatePluginKey} from './createSlatePluginsOptions'
+import {StyledElement, StyledLeaf} from '@udecode/plate-styled-components'
+import {DefaultPlatePluginKey} from './createPlateOptions'
 import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font-color'
 import {RenderFontColorLeaf} from '@dreifuss-wysiwyg-editor/font-color-ui'
 
-export const createSlatePluginsComponents = <T extends string = string>(
-  overrides?: Partial<Record<DefaultSlatePluginKey | T, FunctionComponent<any>>>
+export const createPlateComponents = <T extends string = string>(
+  overrides?: Partial<Record<DefaultPlatePluginKey | T, FunctionComponent<any>>>
 ) => {
   const components = {
     [ELEMENT_ALIGN_CENTER]: withProps(StyledElement, {
@@ -89,7 +87,7 @@ export const createSlatePluginsComponents = <T extends string = string>(
         root: {
           margin: '2em 0 4px',
           fontSize: '1.875em',
-          fontWeight: '500',
+          fontWeight: 500,
           lineHeight: '1.3'
         }
       }
@@ -100,7 +98,7 @@ export const createSlatePluginsComponents = <T extends string = string>(
         root: {
           margin: '1.4em 0 1px',
           fontSize: '1.5em',
-          fontWeight: '500',
+          fontWeight: 500,
           lineHeight: '1.3'
         }
       }
@@ -112,7 +110,7 @@ export const createSlatePluginsComponents = <T extends string = string>(
           margin: '1em 0 1px',
           color: '#434343',
           fontSize: '1.25em',
-          fontWeight: '500',
+          fontWeight: 500,
           lineHeight: '1.3'
         }
       }
@@ -124,7 +122,7 @@ export const createSlatePluginsComponents = <T extends string = string>(
           margin: '0.75em 0 0',
           color: '#666666',
           fontSize: '1.1em',
-          fontWeight: '500',
+          fontWeight: 500,
           lineHeight: '1.3'
         }
       }
@@ -136,7 +134,7 @@ export const createSlatePluginsComponents = <T extends string = string>(
           margin: '0.75em 0 0',
           color: '#666666',
           fontSize: '1.1em',
-          fontWeight: '500',
+          fontWeight: 500,
           lineHeight: '1.3'
         }
       }
@@ -148,12 +146,11 @@ export const createSlatePluginsComponents = <T extends string = string>(
           margin: '0.75em 0 0',
           color: '#666666',
           fontSize: '1.1em',
-          fontWeight: '500',
+          fontWeight: 500,
           lineHeight: '1.3'
         }
       }
     }),
-    [ELEMENT_IMAGE]: ImageElement,
     [ELEMENT_LI]: withProps(StyledElement, {as: 'li'}),
     [ELEMENT_LINK]: LinkElement,
     [ELEMENT_MEDIA_EMBED]: MediaEmbedElement,
@@ -268,5 +265,5 @@ export const createSlatePluginsComponents = <T extends string = string>(
     })
   }
 
-  return components as Record<DefaultSlatePluginKey | T, FunctionComponent>
+  return components as Record<DefaultPlatePluginKey | T, FunctionComponent>
 }

@@ -1,10 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {BaseRange, Editor, Element, BaseEditor} from 'slate'
-import {
-  getSlatePluginType,
-  useEventEditorId,
-  useStoreEditorState
-} from '@udecode/slate-plugins-core'
+import {getPlatePluginType, useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
 import {
   upsertLinkAtSelection,
   validateUrl,
@@ -82,7 +78,7 @@ export const ToolbarLink = () => {
       Editor.nodes(editor, {
         at: editor.selection ?? undefined,
         match: node =>
-          Element.isElement(node) && node.type === getSlatePluginType(editor, ELEMENT_LINK)
+          Element.isElement(node) && node.type === getPlatePluginType(editor, ELEMENT_LINK)
       })
     )
 

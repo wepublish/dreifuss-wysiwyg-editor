@@ -34,11 +34,11 @@
   },
   "dependencies": {
     "is-hotkey": "^0.2.0",
+    "emoji-mart": "^3.0.1",
     "@babel/polyfill": "^7.12.1",
     "react-color-palette": "^6.1.0",
-    "@udecode/slate-plugins-core": "^1.0.0-next.36",
-    "@udecode/slate-plugins-toolbar": "^1.0.0-next.36",
-    "@udecode/slate-plugins-ui-fluent": "^1.0.0-next.36"
+    "@udecode/plate-core": "^1.0.0",
+    "@udecode/plate-toolbar": "^3.0.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.14",

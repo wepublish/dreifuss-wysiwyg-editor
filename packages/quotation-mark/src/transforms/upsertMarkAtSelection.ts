@@ -1,4 +1,4 @@
-import {isCollapsed} from '@udecode/slate-plugins-common'
+import {isCollapsed} from '@udecode/plate-common'
 import {BaseEditor, BaseRange, Editor, Transforms} from 'slate'
 
 export function insertQuotationMarks(

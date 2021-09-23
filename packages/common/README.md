@@ -1,2 +1,2 @@
-# slate-plugins-common
+# @dreifuss-wysiwyg-editor/common
 
