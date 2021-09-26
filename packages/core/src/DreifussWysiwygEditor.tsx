@@ -152,13 +152,13 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <Divider type={DividerType.vertical} />
           <ToolbarAlignButtons />
           <Divider type={DividerType.vertical} />
-          {/* <ToolbarImage />
-          <Divider type={DividerType.vertical} /> */}
           <ToolbarTableButtons />
+
           <Divider type={DividerType.vertical} />
           <Modal type={ELEMENT_LINK} Icon={<LinkIcon />}>
             <ToolbarLink />
           </Modal>
+
           <Divider type={DividerType.vertical} />
           <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
             <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />

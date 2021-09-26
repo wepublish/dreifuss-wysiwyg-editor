@@ -78,13 +78,25 @@ export const createPlateOptions = <T extends string = string>(
   overrides?: Partial<Record<DefaultPlatePluginKey | T, Partial<PlatePluginOptions>>>
 ) => {
   const options: Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>> = {
-    [ELEMENT_ALIGN_CENTER]: {},
+    [ELEMENT_ALIGN_CENTER]: {
+      type: 'align-center'
+    },
     [ELEMENT_ALIGN_JUSTIFY]: {},
-    [ELEMENT_ALIGN_LEFT]: {},
-    [ELEMENT_ALIGN_RIGHT]: {},
-    [ELEMENT_BLOCKQUOTE]: {},
-    [ELEMENT_CODE_BLOCK]: {...DEFAULTS_CODE_BLOCK},
-    [ELEMENT_CODE_LINE]: {},
+    [ELEMENT_ALIGN_LEFT]: {
+      type: 'align-left'
+    },
+    [ELEMENT_ALIGN_RIGHT]: {
+      type: 'align-right'
+    },
+    [ELEMENT_BLOCKQUOTE]: {
+      type: 'block-quote'
+    },
+    [ELEMENT_CODE_BLOCK]: {
+      type: 'code-block'
+    },
+    [ELEMENT_CODE_LINE]: {
+      type: 'code-line'
+    },
     [ELEMENT_PARAGRAPH]: {
       type: 'paragraph',
       defaultType: 'paragraph'
