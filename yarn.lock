@@ -1757,24 +1757,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fluentui/dom-utilities@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@fluentui/dom-utilities/-/dom-utilities-1.1.2.tgz#1a53e51e1ab1d40696ae7d355a970c68d496845f"
-  integrity sha512-XqPS7l3YoMwxdNlaYF6S2Mp0K3FmVIOIy2K3YkMc+eRxu9wFK6emr2Q/3rBhtG5u/On37NExRT7/5CTLnoi9gw==
-  dependencies:
-    "@uifabric/set-version" "^7.0.24"
-    tslib "^1.10.0"
-
-"@fluentui/theme@^1.7.4":
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/@fluentui/theme/-/theme-1.7.4.tgz#8582bab5a7445585c631d05d44b5ebb56f18b6ba"
-  integrity sha512-o4eo7lstLxxXl1g2RR9yz18Yt8yjQO/LbQuZjsiAfv/4Bf0CRnb+3j1F7gxIdBWAchKj9gzaMpIFijfI98pvYQ==
-  dependencies:
-    "@uifabric/merge-styles" "^7.19.2"
-    "@uifabric/set-version" "^7.0.24"
-    "@uifabric/utilities" "^7.33.5"
-    tslib "^1.10.0"
-
 "@hot-loader/react-dom@16.12.0":
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/@hot-loader/react-dom/-/react-dom-16.12.0.tgz#cd19598150ca9c482dc99f9389e1a60b341017f9"
@@ -2547,11 +2529,6 @@
   version "1.6.22"
   resolved "https://registry.npmjs.org/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
-
-"@microsoft/load-themed-styles@^1.10.26":
-  version "1.10.216"
-  resolved "https://registry.yarnpkg.com/@microsoft/load-themed-styles/-/load-themed-styles-1.10.216.tgz#9dcd3dd0ffd9a3a177881203cf6670a12ad0a079"
-  integrity sha512-JHJwWWY3J1vKDMRREIm2U8JB5sgpGPqlF6Kf7Sjl2I8f0AeLFt43+fdPDm77sNyt5sVB1yp9hiV45i5K4s6Yag==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -4478,94 +4455,6 @@
     "@udecode/plate-core" "1.0.0"
     "@udecode/plate-styled-components" "3.1.0"
     react-use "^17.1.1"
-
-"@udecode/slate-plugins-common@1.0.0-next.46":
-  version "1.0.0-next.46"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-common/-/slate-plugins-common-1.0.0-next.46.tgz#1c7ff7559169d0052b501275a019b305d71a97d1"
-  integrity sha512-DuMZN9k5Bn1A93M4L8p8GrICeLHeL6NNeTM2rSPDvDeP7qROZQKgVh+W8uwZMwfQip34fAZHt80c4VPkKLcwuA==
-  dependencies:
-    "@udecode/slate-plugins-core" "1.0.0-next.40"
-    is-hotkey "^0.1.6"
-
-"@udecode/slate-plugins-core@1.0.0-next.40":
-  version "1.0.0-next.40"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-core/-/slate-plugins-core-1.0.0-next.40.tgz#cfb7ef939b31b87542fd2db29b0fcb6517f25963"
-  integrity sha512-58MAb2VbUlOptJbBTP6K7fZRaOLKc2v/yqLMqgqXh0Kihr6FykqLHj77bPcYTXbqw5NNuEGR323juYOefRBiRQ==
-  dependencies:
-    lodash "^4.17.21"
-    zustand "^3.4.2"
-
-"@udecode/slate-plugins-core@^1.0.0-next.36":
-  version "1.0.0-next.61"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-core/-/slate-plugins-core-1.0.0-next.61.tgz#f83471fc899b416daf598b5ea58c6b760720c556"
-  integrity sha512-BrIJYB/Uhm1YESOlYzTLLubXC23WVU5/qwgdUiFAkebite+91GxavY5aA4iuh0Ofww7EeYLODOIuYggHwVT2yQ==
-  dependencies:
-    lodash "^4.17.21"
-    zustand "^3.4.2"
-
-"@udecode/slate-plugins-test-utils@^1.0.0-alpha.18":
-  version "1.0.0-alpha.18"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-test-utils/-/slate-plugins-test-utils-1.0.0-alpha.18.tgz#5ec8c414301506b904b5828c8ee9015dd3af07a9"
-  integrity sha512-G0KiBiT9/Icxk04Mxax9wOAxNzp+gtLUppLIsi5zY2OdZ1AHWI2g2rnnpErQVR9r0+eRW1IpcFbUgLgm4XTskA==
-
-"@udecode/slate-plugins-toolbar@^1.0.0-next.36":
-  version "1.0.0-next.40"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-toolbar/-/slate-plugins-toolbar-1.0.0-next.40.tgz#5d00e78dc9fff688d429110441c556de28c8de38"
-  integrity sha512-sxoF5VDv54rYW8H3zaT9MQx8YSYrgECsGxeEh/Mj73zua3MMxok4PJof8eMLjNR19QQ4BLCG+CKi11AXqaQuOA==
-  dependencies:
-    "@tippyjs/react" "^4.2.0"
-    "@udecode/slate-plugins-common" "1.0.0-next.40"
-    "@udecode/slate-plugins-core" "1.0.0-next.40"
-    "@udecode/slate-plugins-ui-fluent" "1.0.0-next.40"
-    react-use "^17.1.1"
-
-"@udecode/slate-plugins-ui-fluent@^1.0.0-next.36":
-  version "1.0.0-next.48"
-  resolved "https://registry.yarnpkg.com/@udecode/slate-plugins-ui-fluent/-/slate-plugins-ui-fluent-1.0.0-next.48.tgz#4dc0cb9fde28a93885e330655ad34185278bb3b8"
-  integrity sha512-NqXaYAeg2OZ+PItPOxU3LW2m/ZOcHVymj1Jz9DN/3tpBcQNNYEBOtgQS9bMdrK8UlzeNSBObWF/39CMPQTnnog==
-  dependencies:
-    "@udecode/slate-plugins-common" "1.0.0-next.46"
-    "@udecode/slate-plugins-core" "1.0.0-next.40"
-    "@uifabric/styling" "^7.18.0"
-    "@uifabric/utilities" "^7.33.4"
-
-"@uifabric/merge-styles@^7.19.2":
-  version "7.19.2"
-  resolved "https://registry.yarnpkg.com/@uifabric/merge-styles/-/merge-styles-7.19.2.tgz#e020adc2f9b238f0feb855274dfeedaf6d5822a7"
-  integrity sha512-kTlhwglDqwVgIaJq+0yXgzi65plGhmFcPrfme/rXUGMJZoU+qlGT5jXj5d3kuI59p6VB8jWEg9DAxHozhYeu0g==
-  dependencies:
-    "@uifabric/set-version" "^7.0.24"
-    tslib "^1.10.0"
-
-"@uifabric/set-version@^7.0.24":
-  version "7.0.24"
-  resolved "https://registry.yarnpkg.com/@uifabric/set-version/-/set-version-7.0.24.tgz#8c67d8f1d67c1636a170efa8b622132da2d294a9"
-  integrity sha512-t0Pt21dRqdC707/ConVJC0WvcQ/KF7tKLU8AZY7YdjgJpMHi1c0C427DB4jfUY19I92f60LOQyhJ4efH+KpFEg==
-  dependencies:
-    tslib "^1.10.0"
-
-"@uifabric/styling@^7.18.0":
-  version "7.19.1"
-  resolved "https://registry.yarnpkg.com/@uifabric/styling/-/styling-7.19.1.tgz#a89e4762050f7f7ca65111c1121f7a276daf4153"
-  integrity sha512-1yvfVJ9HSB7TVUKocjs/ij3bsVHtfBRbhnhDtdMS9Fw13abf1IBOpwx8LPMGMt1nbeAmWbzlBI+Deoyij9lstA==
-  dependencies:
-    "@fluentui/theme" "^1.7.4"
-    "@microsoft/load-themed-styles" "^1.10.26"
-    "@uifabric/merge-styles" "^7.19.2"
-    "@uifabric/set-version" "^7.0.24"
-    "@uifabric/utilities" "^7.33.5"
-    tslib "^1.10.0"
-
-"@uifabric/utilities@^7.33.4", "@uifabric/utilities@^7.33.5":
-  version "7.33.5"
-  resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-7.33.5.tgz#4e7ed4bab725c054005e9ac37b0f01d743089be4"
-  integrity sha512-I+Oi0deD/xltSluFY8l2EVd/J4mvOaMljxKO2knSD9/KoGDlo/o5GN4gbnVo8nIt76HWHLAk3KtlJKJm6BhbIQ==
-  dependencies:
-    "@fluentui/dom-utilities" "^1.1.2"
-    "@uifabric/merge-styles" "^7.19.2"
-    "@uifabric/set-version" "^7.0.24"
-    prop-types "^15.7.2"
-    tslib "^1.10.0"
 
 "@webassemblyjs/ast@1.11.0":
   version "1.11.0"
