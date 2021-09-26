@@ -13,6 +13,10 @@ module.exports = function (env, argv) {
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js'],
+      fallback: {
+        fs: false,
+        path: require.resolve('path-browserify')
+      },
       alias:
         argv.mode === 'production'
           ? {}

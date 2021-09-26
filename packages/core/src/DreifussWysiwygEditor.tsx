@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {ReactNode, useEffect} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/plate-toolbar'
 import {createTablePlugin} from '@dreifuss-wysiwyg-editor/table'
@@ -10,13 +10,21 @@ import {createCodeBlockPlugin} from '@udecode/plate-code-block'
 import {createBlockquotePlugin} from '@udecode/plate-block-quote'
 import {createMediaEmbedPlugin} from '@udecode/plate-media-embed'
 import {createPlateOptions} from './utils/createPlateOptions'
-import {EditorValue, CharactersCountIcon, Modal, LinkIcon} from '@dreifuss-wysiwyg-editor/common'
+import {
+  EditorValue,
+  CharactersCountIcon,
+  Modal,
+  LinkIcon,
+  ImageIcon
+} from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
 import {createPlateComponents} from './utils/createPlateComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {createHistoryPlugin, createReactPlugin, Plate} from '@udecode/plate-core'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
+import {createImagePlugin, ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
+import {ToolbarImage} from '@dreifuss-wysiwyg-editor/image-ui'
 import {createLinkPlugin, ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
 import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
@@ -49,6 +57,10 @@ export interface EditableProps {
   disabled?: boolean
 }
 
+export interface Toolbars {
+  ImageToolbar: ReactNode
+}
+
 export interface EditorProps {
   id?: string
   displayOnly?: boolean
@@ -59,10 +71,11 @@ export interface EditorProps {
   value?: EditorValue
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
+  toolbars?: Toolbars
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
-  const {id = 'main', showCharactersCount = true} = props
+  const {id = 'main', showCharactersCount = true, toolbars} = props
   const components = createPlateComponents()
   const options = createPlateOptions()
 
@@ -110,7 +123,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createSuperscriptPlugin(),
     createStrikethroughPlugin(),
     createHeadingPlugin({levels: 3}),
-    createDeserializeMDPlugin()
+    createDeserializeMDPlugin(),
+    createImagePlugin()
   ]
 
   return (
@@ -146,6 +160,9 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             <ToolbarLink />
           </Modal>
           <Divider type={DividerType.vertical} />
+          <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
+            <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
+          </Modal>
         </HeadingToolbar>
       )}
       {showCharactersCount && (

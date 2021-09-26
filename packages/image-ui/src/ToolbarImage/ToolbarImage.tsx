@@ -1,6 +1,6 @@
 import * as React from 'react'
-import {useEventEditorId, useStoreEditorRef} from '@udecode/slate-plugins-core'
-import {insertImage} from '@udecode/slate-plugins-image'
+import {useEventEditorId, useStoreEditorRef} from '@udecode/plate-core'
+import {insertImage} from '@dreifuss-wysiwyg-editor/image'
 import {useContext, useEffect, useState} from 'react'
 import {ModalContext} from '@dreifuss-wysiwyg-editor/common'
 import {BaseRange} from 'slate'
@@ -23,8 +23,13 @@ export const ToolbarImage = ({CustomComponent}: any) => {
   if (CustomComponent)
     return (
       <CustomComponent
-        onChange={(url: string) => {
-          setURL(url)
+        onChange={(newUrl: string) => {
+          setURL(newUrl)
+          if (!editor) return
+
+          insertImage({...editor, selection}, newUrl)
+
+          toggleMenu()
         }}
       />
     )
@@ -51,4 +56,8 @@ export const ToolbarImage = ({CustomComponent}: any) => {
       </div>
     </form>
   )
+}
+
+export interface CustomImageToolbarProps {
+  onChange: React.Dispatch<React.SetStateAction<any>>
 }
