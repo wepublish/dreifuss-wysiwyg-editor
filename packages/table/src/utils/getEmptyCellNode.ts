@@ -11,8 +11,6 @@ export const getEmptyCellNode = (editor: SPEditor, {header}: TablePluginOptions)
         type: getSlatePluginType(editor, ELEMENT_DEFAULT),
         children: [{text: ''}]
       }
-    ],
-    // grey color
-    borderColor: '#655656'
+    ]
   }
 }
