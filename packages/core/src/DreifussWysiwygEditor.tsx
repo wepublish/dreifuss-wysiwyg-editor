@@ -70,11 +70,10 @@ export interface EditorProps {
   value?: EditorValue
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
-  toolbars?: any
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
-  const {id = 'main', showCharactersCount = true, toolbars} = props
+  const {id = 'main', showCharactersCount = true} = props
   const components = createPlateComponents()
   const options = createPlateOptions()
 
@@ -124,8 +123,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createSuperscriptPlugin(),
     createStrikethroughPlugin(),
     createHeadingPlugin({levels: 3}),
-    searchHighlightPlugin,
     createDeserializeMDPlugin(),
+    searchHighlightPlugin,
     createSelectOnBackspacePlugin({allow: [ELEMENT_MEDIA_EMBED]})
   ]
 
@@ -162,7 +161,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           </Modal>
 
           <Divider type={DividerType.vertical} />
-
           <Modal type={'ELEMENT_IMAGE'} Icon={<SearchIcon />}>
             <ToolbarSearchHighlight icon={() => <></>} setSearch={setSearch} />
           </Modal>

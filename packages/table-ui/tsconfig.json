@@ -7,6 +7,5 @@
     "lib": ["dom", "ES2019"],
     "jsx": "react-jsx"
   },
-  "exclude": ["node_modules", "dist"],
-  "files": ["src/twin.d.ts"]
+  "exclude": ["node_modules", "dist"]
 }
