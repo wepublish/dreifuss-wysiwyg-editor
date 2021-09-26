@@ -142,8 +142,7 @@ export const createPlateOptions = <T extends string = string>(
       ...DEFAULTS_HIGHLIGHT
     },
     [MARK_STRIKETHROUGH]: {
-      ...DEFAULTS_STRIKETHROUGH,
-      hotkey: 'mod+shift+x'
+      ...DEFAULTS_STRIKETHROUGH
     },
     [MARK_SUBSCRIPT]: {
       ...DEFAULTS_SUBSCRIPT
