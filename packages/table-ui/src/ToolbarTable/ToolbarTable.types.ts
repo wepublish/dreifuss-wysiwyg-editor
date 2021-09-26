@@ -1,6 +1,6 @@
-import {SPEditor} from '@udecode/slate-plugins-core'
+import {SPEditor} from '@udecode/plate-core'
 import {TablePluginOptions} from '@dreifuss-wysiwyg-editor/table'
-import {ToolbarButtonProps} from '@udecode/slate-plugins-toolbar'
+import {ToolbarButtonProps} from '@udecode/plate-toolbar'
 
 export interface ToolbarTableProps extends ToolbarButtonProps, TablePluginOptions {
   transform: (editor: SPEditor, options: {header?: boolean}) => void

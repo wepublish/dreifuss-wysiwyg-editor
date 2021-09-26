@@ -1,3 +1,3 @@
-# slate-plugins-table-ui
+# @dreifuss-wysiwyg-editor/table-ui
 
-This plugin is based on @udecode/slate-plugins-table-ui
+This plugin is based on @udecode/plate-table-ui

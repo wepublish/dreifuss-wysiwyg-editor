@@ -4,37 +4,37 @@ import {
   ELEMENT_ALIGN_JUSTIFY,
   ELEMENT_ALIGN_LEFT,
   ELEMENT_ALIGN_RIGHT
-} from '@udecode/slate-plugins-alignment'
+} from '@udecode/plate-alignment'
 import {
   MARK_BOLD,
+  DEFAULTS_BOLD,
   MARK_CODE,
+  DEFAULTS_CODE as DEFAULTS_MARK_CODE,
   MARK_ITALIC,
+  DEFAULTS_ITALIC,
   MARK_STRIKETHROUGH,
+  DEFAULTS_STRIKETHROUGH,
   MARK_SUBSCRIPT,
+  DEFAULTS_SUBSCRIPT,
   MARK_SUPERSCRIPT,
-  MARK_UNDERLINE
-} from '@udecode/slate-plugins-basic-marks'
-import {ELEMENT_BLOCKQUOTE} from '@udecode/slate-plugins-block-quote'
-import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/slate-plugins-code-block'
-import {SlatePluginOptions} from '@udecode/slate-plugins-core'
-import {MARK_SEARCH_HIGHLIGHT} from '@udecode/slate-plugins-find-replace'
-import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/slate-plugins-heading'
-import {MARK_HIGHLIGHT} from '@udecode/slate-plugins-highlight'
-import {ELEMENT_IMAGE} from '@udecode/slate-plugins-image'
+  DEFAULTS_SUPERSCRIPT,
+  MARK_UNDERLINE,
+  DEFAULTS_UNDERLINE
+} from '@udecode/plate-basic-marks'
+import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
+import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE, DEFAULTS_CODE_BLOCK} from '@udecode/plate-code-block'
+import {PlatePluginOptions} from '@udecode/plate-core'
+import {MARK_SEARCH_HIGHLIGHT} from '@udecode/plate-find-replace'
+import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
+import {DEFAULTS_HIGHLIGHT, MARK_HIGHLIGHT} from '@udecode/plate-highlight'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
-import {
-  ELEMENT_LI,
-  ELEMENT_OL,
-  ELEMENT_TODO_LI,
-  ELEMENT_UL,
-  ELEMENT_LIC
-} from '@udecode/slate-plugins-list'
-import {ELEMENT_MEDIA_EMBED} from '@udecode/slate-plugins-media-embed'
-// import {ELEMENT_MENTION} from '@udecode/slate-plugins-mention'
-import {ELEMENT_PARAGRAPH} from '@udecode/slate-plugins-paragraph'
+import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL, ELEMENT_LIC} from '@udecode/plate-list'
+import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
+// import {ELEMENT_MENTION} from '@udecode/plate-mention'
+import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 
-export type DefaultSlatePluginKey =
+export type DefaultPlatePluginKey =
   | typeof ELEMENT_ALIGN_CENTER
   | typeof ELEMENT_ALIGN_JUSTIFY
   | typeof ELEMENT_ALIGN_LEFT
@@ -45,7 +45,6 @@ export type DefaultSlatePluginKey =
   | typeof ELEMENT_H1
   | typeof ELEMENT_H2
   | typeof ELEMENT_H3
-  | typeof ELEMENT_IMAGE
   | typeof ELEMENT_LI
   | typeof ELEMENT_LINK
   | typeof ELEMENT_MEDIA_EMBED
@@ -73,29 +72,17 @@ export type DefaultSlatePluginKey =
  * Get slate plugins options.
  * @param overrides merge into the default options
  */
-export const createSlatePluginsOptions = <T extends string = string>(
-  overrides?: Partial<Record<DefaultSlatePluginKey | T, Partial<SlatePluginOptions>>>
+export const createPlateOptions = <T extends string = string>(
+  overrides?: Partial<Record<DefaultPlatePluginKey | T, Partial<PlatePluginOptions>>>
 ) => {
-  const options: Record<DefaultSlatePluginKey, Partial<SlatePluginOptions>> = {
-    [ELEMENT_ALIGN_CENTER]: {
-      type: 'align-center'
-    },
+  const options: Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>> = {
+    [ELEMENT_ALIGN_CENTER]: {},
     [ELEMENT_ALIGN_JUSTIFY]: {},
-    [ELEMENT_ALIGN_LEFT]: {
-      type: 'align-left'
-    },
-    [ELEMENT_ALIGN_RIGHT]: {
-      type: 'align-right'
-    },
-    [ELEMENT_BLOCKQUOTE]: {
-      type: 'block-quote'
-    },
-    [ELEMENT_CODE_BLOCK]: {
-      type: 'code-block'
-    },
-    [ELEMENT_CODE_LINE]: {
-      type: 'code-line'
-    },
+    [ELEMENT_ALIGN_LEFT]: {},
+    [ELEMENT_ALIGN_RIGHT]: {},
+    [ELEMENT_BLOCKQUOTE]: {},
+    [ELEMENT_CODE_BLOCK]: {...DEFAULTS_CODE_BLOCK},
+    [ELEMENT_CODE_LINE]: {},
     [ELEMENT_PARAGRAPH]: {
       type: 'paragraph',
       defaultType: 'paragraph'
@@ -143,16 +130,33 @@ export const createSlatePluginsOptions = <T extends string = string>(
     },
     [ELEMENT_TH]: {},
     [ELEMENT_TODO_LI]: {},
-    [MARK_BOLD]: {},
-    [MARK_CODE]: {},
-    [MARK_HIGHLIGHT]: {},
-    [MARK_ITALIC]: {},
-    [MARK_SEARCH_HIGHLIGHT]: {},
-    [MARK_STRIKETHROUGH]: {},
-    [MARK_SUBSCRIPT]: {},
-    [MARK_SUPERSCRIPT]: {},
-    [MARK_UNDERLINE]: {},
-    [ELEMENT_IMAGE]: {}
+    [MARK_BOLD]: {
+      ...DEFAULTS_BOLD
+    },
+    [MARK_CODE]: {
+      ...DEFAULTS_MARK_CODE
+    },
+    [MARK_HIGHLIGHT]: {
+      ...DEFAULTS_HIGHLIGHT
+    },
+    [MARK_ITALIC]: {
+      ...DEFAULTS_ITALIC
+    },
+    [MARK_SEARCH_HIGHLIGHT]: {
+      ...DEFAULTS_HIGHLIGHT
+    },
+    [MARK_STRIKETHROUGH]: {
+      ...DEFAULTS_STRIKETHROUGH
+    },
+    [MARK_SUBSCRIPT]: {
+      ...DEFAULTS_SUBSCRIPT
+    },
+    [MARK_SUPERSCRIPT]: {
+      ...DEFAULTS_SUPERSCRIPT
+    },
+    [MARK_UNDERLINE]: {
+      ...DEFAULTS_UNDERLINE
+    }
   }
 
   if (overrides) {
@@ -167,5 +171,5 @@ export const createSlatePluginsOptions = <T extends string = string>(
     }
   })
 
-  return options as Record<DefaultSlatePluginKey | T, SlatePluginOptions>
+  return options as Record<DefaultPlatePluginKey | T, PlatePluginOptions>
 }
