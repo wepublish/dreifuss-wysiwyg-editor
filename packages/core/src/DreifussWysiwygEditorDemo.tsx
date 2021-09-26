@@ -75,19 +75,11 @@ const value: any = [
   // },
   // {type: 'paragraph', children: [{text: 'Emojis: 😄'}]}
 ]
-const toolbars = {
-  // ImageToolbar: () => (
-  //   <>
-  //     <h4>Image Uploader</h4>
-  //   </>
-  // )
-}
 
 const DreifussWysiwygEditorDemo = () => (
   <div style={{overflowX: 'hidden', minHeight: 400}}>
     <h1>RichText Component Demo</h1>
     <DreifussWysiwygEditor
-      toolbars={toolbars}
       // charactersCount={count => {
       //   console.log(count)
       // }}

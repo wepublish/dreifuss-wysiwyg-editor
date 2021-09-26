@@ -8,16 +8,9 @@ import {createHighlightPlugin} from '@udecode/plate-highlight'
 import {createParagraphPlugin} from '@udecode/plate-paragraph'
 import {createCodeBlockPlugin} from '@udecode/plate-code-block'
 import {createBlockquotePlugin} from '@udecode/plate-block-quote'
-import {createMediaEmbedPlugin, ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
+import {createMediaEmbedPlugin} from '@udecode/plate-media-embed'
 import {createPlateOptions} from './utils/createPlateOptions'
-import {
-  EditorValue,
-  CharactersCountIcon,
-  Modal,
-  LinkIcon,
-  SearchIcon,
-  MediaEmbedIcon
-} from '@dreifuss-wysiwyg-editor/common'
+import {EditorValue, CharactersCountIcon, Modal, LinkIcon} from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
 import {createPlateComponents} from './utils/createPlateComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
@@ -30,10 +23,6 @@ import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {createDeserializeMDPlugin} from '@udecode/plate-md-serializer'
-import {useFindReplacePlugin} from '@udecode/plate-find-replace'
-import {ToolbarSearchHighlight} from '@udecode/plate-find-replace-ui'
-import {MediaEmbedToolbar} from '@dreifuss-wysiwyg-editor/media-embed-ui'
-import {createSelectOnBackspacePlugin} from '@udecode/plate-select'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -70,15 +59,12 @@ export interface EditorProps {
   value?: EditorValue
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
-  toolbars?: any
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
-  const {id = 'main', showCharactersCount = true, toolbars} = props
+  const {id = 'main', showCharactersCount = true} = props
   const components = createPlateComponents()
   const options = createPlateOptions()
-
-  const {setSearch, plugin: searchHighlightPlugin} = useFindReplacePlugin()
 
   const editableProps = {
     placeholder: "What's on your mind?",
@@ -124,9 +110,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createSuperscriptPlugin(),
     createStrikethroughPlugin(),
     createHeadingPlugin({levels: 3}),
-    searchHighlightPlugin,
-    createDeserializeMDPlugin(),
-    createSelectOnBackspacePlugin({allow: [ELEMENT_MEDIA_EMBED]})
+    createDeserializeMDPlugin()
   ]
 
   return (
@@ -159,17 +143,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <Divider type={DividerType.vertical} />
           <Modal type={ELEMENT_LINK} Icon={<LinkIcon />}>
             <ToolbarLink />
-          </Modal>
-
-          <Divider type={DividerType.vertical} />
-
-          <Modal type={'ELEMENT_IMAGE'} Icon={<SearchIcon />}>
-            <ToolbarSearchHighlight icon={() => <></>} setSearch={setSearch} />
-          </Modal>
-
-          <Divider type={DividerType.vertical} />
-          <Modal type={ELEMENT_LINK} Icon={<MediaEmbedIcon />}>
-            <MediaEmbedToolbar />
           </Modal>
         </HeadingToolbar>
       )}
