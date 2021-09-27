@@ -82,7 +82,7 @@ export const createPlateOptions = <T extends string = string>(
       type: 'align-center'
     },
     [ELEMENT_ALIGN_JUSTIFY]: {
-      type: 'align-justify'
+      type: 'align-justified'
     },
     [ELEMENT_ALIGN_LEFT]: {
       type: 'align-left'
