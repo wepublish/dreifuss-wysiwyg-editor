@@ -28,7 +28,7 @@ import {MARK_SEARCH_HIGHLIGHT} from '@udecode/plate-find-replace'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
 import {DEFAULTS_HIGHLIGHT, MARK_HIGHLIGHT} from '@udecode/plate-highlight'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
-import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/plate-list'
+import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL, ELEMENT_LIC} from '@udecode/plate-list'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 // import {ELEMENT_MENTION} from '@udecode/plate-mention'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
@@ -58,6 +58,7 @@ export type DefaultPlatePluginKey =
   | typeof ELEMENT_TODO_LI
   | typeof ELEMENT_TR
   | typeof ELEMENT_UL
+  | typeof ELEMENT_LIC
   | typeof MARK_BOLD
   | typeof MARK_CODE
   | typeof MARK_HIGHLIGHT
@@ -77,13 +78,27 @@ export const createPlateOptions = <T extends string = string>(
   overrides?: Partial<Record<DefaultPlatePluginKey | T, Partial<PlatePluginOptions>>>
 ) => {
   const options: Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>> = {
-    [ELEMENT_ALIGN_CENTER]: {},
-    [ELEMENT_ALIGN_JUSTIFY]: {},
-    [ELEMENT_ALIGN_LEFT]: {},
-    [ELEMENT_ALIGN_RIGHT]: {},
-    [ELEMENT_BLOCKQUOTE]: {},
-    [ELEMENT_CODE_BLOCK]: {...DEFAULTS_CODE_BLOCK},
-    [ELEMENT_CODE_LINE]: {},
+    [ELEMENT_ALIGN_CENTER]: {
+      type: 'align-center'
+    },
+    [ELEMENT_ALIGN_JUSTIFY]: {
+      type: 'align-justified'
+    },
+    [ELEMENT_ALIGN_LEFT]: {
+      type: 'align-left'
+    },
+    [ELEMENT_ALIGN_RIGHT]: {
+      type: 'align-right'
+    },
+    [ELEMENT_BLOCKQUOTE]: {
+      type: 'block-quote'
+    },
+    [ELEMENT_CODE_BLOCK]: {
+      type: 'code-block'
+    },
+    [ELEMENT_CODE_LINE]: {
+      type: 'code-line'
+    },
     [ELEMENT_PARAGRAPH]: {
       type: 'paragraph',
       defaultType: 'paragraph'
@@ -116,6 +131,9 @@ export const createPlateOptions = <T extends string = string>(
     [ELEMENT_OL]: {
       type: 'ordered-list',
       defaultType: 'ordered-list'
+    },
+    [ELEMENT_LIC]: {
+      type: 'list-item-cell'
     },
     [ELEMENT_TABLE]: {},
     [ELEMENT_TD]: {

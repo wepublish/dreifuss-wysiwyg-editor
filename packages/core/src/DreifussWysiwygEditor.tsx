@@ -163,8 +163,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
             <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
           </Modal>
-
-          <Divider type={DividerType.vertical} />
         </HeadingToolbar>
       )}
       {showCharactersCount && (
