@@ -1,24 +1,28 @@
-import * as React from 'react'
-import {useEventEditorId, useStoreEditorRef} from '@udecode/plate-core'
+import React, {useContext, useEffect, useRef, useState} from 'react'
+import {ReactEditor} from 'slate-react'
+import {BaseSelection, Transforms} from 'slate'
 import {insertImage} from '@dreifuss-wysiwyg-editor/image'
-import {useContext, useEffect, useState} from 'react'
 import {ModalContext} from '@dreifuss-wysiwyg-editor/common'
-import {BaseRange} from 'slate'
+import {useEventEditorId, useStoreEditorRef, useStoreEditorSelection} from '@udecode/plate-core'
+
+import './image-toolbar.css'
 
 export const ToolbarImage = ({CustomComponent}: any) => {
   const editor = useStoreEditorRef(useEventEditorId('focus'))
+  const editorRef = useStoreEditorRef(useEventEditorId('focus'))
+  const selection = useStoreEditorSelection(useEventEditorId('focus'))
+
+  const latestSelection = useRef<BaseSelection>()
 
   const {toggleMenu} = useContext(ModalContext)
 
   const [url, setURL] = useState('')
 
-  const [selection, setSelection] = useState<BaseRange | null>(null)
-
   useEffect(() => {
-    if (editor?.selection) {
-      setSelection(editor.selection)
+    if (selection) {
+      latestSelection.current = selection
     }
-  }, [editor?.selection])
+  }, [selection])
 
   if (CustomComponent)
     return (
@@ -27,15 +31,17 @@ export const ToolbarImage = ({CustomComponent}: any) => {
           setURL(newUrl)
           if (!editor) return
 
-          insertImage({...editor, selection}, newUrl)
+          Transforms.select(editorRef, latestSelection.current)
+          ReactEditor.focus(editorRef)
 
+          insertImage(editor, url)
           toggleMenu()
         }}
       />
     )
 
   return (
-    <form className="link-toolbar">
+    <form className="image-toolbar">
       <div className="form-group">
         <label>Link</label>
         <div className="input-group">
@@ -48,7 +54,10 @@ export const ToolbarImage = ({CustomComponent}: any) => {
             e.preventDefault()
             if (!editor) return
 
-            insertImage({...editor, selection}, url)
+            Transforms.select(editorRef, latestSelection.current)
+            ReactEditor.focus(editorRef)
+
+            insertImage(editor, url)
             toggleMenu()
           }}>
           Insert
