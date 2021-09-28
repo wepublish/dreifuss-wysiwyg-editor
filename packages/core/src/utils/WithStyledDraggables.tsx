@@ -1,5 +1,5 @@
 import React from 'react'
-// import 'twin.macro'
+import 'twin.macro'
 import {DragIndicator} from '@styled-icons/material/DragIndicator'
 import Tippy, {TippyProps} from '@tippyjs/react'
 import {withDraggables} from '@udecode/plate-dnd'
@@ -9,6 +9,7 @@ import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
 import {ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/plate-list'
 import {ELEMENT_CODE_BLOCK} from '@udecode/plate-code-block'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
+import 'tippy.js/dist/tippy.css'
 
 const GrabberTooltipContent = () => (
   <div style={{fontSize: 12}}>
@@ -43,9 +44,6 @@ export const withStyledDraggables = (components: any) => {
         ELEMENT_H1,
         ELEMENT_H2,
         ELEMENT_H3,
-        // ELEMENT_H4,
-        // ELEMENT_H5,
-        // ELEMENT_H6,
         // ELEMENT_IMAGE,
         ELEMENT_OL,
         ELEMENT_UL,
@@ -53,11 +51,9 @@ export const withStyledDraggables = (components: any) => {
         ELEMENT_MEDIA_EMBED,
         ELEMENT_CODE_BLOCK
       ],
-      onRenderDragHandle: ({className, styles}) => {
+      onRenderDragHandle: ({className, styles}: any) => {
         return (
           <Tippy {...grabberTooltipProps}>
-            {/*  eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-            {/* @ts-ignore */}
             <button type="button" className={className} css={styles}>
               <DragIndicator
                 style={{
@@ -107,18 +103,6 @@ export const withStyledDraggables = (components: any) => {
         }
       }
     },
-    // {
-    //   keys: [ELEMENT_H4, ELEMENT_H5, ELEMENT_H6],
-    //   styles: {
-    //     gutterLeft: {
-    //       padding: '0.75em 0 0',
-    //       fontSize: '1.1em'
-    //     },
-    //     blockToolbarWrapper: {
-    //       height: '1.3em'
-    //     }
-    //   }
-    // },
     {
       keys: [ELEMENT_PARAGRAPH, ELEMENT_UL, ELEMENT_OL],
       styles: {
