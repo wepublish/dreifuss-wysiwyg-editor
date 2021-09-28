@@ -13,9 +13,28 @@ export const getLinkOnKeyDown = () => (editor: SPEditor) => (event: KeyboardEven
   if (!hotKey) return
 
   if (verifyHotkey(event, hotKey)) {
-    navigator.clipboard
-      .readText()
-      .then((url: string) => {
+    if (navigator.clipboard.readText) {
+      navigator.clipboard
+        .readText()
+        .then((url: string) => {
+          if (!url) return
+
+          validateUrl(url).then((isValid: boolean) => {
+            if (isValid) {
+              upsertLinkAtSelection(editor, {
+                url,
+                selection: editor.selection,
+                wrap: true
+              })
+            }
+          })
+        })
+        .catch(err => console.error("can't get clipboard value", err))
+    } else {
+      document.addEventListener('paste', event => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const url = (event.clipboardData || window.clipboardData).getData('text')
         if (!url) return
 
         validateUrl(url).then((isValid: boolean) => {
@@ -28,6 +47,6 @@ export const getLinkOnKeyDown = () => (editor: SPEditor) => (event: KeyboardEven
           }
         })
       })
-      .catch(err => console.error("can't get clipboard value", err))
+    }
   }
 }
