@@ -9,7 +9,8 @@ module.exports = function (env, argv) {
     devtool: env.production ? 'source-map' : 'inline-source-map',
 
     devServer: {
-      historyApiFallback: true
+      historyApiFallback: true,
+      port: 4003
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js'],
@@ -33,6 +34,9 @@ module.exports = function (env, argv) {
               ['@babel/preset-env', {modules: false}]
             ],
             plugins: [
+              'babel-plugin-twin',
+              'babel-plugin-macros',
+              'styled-components',
               '@babel/plugin-syntax-dynamic-import',
               '@babel/plugin-proposal-optional-chaining',
               '@babel/plugin-proposal-nullish-coalescing-operator',
@@ -68,9 +72,9 @@ module.exports = function (env, argv) {
       libraryTarget: 'umd',
       library: 'my-design-system'
     },
-    /*externals: {
+    /* externals: {
       '@dreifuss-wysiwyg-editor/plate-quotation-marks-ui': '@dreifuss-wysiwyg-editor/plate-quotation-marks-u'
-    },*/
+    }, */
 
     plugins: [
       new HtmlWebpackPlugin({
