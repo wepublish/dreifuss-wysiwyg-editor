@@ -34,7 +34,7 @@ export const ToolbarImage = ({CustomComponent}: any) => {
           Transforms.select(editorRef, latestSelection.current)
           ReactEditor.focus(editorRef)
 
-          insertImage(editor, url)
+          insertImage(editor, newUrl)
           toggleMenu()
         }}
       />

@@ -87,7 +87,7 @@ const toolbars = {
 
     return (
       <>
-        <form className="link-toolbar">
+        <form className="image-toolbar">
           <div className="form-group">
             <h4>Image Uploader</h4>
             <div className="input-group">
@@ -96,8 +96,8 @@ const toolbars = {
           </div>
           <div className="toolbar" role="toolbar">
             <button
-              onClick={e => {
-                e.preventDefault()
+              type="submit"
+              onClick={() => {
                 onChange(url)
               }}>
               Insert

@@ -10,4 +10,5 @@ export const insertImage = (editor: SPEditor, url: string | ArrayBuffer) => {
     children: [text]
   }
   insertNodes<TElement>(editor, image)
+  insertNodes<TElement>(editor, {type: 'paragraph', children: [text]})
 }
