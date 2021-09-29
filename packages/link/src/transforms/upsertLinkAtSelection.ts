@@ -13,8 +13,7 @@ export const upsertLinkAtSelection = (
   editor: SPEditor,
   {
     url,
-    wrap,
-    selection
+    wrap
   }: {
     url: string
     /**
@@ -24,11 +23,11 @@ export const upsertLinkAtSelection = (
     selection?: any
   }
 ) => {
-  if (!selection) return
+  if (!editor.selection) return
 
   const type = getPlatePluginType(editor, ELEMENT_LINK)
 
-  if (!wrap && isCollapsed(selection)) {
+  if (!wrap && isCollapsed(editor.selection)) {
     return insertNodes<TElement>(editor, {
       type,
       url,
@@ -37,15 +36,15 @@ export const upsertLinkAtSelection = (
   }
 
   // if our cursor is inside an existing link, but don't have the text selected, select it now
-  if (wrap && isCollapsed(selection)) {
-    const linkLeaf = Editor.leaf(editor, selection)
+  if (wrap && isCollapsed(editor.selection)) {
+    const linkLeaf = Editor.leaf(editor, editor.selection)
     const [, inlinePath] = linkLeaf
     Transforms.select(editor, inlinePath)
   }
 
-  unwrapNodes(editor, {at: selection, match: {type}})
+  unwrapNodes(editor, {at: editor.selection, match: {type}})
 
-  wrapLink(editor, {at: selection, url})
+  wrapLink(editor, {at: editor.selection, url})
 
   Transforms.collapse(editor, {edge: 'end'})
 }

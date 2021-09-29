@@ -1,6 +1,11 @@
-import React, {useContext, useEffect, useState} from 'react'
-import {BaseRange, Editor, Element, BaseEditor} from 'slate'
-import {getPlatePluginType, useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
+import React, {useContext, useEffect, useRef, useState} from 'react'
+import {Editor, Element, BaseEditor, BaseSelection, Transforms, Location} from 'slate'
+import {
+  getPlatePluginType,
+  useEventEditorId,
+  useStoreEditorRef,
+  useStoreEditorSelection
+} from '@udecode/plate-core'
 import {
   upsertLinkAtSelection,
   validateUrl,
@@ -24,9 +29,10 @@ declare module 'slate' {
 }
 
 export const ToolbarLink = () => {
-  const editor = useStoreEditorState(useEventEditorId('focus'))
+  const editor = useStoreEditorRef(useEventEditorId('focus'))
+  const selection = useStoreEditorSelection(useEventEditorId('focus'))
 
-  const [selection, setSelection] = useState<BaseRange | null>(null)
+  const latestSelection = useRef<BaseSelection | Location>()
 
   const [title, setTitle] = useState('')
   const [url, setURL] = useState('')
@@ -110,10 +116,10 @@ export const ToolbarLink = () => {
   }, [selection])
 
   useEffect(() => {
-    if (editor?.selection) {
-      setSelection(editor.selection)
+    if (selection) {
+      latestSelection.current = selection
     }
-  }, [editor?.selection])
+  }, [selection])
 
   return (
     <form className="link-toolbar">
@@ -151,10 +157,14 @@ export const ToolbarLink = () => {
             if (!editor) return
             e.preventDefault()
 
+            if (latestSelection.current) {
+              Transforms.select(editor, latestSelection.current)
+            }
+            ReactEditor.focus(editor)
+
             upsertLinkAtSelection(editor, {
               url: prefix !== prefixType.other ? prefix + url : url,
-              wrap: true,
-              selection
+              wrap: true
             })
             toggleMenu()
           }}>

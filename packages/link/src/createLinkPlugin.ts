@@ -1,7 +1,6 @@
 import {getRenderElement, getPlatePluginTypes, PlatePlugin} from '@udecode/plate-core'
 import {ELEMENT_LINK} from './defaults'
 import {getLinkDeserialize} from './getLinkDeserialize'
-import {getLinkOnKeyDown} from './transforms'
 import {WithLinkOptions} from './types'
 import {withLink} from './withLink'
 
@@ -13,6 +12,5 @@ export const createLinkPlugin = (options?: WithLinkOptions): PlatePlugin => ({
   renderElement: getRenderElement(ELEMENT_LINK),
   deserialize: getLinkDeserialize(),
   inlineTypes: getPlatePluginTypes(ELEMENT_LINK),
-  withOverrides: withLink(options),
-  onKeyDown: getLinkOnKeyDown()
+  withOverrides: withLink(options)
 })
