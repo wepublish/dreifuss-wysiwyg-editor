@@ -4263,25 +4263,6 @@
     lodash "^4.17.21"
     zustand "^3.4.2"
 
-"@udecode/plate-find-replace-ui@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@udecode/plate-find-replace-ui/-/plate-find-replace-ui-3.0.1.tgz#59a406e09afda8807fe3e830a0c8ce5de316700e"
-  integrity sha512-Uf4LM8NgtUDhIZXUQHO2hytW/1/9fR3H+mOS/tt3NY8OyUbudp40tglaQloIn1/FkcLR1zd8A4Z9HTH6aNaacA==
-  dependencies:
-    "@udecode/plate-common" "2.0.0"
-    "@udecode/plate-core" "1.0.0"
-    "@udecode/plate-find-replace" "2.0.0"
-    "@udecode/plate-styled-components" "3.0.1"
-    "@udecode/plate-toolbar" "3.0.1"
-
-"@udecode/plate-find-replace@2.0.0", "@udecode/plate-find-replace@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@udecode/plate-find-replace/-/plate-find-replace-2.0.0.tgz#84d8b14c03f45d01935f52557b0030a9d4fccbe2"
-  integrity sha512-dMNHkZQ78RWusO2a1ZMZn6Ss4MFxsYLDdwnATlxZcRvW937waamxehgkLvM/75cQeN+cxNbl0VTzSMQwxj+UGg==
-  dependencies:
-    "@udecode/plate-common" "2.0.0"
-    "@udecode/plate-core" "1.0.0"
-
 "@udecode/plate-heading@2.0.0", "@udecode/plate-heading@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@udecode/plate-heading/-/plate-heading-2.0.0.tgz#b459c605d3a330fbca04a713d508d6a6fc1850b6"

@@ -19,7 +19,7 @@ import {BlockquoteElement} from '@udecode/plate-block-quote-ui'
 import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
 import {CodeBlockElement, CodeLineElement} from '@udecode/plate-code-block-ui'
 import {withProps} from '@udecode/plate-common'
-import {MARK_SEARCH_HIGHLIGHT} from '@udecode/plate-find-replace'
+import {MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
 import {
   ELEMENT_H1,
   ELEMENT_H2,
