@@ -3,7 +3,6 @@ import {ELEMENT_LINK} from './defaults'
 import {getLinkDeserialize} from './getLinkDeserialize'
 import {WithLinkOptions} from './types'
 import {withLink} from './withLink'
-import {onKeyDown} from './transforms'
 
 /**
  * Enables support for hyperlinks.
@@ -13,6 +12,5 @@ export const createLinkPlugin = (options?: WithLinkOptions): PlatePlugin => ({
   renderElement: getRenderElement(ELEMENT_LINK),
   deserialize: getLinkDeserialize(),
   inlineTypes: getPlatePluginTypes(ELEMENT_LINK),
-  withOverrides: withLink(options),
-  onKeyDown
+  withOverrides: withLink(options)
 })
