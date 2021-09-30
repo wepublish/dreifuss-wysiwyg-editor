@@ -13,10 +13,6 @@ module.exports = function (env, argv) {
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js'],
-      fallback: {
-        fs: false,
-        path: require.resolve('path-browserify')
-      },
       alias:
         argv.mode === 'production'
           ? {}
@@ -72,9 +68,9 @@ module.exports = function (env, argv) {
       libraryTarget: 'umd',
       library: 'my-design-system'
     },
-    /*externals: {
+    /* externals: {
       '@dreifuss-wysiwyg-editor/plate-quotation-marks-ui': '@dreifuss-wysiwyg-editor/plate-quotation-marks-u'
-    },*/
+    }, */
 
     plugins: [
       new HtmlWebpackPlugin({
