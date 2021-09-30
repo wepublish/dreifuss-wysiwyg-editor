@@ -9,8 +9,9 @@ const value: any = [
   //   type: 'paragraph',
   //   children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}]
   // },
-  {type: 'paragraph', children: [{text: 'Bold: Make the selected text bold.', bold: true}]}
-  // {type: 'paragraph', children: [{text: 'Italic: Make the selected text italic.', italic: true}]},
+  {type: 'paragraph', children: [{text: 'Bold: Make the selected text bold.', bold: true}]},
+  {type: 'img', url: 'https://picsum.photos/1000/300', children: [{text: ''}]},
+  {type: 'paragraph', children: [{text: ''}]} // {type: 'paragraph', children: [{text: 'Italic: Make the selected text italic.', italic: true}]},
   // {
   //   type: 'paragraph',
   //   children: [{text: 'Underline: Underline the selected text.', underline: true}]

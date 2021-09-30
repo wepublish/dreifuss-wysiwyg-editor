@@ -13,38 +13,17 @@ export const getImageElementStyles = (props: ImageElementStyleProps) => {
     }
   } = props
 
-  const handle = [
-    tw`flex flex-col justify-center absolute select-none`,
-    tw`w-6 h-full top-0 z-10`,
-    css`
-      ::after {
-        ${tw`opacity-0`};
-        ${focused && selected && tw`opacity-100`};
-        ${tw`group-hover:opacity-100`};
-        ${tw`flex`};
-        ${tw`bg-gray-400`};
+  const color = 'rgb(157, 170, 182)'
+  const colorActive = 'white'
+  const background = 'rgb(36, 42, 49)'
+  const borderColor = 'transparent'
 
-        content: ' ';
-        width: 3px;
-        height: 64px;
-        border-radius: 6px;
-      }
-
-      :hover,
-      :focus,
-      :active {
-        ::after {
-          ${tw`bg-blue-500`};
-        }
-      }
-    `
-  ]
+  const marginTopLeft = 9
 
   return createStyles(
     {prefixClassNames: 'ImageElement', ...props},
     {
       root: [tw`py-2.5`],
-      resizable: [align === 'center' && tw`mx-auto`, align === 'right' && tw`ml-auto`],
       figure: [tw`m-0 relative`],
       img: [
         tw`block max-w-full px-0 cursor-pointer w-full`,
@@ -68,8 +47,32 @@ export const getImageElementStyles = (props: ImageElementStyleProps) => {
           }
         `
       ],
-      handleLeft: [...handle, tw`-left-3 -ml-3 pl-3`],
-      handleRight: [...handle, tw`items-end -right-3 -mr-3 pr-3`]
+      optionsToolbar: [
+        tw`flex items-center select-none box-content`,
+        tw`color[rgb(68, 68, 68)] minHeight[28px]`,
+        tw`absolute whitespace-nowrap py-0 px-1`,
+        props.hidden && tw`invisible`,
+        !props.hiddenDelay && tw`transition[top 75ms ease-out,left 75ms ease-out]`,
+        css`
+          color: ${color};
+          background: ${background};
+          z-index: 500;
+          border: 1px solid ${borderColor};
+          border-radius: 4px;
+          margin-top: ${marginTopLeft}px;
+          margin-left: ${marginTopLeft}px;
+          .slate-ToolbarButton-active,
+          .slate-ToolbarButton:hover {
+            color: ${colorActive};
+          }
+        `
+      ],
+      optionsToolbarButton: [
+        tw`bg-transparent text-gray-300 hover:text-white`,
+        css`
+          border: 0px;
+        `
+      ]
     }
   )
 }

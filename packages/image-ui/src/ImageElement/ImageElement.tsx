@@ -2,12 +2,22 @@ import React, {ChangeEventHandler, useCallback, useEffect, useMemo, useState} fr
 import TextareaAutosize from 'react-textarea-autosize'
 import {setNodes} from '@udecode/plate-common'
 import {useEditorRef} from '@udecode/plate-core'
-import {Resizable} from 're-resizable'
-import {Node, Transforms} from 'slate'
+import {Node} from 'slate'
 import {ReactEditor, useFocused, useSelected} from 'slate-react'
 import {getImageElementStyles} from './ImageElement.styles'
 import {ImageElementProps} from './ImageElement.types'
-import {ImageHandle} from './ImageHandle'
+
+enum ImageSizeType {
+  large = 'large',
+  medium = 'medium',
+  small = 'small'
+}
+
+export const imageSizeMap = {
+  [ImageSizeType.large]: '100%',
+  [ImageSizeType.medium]: '50%',
+  [ImageSizeType.small]: '30%'
+}
 
 export const ImageElement = (props: ImageElementProps) => {
   const {
@@ -16,9 +26,6 @@ export const ImageElement = (props: ImageElementProps) => {
     element,
     nodeProps,
     caption = {},
-    resizableProps = {
-      minWidth: 92
-    },
     align = 'center',
     draggable
   } = props
@@ -27,35 +34,23 @@ export const ImageElement = (props: ImageElementProps) => {
 
   const {
     url,
-    width: nodeWidth = '100%',
+    size = ImageSizeType.large,
     caption: nodeCaption = [{children: [{text: ''}]}]
   } = element
   const focused = useFocused()
   const selected = useSelected()
   const editor = useEditorRef()
-  const [width, setWidth] = useState(nodeWidth)
+
+  const [imageSize, setSize] = useState<ImageSizeType>(ImageSizeType.large)
+
+  useEffect(() => {
+    const path = ReactEditor.findPath(editor, element)
+    setNodes(editor, {size}, {at: path})
+  }, [imageSize])
 
   // const [captionId] = useState(nanoid());
 
-  useEffect(() => {
-    setWidth(nodeWidth)
-  }, [nodeWidth])
-
   const styles = getImageElementStyles({...props, align, focused, selected})
-
-  const setNodeWidth = useCallback(
-    (w: number) => {
-      const path = ReactEditor.findPath(editor, element)
-
-      if (w === nodeWidth) {
-        // Focus the node if not resized
-        Transforms.select(editor, path)
-      } else {
-        setNodes(editor, {width: w}, {at: path})
-      }
-    },
-    [editor, element, nodeWidth]
-  )
 
   const onChangeCaption: ChangeEventHandler<HTMLTextAreaElement> = useCallback(
     e => {
@@ -73,50 +68,36 @@ export const ImageElement = (props: ImageElementProps) => {
     <div {...attributes} css={styles.root.css} className={styles.root.className}>
       <div contentEditable={false}>
         <figure css={styles.figure?.css} className={`group ${styles.figure?.className}`}>
-          <Resizable
-            css={styles.resizable?.css}
-            className={styles.resizable?.className}
-            size={{width, height: '100%'}}
-            maxWidth="100%"
-            lockAspectRatio
-            resizeRatio={align === 'center' ? 2 : 1}
-            enable={{
-              left: ['center', 'left'].includes(align),
-              right: ['center', 'right'].includes(align)
-            }}
-            handleComponent={{
-              left: (
-                <ImageHandle
-                  css={[styles.handleLeft?.css]}
-                  className={styles.handleLeft?.className}
-                />
-              ),
-              right: (
-                <ImageHandle
-                  css={styles.handleRight?.css}
-                  className={styles.handleRight?.className}
-                />
-              )
-            }}
-            handleStyles={{
-              left: {left: 0},
-              right: {right: 0}
-            }}
-            onResize={(e, direction, ref) => {
-              setWidth(ref.offsetWidth)
-            }}
-            onResizeStop={(e, direction, ref) => setNodeWidth(ref.offsetWidth)}
-            {...resizableProps}>
-            <img
-              data-testid="ImageElementImage"
-              css={styles.img?.css}
-              className={styles.img?.className}
-              src={url}
-              alt={captionString}
-              draggable={draggable}
-              {...nodeProps}
-            />
-          </Resizable>
+          <div css={styles.optionsToolbar.css} className={styles.optionsToolbar.className}>
+            <button
+              css={styles.optionsToolbarButton?.css}
+              className={styles.optionsToolbarButton?.className}
+              onClick={() => setSize(ImageSizeType.large)}>
+              lg
+            </button>
+            <button
+              css={styles.optionsToolbarButton?.css}
+              className={styles.optionsToolbarButton?.className}
+              onClick={() => setSize(ImageSizeType.medium)}>
+              md
+            </button>
+            <button
+              css={styles.optionsToolbarButton?.css}
+              className={styles.optionsToolbarButton?.className}
+              onClick={() => setSize(ImageSizeType.small)}>
+              sm
+            </button>
+          </div>
+          <img
+            data-testid="ImageElementImage"
+            css={styles.img?.css}
+            style={{width: imageSizeMap[imageSize]}}
+            className={styles.img?.className}
+            src={url}
+            alt={captionString}
+            draggable={draggable}
+            {...nodeProps}
+          />
 
           {!caption.disabled && (captionString.length || selected) && (
             <figcaption

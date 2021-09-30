@@ -17,6 +17,8 @@ export interface ImageElementStyles {
   handle: CSSProp
   handleLeft: CSSProp
   handleRight: CSSProp
+  optionsToolbar: CSSProp
+  optionsToolbarButton: CSSProp
 }
 
 export interface ImageElementProps extends StyledElementProps<ImageNodeData, ImageElementStyles> {
