@@ -13,7 +13,8 @@ export const getSearchHighlightDecorate =
 
       if (search && Text.isText(node)) {
         const {text} = node
-        const parts = text.split(search)
+        const parts = text.toLocaleLowerCase().split(search.toLocaleLowerCase())
+
         let offset = 0
         parts.forEach((part, i) => {
           if (i !== 0) {
