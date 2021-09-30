@@ -1,6 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react'
-import {BaseRange} from 'slate'
-import {useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
+import React, {useContext, useEffect, useRef, useState} from 'react'
+import {ReactEditor} from 'slate-react'
+import {BaseSelection, Transforms} from 'slate'
+import {useEventEditorId, useStoreEditorRef, useStoreEditorSelection} from '@udecode/plate-core'
 import {ModalContext} from '@dreifuss-wysiwyg-editor/common'
 import {insertMediaEmbed} from '@udecode/plate-media-embed'
 import {MediaEmbedUrlInput} from '../MediaEmbedElement'
@@ -23,19 +24,20 @@ const transformUrl = (newUrl: string) => {
 }
 
 export const MediaEmbedToolbar = () => {
-  const editor = useStoreEditorState(useEventEditorId('focus'))
+  const editor = useStoreEditorRef(useEventEditorId('focus'))
 
-  const [selection, setSelection] = useState<BaseRange>()
+  const selection = useStoreEditorSelection(useEventEditorId('focus'))
+  const latestSelection = useRef<BaseSelection>()
 
   const [url, setURL] = useState('')
 
   const {toggleMenu} = useContext(ModalContext)
 
   useEffect(() => {
-    if (editor?.selection) {
-      setSelection(editor.selection)
+    if (selection) {
+      latestSelection.current = selection
     }
-  }, [editor])
+  }, [selection])
 
   return (
     <form className="media-embed-toolbar">
@@ -47,17 +49,19 @@ export const MediaEmbedToolbar = () => {
             url={url}
           />
         </div>
-        {/* <p>{url && !isValidURL ? 'Invalid Link' : undefined}</p> */}
       </div>
       <div className="toolbar" role="toolbar">
         <button
           className={`${!url ? 'disabled' : 'insert'}`}
           disabled={!url}
           onClick={e => {
-            if (!editor || !selection) return
+            if (!editor) return
             e.preventDefault()
 
-            insertMediaEmbed({...editor, selection}, {url})
+            Transforms.select(editor, latestSelection.current)
+            ReactEditor.focus(editor)
+
+            insertMediaEmbed(editor, {url})
 
             toggleMenu()
           }}>

@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo} from 'react'
+import React, {useEffect} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/plate-toolbar'
 import {createTablePlugin} from '@dreifuss-wysiwyg-editor/table'
