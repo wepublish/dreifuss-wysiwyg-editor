@@ -45,6 +45,7 @@ export function ImageIcon() {
     </svg>
   )
 }
+
 export function BorderColorIcon() {
   return (
     <svg
