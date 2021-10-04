@@ -9,9 +9,6 @@ export const LinkElement = (props: StyledElementProps<LinkNodeData>) => {
   const {root} = getLinkElementStyles(props)
 
   return (
-    // TODO: check this
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     <a {...attributes} href={element.url} css={root.css} className={root.className} {...nodeProps}>
       {children}
     </a>

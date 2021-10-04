@@ -4,4 +4,3 @@
 
 export * from './upsertLinkAtSelection'
 export * from './wrapLink'
-export * from './onKeyDown'
