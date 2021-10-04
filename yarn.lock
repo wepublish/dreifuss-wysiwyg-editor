@@ -4247,6 +4247,14 @@
     "@udecode/plate-core" "3.4.0"
     is-hotkey "^0.1.6"
 
+"@udecode/plate-common@4.3.7":
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-common/-/plate-common-4.3.7.tgz#d1c6f113f04676083f13d1366d6633d74dde5d8f"
+  integrity sha512-cuTOzTgjAjNrFuejVE0XkxTW6SmKuOBmOp5Oxbyky2+/29blnXFTJHJ6dq/CQm8xYIAgQZYukYZUbHe/F55LpQ==
+  dependencies:
+    "@udecode/plate-core" "4.3.7"
+    is-hotkey "^0.1.6"
+
 "@udecode/plate-core@1.0.0", "@udecode/plate-core@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@udecode/plate-core/-/plate-core-1.0.0.tgz#783b9de0ddeba3adda9e5c3c978c393fd3cdd7f0"
@@ -4259,6 +4267,14 @@
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@udecode/plate-core/-/plate-core-3.4.0.tgz#5f98f9818b98f04d651e26487b7d8e9b1ecea7c3"
   integrity sha512-4hQ3H/elhjC1Ao3Bo3QRQAPseTE2+pYlxpnlOU0oj+ykynWGZsvAVLGWJBehbsqOtAw6sVU3ujxl0tEjJBIucg==
+  dependencies:
+    lodash "^4.17.21"
+    zustand "^3.4.2"
+
+"@udecode/plate-core@4.3.7":
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-core/-/plate-core-4.3.7.tgz#795d482878bb063ceef715f6295db7519490bf09"
+  integrity sha512-+1S7I6z1K9nX+TmGbEbtobI3J2uWuUwtOTp+x1tUx4s4v4WEIu11oAlNtheCVQOAtbXj1o2ymX9bWmjCXwSRgQ==
   dependencies:
     lodash "^4.17.21"
     zustand "^3.4.2"
@@ -4427,6 +4443,15 @@
     "@udecode/plate-core" "1.0.0"
     clsx "^1.1.1"
 
+"@udecode/plate-styled-components@4.3.7":
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-styled-components/-/plate-styled-components-4.3.7.tgz#32a455542e4669ed73fc3f4467bbd116c769c84a"
+  integrity sha512-pboTNllfYIOqHsimFnv6/YdpNvODQLK6mjJo9uhVNRxIJYMflRGps+T5Tfwf1mTzWa+nJshC6w8JQ71ZlqsOmQ==
+  dependencies:
+    "@udecode/plate-common" "4.3.7"
+    "@udecode/plate-core" "4.3.7"
+    clsx "^1.1.1"
+
 "@udecode/plate-toolbar@3.0.1", "@udecode/plate-toolbar@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@udecode/plate-toolbar/-/plate-toolbar-3.0.1.tgz#77f2be8a0b8989767e87c3f0199fac971149201f"
@@ -4447,6 +4472,19 @@
     "@udecode/plate-common" "2.0.0"
     "@udecode/plate-core" "1.0.0"
     "@udecode/plate-styled-components" "3.1.0"
+    react-use "^17.1.1"
+
+"@udecode/plate-toolbar@^4.3.0":
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-toolbar/-/plate-toolbar-4.3.7.tgz#eabf7a679ae42c82a4b7e331c6ebde2e456c5597"
+  integrity sha512-AVB7f2VvB5vCLpySyqSZ6yDdhPKIInN38UUdZ2HLYOcYoAzE+bHoH+TAWl+7ecqRb+2z8kFyLezz5c6WT2DQWg==
+  dependencies:
+    "@popperjs/core" "^2.8.3"
+    "@tippyjs/react" "^4.2.0"
+    "@udecode/plate-common" "4.3.7"
+    "@udecode/plate-core" "4.3.7"
+    "@udecode/plate-styled-components" "4.3.7"
+    react-popper "^2.2.4"
     react-use "^17.1.1"
 
 "@webassemblyjs/ast@1.11.0":
