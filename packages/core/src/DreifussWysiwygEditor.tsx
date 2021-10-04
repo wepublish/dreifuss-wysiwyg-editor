@@ -40,6 +40,11 @@ import {
   ToolbarListButtons,
   ToolbarTableButtons
 } from './Toolbar'
+import {DndProvider} from 'react-dnd'
+import {createDndPlugin} from '@udecode/plate-dnd'
+import {HTML5Backend} from 'react-dnd-html5-backend'
+import {withStyledDraggables} from './utils/WithStyledDraggables'
+import {createNodeIdPlugin} from '@udecode/plate-node-id'
 
 export interface EditableProps {
   id?: string
@@ -63,7 +68,8 @@ export interface EditorProps {
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
   const {id = 'main', showCharactersCount = true} = props
-  const components = createPlateComponents()
+  const components = withStyledDraggables(createPlateComponents())
+
   const options = createPlateOptions()
 
   const editableProps = {
@@ -110,47 +116,51 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createSuperscriptPlugin(),
     createStrikethroughPlugin(),
     createHeadingPlugin({levels: 3}),
-    createDeserializeMDPlugin()
+    createDeserializeMDPlugin(),
+    createNodeIdPlugin(),
+    createDndPlugin()
   ]
 
   return (
-    <Plate
-      id={props.id}
-      onChange={props.onChange}
-      plugins={plugins}
-      components={components}
-      options={options}
-      editableProps={editableProps as EditableProps}
-      initialValue={JSON.parse(JSON.stringify(props.value || props.initialValue))}>
-      <ToolbarBalloon />
-      {!props.displayOnly && (
-        <HeadingToolbar>
-          <ToolbarBasicElementsButtons />
-          <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
-            <QuotationMarksMenu />
-          </Modal>
-          <Divider type={DividerType.vertical} />
-          <ToolbarListButtons />
-          <Divider type={DividerType.vertical} />
-          <ToolbarBasicMarksButtons />
-          <Divider type={DividerType.vertical} />
-          <FontColorToolbar />
-          <Divider type={DividerType.vertical} />
-          <ToolbarAlignButtons />
-          <Divider type={DividerType.vertical} />
-          <ToolbarTableButtons />
+    <DndProvider backend={HTML5Backend}>
+      <Plate
+        id={props.id}
+        onChange={props.onChange}
+        plugins={plugins}
+        components={components}
+        options={options}
+        editableProps={editableProps as EditableProps}
+        initialValue={JSON.parse(JSON.stringify(props.value || props.initialValue))}>
+        <ToolbarBalloon />
+        {!props.displayOnly && (
+          <HeadingToolbar>
+            <ToolbarBasicElementsButtons />
+            <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
+              <QuotationMarksMenu />
+            </Modal>
+            <Divider type={DividerType.vertical} />
+            <ToolbarListButtons />
+            <Divider type={DividerType.vertical} />
+            <ToolbarBasicMarksButtons />
+            <Divider type={DividerType.vertical} />
+            <FontColorToolbar />
+            <Divider type={DividerType.vertical} />
+            <ToolbarAlignButtons />
+            <Divider type={DividerType.vertical} />
+            <ToolbarTableButtons />
 
-          <Divider type={DividerType.vertical} />
-          <Modal type={ELEMENT_LINK} Icon={<LinkIcon />}>
-            <ToolbarLink />
-          </Modal>
-        </HeadingToolbar>
-      )}
-      {showCharactersCount && (
-        <p style={{textAlign: 'right'}}>
-          <CharactersCountIcon /> <CharCountToolbar id={id} />
-        </p>
-      )}
-    </Plate>
+            <Divider type={DividerType.vertical} />
+            <Modal type={ELEMENT_LINK} Icon={<LinkIcon />}>
+              <ToolbarLink />
+            </Modal>
+          </HeadingToolbar>
+        )}
+        {showCharactersCount && (
+          <p style={{textAlign: 'right'}}>
+            <CharactersCountIcon /> <CharCountToolbar id={id} />
+          </p>
+        )}
+      </Plate>
+    </DndProvider>
   )
 }

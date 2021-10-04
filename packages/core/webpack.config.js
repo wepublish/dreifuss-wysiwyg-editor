@@ -33,6 +33,9 @@ module.exports = function (env, argv) {
               ['@babel/preset-env', {modules: false}]
             ],
             plugins: [
+              'babel-plugin-twin',
+              'babel-plugin-macros',
+              'styled-components',
               '@babel/plugin-syntax-dynamic-import',
               '@babel/plugin-proposal-optional-chaining',
               '@babel/plugin-proposal-nullish-coalescing-operator',
