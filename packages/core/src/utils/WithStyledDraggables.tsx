@@ -9,6 +9,8 @@ import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
 import {ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/plate-list'
 import {ELEMENT_CODE_BLOCK} from '@udecode/plate-code-block'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
+import {ELEMENT_TABLE} from '@dreifuss-wysiwyg-editor/table'
+
 import 'tippy.js/dist/tippy.css'
 
 const GrabberTooltipContent = () => (
@@ -44,10 +46,11 @@ export const withStyledDraggables = (components: any) => {
         ELEMENT_H1,
         ELEMENT_H2,
         ELEMENT_H3,
+        // TODO: uncomment this after image plugin merged
         // ELEMENT_IMAGE,
         ELEMENT_OL,
         ELEMENT_UL,
-        // ELEMENT_TABLE,
+        ELEMENT_TABLE,
         ELEMENT_MEDIA_EMBED,
         ELEMENT_CODE_BLOCK
       ],
