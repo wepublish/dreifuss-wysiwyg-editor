@@ -1,8 +1,14 @@
 import {TDescendant} from '@udecode/plate-core'
 
+export enum ImageSizeType {
+  large = 'large',
+  medium = 'medium',
+  small = 'small'
+}
+
 export interface ImageNodeData {
   url: string
-  width?: number
+  size: ImageSizeType
   caption?: TDescendant[]
 }
 

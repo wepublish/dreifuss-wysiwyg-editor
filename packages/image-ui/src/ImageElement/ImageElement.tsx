@@ -1,17 +1,12 @@
 import React, {ChangeEventHandler, useCallback, useEffect, useMemo, useState} from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import {setNodes} from '@udecode/plate-common'
-import {useEditorRef} from '@udecode/plate-core'
+import {useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
 import {Node} from 'slate'
 import {ReactEditor, useFocused, useSelected} from 'slate-react'
 import {getImageElementStyles} from './ImageElement.styles'
 import {ImageElementProps} from './ImageElement.types'
-
-enum ImageSizeType {
-  large = 'large',
-  medium = 'medium',
-  small = 'small'
-}
+import {ImageSizeType} from '@dreifuss-wysiwyg-editor/image'
 
 export const imageSizeMap = {
   [ImageSizeType.large]: '100%',
@@ -39,13 +34,13 @@ export const ImageElement = (props: ImageElementProps) => {
   } = element
   const focused = useFocused()
   const selected = useSelected()
-  const editor = useEditorRef()
+  const editor = useStoreEditorState(useEventEditorId('focus'))
 
-  const [imageSize, setSize] = useState<ImageSizeType>(ImageSizeType.large)
+  const [imageSize, setSize] = useState<ImageSizeType>(size || ImageSizeType.large)
 
   useEffect(() => {
     const path = ReactEditor.findPath(editor, element)
-    setNodes(editor, {size}, {at: path})
+    setNodes(editor, {size: imageSize}, {at: path})
   }, [imageSize])
 
   // const [captionId] = useState(nanoid());
