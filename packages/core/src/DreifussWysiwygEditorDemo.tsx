@@ -84,7 +84,6 @@ const DreifussWysiwygEditorDemo = () => (
       //   console.log(count)
       // }}
       onChange={(data: any) => {
-        console.log(data)
         // console.log(JSON.stringify(data))
       }}
       initialValue={value}
