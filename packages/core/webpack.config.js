@@ -9,8 +9,7 @@ module.exports = function (env, argv) {
     devtool: env.production ? 'source-map' : 'inline-source-map',
 
     devServer: {
-      historyApiFallback: true,
-      port: 4003
+      historyApiFallback: true
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js'],

@@ -7,17 +7,6 @@
     "lib": ["dom", "ES2019"],
     "jsx": "react-jsx",
     "strict": false
-    // "moduleResolution": "node",
-    // "baseUrl": "./src",
-    // "noEmit": true,
-    // "skipLibCheck": true,
-    // "forceConsistentCasingInFileNames": true,
-    // "resolveJsonModule": true,
-    // "allowSyntheticDefaultImports": true,
-    // "noUnusedParameters": true,
-    // "noImplicitReturns": true,
-    // "isolatedModules": true,
-    // "esModuleInterop": true
   },
   "exclude": ["node_modules", "dist"],
   "files": ["src/twin.d.ts"]
