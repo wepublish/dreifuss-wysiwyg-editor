@@ -68,9 +68,9 @@ module.exports = function (env, argv) {
       libraryTarget: 'umd',
       library: 'my-design-system'
     },
-    /*externals: {
+    /* externals: {
       '@dreifuss-wysiwyg-editor/plate-quotation-marks-ui': '@dreifuss-wysiwyg-editor/plate-quotation-marks-u'
-    },*/
+    }, */
 
     plugins: [
       new HtmlWebpackPlugin({
