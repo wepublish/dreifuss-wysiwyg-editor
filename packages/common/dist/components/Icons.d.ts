@@ -1,0 +1,36 @@
+export declare function ImageIcon(): JSX.Element;
+export declare function BorderColorIcon(): JSX.Element;
+export declare function BackgroundColorIcon(): JSX.Element;
+export declare function CharactersCountIcon(): JSX.Element;
+export declare function FontColor({ active }: {
+    active: boolean;
+}): JSX.Element;
+export declare const H1Icon: () => JSX.Element;
+export declare const H2Icon: () => JSX.Element;
+export declare const H3Icon: () => JSX.Element;
+export declare const ColorIcon: () => JSX.Element;
+export declare const BgColorIcon: () => JSX.Element;
+export declare const BoldIcon: () => JSX.Element;
+export declare const ItalicIcon: () => JSX.Element;
+export declare const UnderlineIcon: () => JSX.Element;
+export declare const BlockQuoteIcon: () => JSX.Element;
+export declare const BlockCodeIcon: () => JSX.Element;
+export declare const StrikeThroughIcon: () => JSX.Element;
+export declare const SuperscriptIcon: () => JSX.Element;
+export declare const SubscriptIcon: () => JSX.Element;
+export declare const AlignLeftIcon: () => JSX.Element;
+export declare const AlignCenterIcon: () => JSX.Element;
+export declare const AlignRightIcon: () => JSX.Element;
+export declare const AlignJustifyIcon: () => JSX.Element;
+export declare const FileImageIcon: () => JSX.Element;
+export declare const ListULIcon: () => JSX.Element;
+export declare const ListOLIcon: () => JSX.Element;
+export declare const BorderAllIcon: () => JSX.Element;
+export declare const BorderBottomIcon: () => JSX.Element;
+export declare const BorderClearIcon: () => JSX.Element;
+export declare const BorderLeftIcon: () => JSX.Element;
+export declare const BorderRightIcon: () => JSX.Element;
+export declare const BorderTopIcon: () => JSX.Element;
+export declare const LinkIcon: () => JSX.Element;
+export declare const EmojiIcon: () => JSX.Element;
+//# sourceMappingURL=Icons.d.ts.map
