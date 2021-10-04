@@ -22,7 +22,7 @@ import {
   DEFAULTS_UNDERLINE
 } from '@udecode/plate-basic-marks'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
-import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE, DEFAULTS_CODE_BLOCK} from '@udecode/plate-code-block'
+import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
 import {PlatePluginOptions} from '@udecode/plate-core'
 import {MARK_SEARCH_HIGHLIGHT} from '@udecode/plate-find-replace'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
