@@ -125,6 +125,7 @@
     "@udecode/plate-paragraph": "^2.0.0",
     "@udecode/plate-select": "^3.4.0",
     "@udecode/plate-dnd": "^3.5.1",
+    "@udecode/plate-node-id": "^4.3.7",
     "react-dnd": "^14.0.3",
     "react-dnd-html5-backend": "^14.0.1",
     "jsx-runtime": "^1.2.0",

@@ -44,6 +44,7 @@ import {DndProvider} from 'react-dnd'
 import {createDndPlugin} from '@udecode/plate-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import {withStyledDraggables} from './utils/WithStyledDraggables'
+import {createNodeIdPlugin} from '@udecode/plate-node-id'
 
 export interface EditableProps {
   id?: string
@@ -116,6 +117,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createStrikethroughPlugin(),
     createHeadingPlugin({levels: 3}),
     createDeserializeMDPlugin(),
+    createNodeIdPlugin(),
     createDndPlugin()
   ]
 

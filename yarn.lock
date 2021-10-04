@@ -4274,6 +4274,14 @@
     "@udecode/plate-core" "3.4.0"
     is-hotkey "^0.1.6"
 
+"@udecode/plate-common@4.3.7":
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-common/-/plate-common-4.3.7.tgz#d1c6f113f04676083f13d1366d6633d74dde5d8f"
+  integrity sha512-cuTOzTgjAjNrFuejVE0XkxTW6SmKuOBmOp5Oxbyky2+/29blnXFTJHJ6dq/CQm8xYIAgQZYukYZUbHe/F55LpQ==
+  dependencies:
+    "@udecode/plate-core" "4.3.7"
+    is-hotkey "^0.1.6"
+
 "@udecode/plate-core@1.0.0", "@udecode/plate-core@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@udecode/plate-core/-/plate-core-1.0.0.tgz#783b9de0ddeba3adda9e5c3c978c393fd3cdd7f0"
@@ -4286,6 +4294,14 @@
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/@udecode/plate-core/-/plate-core-3.4.0.tgz#5f98f9818b98f04d651e26487b7d8e9b1ecea7c3"
   integrity sha512-4hQ3H/elhjC1Ao3Bo3QRQAPseTE2+pYlxpnlOU0oj+ykynWGZsvAVLGWJBehbsqOtAw6sVU3ujxl0tEjJBIucg==
+  dependencies:
+    lodash "^4.17.21"
+    zustand "^3.4.2"
+
+"@udecode/plate-core@4.3.7":
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-core/-/plate-core-4.3.7.tgz#795d482878bb063ceef715f6295db7519490bf09"
+  integrity sha512-+1S7I6z1K9nX+TmGbEbtobI3J2uWuUwtOTp+x1tUx4s4v4WEIu11oAlNtheCVQOAtbXj1o2ymX9bWmjCXwSRgQ==
   dependencies:
     lodash "^4.17.21"
     zustand "^3.4.2"
@@ -4445,6 +4461,14 @@
   dependencies:
     "@udecode/plate-common" "2.0.0"
     "@udecode/plate-core" "1.0.0"
+
+"@udecode/plate-node-id@^4.3.7":
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-node-id/-/plate-node-id-4.3.7.tgz#ba34d9417a38dd0ff6e3dd61480c3c5c4ab79d9a"
+  integrity sha512-TdVqMUpR8K2gQoiNmjTGFtxarlc+lONKNdE1cEHkMCX9TmumyKOPjNPmUA2Jn7hA1e9oO3q5K8ZhKKb3Fv5J5A==
+  dependencies:
+    "@udecode/plate-common" "4.3.7"
+    "@udecode/plate-core" "4.3.7"
 
 "@udecode/plate-normalizers@2.0.0", "@udecode/plate-normalizers@^2.0.0":
   version "2.0.0"
