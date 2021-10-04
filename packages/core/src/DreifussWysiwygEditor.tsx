@@ -30,7 +30,7 @@ import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {createDeserializeMDPlugin} from '@udecode/plate-md-serializer'
-import {useFindReplacePlugin} from '@dreifuss-wysiwyg-editor/find-replace'
+import {useFindReplacePlugin, MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
 import {ToolbarSearchHighlight} from '@dreifuss-wysiwyg-editor/find-replace-ui'
 import {MediaEmbedToolbar} from '@dreifuss-wysiwyg-editor/media-embed-ui'
 import {createSelectOnBackspacePlugin} from '@udecode/plate-select'
@@ -170,12 +170,12 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             </Modal>
 
             <Divider type={DividerType.vertical} />
-            <Modal Icon={<SearchIcon />}>
+            <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
               <ToolbarSearchHighlight icon={() => <></>} setSearch={setSearch} />
             </Modal>
 
             <Divider type={DividerType.vertical} />
-            <Modal type={ELEMENT_LINK} Icon={<MediaEmbedIcon />}>
+            <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
               <MediaEmbedToolbar />
             </Modal>
           </HeadingToolbar>

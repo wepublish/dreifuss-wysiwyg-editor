@@ -1,4 +1,4 @@
-# @dreifuss-wysiwyg-editor/find-replace
+# @dreifuss-wysiwyg-editor/find-replace-ui
 
-based on plate find-replace
+based on plate find-replace-ui
 
