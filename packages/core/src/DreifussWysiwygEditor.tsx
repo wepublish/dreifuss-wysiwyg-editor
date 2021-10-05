@@ -171,7 +171,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
 
             <Divider type={DividerType.vertical} />
             <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
-              <ToolbarSearchHighlight setSearch={setSearch} />
+              <ToolbarSearchHighlight icon={() => <></>} setSearch={setSearch} />
             </Modal>
 
             <Divider type={DividerType.vertical} />
