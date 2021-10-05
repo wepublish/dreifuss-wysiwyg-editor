@@ -25,7 +25,7 @@ import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
 import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
 import {PlatePluginOptions} from '@udecode/plate-core'
 import {MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
-import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
+import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, KEYS_HEADING} from '@udecode/plate-heading'
 import {DEFAULTS_HIGHLIGHT, MARK_HIGHLIGHT} from '@udecode/plate-highlight'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL, ELEMENT_LIC} from '@udecode/plate-list'
@@ -34,6 +34,9 @@ import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
+import {ExitBreakPluginOptions, SoftBreakPluginOptions} from '@udecode/plate-break'
+import {isBlockAboveEmpty, isSelectionAtBlockStart} from '@udecode/plate-common'
+import {ResetBlockTypePluginOptions} from '@udecode/plate-reset-node'
 
 export type DefaultPlatePluginKey =
   | typeof ELEMENT_ALIGN_CENTER
@@ -189,4 +192,76 @@ export const createPlateOptions = <T extends string = string>(
   })
 
   return options as Record<DefaultPlatePluginKey | T, PlatePluginOptions>
+}
+
+export const options = createPlateOptions()
+
+const resetBlockTypesCommonRule = {
+  types: [options[ELEMENT_BLOCKQUOTE].type, options[ELEMENT_TODO_LI].type],
+  defaultType: options[ELEMENT_PARAGRAPH].type
+}
+
+export const optionsResetBlockTypePlugin: ResetBlockTypePluginOptions = {
+  rules: [
+    {
+      ...resetBlockTypesCommonRule,
+      hotkey: 'Enter',
+      predicate: isBlockAboveEmpty
+    },
+    {
+      ...resetBlockTypesCommonRule,
+      hotkey: 'Backspace',
+      predicate: isSelectionAtBlockStart
+    }
+  ]
+}
+
+export const optionsSoftBreakPlugin: SoftBreakPluginOptions = {
+  rules: [
+    {hotkey: 'shift+enter'},
+    {
+      hotkey: 'enter',
+      query: {
+        allow: [
+          options[ELEMENT_CODE_BLOCK].type,
+          options[ELEMENT_BLOCKQUOTE].type,
+          options[ELEMENT_TD].type
+        ]
+      }
+    }
+  ]
+}
+
+export const optionsExitBreakPlugin: ExitBreakPluginOptions = {
+  rules: [
+    {
+      hotkey: 'mod+enter'
+    },
+    {
+      hotkey: 'mod+shift+enter',
+      before: true
+    },
+    {
+      hotkey: 'enter',
+      query: {
+        start: true,
+        end: true,
+        allow: KEYS_HEADING
+      }
+    },
+    {
+      hotkey: 'enter',
+      query: {
+        allow: [options[ELEMENT_IMAGE].type]
+      }
+    },
+    {
+      hotkey: 'enter',
+      before: true,
+      query: {
+        start: true,
+        allow: [options[ELEMENT_PARAGRAPH].type]
+      }
+    }
+  ]
 }

@@ -111,19 +111,38 @@ const toolbars = {
 }
 
 const DreifussWysiwygEditorDemo = () => (
-  <div style={{minHeight: 400, padding: 30}}>
-    <h1>RichText Component Demo</h1>
-    <DreifussWysiwygEditor
-      toolbars={toolbars}
-      // charactersCount={count => {
-      //   console.log(count)
-      // }}
-      onChange={(data: any) => {
-        // console.log(JSON.stringify(data))
-      }}
-      initialValue={value}
-    />
-  </div>
+  <>
+    <div style={{minHeight: 400, padding: 30}}>
+      {/* <h1>RichText Component Demo</h1> */}
+      <DreifussWysiwygEditor
+        toolbars={toolbars}
+        // charactersCount={count => {
+        //   console.log(count)
+        // }}
+        onChange={(data: any) => {
+          console.log(data)
+          // console.log(JSON.stringify(data))
+        }}
+        value={value}
+      />
+    </div>
+
+    <div style={{minHeight: 400, padding: 30}}>
+      {/* <h1>RichText Component Demo</h1> */}
+      <DreifussWysiwygEditor
+        id="twooo"
+        toolbars={toolbars}
+        // charactersCount={count => {
+        //   console.log(count)
+        // }}
+        onChange={(data: any) => {
+          console.log(data)
+          // console.log(JSON.stringify(data))
+        }}
+        value={value}
+      />
+    </div>
+  </>
 )
 
 render(<DreifussWysiwygEditorDemo />, document.getElementById('root'))
