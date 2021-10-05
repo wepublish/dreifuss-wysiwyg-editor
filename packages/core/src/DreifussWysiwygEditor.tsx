@@ -8,14 +8,16 @@ import {createHighlightPlugin} from '@udecode/plate-highlight'
 import {createParagraphPlugin} from '@udecode/plate-paragraph'
 import {createCodeBlockPlugin} from '@udecode/plate-code-block'
 import {createBlockquotePlugin} from '@udecode/plate-block-quote'
-import {createMediaEmbedPlugin} from '@udecode/plate-media-embed'
+import {createMediaEmbedPlugin, ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {createPlateOptions} from './utils/createPlateOptions'
 import {
   EditorValue,
   CharactersCountIcon,
   Modal,
   LinkIcon,
-  ImageIcon
+  ImageIcon,
+  SearchIcon,
+  MediaEmbedIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
 import {createPlateComponents} from './utils/createPlateComponents'
@@ -31,6 +33,10 @@ import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {createDeserializeMDPlugin} from '@udecode/plate-md-serializer'
+import {useFindReplacePlugin, MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
+import {ToolbarSearchHighlight} from '@dreifuss-wysiwyg-editor/find-replace-ui'
+import {MediaEmbedToolbar} from '@dreifuss-wysiwyg-editor/media-embed-ui'
+import {createSelectOnBackspacePlugin} from '@udecode/plate-select'
 import {
   createBoldPlugin,
   createItalicPlugin,
@@ -85,6 +91,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
 
   const options = createPlateOptions()
 
+  const {setSearch, plugin: searchHighlightPlugin} = useFindReplacePlugin()
+
   const editableProps = {
     placeholder: "What's on your mind?",
     spellCheck: false,
@@ -131,6 +139,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createHeadingPlugin({levels: 3}),
     createDeserializeMDPlugin(),
     createImagePlugin(),
+    searchHighlightPlugin,
+    createSelectOnBackspacePlugin({allow: [ELEMENT_MEDIA_EMBED]}),
     createNodeIdPlugin(),
     createDndPlugin()
   ]
@@ -171,6 +181,16 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             <Divider type={DividerType.vertical} />
             <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
               <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
+            </Modal>
+
+            <Divider type={DividerType.vertical} />
+            <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
+              <ToolbarSearchHighlight setSearch={setSearch} />
+            </Modal>
+
+            <Divider type={DividerType.vertical} />
+            <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
+              <MediaEmbedToolbar />
             </Modal>
           </HeadingToolbar>
         )}

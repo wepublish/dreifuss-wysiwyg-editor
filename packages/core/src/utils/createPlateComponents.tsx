@@ -19,7 +19,7 @@ import {BlockquoteElement} from '@udecode/plate-block-quote-ui'
 import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
 import {CodeBlockElement, CodeLineElement} from '@udecode/plate-code-block-ui'
 import {withProps} from '@udecode/plate-common'
-import {MARK_SEARCH_HIGHLIGHT} from '@udecode/plate-find-replace'
+import {MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
 import {
   ELEMENT_H1,
   ELEMENT_H2,
@@ -36,7 +36,7 @@ import {ImageElement} from '@dreifuss-wysiwyg-editor/image-ui'
 import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/plate-list'
 import {TodoListElement} from '@udecode/plate-list-ui'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
-import {MediaEmbedElement} from '@udecode/plate-media-embed-ui'
+import {MediaEmbedElement} from '@dreifuss-wysiwyg-editor/media-embed-ui'
 // import {ELEMENT_MENTION} from '@udecode/plate-mention'
 // import {MentionElement} from '@udecode/plate-mention-ui'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'

@@ -24,7 +24,7 @@ import {
 import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
 import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
 import {PlatePluginOptions} from '@udecode/plate-core'
-import {MARK_SEARCH_HIGHLIGHT} from '@udecode/plate-find-replace'
+import {MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
 import {DEFAULTS_HIGHLIGHT, MARK_HIGHLIGHT} from '@udecode/plate-highlight'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
