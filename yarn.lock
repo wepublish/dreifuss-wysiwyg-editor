@@ -4319,25 +4319,6 @@
     react-dnd "^14.0.2"
     react-dnd-html5-backend "^14.0.0"
 
-"@udecode/plate-find-replace-ui@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@udecode/plate-find-replace-ui/-/plate-find-replace-ui-3.0.1.tgz#59a406e09afda8807fe3e830a0c8ce5de316700e"
-  integrity sha512-Uf4LM8NgtUDhIZXUQHO2hytW/1/9fR3H+mOS/tt3NY8OyUbudp40tglaQloIn1/FkcLR1zd8A4Z9HTH6aNaacA==
-  dependencies:
-    "@udecode/plate-common" "2.0.0"
-    "@udecode/plate-core" "1.0.0"
-    "@udecode/plate-find-replace" "2.0.0"
-    "@udecode/plate-styled-components" "3.0.1"
-    "@udecode/plate-toolbar" "3.0.1"
-
-"@udecode/plate-find-replace@2.0.0", "@udecode/plate-find-replace@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@udecode/plate-find-replace/-/plate-find-replace-2.0.0.tgz#84d8b14c03f45d01935f52557b0030a9d4fccbe2"
-  integrity sha512-dMNHkZQ78RWusO2a1ZMZn6Ss4MFxsYLDdwnATlxZcRvW937waamxehgkLvM/75cQeN+cxNbl0VTzSMQwxj+UGg==
-  dependencies:
-    "@udecode/plate-common" "2.0.0"
-    "@udecode/plate-core" "1.0.0"
-
 "@udecode/plate-heading@2.0.0", "@udecode/plate-heading@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@udecode/plate-heading/-/plate-heading-2.0.0.tgz#b459c605d3a330fbca04a713d508d6a6fc1850b6"
@@ -4417,24 +4398,6 @@
     remark-parse "^9.0.0"
     remark-slate "^1.4.0"
     unified "^9.2.0"
-
-"@udecode/plate-media-embed-ui@^3.0.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@udecode/plate-media-embed-ui/-/plate-media-embed-ui-3.5.1.tgz#14328294aa79b21cafa490131186cf90d111b4aa"
-  integrity sha512-tfUArNtiGsexHs3zSs/kF62lvaxigJLJ0ELu7K1T2y8cOyKZ0zXKPqqxT7Ew2WYG++2pPolnZz57T6h9ULZFTg==
-  dependencies:
-    "@udecode/plate-common" "3.4.0"
-    "@udecode/plate-core" "3.4.0"
-    "@udecode/plate-media-embed" "3.4.0"
-    "@udecode/plate-styled-components" "3.5.1"
-
-"@udecode/plate-media-embed@3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@udecode/plate-media-embed/-/plate-media-embed-3.4.0.tgz#87b87c7e5d92d38f9fe88d0b3bdd51b4ebd222b3"
-  integrity sha512-LE8F2cWluT1ga3qzXI3jNp2vSDrhAr2/joJdnutHjf308RgZFGYUhPfpGMWCfrMW3mT4jAqPELY0Pt+ogly6GA==
-  dependencies:
-    "@udecode/plate-common" "3.4.0"
-    "@udecode/plate-core" "3.4.0"
 
 "@udecode/plate-media-embed@^2.0.0":
   version "2.0.0"
@@ -4537,6 +4500,15 @@
     "@udecode/plate-core" "3.4.0"
     clsx "^1.1.1"
 
+"@udecode/plate-styled-components@4.3.7":
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-styled-components/-/plate-styled-components-4.3.7.tgz#32a455542e4669ed73fc3f4467bbd116c769c84a"
+  integrity sha512-pboTNllfYIOqHsimFnv6/YdpNvODQLK6mjJo9uhVNRxIJYMflRGps+T5Tfwf1mTzWa+nJshC6w8JQ71ZlqsOmQ==
+  dependencies:
+    "@udecode/plate-common" "4.3.7"
+    "@udecode/plate-core" "4.3.7"
+    clsx "^1.1.1"
+
 "@udecode/plate-toolbar@3.0.1", "@udecode/plate-toolbar@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@udecode/plate-toolbar/-/plate-toolbar-3.0.1.tgz#77f2be8a0b8989767e87c3f0199fac971149201f"
@@ -4557,6 +4529,19 @@
     "@udecode/plate-common" "2.0.0"
     "@udecode/plate-core" "1.0.0"
     "@udecode/plate-styled-components" "3.1.0"
+    react-use "^17.1.1"
+
+"@udecode/plate-toolbar@^4.3.0":
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-toolbar/-/plate-toolbar-4.3.7.tgz#eabf7a679ae42c82a4b7e331c6ebde2e456c5597"
+  integrity sha512-AVB7f2VvB5vCLpySyqSZ6yDdhPKIInN38UUdZ2HLYOcYoAzE+bHoH+TAWl+7ecqRb+2z8kFyLezz5c6WT2DQWg==
+  dependencies:
+    "@popperjs/core" "^2.8.3"
+    "@tippyjs/react" "^4.2.0"
+    "@udecode/plate-common" "4.3.7"
+    "@udecode/plate-core" "4.3.7"
+    "@udecode/plate-styled-components" "4.3.7"
+    react-popper "^2.2.4"
     react-use "^17.1.1"
 
 "@webassemblyjs/ast@1.11.0":
