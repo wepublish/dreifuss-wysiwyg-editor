@@ -10,15 +10,17 @@ export const ToolbarSearchHighlight = ({icon: Icon, setSearch}: ToolbarSearchHig
     style={{
       position: 'relative'
     }}>
-    <Icon
-      size={18}
-      style={{
-        position: 'absolute',
-        top: '0.5em',
-        left: '0.5em',
-        color: '#ccc'
-      }}
-    />
+    {Icon && (
+      <Icon
+        size={18}
+        style={{
+          position: 'absolute',
+          top: '0.5em',
+          left: '0.5em',
+          color: '#ccc'
+        }}
+      />
+    )}
     <input
       data-testid="ToolbarSearchHighlightInput"
       type="search"
