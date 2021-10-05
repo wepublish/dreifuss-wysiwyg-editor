@@ -80,7 +80,7 @@ export interface EditorProps {
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
-  const {id = 'main', showCharactersCount = true} = props
+  const {id = 'main', showCharactersCount = true, toolbars} = props
   const components = withStyledDraggables(createPlateComponents())
 
   const options = createPlateOptions()

@@ -259,7 +259,7 @@ export const createPlateComponents = <T extends string = string>(
     [MARK_SUPERSCRIPT]: withProps(StyledLeaf, {as: 'sup'}),
     [MARK_UNDERLINE]: withProps(StyledLeaf, {as: 'u'}),
     [ELEMENT_FONT_COLOR]: RenderFontColorLeaf,
-    [ELEMENT_IMAGE]: withProps(ImageElement, {caption: {disabled: true}})
+    [ELEMENT_IMAGE]: withProps(ImageElement, {})
   }
 
   if (overrides) {

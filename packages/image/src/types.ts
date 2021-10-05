@@ -1,6 +1,7 @@
 import {TDescendant} from '@udecode/plate-core'
 
 export enum ImageSizeType {
+  fullScreen = 'fullScreen',
   large = 'large',
   medium = 'medium',
   small = 'small'

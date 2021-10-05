@@ -43,8 +43,6 @@ export const ImageElement = (props: ImageElementProps) => {
     setNodes(editor, {size: imageSize}, {at: path})
   }, [imageSize])
 
-  // const [captionId] = useState(nanoid());
-
   const styles = getImageElementStyles({...props, align, focused, selected})
 
   const onChangeCaption: ChangeEventHandler<HTMLTextAreaElement> = useCallback(
@@ -59,29 +57,24 @@ export const ImageElement = (props: ImageElementProps) => {
     return Node.string(nodeCaption[0]) || ''
   }, [nodeCaption])
 
+  const ImageSizeButton = ({label, type}: {label: string; type: ImageSizeType}) => (
+    <button
+      css={styles.optionsToolbarButton?.css}
+      className={styles.optionsToolbarButton?.className}
+      onClick={() => setSize(type)}>
+      {label}
+    </button>
+  )
+
   return (
     <div {...attributes} css={styles.root.css} className={styles.root.className}>
       <div contentEditable={false}>
         <figure css={styles.figure?.css} className={`group ${styles.figure?.className}`}>
           <div css={styles.optionsToolbar.css} className={styles.optionsToolbar.className}>
-            <button
-              css={styles.optionsToolbarButton?.css}
-              className={styles.optionsToolbarButton?.className}
-              onClick={() => setSize(ImageSizeType.large)}>
-              lg
-            </button>
-            <button
-              css={styles.optionsToolbarButton?.css}
-              className={styles.optionsToolbarButton?.className}
-              onClick={() => setSize(ImageSizeType.medium)}>
-              md
-            </button>
-            <button
-              css={styles.optionsToolbarButton?.css}
-              className={styles.optionsToolbarButton?.className}
-              onClick={() => setSize(ImageSizeType.small)}>
-              sm
-            </button>
+            <ImageSizeButton type={ImageSizeType.fullScreen} label="screen" />
+            <ImageSizeButton type={ImageSizeType.large} label="lg" />
+            <ImageSizeButton type={ImageSizeType.medium} label="md" />
+            <ImageSizeButton type={ImageSizeType.small} label="sm" />
           </div>
           <img
             data-testid="ImageElementImage"
@@ -93,10 +86,9 @@ export const ImageElement = (props: ImageElementProps) => {
             draggable={draggable}
             {...nodeProps}
           />
-
           {!caption.disabled && (captionString.length || selected) && (
             <figcaption
-              style={{width}}
+              style={{width: imageSizeMap[imageSize]}}
               css={styles.figcaption?.css}
               className={styles.figcaption?.className}>
               <TextareaAutosize
