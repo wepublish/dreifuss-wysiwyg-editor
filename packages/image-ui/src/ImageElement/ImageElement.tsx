@@ -1,4 +1,4 @@
-import React, {ChangeEventHandler, useCallback, useEffect, useMemo, useState} from 'react'
+import React, {ChangeEventHandler, Dispatch, useCallback, useEffect, useMemo, useState} from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import {setNodes} from '@udecode/plate-common'
 import {useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
@@ -12,6 +12,24 @@ export const imageSizeMap = {
   [ImageSizeType.large]: '100%',
   [ImageSizeType.medium]: '50%',
   [ImageSizeType.small]: '30%'
+}
+
+const ImageSizeButton = ({
+  label,
+  type,
+  onClick,
+  styles
+}: {
+  label: string
+  type: ImageSizeType
+  onClick: Dispatch<any>
+  styles: any
+}) => {
+  return (
+    <button css={styles?.css} className={styles?.className} onClick={() => onClick(type)}>
+      {label}
+    </button>
+  )
 }
 
 export const ImageElement = (props: ImageElementProps) => {
@@ -57,24 +75,35 @@ export const ImageElement = (props: ImageElementProps) => {
     return Node.string(nodeCaption[0]) || ''
   }, [nodeCaption])
 
-  const ImageSizeButton = ({label, type}: {label: string; type: ImageSizeType}) => (
-    <button
-      css={styles.optionsToolbarButton?.css}
-      className={styles.optionsToolbarButton?.className}
-      onClick={() => setSize(type)}>
-      {label}
-    </button>
-  )
-
   return (
     <div {...attributes} css={styles.root.css} className={styles.root.className}>
       <div contentEditable={false}>
         <figure css={styles.figure?.css} className={`group ${styles.figure?.className}`}>
           <div css={styles.optionsToolbar.css} className={styles.optionsToolbar.className}>
-            <ImageSizeButton type={ImageSizeType.fullScreen} label="screen" />
-            <ImageSizeButton type={ImageSizeType.large} label="lg" />
-            <ImageSizeButton type={ImageSizeType.medium} label="md" />
-            <ImageSizeButton type={ImageSizeType.small} label="sm" />
+            <ImageSizeButton
+              type={ImageSizeType.fullScreen}
+              label="screen"
+              onClick={setSize}
+              styles={styles.optionsToolbarButton}
+            />
+            <ImageSizeButton
+              type={ImageSizeType.large}
+              label="lg"
+              onClick={setSize}
+              styles={styles.optionsToolbarButton}
+            />
+            <ImageSizeButton
+              type={ImageSizeType.medium}
+              label="md"
+              onClick={setSize}
+              styles={styles.optionsToolbarButton}
+            />
+            <ImageSizeButton
+              type={ImageSizeType.small}
+              label="sm"
+              onClick={setSize}
+              styles={styles.optionsToolbarButton}
+            />
           </div>
           <img
             data-testid="ImageElementImage"
