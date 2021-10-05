@@ -9,6 +9,7 @@ import {ImageElementProps} from './ImageElement.types'
 import {ImageSizeType} from '@dreifuss-wysiwyg-editor/image'
 
 export const imageSizeMap = {
+  [ImageSizeType.fullScreen]: '100%',
   [ImageSizeType.large]: '100%',
   [ImageSizeType.medium]: '50%',
   [ImageSizeType.small]: '30%'
@@ -105,30 +106,28 @@ export const ImageElement = (props: ImageElementProps) => {
               styles={styles.optionsToolbarButton}
             />
           </div>
-          <img
-            data-testid="ImageElementImage"
-            css={styles.img?.css}
-            style={{width: imageSizeMap[imageSize]}}
-            className={styles.img?.className}
-            src={url}
-            alt={captionString}
-            draggable={draggable}
-            {...nodeProps}
-          />
-          {!caption.disabled && (captionString.length || selected) && (
-            <figcaption
-              style={{width: imageSizeMap[imageSize]}}
-              css={styles.figcaption?.css}
-              className={styles.figcaption?.className}>
-              <TextareaAutosize
-                css={styles.caption?.css}
-                className={styles.caption?.className}
-                value={nodeCaption[0].text}
-                placeholder={placeholder}
-                onChange={onChangeCaption}
-              />
-            </figcaption>
-          )}
+          <div style={{width: imageSizeMap[imageSize]}}>
+            <img
+              data-testid="ImageElementImage"
+              css={styles.img?.css}
+              className={styles.img?.className}
+              src={url}
+              alt={captionString}
+              draggable={draggable}
+              {...nodeProps}
+            />
+            {!caption.disabled && (captionString.length || selected) && (
+              <figcaption css={styles.figcaption?.css} className={styles.figcaption?.className}>
+                <TextareaAutosize
+                  css={styles.caption?.css}
+                  className={styles.caption?.className}
+                  value={nodeCaption[0].text}
+                  placeholder={placeholder}
+                  onChange={onChangeCaption}
+                />
+              </figcaption>
+            )}
+          </div>
         </figure>
       </div>
       {children}
