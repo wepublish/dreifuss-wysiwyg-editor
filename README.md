@@ -11,7 +11,6 @@ git clone git@github.com:wepublish/dreifuss-wysiwyg-editor.git
 
 Then:
 ```
-yarn
 lerna bootstrap
 yarn build
 ```
