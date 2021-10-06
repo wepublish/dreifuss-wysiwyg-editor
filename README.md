@@ -21,3 +21,6 @@ And start the dev environment:
 ```
 yarn watch
 ```
+
+### Try it
+You will find it working on `http://localhost:8080`
