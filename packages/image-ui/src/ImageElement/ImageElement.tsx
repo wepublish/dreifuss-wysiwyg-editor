@@ -4,7 +4,7 @@ import {setNodes} from '@udecode/plate-common'
 import {useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
 import {Node} from 'slate'
 import {ReactEditor, useFocused, useSelected} from 'slate-react'
-import {getImageElementStyles} from './ImageElement.styles'
+import {getImageElementStyles, getImageOptionsStyles} from './ImageElement.styles'
 import {ImageElementProps} from './ImageElement.types'
 import {ImageSizeType} from '@dreifuss-wysiwyg-editor/image'
 
@@ -19,15 +19,20 @@ const ImageSizeButton = ({
   label,
   type,
   onClick,
-  styles
+  styles,
+  isActive
 }: {
   label: string
   type: ImageSizeType
   onClick: Dispatch<any>
   styles: any
+  isActive: boolean
 }) => {
   return (
-    <button css={styles?.css} className={styles?.className} onClick={() => onClick(type)}>
+    <button
+      css={styles?.css}
+      className={`${styles?.className} ${isActive && `slate-ToolbarButton-active`}`}
+      onClick={() => onClick(type)}>
       {label}
     </button>
   )
@@ -86,24 +91,28 @@ export const ImageElement = (props: ImageElementProps) => {
               label="screen"
               onClick={setSize}
               styles={styles.optionsToolbarButton}
+              isActive={imageSize === ImageSizeType.fullScreen}
             />
             <ImageSizeButton
               type={ImageSizeType.large}
               label="lg"
               onClick={setSize}
               styles={styles.optionsToolbarButton}
+              isActive={imageSize === ImageSizeType.large}
             />
             <ImageSizeButton
               type={ImageSizeType.medium}
               label="md"
               onClick={setSize}
               styles={styles.optionsToolbarButton}
+              isActive={imageSize === ImageSizeType.medium}
             />
             <ImageSizeButton
               type={ImageSizeType.small}
               label="sm"
               onClick={setSize}
               styles={styles.optionsToolbarButton}
+              isActive={imageSize === ImageSizeType.small}
             />
           </div>
           <div style={{width: imageSizeMap[imageSize]}}>
