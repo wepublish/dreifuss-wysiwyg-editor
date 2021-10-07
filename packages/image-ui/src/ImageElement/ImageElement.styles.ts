@@ -7,7 +7,6 @@ export const getImageElementStyles = (props: ImageElementStyleProps) => {
   const {
     focused,
     selected,
-    align,
     caption = {
       align: 'center'
     }
@@ -24,13 +23,12 @@ export const getImageElementStyles = (props: ImageElementStyleProps) => {
     {prefixClassNames: 'ImageElement', ...props},
     {
       root: [tw`py-2.5`],
-      figure: [tw`m-0 relative`],
+      figure: [tw`m-0 relative inline-block`],
       img: [
-        tw`block max-w-full px-0 cursor-pointer w-full`,
+        tw`max-w-full px-0 cursor-pointer w-full`,
         tw`borderRadius[3px] object-cover`,
         focused && selected && tw`boxShadow[0 0 0 1px rgb(59,130,249)]`
       ],
-      figcaption: [align === 'center' && tw`mx-auto`, align === 'right' && tw`ml-auto`],
       caption: [
         tw`w-full border-none focus:outline-none mt-2 p-0 resize-none`,
         caption?.align === 'center' && tw`text-center`,

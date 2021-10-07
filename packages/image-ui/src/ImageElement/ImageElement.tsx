@@ -4,7 +4,7 @@ import {setNodes} from '@udecode/plate-common'
 import {useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
 import {Node} from 'slate'
 import {ReactEditor, useFocused, useSelected} from 'slate-react'
-import {getImageElementStyles, getImageOptionsStyles} from './ImageElement.styles'
+import {getImageElementStyles} from './ImageElement.styles'
 import {ImageElementProps} from './ImageElement.types'
 import {ImageSizeType} from '@dreifuss-wysiwyg-editor/image'
 
@@ -39,15 +39,7 @@ const ImageSizeButton = ({
 }
 
 export const ImageElement = (props: ImageElementProps) => {
-  const {
-    attributes,
-    children,
-    element,
-    nodeProps,
-    caption = {},
-    align = 'center',
-    draggable
-  } = props
+  const {attributes, children, element, nodeProps, caption = {}, draggable} = props
 
   const {placeholder = 'Write a caption...'} = caption
 
@@ -60,14 +52,14 @@ export const ImageElement = (props: ImageElementProps) => {
   const selected = useSelected()
   const editor = useStoreEditorState(useEventEditorId('focus'))
 
-  const [imageSize, setSize] = useState<ImageSizeType>(size || ImageSizeType.large)
+  const [imageSize, setImageSize] = useState<ImageSizeType>(size || ImageSizeType.large)
 
   useEffect(() => {
     const path = ReactEditor.findPath(editor, element)
     setNodes(editor, {size: imageSize}, {at: path})
   }, [imageSize])
 
-  const styles = getImageElementStyles({...props, align, focused, selected})
+  const styles = getImageElementStyles({...props, focused, selected})
 
   const onChangeCaption: ChangeEventHandler<HTMLTextAreaElement> = useCallback(
     e => {
@@ -84,59 +76,60 @@ export const ImageElement = (props: ImageElementProps) => {
   return (
     <div {...attributes} css={styles.root.css} className={styles.root.className}>
       <div contentEditable={false}>
-        <figure css={styles.figure?.css} className={`group ${styles.figure?.className}`}>
+        <figure
+          css={styles.figure?.css}
+          className={`group ${styles.figure?.className}`}
+          style={{width: imageSizeMap[imageSize]}}>
           <div css={styles.optionsToolbar.css} className={styles.optionsToolbar.className}>
             <ImageSizeButton
               type={ImageSizeType.fullScreen}
               label="screen"
-              onClick={setSize}
+              onClick={setImageSize}
               styles={styles.optionsToolbarButton}
               isActive={imageSize === ImageSizeType.fullScreen}
             />
             <ImageSizeButton
               type={ImageSizeType.large}
               label="lg"
-              onClick={setSize}
+              onClick={setImageSize}
               styles={styles.optionsToolbarButton}
               isActive={imageSize === ImageSizeType.large}
             />
             <ImageSizeButton
               type={ImageSizeType.medium}
               label="md"
-              onClick={setSize}
+              onClick={setImageSize}
               styles={styles.optionsToolbarButton}
               isActive={imageSize === ImageSizeType.medium}
             />
             <ImageSizeButton
               type={ImageSizeType.small}
               label="sm"
-              onClick={setSize}
+              onClick={setImageSize}
               styles={styles.optionsToolbarButton}
               isActive={imageSize === ImageSizeType.small}
             />
           </div>
-          <div style={{width: imageSizeMap[imageSize]}}>
-            <img
-              data-testid="ImageElementImage"
-              css={styles.img?.css}
-              className={styles.img?.className}
-              src={url}
-              alt={captionString}
-              draggable={draggable}
-              {...nodeProps}
-            />
-            {!caption.disabled && (captionString.length || selected) && (
-              <figcaption css={styles.figcaption?.css} className={styles.figcaption?.className}>
-                <TextareaAutosize
-                  css={styles.caption?.css}
-                  className={styles.caption?.className}
-                  value={nodeCaption[0].text}
-                  placeholder={placeholder}
-                  onChange={onChangeCaption}
-                />
-              </figcaption>
-            )}
-          </div>
+          <img
+            data-testid="ImageElementImage"
+            css={styles.img?.css}
+            className={styles.img?.className}
+            src={url}
+            alt={captionString}
+            draggable={draggable}
+            {...nodeProps}
+          />
+          {!caption.disabled && (captionString.length || selected) && (
+            <figcaption css={styles.figcaption?.css} className={styles.figcaption?.className}>
+              <TextareaAutosize
+                css={styles.caption?.css}
+                className={styles.caption?.className}
+                value={nodeCaption[0].text}
+                placeholder={placeholder}
+                onChange={onChangeCaption}
+              />
+            </figcaption>
+          )}
         </figure>
       </div>
       {children}
