@@ -4,7 +4,7 @@ import {
   ELEMENT_ALIGN_JUSTIFY,
   ELEMENT_ALIGN_LEFT,
   ELEMENT_ALIGN_RIGHT
-} from '@udecode/plate-alignment'
+} from '@dreifuss-wysiwyg-editor/alignment'
 import {
   MARK_BOLD,
   MARK_CODE,

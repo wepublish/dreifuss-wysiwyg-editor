@@ -28,14 +28,14 @@ import {
   ELEMENT_ALIGN_CENTER,
   ELEMENT_ALIGN_JUSTIFY,
   ELEMENT_ALIGN_RIGHT
-} from '@udecode/plate-alignment'
+} from '@dreifuss-wysiwyg-editor/alignment'
 import {ToolbarList} from '@udecode/plate-list-ui'
 import {
   ToolbarTable,
   TableBorderColorToolbar,
   TableBgColorToolbar
 } from '@dreifuss-wysiwyg-editor/table-ui'
-import {ToolbarAlign} from '@udecode/plate-alignment-ui'
+import {ToolbarAlign} from '@dreifuss-wysiwyg-editor/alignment-ui'
 import {ELEMENT_OL, ELEMENT_UL} from '@udecode/plate-list'
 import {ELEMENT_CODE_BLOCK} from '@udecode/plate-code-block'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
