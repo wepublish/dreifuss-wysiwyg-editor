@@ -28,7 +28,7 @@ import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
 import {createPlateComponents} from './utils/createPlateComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
-import {createHistoryPlugin, createReactPlugin, Plate, PlatePlugin} from '@udecode/plate-core'
+import {createHistoryPlugin, createReactPlugin, Plate, TNode} from '@udecode/plate-core'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createImagePlugin, ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 import {ToolbarImage} from '@dreifuss-wysiwyg-editor/image-ui'
@@ -89,6 +89,14 @@ export interface EditorProps {
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
   toolbars?: Toolbars
+}
+
+/** Removes nodes' ids before getting value out */
+const handleOnChange = (value: TNode[]) => {
+  return value.map(({id, ...block}) => {
+    if (block.children?.length) return {...block, children: handleOnChange(block.children)}
+    else return block
+  })
 }
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
@@ -158,7 +166,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     <DndProvider backend={HTML5Backend}>
       <Plate
         id={props.id}
-        onChange={val => props.onChange(val.map(({id, ...block}) => block))}
+        onChange={(val: TNode[]) => props.onChange(handleOnChange(val))}
         plugins={plugins}
         components={components}
         options={options}
