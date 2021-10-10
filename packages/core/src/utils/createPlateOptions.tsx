@@ -116,14 +116,8 @@ export const createPlateOptions = <T extends string = string>(
       defaultType: 'ordered-list'
     },
     [ELEMENT_TABLE]: {},
-    [ELEMENT_TD]: {
-      type: 'table-cell',
-      defaultType: 'table-cell'
-    },
-    [ELEMENT_TR]: {
-      type: 'table-row',
-      defaultType: 'table-row'
-    },
+    [ELEMENT_TD]: {},
+    [ELEMENT_TR]: {},
     [ELEMENT_TH]: {},
     [ELEMENT_TODO_LI]: {},
     [MARK_BOLD]: {

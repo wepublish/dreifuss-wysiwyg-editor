@@ -40,11 +40,11 @@ import {MediaEmbedElement} from '@dreifuss-wysiwyg-editor/media-embed-ui'
 // import {MentionElement} from '@udecode/plate-mention-ui'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
-import {TableElement, TableDataElement} from '@dreifuss-wysiwyg-editor/table-ui'
 import {StyledElement, StyledLeaf} from '@udecode/plate-styled-components'
 import {DefaultPlatePluginKey} from './createPlateOptions'
 import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font-color'
 import {RenderFontColorLeaf} from '@dreifuss-wysiwyg-editor/font-color-ui'
+import {renderElement} from '@dreifuss-wysiwyg-editor/table-ui/src/resizable/elements'
 
 export const createPlateComponents = <T extends string = string>(
   overrides?: Partial<Record<DefaultPlatePluginKey | T, FunctionComponent<any>>>
@@ -182,26 +182,10 @@ export const createPlateComponents = <T extends string = string>(
         }
       }
     }),
-    [ELEMENT_TABLE]: TableElement,
-    [ELEMENT_TD]: TableDataElement,
-    [ELEMENT_TH]: withProps(StyledElement, {
-      as: 'th',
-      styles: {
-        root: {
-          backgroundColor: 'rgb(244, 245, 247)',
-          border: '1px solid rgb(193, 199, 208)',
-          padding: '8px',
-          minWidth: '48px',
-          textAlign: 'left',
-          selectors: {
-            '> *': {
-              margin: 0
-            }
-          }
-        }
-      }
-    }),
-    [ELEMENT_TR]: withProps(StyledElement, {as: 'tr'}),
+    [ELEMENT_TABLE]: renderElement,
+    [ELEMENT_TD]: renderElement,
+    [ELEMENT_TH]: renderElement,
+    [ELEMENT_TR]: renderElement,
     [ELEMENT_TODO_LI]: TodoListElement,
     [MARK_BOLD]: withProps(StyledLeaf, {as: 'strong'}),
     [MARK_CODE]: withProps(StyledLeaf, {

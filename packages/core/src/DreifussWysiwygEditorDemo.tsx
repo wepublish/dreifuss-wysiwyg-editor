@@ -77,35 +77,18 @@ const value: any = [
 ]
 
 const DreifussWysiwygEditorDemo = () => (
-  <div style={{display: 'flex', flexDirection: 'row'}}>
-    <div style={{minHeight: 400, padding: 30}}>
-      <h1>RichText Component Demo</h1>
-      <DreifussWysiwygEditor
-        // charactersCount={count => {
-        //   console.log(count)
-        // }}
-        onChange={(data: any) => {
-          console.log(data)
-          // console.log(JSON.stringify(data))
-        }}
-        value={value}
-      />
-    </div>
-
-    <div style={{minHeight: 400, padding: 30}}>
-      <h1>RichText Component Demo</h1>
-      <DreifussWysiwygEditor
-        id="twooo"
-        // charactersCount={count => {
-        //   console.log(count)
-        // }}
-        onChange={(data: any) => {
-          console.log(data)
-          // console.log(JSON.stringify(data))
-        }}
-        value={value}
-      />
-    </div>
+  <div style={{minHeight: 400, padding: 30}}>
+    <h1>RichText Component Demo</h1>
+    <DreifussWysiwygEditor
+      // charactersCount={count => {
+      //   console.log(count)
+      // }}
+      onChange={(data: any) => {
+        console.log(data)
+        // console.log(JSON.stringify(data))
+      }}
+      value={value}
+    />
   </div>
 )
 

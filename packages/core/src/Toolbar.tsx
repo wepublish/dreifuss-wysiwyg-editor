@@ -33,7 +33,8 @@ import {ToolbarList} from '@udecode/plate-list-ui'
 import {
   ToolbarTable,
   TableBorderColorToolbar,
-  TableBgColorToolbar
+  TableBgColorToolbar,
+  insertTable
 } from '@dreifuss-wysiwyg-editor/table-ui'
 import {ToolbarAlign} from '@udecode/plate-alignment-ui'
 import {ELEMENT_OL, ELEMENT_UL} from '@udecode/plate-list'
@@ -49,13 +50,13 @@ import {
 } from '@udecode/plate-core'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
 import {
-  insertTable,
   deleteColumn,
   deleteRow,
   deleteTable,
   addColumn,
   addRow
 } from '@dreifuss-wysiwyg-editor/table'
+
 import {
   MARK_BOLD,
   MARK_CODE,
