@@ -24,13 +24,13 @@ import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/char
 import {createHistoryPlugin, createReactPlugin, Plate, useStoreEditorRef} from '@udecode/plate-core'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
-import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
+import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-ui'
 import {
   createFontColorPlugin,
   createFontBackgroundColorPlugin,
   MARK_COLOR,
   MARK_BG_COLOR
-} from '@dreifuss-wysiwyg-editor/font-color'
+} from '@dreifuss-wysiwyg-editor/font'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {createDeserializeMDPlugin} from '@udecode/plate-md-serializer'
