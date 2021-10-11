@@ -25,7 +25,12 @@ import {createHistoryPlugin, createReactPlugin, Plate, useStoreEditorRef} from '
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
-import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
+import {
+  createFontColorPlugin,
+  createFontBackgroundColorPlugin,
+  MARK_COLOR,
+  MARK_BG_COLOR
+} from '@dreifuss-wysiwyg-editor/font-color'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {createDeserializeMDPlugin} from '@udecode/plate-md-serializer'
@@ -123,6 +128,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createItalicPlugin(),
     createTodoListPlugin(),
     createFontColorPlugin(),
+    createFontBackgroundColorPlugin(),
     createParagraphPlugin(),
     createHighlightPlugin(),
     createCodeBlockPlugin(),
@@ -166,7 +172,10 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
 
             <Divider type={DividerType.vertical} />
             <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
-              <FontColorToolbar />
+              <FontColorToolbar type={MARK_COLOR} />
+            </Modal>
+            <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
+              <FontColorToolbar type={MARK_BG_COLOR} />
             </Modal>
 
             <Divider type={DividerType.vertical} />

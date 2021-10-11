@@ -43,8 +43,8 @@ import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiw
 import {TableElement, TableDataElement} from '@dreifuss-wysiwyg-editor/table-ui'
 import {StyledElement, StyledLeaf} from '@udecode/plate-styled-components'
 import {DefaultPlatePluginKey} from './createPlateOptions'
-import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font-color'
-import {RenderFontColorLeaf} from '@dreifuss-wysiwyg-editor/font-color-ui'
+import {MARK_COLOR, MARK_BG_COLOR} from '@dreifuss-wysiwyg-editor/font-color'
+import {RenderFontLeaf} from '@dreifuss-wysiwyg-editor/font-color-ui'
 
 export const createPlateComponents = <T extends string = string>(
   overrides?: Partial<Record<DefaultPlatePluginKey | T, FunctionComponent<any>>>
@@ -256,7 +256,8 @@ export const createPlateComponents = <T extends string = string>(
     [MARK_SUBSCRIPT]: withProps(StyledLeaf, {as: 'sub'}),
     [MARK_SUPERSCRIPT]: withProps(StyledLeaf, {as: 'sup'}),
     [MARK_UNDERLINE]: withProps(StyledLeaf, {as: 'u'}),
-    [ELEMENT_FONT_COLOR]: RenderFontColorLeaf
+    [MARK_COLOR]: RenderFontLeaf,
+    [MARK_BG_COLOR]: RenderFontLeaf
   }
 
   if (overrides) {

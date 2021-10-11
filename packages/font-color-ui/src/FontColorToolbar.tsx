@@ -2,14 +2,20 @@ import React, {useContext, useEffect, useState} from 'react'
 import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
 import {Editor, BaseEditor, Text} from 'slate'
-import {useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
+import {
+  getPlatePluginType,
+  useEventEditorId,
+  useStoreEditorRef,
+  useStoreEditorState
+} from '@udecode/plate-core'
 import {ModalContext} from '@dreifuss-wysiwyg-editor/common'
 import {
-  upsertFontColor,
-  removeFontColor,
+  // upsertFontColor,
+  // removeFontColor,
   DEFAULT_FONT_COLOR
 } from '@dreifuss-wysiwyg-editor/font-color'
 import './font-color.css'
+import {getMark, isMarkActive, setMarks} from '@udecode/plate-common'
 
 type CustomElement = {type: 'paragraph'; children: CustomText[]}
 type CustomText = {text: string; color?: string}
@@ -22,12 +28,17 @@ declare module 'slate' {
   }
 }
 
-export const FontColorToolbar = () => {
+export const FontColorToolbar = ({type: pluginKey}: {type?: string}) => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
+  const editorRef = useStoreEditorRef(useEventEditorId('focus'))
+
+  const type = getPlatePluginType(editor, pluginKey)
 
   const {toggleMenu} = useContext(ModalContext)
 
-  const [color, setColor] = useState<string>(DEFAULT_FONT_COLOR)
+  const [selectedColor, setColor] = useState<string>(DEFAULT_FONT_COLOR)
+
+  const color = editorRef && getMark(editorRef, type)
 
   useEffect(() => {
     if (!editor?.selection) return
@@ -51,14 +62,16 @@ export const FontColorToolbar = () => {
           <label>Selected font color</label>
           <input
             type="color"
-            value={color}
+            value={selectedColor}
             onChange={e => {
               e.preventDefault()
               if (!editor?.selection) return
 
               const color = e.target.value
               if (color) {
-                upsertFontColor(editor, color)
+                setMarks(editor, {[type]: color})
+
+                // upsertFontColor(editor, color)
                 setColor(color)
               }
 
@@ -74,7 +87,7 @@ export const FontColorToolbar = () => {
             e.preventDefault()
             if (!editor) return
 
-            removeFontColor(editor)
+            // removeFontColor(editor)
             setColor(DEFAULT_FONT_COLOR)
 
             toggleMenu()
