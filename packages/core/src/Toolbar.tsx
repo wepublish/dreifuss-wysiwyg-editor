@@ -24,7 +24,7 @@ import {
   BorderRightIcon,
   BorderTopIcon,
   LinkIcon,
-  FontColor
+  FontColorIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {
   ELEMENT_ALIGN_CENTER,
@@ -165,7 +165,7 @@ export const ToolbarBalloon = ({editor}) => {
 
 export const ToolbarFontColorButton = ({editor}) => (
   <Button editor={editor}>
-    <Button.FontColor icon={<FontColor />} />
+    <Button.FontColor icon={<FontColorIcon />} />
   </Button>
 )
 

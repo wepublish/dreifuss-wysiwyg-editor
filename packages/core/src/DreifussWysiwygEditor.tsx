@@ -157,16 +157,21 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
               <QuotationMarksMenu />
             </Modal>
+
             <Divider type={DividerType.vertical} />
             <ToolbarListButtons editor={editorRef} />
+
             <Divider type={DividerType.vertical} />
             <ToolbarBasicMarksButtons editor={editorRef} />
+
             <Divider type={DividerType.vertical} />
             <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
               <FontColorToolbar />
             </Modal>
+
             <Divider type={DividerType.vertical} />
             <ToolbarAlignButtons editor={editorRef} />
+
             <Divider type={DividerType.vertical} />
             <ToolbarTableButtons />
 
