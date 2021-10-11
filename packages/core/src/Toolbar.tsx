@@ -65,18 +65,6 @@ import {
 } from '@udecode/plate-basic-marks'
 import {Button} from './utils/ToolbarButtonsHelper'
 
-export const ToolbarFontColorButton = ({editor}) => (
-  <Button editor={editor}>
-    <Button.FontColor icon={<FontColor />} />
-  </Button>
-)
-
-export const ToolbarLinkButton = ({editor}) => (
-  <Button editor={editor}>
-    <Button.Link type={ELEMENT_LINK} icon={<LinkIcon />} />
-  </Button>
-)
-
 export const ToolbarBasicElementsButtons = ({editor}) => (
   <Button editor={editor}>
     <Button.Element type={ELEMENT_H1} icon={<H1Icon />} />
@@ -174,3 +162,15 @@ export const ToolbarBalloon = ({editor}) => {
     </BalloonToolbar>
   )
 }
+
+export const ToolbarFontColorButton = ({editor}) => (
+  <Button editor={editor}>
+    <Button.FontColor icon={<FontColor />} />
+  </Button>
+)
+
+export const ToolbarLinkButton = ({editor}) => (
+  <Button editor={editor}>
+    <Button.Link type={ELEMENT_LINK} icon={<LinkIcon />} />
+  </Button>
+)

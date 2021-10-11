@@ -1,4 +1,3 @@
-// ToolbarButtonsHelper.jsx
 import React, {Children, cloneElement, isValidElement} from 'react'
 import {ToolbarElement, ToolbarMark, ToolbarButton} from '@udecode/plate-toolbar'
 import {someNode, isMarkActive} from '@udecode/plate-common'
