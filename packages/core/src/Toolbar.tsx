@@ -35,18 +35,12 @@ import {
   TableBorderColorToolbar,
   TableBgColorToolbar
 } from '@dreifuss-wysiwyg-editor/table-ui'
-import {ToolbarAlign} from '@udecode/plate-alignment-ui'
 import {ELEMENT_OL, ELEMENT_UL} from '@udecode/plate-list'
 import {ELEMENT_CODE_BLOCK} from '@udecode/plate-code-block'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
 import {ToolbarCodeBlock} from '@udecode/plate-code-block-ui'
 import {ToolbarElement, ToolbarMark, BalloonToolbar} from '@udecode/plate-toolbar'
-import {
-  getPlatePluginType,
-  useEditorRef,
-  useEventEditorId,
-  useStoreEditorState
-} from '@udecode/plate-core'
+import {getPlatePluginType, useEditorRef} from '@udecode/plate-core'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
 import {
   insertTable,
@@ -65,75 +59,53 @@ import {
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE
 } from '@udecode/plate-basic-marks'
+import {Button} from './utils/ToolbarButtonsHelper'
 
-export const ToolbarBasicElementsButtons = () => (
-  <>
-    <ToolbarElement type={getPlatePluginType(useEditorRef(), ELEMENT_H1)} icon={<H1Icon />} />
-    <ToolbarElement type={getPlatePluginType(useEditorRef(), ELEMENT_H2)} icon={<H2Icon />} />
-    <ToolbarElement type={getPlatePluginType(useEditorRef(), ELEMENT_H3)} icon={<H3Icon />} />
-    <ToolbarElement
-      type={getPlatePluginType(useEditorRef(), ELEMENT_BLOCKQUOTE)}
-      icon={<BlockQuoteIcon />}
-    />
-    <ToolbarCodeBlock
-      type={getPlatePluginType(useEditorRef(), ELEMENT_CODE_BLOCK)}
-      icon={<BlockCodeIcon />}
-    />
-  </>
+export const ToolbarBasicElementsButtons = ({editor}) => (
+  <Button editor={editor}>
+    <Button.Element type={ELEMENT_H1} icon={<H1Icon />} />
+    <Button.Element type={ELEMENT_H2} icon={<H2Icon />} />
+    <Button.Element type={ELEMENT_H3} icon={<H3Icon />} />
+    <Button.Element type={ELEMENT_BLOCKQUOTE} icon={<BlockQuoteIcon />} />
+    <ToolbarCodeBlock type={ELEMENT_CODE_BLOCK} icon={<BlockCodeIcon />} />
+  </Button>
 )
 
-export const ToolbarListButtons = () => (
-  <>
-    <ToolbarList type={getPlatePluginType(useEditorRef(), ELEMENT_UL)} icon={<ListULIcon />} />
-    <ToolbarList type={getPlatePluginType(useEditorRef(), ELEMENT_OL)} icon={<ListOLIcon />} />
-  </>
+export const ToolbarListButtons = ({editor}: any) => (
+  <Button editor={editor}>
+    <Button.List type={ELEMENT_UL} icon={<ListULIcon />} />
+    <Button.List type={ELEMENT_OL} icon={<ListOLIcon />} />
+  </Button>
 )
 
-export const ToolbarAlignButtons = () => (
-  <>
-    <ToolbarAlign icon={<AlignLeftIcon />} />
-    <ToolbarAlign
-      type={getPlatePluginType(useEditorRef(), ELEMENT_ALIGN_CENTER)}
-      icon={<AlignCenterIcon />}
-    />
-    <ToolbarAlign
-      type={getPlatePluginType(useEditorRef(), ELEMENT_ALIGN_RIGHT)}
-      icon={<AlignRightIcon />}
-    />
-    <ToolbarAlign
-      type={getPlatePluginType(useEditorRef(), ELEMENT_ALIGN_JUSTIFY)}
-      icon={<AlignJustifyIcon />}
-    />
-  </>
+export const ToolbarAlignButtons = ({editor}) => (
+  <Button editor={editor}>
+    <Button.Element icon={<AlignLeftIcon />} />
+    <Button.Element type={ELEMENT_ALIGN_CENTER} icon={<AlignCenterIcon />} />
+    <Button.Element type={ELEMENT_ALIGN_RIGHT} icon={<AlignRightIcon />} />
+    <Button.Element type={ELEMENT_ALIGN_JUSTIFY} icon={<AlignJustifyIcon />} />
+  </Button>
 )
 
-export const ToolbarBasicMarksButtons = () => {
-  return (
-    <>
-      <ToolbarMark type={getPlatePluginType(useEditorRef(), MARK_BOLD)} icon={<BoldIcon />} />
-      <ToolbarMark type={getPlatePluginType(useEditorRef(), MARK_ITALIC)} icon={<ItalicIcon />} />
-      <ToolbarMark
-        type={getPlatePluginType(useEditorRef(), MARK_UNDERLINE)}
-        icon={<UnderlineIcon />}
-      />
-      <ToolbarMark
-        type={getPlatePluginType(useEditorRef(), MARK_STRIKETHROUGH)}
-        icon={<StrikeThroughIcon />}
-      />
-      <ToolbarMark type={getPlatePluginType(useEditorRef(), MARK_CODE)} icon={'code'} />
-      <ToolbarMark
-        type={getPlatePluginType(useEditorRef(), MARK_SUPERSCRIPT)}
-        clear={getPlatePluginType(useEditorRef(), MARK_SUBSCRIPT)}
-        icon={<SuperscriptIcon />}
-      />
-      <ToolbarMark
-        type={getPlatePluginType(useEditorRef(), MARK_SUBSCRIPT)}
-        clear={getPlatePluginType(useEditorRef(), MARK_SUPERSCRIPT)}
-        icon={<SubscriptIcon />}
-      />
-    </>
-  )
-}
+export const ToolbarBasicMarksButtons = ({editor}) => (
+  <Button editor={editor}>
+    <Button.Mark type={MARK_BOLD} icon={<BoldIcon />} />
+    <Button.Mark type={MARK_ITALIC} icon={<ItalicIcon />} />
+    <Button.Mark type={MARK_UNDERLINE} icon={<UnderlineIcon />} />
+    <Button.Mark type={MARK_STRIKETHROUGH} icon={<StrikeThroughIcon />} />
+    <Button.Mark type={MARK_CODE} icon={'code'} />
+    <Button.Mark
+      type={MARK_SUPERSCRIPT}
+      clear={getPlatePluginType(useEditorRef(), MARK_SUBSCRIPT)}
+      icon={<SuperscriptIcon />}
+    />
+    <Button.Mark
+      type={MARK_SUBSCRIPT}
+      clear={getPlatePluginType(useEditorRef(), MARK_SUPERSCRIPT)}
+      icon={<SubscriptIcon />}
+    />
+  </Button>
+)
 
 export const ToolbarTableButtons = () => (
   <>
@@ -148,7 +120,7 @@ export const ToolbarTableButtons = () => (
   </>
 )
 
-export const ToolbarBalloon = () => {
+export const ToolbarBalloon = ({editor}) => {
   const arrow = true
   const tooltip = {
     arrow,
@@ -158,7 +130,6 @@ export const ToolbarBalloon = () => {
     offset: [0, 17],
     placement: 'top'
   }
-  const editor = useStoreEditorState(useEventEditorId('focus'))
 
   return (
     <BalloonToolbar direction="top" hiddenDelay={0} theme="light" arrow={arrow}>
@@ -180,10 +151,10 @@ export const ToolbarBalloon = () => {
         // @ts-ignore
         tooltip={{content: 'Underline (⌘U)', ...tooltip}}
       />
-      <ToolbarElement type={getPlatePluginType(useEditorRef(), ELEMENT_H1)} icon={<H1Icon />} />
-      <ToolbarElement type={getPlatePluginType(useEditorRef(), ELEMENT_H2)} icon={<H2Icon />} />
-      <ToolbarElement type={getPlatePluginType(useEditorRef(), ELEMENT_H3)} icon={<H3Icon />} />
-      <ToolbarList type={getPlatePluginType(useEditorRef(), ELEMENT_UL)} icon={<ListULIcon />} />
+      <ToolbarElement type={ELEMENT_H1} icon={<H1Icon />} />
+      <ToolbarElement type={ELEMENT_H2} icon={<H2Icon />} />
+      <ToolbarElement type={ELEMENT_H3} icon={<H3Icon />} />
+      <ToolbarList type={ELEMENT_UL} icon={<ListULIcon />} />
     </BalloonToolbar>
   )
 }

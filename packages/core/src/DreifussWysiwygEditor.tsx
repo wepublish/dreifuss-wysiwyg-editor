@@ -22,7 +22,7 @@ import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
 import {createPlateComponents} from './utils/createPlateComponents'
 import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
-import {createHistoryPlugin, createReactPlugin, Plate} from '@udecode/plate-core'
+import {createHistoryPlugin, createReactPlugin, Plate, useStoreEditorRef} from '@udecode/plate-core'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createLinkPlugin, ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
@@ -44,6 +44,7 @@ import {
   createSuperscriptPlugin
 } from '@udecode/plate-basic-marks'
 import {
+  ToolbarLink as ToolbarLinkIcon,
   ToolbarBalloon,
   ToolbarAlignButtons,
   ToolbarBasicElementsButtons,
@@ -79,6 +80,9 @@ export interface EditorProps {
 
 export default function DreifussWysiwygEditor(props: EditorProps) {
   const {id = 'main', showCharactersCount = true} = props
+
+  const editorRef = useStoreEditorRef(props.id)
+
   const components = withStyledDraggables(createPlateComponents())
 
   const options = createPlateOptions()
@@ -146,27 +150,27 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
         options={options}
         editableProps={editableProps as EditableProps}
         initialValue={JSON.parse(JSON.stringify(props.value || props.initialValue))}>
-        <ToolbarBalloon />
+        <ToolbarBalloon editor={editorRef} />
         {!props.displayOnly && (
           <HeadingToolbar>
-            <ToolbarBasicElementsButtons />
+            <ToolbarBasicElementsButtons editor={editorRef} />
             <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
               <QuotationMarksMenu />
             </Modal>
             <Divider type={DividerType.vertical} />
-            <ToolbarListButtons />
+            <ToolbarListButtons editor={editorRef} />
             <Divider type={DividerType.vertical} />
-            <ToolbarBasicMarksButtons />
+            <ToolbarBasicMarksButtons editor={editorRef} />
             <Divider type={DividerType.vertical} />
             <FontColorToolbar />
             <Divider type={DividerType.vertical} />
-            <ToolbarAlignButtons />
+            <ToolbarAlignButtons editor={editorRef} />
             <Divider type={DividerType.vertical} />
             <ToolbarTableButtons />
 
             <Divider type={DividerType.vertical} />
-            <Modal type={ELEMENT_LINK} Icon={<LinkIcon />}>
-              <ToolbarLink />
+            <Modal Icon={<ToolbarLinkIcon editor={editorRef} />}>
+              <ToolbarLink editor={editorRef} />
             </Modal>
 
             <Divider type={DividerType.vertical} />

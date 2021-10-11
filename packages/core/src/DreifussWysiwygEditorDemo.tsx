@@ -3,10 +3,10 @@ import {render} from 'react-dom'
 import {DreifussWysiwygEditor} from './index'
 
 const value: any = [
-  // {
-  //   type: 'paragraph',
-  //   children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}]
-  // },
+  {
+    type: 'paragraph',
+    children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}]
+  },
   {type: 'paragraph', children: [{text: 'Bold: Make the selected text bold.', bold: true}]}
   // {type: 'paragraph', children: [{text: 'Italic: Make the selected text italic.', italic: true}]},
   // {
@@ -77,17 +77,16 @@ const value: any = [
 ]
 
 const DreifussWysiwygEditorDemo = () => (
-  <div style={{minHeight: 400, padding: 30}}>
-    <h1>RichText Component Demo</h1>
-    <DreifussWysiwygEditor
-      // charactersCount={count => {
-      //   console.log(count)
-      // }}
-      onChange={(data: any) => {
-        // console.log(JSON.stringify(data))
-      }}
-      initialValue={value}
-    />
+  <div style={{display: 'flex'}}>
+    <div style={{minHeight: 400, padding: 30}}>
+      <h1>RichText Component Demo</h1>
+      <DreifussWysiwygEditor initialValue={value} />
+    </div>
+
+    <div style={{minHeight: 400, padding: 30}}>
+      <h1>RichText Component Demo</h1>
+      <DreifussWysiwygEditor id="two" initialValue={value} />
+    </div>
   </div>
 )
 
