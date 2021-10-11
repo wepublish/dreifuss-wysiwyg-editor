@@ -22,7 +22,8 @@ import {
   BorderClearIcon,
   BorderLeftIcon,
   BorderRightIcon,
-  BorderTopIcon
+  BorderTopIcon,
+  LinkIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {
   ELEMENT_ALIGN_CENTER,
@@ -35,6 +36,7 @@ import {
   TableBorderColorToolbar,
   TableBgColorToolbar
 } from '@dreifuss-wysiwyg-editor/table-ui'
+import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {ELEMENT_OL, ELEMENT_UL} from '@udecode/plate-list'
 import {ELEMENT_CODE_BLOCK} from '@udecode/plate-code-block'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
@@ -60,6 +62,12 @@ import {
   MARK_UNDERLINE
 } from '@udecode/plate-basic-marks'
 import {Button} from './utils/ToolbarButtonsHelper'
+
+export const ToolbarLinkButton = ({editor}) => (
+  <Button editor={editor}>
+    <Button.Link type={ELEMENT_LINK} icon={<LinkIcon />} />
+  </Button>
+)
 
 export const ToolbarBasicElementsButtons = ({editor}) => (
   <Button editor={editor}>

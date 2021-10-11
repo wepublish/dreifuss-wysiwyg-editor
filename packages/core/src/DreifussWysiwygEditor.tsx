@@ -14,7 +14,6 @@ import {
   EditorValue,
   CharactersCountIcon,
   Modal,
-  LinkIcon,
   SearchIcon,
   MediaEmbedIcon
 } from '@dreifuss-wysiwyg-editor/common'
@@ -24,7 +23,7 @@ import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {createHistoryPlugin, createReactPlugin, Plate, useStoreEditorRef} from '@udecode/plate-core'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
-import {createLinkPlugin, ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
+import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
 import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
@@ -44,7 +43,7 @@ import {
   createSuperscriptPlugin
 } from '@udecode/plate-basic-marks'
 import {
-  ToolbarLink as ToolbarLinkIcon,
+  ToolbarLinkButton,
   ToolbarBalloon,
   ToolbarAlignButtons,
   ToolbarBasicElementsButtons,
@@ -169,8 +168,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             <ToolbarTableButtons />
 
             <Divider type={DividerType.vertical} />
-            <Modal Icon={<ToolbarLinkIcon editor={editorRef} />}>
-              <ToolbarLink editor={editorRef} />
+            <Modal editor={editorRef} Icon={<ToolbarLinkButton editor={editorRef} />}>
+              <ToolbarLink />
             </Modal>
 
             <Divider type={DividerType.vertical} />

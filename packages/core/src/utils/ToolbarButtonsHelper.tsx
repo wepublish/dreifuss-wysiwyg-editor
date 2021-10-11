@@ -1,6 +1,6 @@
 // ToolbarButtonsHelper.jsx
 import React, {Children, cloneElement, isValidElement} from 'react'
-import {ToolbarElement, ToolbarMark} from '@udecode/plate-toolbar'
+import {ToolbarElement, ToolbarMark, ToolbarButton} from '@udecode/plate-toolbar'
 import {someNode, isMarkActive} from '@udecode/plate-common'
 import {useStoreEditorState, useEventEditorId, getPlatePluginType} from '@udecode/plate-core'
 import {ToolbarList} from '@udecode/plate-list-ui'
@@ -39,8 +39,9 @@ Button.List = ({isSelectionFocused, editor, type: plugin, icon}: any) => {
   return <ToolbarList type={type} active={isActive} icon={icon} />
 }
 
-// Button.Link = ({isSelectionFocused, editor,type: plugin, icon}) => {
-//   const type = getPlatePluginType(editor, plugin)
-//   const isActive = isSelectionFocused && someNode(editor, {match: {type}})
-//   return <ToolbarLink active={isActive} icon={icon} />
-// }
+Button.Link = ({isSelectionFocused, editor, type: plugin, icon}) => {
+  const type = getPlatePluginType(editor, plugin)
+  const isActive = isSelectionFocused && someNode(editor, {match: {type}})
+
+  return <ToolbarButton icon={icon} active={isActive} />
+}
