@@ -23,11 +23,13 @@ import {
   BorderLeftIcon,
   BorderRightIcon,
   BorderTopIcon,
-  LinkIcon
+  LinkIcon,
+  FontColor
 } from '@dreifuss-wysiwyg-editor/common'
 import {
   ELEMENT_ALIGN_CENTER,
   ELEMENT_ALIGN_JUSTIFY,
+  ELEMENT_ALIGN_LEFT,
   ELEMENT_ALIGN_RIGHT
 } from '@udecode/plate-alignment'
 import {ToolbarList} from '@udecode/plate-list-ui'
@@ -63,6 +65,12 @@ import {
 } from '@udecode/plate-basic-marks'
 import {Button} from './utils/ToolbarButtonsHelper'
 
+export const ToolbarFontColorButton = ({editor}) => (
+  <Button editor={editor}>
+    <Button.FontColor icon={<FontColor />} />
+  </Button>
+)
+
 export const ToolbarLinkButton = ({editor}) => (
   <Button editor={editor}>
     <Button.Link type={ELEMENT_LINK} icon={<LinkIcon />} />
@@ -88,7 +96,7 @@ export const ToolbarListButtons = ({editor}: any) => (
 
 export const ToolbarAlignButtons = ({editor}) => (
   <Button editor={editor}>
-    <Button.Element icon={<AlignLeftIcon />} />
+    <Button.Element type={ELEMENT_ALIGN_LEFT} icon={<AlignLeftIcon />} />
     <Button.Element type={ELEMENT_ALIGN_CENTER} icon={<AlignCenterIcon />} />
     <Button.Element type={ELEMENT_ALIGN_RIGHT} icon={<AlignRightIcon />} />
     <Button.Element type={ELEMENT_ALIGN_JUSTIFY} icon={<AlignJustifyIcon />} />

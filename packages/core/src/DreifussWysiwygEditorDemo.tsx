@@ -3,11 +3,11 @@ import {render} from 'react-dom'
 import {DreifussWysiwygEditor} from './index'
 
 const value: any = [
-  {
-    type: 'paragraph',
-    children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}]
-  },
-  {type: 'paragraph', children: [{text: 'Bold: Make the selected text bold.', bold: true}]}
+  // {
+  //   type: 'paragraph',
+  //   children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}]
+  // },
+  // {type: 'paragraph', children: [{text: 'Bold: Make the selected text bold.', bold: true}]}
   // {type: 'paragraph', children: [{text: 'Italic: Make the selected text italic.', italic: true}]},
   // {
   //   type: 'paragraph',
@@ -74,6 +74,19 @@ const value: any = [
   //   ]
   // },
   // {type: 'paragraph', children: [{text: 'Emojis: 😄'}]}
+
+  {
+    type: 'paragraph',
+    children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}]
+  },
+  {
+    type: 'paragraph',
+    children: [
+      {text: 'Bold: ', bold: true},
+      // {bold: true, text: 'Make', color: '#c21414'},
+      {bold: true, text: ' the selected text bold.'}
+    ]
+  }
 ]
 
 const DreifussWysiwygEditorDemo = () => (

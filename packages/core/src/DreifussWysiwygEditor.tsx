@@ -49,7 +49,8 @@ import {
   ToolbarBasicElementsButtons,
   ToolbarBasicMarksButtons,
   ToolbarListButtons,
-  ToolbarTableButtons
+  ToolbarTableButtons,
+  ToolbarFontColorButton
 } from './Toolbar'
 import {DndProvider} from 'react-dnd'
 import {createDndPlugin} from '@udecode/plate-dnd'
@@ -161,7 +162,9 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             <Divider type={DividerType.vertical} />
             <ToolbarBasicMarksButtons editor={editorRef} />
             <Divider type={DividerType.vertical} />
-            <FontColorToolbar />
+            <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
+              <FontColorToolbar />
+            </Modal>
             <Divider type={DividerType.vertical} />
             <ToolbarAlignButtons editor={editorRef} />
             <Divider type={DividerType.vertical} />
