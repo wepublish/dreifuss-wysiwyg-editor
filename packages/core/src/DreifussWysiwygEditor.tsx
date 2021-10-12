@@ -16,7 +16,9 @@ import {
   Modal,
   LinkIcon,
   SearchIcon,
-  MediaEmbedIcon
+  MediaEmbedIcon,
+  EmojiPicker,
+  EmojiIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
 import {createPlateComponents} from './utils/createPlateComponents'
@@ -163,6 +165,11 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             <ToolbarAlignButtons />
             <Divider type={DividerType.vertical} />
             <ToolbarTableButtons />
+
+            <Divider type={DividerType.vertical} />
+            <Modal type={ELEMENT_LINK} Icon={<EmojiIcon />}>
+              <EmojiPicker />
+            </Modal>
 
             <Divider type={DividerType.vertical} />
             <Modal type={ELEMENT_LINK} Icon={<LinkIcon />}>
