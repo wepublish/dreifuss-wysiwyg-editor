@@ -98,12 +98,12 @@ export const ToolbarBasicMarksButtons = ({editor}) => (
     <Button.Mark type={MARK_STRIKETHROUGH} icon={<StrikeThroughIcon />} />
     <Button.Mark type={MARK_CODE} icon={'code'} />
     <Button.Mark
-      type={MARK_SUPERSCRIPT}
+      type={MARK_SUBSCRIPT}
       clear={getPlatePluginType(useEditorRef(), MARK_SUBSCRIPT)}
       icon={<SuperscriptIcon />}
     />
     <Button.Mark
-      type={MARK_SUBSCRIPT}
+      type={MARK_SUPERSCRIPT}
       clear={getPlatePluginType(useEditorRef(), MARK_SUPERSCRIPT)}
       icon={<SubscriptIcon />}
     />
