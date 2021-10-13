@@ -1,8 +1,11 @@
-import React, {useContext} from 'react'
-import './emojiPicker.css'
+import React, {useContext, useEffect, useRef} from 'react'
+import {useEventEditorId, useStoreEditorRef, useStoreEditorSelection} from '@udecode/plate-core'
+import {ReactEditor} from 'slate-react'
+import {BaseRange, Transforms} from 'slate'
 import {Picker, BaseEmoji} from 'emoji-mart'
-import {useEventEditorId, useStoreEditorRef} from '@udecode/plate-core'
+
 import {ModalContext} from '../modal'
+import './emojiPicker.css'
 
 interface EmojiPickerProps {
   setEmoji?: (emoji: string) => void
@@ -11,13 +14,33 @@ interface EmojiPickerProps {
 export function EmojiPicker({setEmoji}: EmojiPickerProps) {
   const editor = useStoreEditorRef(useEventEditorId('focus'))
   const {toggleMenu} = useContext(ModalContext)
+  const selection = useStoreEditorSelection(useEventEditorId('focus'))
+
+  const latestSelection = useRef<BaseRange>()
+
+  useEffect(() => {
+    if (selection) {
+      latestSelection.current = selection
+    }
+  }, [selection])
 
   return (
     <Picker
       onSelect={({native: emoji}: BaseEmoji) => {
+        if (!editor) return
+
         if (setEmoji) {
+          if (latestSelection.current) {
+            Transforms.select(editor, latestSelection.current)
+          }
+          ReactEditor.focus(editor)
           setEmoji(emoji)
         } else if (editor) {
+          if (latestSelection.current) {
+            Transforms.select(editor, latestSelection.current)
+          }
+          ReactEditor.focus(editor)
+
           editor.insertText(emoji)
           toggleMenu()
         }
