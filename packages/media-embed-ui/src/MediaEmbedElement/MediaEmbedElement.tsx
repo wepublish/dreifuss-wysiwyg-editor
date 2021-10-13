@@ -19,14 +19,16 @@ export const MediaEmbedElement = (props: MediaEmbedElementProps) => {
     <div {...attributes} css={styles.root.css} className={styles.root.className}>
       <div contentEditable={false}>
         <div css={styles.iframeWrapper?.css} className={styles.iframeWrapper?.className}>
-          <iframe
-            css={styles.iframe?.css}
-            className={styles.iframe?.className}
-            title="embed"
-            src={`${url}?title=0&byline=0&portrait=0`}
-            frameBorder="0"
-            {...nodeProps}
-          />
+          {url && (
+            <iframe
+              css={styles.iframe?.css}
+              className={styles.iframe?.className}
+              title="embed"
+              src={`${url}?title=0&byline=0&portrait=0`}
+              frameBorder="0"
+              {...nodeProps}
+            />
+          )}
         </div>
 
         <MediaEmbedUrlInput
