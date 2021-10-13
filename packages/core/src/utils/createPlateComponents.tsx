@@ -62,7 +62,8 @@ export const createPlateComponents = <T extends string = string>(
     [ELEMENT_ALIGN_JUSTIFY]: withProps(StyledElement, {
       styles: {
         root: {
-          textAlign: 'justify'
+          textAlign: 'justify',
+          whiteSpace: 'pre-line'
         }
       }
     }),
