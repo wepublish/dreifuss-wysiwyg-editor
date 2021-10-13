@@ -26,10 +26,10 @@ Button.Element = ({isSelectionFocused, editor, type: plugin, icon}: any) => {
   return <ToolbarElement type={type} active={isActive} icon={icon} />
 }
 
-Button.Mark = ({isSelectionFocused, editor, type: plugin, icon}: any) => {
+Button.Mark = ({isSelectionFocused, editor, type: plugin, icon, tooltip}: any) => {
   const type = getPlatePluginType(editor, plugin)
   const isActive = isSelectionFocused && isMarkActive(editor, type)
-  return <ToolbarMark type={type} active={isActive} icon={icon} />
+  return <ToolbarMark tooltip={tooltip} type={type} active={isActive} icon={icon} />
 }
 
 Button.List = ({isSelectionFocused, editor, type: plugin, icon}: any) => {
