@@ -4491,7 +4491,7 @@
     "@udecode/plate-core" "1.0.0"
     clsx "^1.1.1"
 
-"@udecode/plate-styled-components@3.5.1":
+"@udecode/plate-styled-components@3.5.1", "@udecode/plate-styled-components@^3.1.0":
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/@udecode/plate-styled-components/-/plate-styled-components-3.5.1.tgz#879340ae8d482731e6ba037e1b54a40687d9516c"
   integrity sha512-rsRrirF3B9nt9s8jpk4tEjNbAlpVeF2GHcI53jv0DnOLdEusPUO/QUzORQ9K+DzuUqB8mIIFL/jLH46ZJJic9A==
