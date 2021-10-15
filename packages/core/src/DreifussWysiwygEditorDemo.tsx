@@ -9,9 +9,8 @@ const value: any = [
   //   type: 'paragraph',
   //   children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}]
   // },
-  {type: 'paragraph', children: [{text: 'Bold: Make the selected text bold.', bold: true}]},
-  {type: 'img', url: 'https://picsum.photos/1000/300', children: [{text: ''}]},
-  {type: 'paragraph', children: [{text: ''}]} // {type: 'paragraph', children: [{text: 'Italic: Make the selected text italic.', italic: true}]},
+  // {type: 'paragraph', children: [{text: 'Bold: Make the selected text bold.', bold: true}]}
+  // {type: 'paragraph', children: [{text: 'Italic: Make the selected text italic.', italic: true}]},
   // {
   //   type: 'paragraph',
   //   children: [{text: 'Underline: Underline the selected text.', underline: true}]
@@ -77,6 +76,19 @@ const value: any = [
   //   ]
   // },
   // {type: 'paragraph', children: [{text: 'Emojis: 😄'}]}
+
+  {
+    type: 'paragraph',
+    children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}]
+  },
+  {
+    type: 'paragraph',
+    children: [
+      {text: 'Bold: ', bold: true},
+      // {bold: true, text: 'Make', color: '#c21414'},
+      {bold: true, text: ' the selected text bold.'}
+    ]
+  }
 ]
 
 /**
@@ -111,19 +123,31 @@ const toolbars = {
 }
 
 const DreifussWysiwygEditorDemo = () => (
-  <div style={{minHeight: 400, padding: 30}}>
-    <h1>RichText Component Demo</h1>
-    <DreifussWysiwygEditor
-      toolbars={toolbars}
-      // charactersCount={count => {
-      //   console.log(count)
-      // }}
-      onChange={(data: any) => {
-        // console.log(data)
-        console.log(JSON.stringify(data))
-      }}
-      value={value}
-    />
+  <div style={{display: 'flex'}}>
+    <div style={{minHeight: 400, padding: 30}}>
+      <h1>RichText Component Demo</h1>
+      <DreifussWysiwygEditor
+        toolbars={toolbars}
+        // charactersCount={count => {
+        //   console.log(count)
+        // }}
+        onChange={e => {
+          console.log(e)
+        }}
+        value={value}
+      />
+    </div>
+
+    <div style={{minHeight: 400, padding: 30}}>
+      <h1>RichText Component Demo</h1>
+      <DreifussWysiwygEditor
+        onChange={e => {
+          console.log(e)
+        }}
+        id="two"
+        value={value}
+      />
+    </div>
   </div>
 )
 

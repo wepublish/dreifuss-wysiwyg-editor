@@ -109,32 +109,28 @@ export function CharactersCountIcon() {
   )
 }
 
-export function FontColor({active}: {active: boolean}) {
-  return (
-    <span style={{color: active ? 'rgb(0, 102, 204)' : 'inherit'}}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="1.2em"
-        height="1.2em"
-        viewBox="0 0 52.000000 52.000000"
-        preserveAspectRatio="xMidYMid meet">
-        <g
-          transform="translate(0.000000,52.000000) scale(0.100000,-0.100000)"
-          fill="currentColor"
-          stroke="none">
-          <path
-            d="M219 433 c-14 -38 -96 -254 -104 -275 -6 -15 -2 -18 22 -18 26 0 32
+export const FontColorIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1.2em"
+    height="1.2em"
+    viewBox="0 0 52.000000 52.000000"
+    preserveAspectRatio="xMidYMid meet">
+    <g
+      transform="translate(0.000000,52.000000) scale(0.100000,-0.100000)"
+      fill="currentColor"
+      stroke="none">
+      <path
+        d="M219 433 c-14 -38 -96 -254 -104 -275 -6 -15 -2 -18 22 -18 26 0 32
 5 43 40 l13 40 67 0 67 0 12 -40 c10 -35 16 -40 41 -40 17 0 30 1 30 3 0 1
 -27 72 -59 157 -58 151 -60 155 -90 158 -26 3 -33 -1 -42 -25z m64 -96 c9 -30
 17 -57 17 -60 0 -4 -20 -7 -44 -7 l-45 0 21 60 c11 33 23 60 27 60 4 0 15 -24
 24 -53z"
-          />
-          <path d="M100 40 l0 -40 160 0 160 0 0 40 0 40 -160 0 -160 0 0 -40z" />
-        </g>
-      </svg>
-    </span>
-  )
-}
+      />
+      <path d="M100 40 l0 -40 160 0 160 0 0 40 0 40 -160 0 -160 0 0 -40z" />
+    </g>
+  </svg>
+)
 
 export const H1Icon = () => (
   <svg

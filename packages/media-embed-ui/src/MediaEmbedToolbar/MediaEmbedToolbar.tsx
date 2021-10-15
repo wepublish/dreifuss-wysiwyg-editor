@@ -55,10 +55,12 @@ export const MediaEmbedToolbar = () => {
           className={`${!url ? 'disabled' : 'insert'}`}
           disabled={!url}
           onClick={e => {
-            if (!editor) return
             e.preventDefault()
+            if (!editor) return
 
-            Transforms.select(editor, latestSelection.current)
+            if (latestSelection.current) {
+              Transforms.select(editor, latestSelection.current)
+            }
             ReactEditor.focus(editor)
 
             insertMediaEmbed(editor, {url})
