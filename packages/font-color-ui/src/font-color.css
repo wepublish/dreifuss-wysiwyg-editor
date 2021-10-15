@@ -1,0 +1,36 @@
+.font-color-toolbar .input-group {
+  display: flex;
+  align-items: center;
+}
+
+.font-color-toolbar .input-group input {
+  margin-left: 5%;
+  border: 0px;
+  padding: 7px 11px;
+}
+
+.font-color-toolbar .toolbar button {
+  margin: 10px 5px 0px 0px;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: 0 !important;
+  white-space: nowrap;
+  border: none;
+  user-select: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 6px;
+}
+
+.font-color-toolbar .toolbar button.remove {
+  color: red;
+  background-color: #f7f7fa;
+}
+
+.font-color-toolbar .toolbar button.disabled {
+  color: #c5c6c7;
+  background-color: #f7f7fa;
+}
