@@ -2,7 +2,7 @@ import React, {ReactNode, useEffect} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/plate-toolbar'
 import {createTablePlugin} from '@dreifuss-wysiwyg-editor/table'
-import {createAlignPlugin} from '@udecode/plate-alignment'
+import {createAlignPlugin} from '@dreifuss-wysiwyg-editor/alignment'
 import {createHeadingPlugin} from '@udecode/plate-heading'
 import {createHighlightPlugin} from '@udecode/plate-highlight'
 import {createParagraphPlugin} from '@udecode/plate-paragraph'
@@ -92,7 +92,7 @@ export interface EditorProps {
   showCharactersCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
-  initialValue?: EditorValue
+  value?: EditorValue
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
   toolbars?: Toolbars
@@ -182,7 +182,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
         options={options}
         editableProps={editableProps as EditableProps}
         initialValue={JSON.parse(
-          JSON.stringify(props.initialValue.map(block => ({...block, id: Math.random()})))
+          JSON.stringify(props.value.map(block => ({...block, id: Math.random()})))
         )}>
         <ToolbarBalloon editor={editorRef} />
         {!props.displayOnly && (

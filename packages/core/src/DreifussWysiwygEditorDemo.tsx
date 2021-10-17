@@ -127,10 +127,14 @@ const DreifussWysiwygEditorDemo = () => (
     <div style={{minHeight: 400, padding: 30}}>
       <h1>RichText Component Demo</h1>
       <DreifussWysiwygEditor
+        toolbars={toolbars}
+        // charactersCount={count => {
+        //   console.log(count)
+        // }}
         onChange={e => {
           console.log(e)
         }}
-        initialValue={value}
+        value={value}
       />
     </div>
 
@@ -141,7 +145,7 @@ const DreifussWysiwygEditorDemo = () => (
           console.log(e)
         }}
         id="two"
-        initialValue={value}
+        value={value}
       />
     </div>
   </div>

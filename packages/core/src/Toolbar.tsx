@@ -31,7 +31,7 @@ import {
   ELEMENT_ALIGN_JUSTIFY,
   ELEMENT_ALIGN_LEFT,
   ELEMENT_ALIGN_RIGHT
-} from '@udecode/plate-alignment'
+} from '@dreifuss-wysiwyg-editor/alignment'
 import {
   ToolbarTable,
   TableBorderColorToolbar,
@@ -83,10 +83,10 @@ export const ToolbarListButtons = ({editor}: any) => (
 
 export const ToolbarAlignButtons = ({editor}) => (
   <Button editor={editor}>
-    <Button.Element type={ELEMENT_ALIGN_LEFT} icon={<AlignLeftIcon />} />
-    <Button.Element type={ELEMENT_ALIGN_CENTER} icon={<AlignCenterIcon />} />
-    <Button.Element type={ELEMENT_ALIGN_RIGHT} icon={<AlignRightIcon />} />
-    <Button.Element type={ELEMENT_ALIGN_JUSTIFY} icon={<AlignJustifyIcon />} />
+    <Button.Align type={ELEMENT_ALIGN_LEFT} icon={<AlignLeftIcon />} />
+    <Button.Align type={ELEMENT_ALIGN_CENTER} icon={<AlignCenterIcon />} />
+    <Button.Align type={ELEMENT_ALIGN_RIGHT} icon={<AlignRightIcon />} />
+    <Button.Align type={ELEMENT_ALIGN_JUSTIFY} icon={<AlignJustifyIcon />} />
   </Button>
 )
 
