@@ -1,10 +1,9 @@
-import React from 'react'
 import {
   ELEMENT_ALIGN_CENTER,
   ELEMENT_ALIGN_JUSTIFY,
   ELEMENT_ALIGN_LEFT,
   ELEMENT_ALIGN_RIGHT
-} from '@udecode/plate-alignment'
+} from '@dreifuss-wysiwyg-editor/alignment'
 import {
   MARK_BOLD,
   DEFAULTS_BOLD,
@@ -81,18 +80,10 @@ export const createPlateOptions = <T extends string = string>(
   overrides?: Partial<Record<DefaultPlatePluginKey | T, Partial<PlatePluginOptions>>>
 ) => {
   const options: Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>> = {
-    [ELEMENT_ALIGN_CENTER]: {
-      type: 'align-center'
-    },
-    [ELEMENT_ALIGN_JUSTIFY]: {
-      type: 'align-justified'
-    },
-    [ELEMENT_ALIGN_LEFT]: {
-      type: 'align-left'
-    },
-    [ELEMENT_ALIGN_RIGHT]: {
-      type: 'align-right'
-    },
+    [ELEMENT_ALIGN_CENTER]: {},
+    [ELEMENT_ALIGN_JUSTIFY]: {},
+    [ELEMENT_ALIGN_LEFT]: {},
+    [ELEMENT_ALIGN_RIGHT]: {},
     [ELEMENT_BLOCKQUOTE]: {
       type: 'block-quote'
     },
