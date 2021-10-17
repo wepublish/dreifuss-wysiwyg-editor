@@ -29,18 +29,14 @@ export function EmojiPicker({setEmoji}: EmojiPickerProps) {
       onSelect={({native: emoji}: BaseEmoji) => {
         if (!editor) return
 
-        if (setEmoji) {
-          if (latestSelection.current) {
-            Transforms.select(editor, latestSelection.current)
-          }
+        if (latestSelection.current) {
+          Transforms.select(editor, latestSelection.current)
           ReactEditor.focus(editor)
+        }
+
+        if (setEmoji) {
           setEmoji(emoji)
         } else if (editor) {
-          if (latestSelection.current) {
-            Transforms.select(editor, latestSelection.current)
-          }
-          ReactEditor.focus(editor)
-
           editor.insertText(emoji)
           toggleMenu()
         }
