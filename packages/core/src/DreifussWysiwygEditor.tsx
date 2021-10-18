@@ -71,6 +71,7 @@ import {
   ToolbarBasicMarksButtons,
   ToolbarListButtons,
   ToolbarTableButtons,
+  ToolbarFontBgButton,
   ToolbarFontColorButton
 } from './Toolbar'
 import {DndProvider} from 'react-dnd'
@@ -210,7 +211,8 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
               <FontColorToolbar type={MARK_COLOR} />
             </Modal>
-            <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
+
+            <Modal editor={editorRef} Icon={<ToolbarFontBgButton editor={editorRef} />}>
               <FontColorToolbar type={MARK_BG_COLOR} />
             </Modal>
 

@@ -9,13 +9,9 @@ import {
   useStoreEditorState
 } from '@udecode/plate-core'
 import {ModalContext} from '@dreifuss-wysiwyg-editor/common'
-import {
-  // upsertFontColor,
-  // removeFontColor,
-  DEFAULT_FONT_COLOR
-} from '@dreifuss-wysiwyg-editor/font-color'
+import {DEFAULT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font'
 import './font-color.css'
-import {getMark, isMarkActive, setMarks} from '@udecode/plate-common'
+import {getMark, setMarks} from '@udecode/plate-common'
 
 type CustomElement = {type: 'paragraph'; children: CustomText[]}
 type CustomText = {text: string; color?: string}
@@ -67,15 +63,12 @@ export const FontColorToolbar = ({type: pluginKey}: {type?: string}) => {
               e.preventDefault()
               if (!editor?.selection) return
 
-              const color = e.target.value
-              if (color) {
-                setMarks(editor, {[type]: color})
+              const newColor = e.target.value
+              if (newColor) {
+                setMarks(editor, {[type]: newColor})
 
-                // upsertFontColor(editor, color)
-                setColor(color)
+                setColor(newColor)
               }
-
-              toggleMenu()
             }}
           />
         </div>
@@ -87,7 +80,6 @@ export const FontColorToolbar = ({type: pluginKey}: {type?: string}) => {
             e.preventDefault()
             if (!editor) return
 
-            // removeFontColor(editor)
             setColor(DEFAULT_FONT_COLOR)
 
             toggleMenu()

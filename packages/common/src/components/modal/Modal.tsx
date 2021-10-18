@@ -27,7 +27,14 @@ export const Modal = ({children, Icon, type}: any) => {
         <div role="presentation" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {type ? <SubMenuIcon type={type} icon={Icon} /> : Icon}
         </div>
-        {isMenuOpen && <div className="modal">{children}</div>}
+        {isMenuOpen && (
+          <div className="modal">
+            <>
+              <div role="presentation" className="close" onClick={() => toggleMenu()}></div>
+              {children}
+            </>
+          </div>
+        )}
       </div>
     </ModalContext.Provider>
   )

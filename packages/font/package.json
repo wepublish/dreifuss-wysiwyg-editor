@@ -1,9 +1,9 @@
 {
-  "name": "@dreifuss-wysiwyg-editor/font-color",
+  "name": "@dreifuss-wysiwyg-editor/font",
   "version": "0.0.0",
-  "description": "Dreifuss wysiwyg Editor font color plugin",
+  "description": "Dreifuss wysiwyg Editor font plugin",
   "keywords": [],
-  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/font-color#readme",
+  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/font#readme",
   "bugs": {
     "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor/issues"
   },

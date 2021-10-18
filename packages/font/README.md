@@ -1,2 +1,2 @@
-# @dreifuss-wysiwyg-editor/font-color
+# @dreifuss-wysiwyg-editor/font
 
