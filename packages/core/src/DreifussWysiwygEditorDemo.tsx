@@ -142,7 +142,7 @@ const DreifussWysiwygEditorDemo = () => (
       <h1>RichText Component Demo</h1>
       <DreifussWysiwygEditor
         onChange={e => {
-          console.log(e)
+          console.log('e:', e)
         }}
         id="two"
         value={value}
