@@ -77,7 +77,7 @@ export function BackgroundColorIcon() {
       height="20px"
       viewBox="0 0 24 24"
       width="20px"
-      fill="#000000">
+      fill="currentcolor">
       <g>
         <rect fill="none" height="24" width="24" />
       </g>

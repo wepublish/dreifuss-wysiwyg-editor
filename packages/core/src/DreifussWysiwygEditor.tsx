@@ -237,7 +237,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
               <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
             </Modal>
 
-            <Divider type={DividerType.vertical} />
             <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
               <MediaEmbedToolbar />
             </Modal>
