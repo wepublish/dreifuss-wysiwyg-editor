@@ -37,6 +37,8 @@ import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/plat
 import {TodoListElement} from '@udecode/plate-list-ui'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {MediaEmbedElement} from '@dreifuss-wysiwyg-editor/media-embed-ui'
+// import {ELEMENT_MENTION} from '@udecode/plate-mention'
+// import {MentionElement} from '@udecode/plate-mention-ui'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 import {TableElement, TableDataElement} from '@dreifuss-wysiwyg-editor/table-ui'
