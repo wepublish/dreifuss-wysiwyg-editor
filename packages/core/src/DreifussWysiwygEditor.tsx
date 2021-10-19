@@ -42,10 +42,10 @@ import {ToolbarImage} from '@dreifuss-wysiwyg-editor/image-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-ui'
 import {
-  createFontColorPlugin,
-  createFontBackgroundColorPlugin,
   MARK_COLOR,
-  MARK_BG_COLOR
+  MARK_BG_COLOR,
+  createFontColorPlugin,
+  createFontBackgroundColorPlugin
 } from '@dreifuss-wysiwyg-editor/font'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
