@@ -3,7 +3,7 @@
   border-radius: 4px;
   min-width: 300px;
   margin: 20px auto;
-  padding: 15px;
+  padding: 10px;
   position: absolute;
   top: 100%;
   left: -50px;
@@ -15,12 +15,16 @@
   position: relative;
 }
 
+.modal .close-container {
+  margin-bottom: 5px;
+}
+
 .modal .close {
   position: absolute;
-  right: 15px;
-  top: 15px;
-  width: 32px;
-  height: 25px;
+  right: 10px;
+  top: 10px;
+  width: 23px;
+  height: 20px;
   opacity: 0.3;
 }
 
@@ -31,7 +35,7 @@
 .modal .close:before,
 .modal .close:after {
   position: absolute;
-  left: 15px;
+  left: 10px;
   content: ' ';
   height: 20px;
   width: 2px;

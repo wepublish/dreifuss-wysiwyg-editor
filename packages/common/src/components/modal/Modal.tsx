@@ -29,10 +29,10 @@ export const Modal = ({children, Icon, type}: any) => {
         </div>
         {isMenuOpen && (
           <div className="modal">
-            <>
+            <div className="close-container">
               <div role="presentation" className="close" onClick={() => toggleMenu()}></div>
-              {children}
-            </>
+            </div>
+            {children}
           </div>
         )}
       </div>

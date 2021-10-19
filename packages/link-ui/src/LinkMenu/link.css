@@ -1,3 +1,7 @@
+.link-toolbar {
+  margin-top: 5px;
+}
+
 .link-toolbar .input-group {
   border: 1px solid #e5e5ea;
 }
@@ -13,7 +17,7 @@
 
 .link-toolbar .toolbar button {
   margin-bottom: 0;
-  margin:auto 5px;
+  margin: auto 5px;
   font-weight: normal;
   text-align: center;
   vertical-align: middle;
@@ -28,10 +32,9 @@
   border-radius: 6px;
 }
 
-
 .link-toolbar .toolbar button.insert {
   color: white;
-  background-color:#0078d4;
+  background-color: #0078d4;
 }
 
 .link-toolbar .toolbar button.cancel {
@@ -39,10 +42,7 @@
   background-color: #f7f7fa;
 }
 
-
-
 .link-toolbar .toolbar button.disabled {
   color: #c5c6c7;
   background-color: #f7f7fa;
 }
-
