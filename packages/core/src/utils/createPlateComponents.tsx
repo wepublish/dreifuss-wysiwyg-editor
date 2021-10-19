@@ -44,6 +44,7 @@ import {StyledElement, StyledLeaf} from '@udecode/plate-styled-components'
 import {DefaultPlatePluginKey} from './createPlateOptions'
 import {RenderFontLeaf} from '@dreifuss-wysiwyg-editor/font-ui'
 import {MARK_COLOR, MARK_BG_COLOR} from '@dreifuss-wysiwyg-editor/font'
+
 import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 
 export const createPlateComponents = <T extends string = string>(
