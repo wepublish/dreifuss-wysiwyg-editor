@@ -24,7 +24,8 @@ import {
   BorderRightIcon,
   BorderTopIcon,
   LinkIcon,
-  FontColorIcon
+  FontColorIcon,
+  BackgroundColorIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {
   ELEMENT_ALIGN_CENTER,
@@ -45,6 +46,8 @@ import {ToolbarCodeBlock} from '@udecode/plate-code-block-ui'
 import {BalloonToolbar} from '@udecode/plate-toolbar'
 import {getPlatePluginType, useEditorRef} from '@udecode/plate-core'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
+import {Button} from './utils/ToolbarButtonsHelper'
+import {MARK_BG_COLOR, MARK_COLOR} from '@dreifuss-wysiwyg-editor/font'
 import {
   insertTable,
   deleteColumn,
@@ -62,7 +65,6 @@ import {
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE
 } from '@udecode/plate-basic-marks'
-import {Button} from './utils/ToolbarButtonsHelper'
 
 export const ToolbarBasicElementsButtons = ({editor}) => (
   <Button editor={editor}>
@@ -163,7 +165,13 @@ export const ToolbarBalloon = ({editor}) => {
 
 export const ToolbarFontColorButton = ({editor}) => (
   <Button editor={editor}>
-    <Button.FontColor icon={<FontColorIcon />} />
+    <Button.Mark type={MARK_COLOR} icon={<FontColorIcon />} />
+  </Button>
+)
+
+export const ToolbarFontBgButton = ({editor}) => (
+  <Button editor={editor}>
+    <Button.Mark type={MARK_BG_COLOR} icon={<BackgroundColorIcon />} />
   </Button>
 )
 

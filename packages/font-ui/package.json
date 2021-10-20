@@ -1,9 +1,9 @@
 {
-  "name": "@dreifuss-wysiwyg-editor/font-color-ui",
+  "name": "@dreifuss-wysiwyg-editor/font-ui",
   "version": "0.0.0",
-  "description": "Dreifuss wysiwyg Editor font color plugin",
+  "description": "Dreifuss wysiwyg Editor font plugin",
   "keywords": [],
-  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/font-color-ui#readme",
+  "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/font-ui#readme",
   "bugs": {
     "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor/issues"
   },
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "@dreifuss-wysiwyg-editor/font-color": "0.0.0",
+    "@dreifuss-wysiwyg-editor/font": "0.0.0",
     "@udecode/plate-core": "^1.0.0",
     "@dreifuss-wysiwyg-editor/common": "^1.0.2-alpha.1"
   },

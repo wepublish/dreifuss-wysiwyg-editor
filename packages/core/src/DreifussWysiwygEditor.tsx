@@ -40,8 +40,13 @@ import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {createImagePlugin, ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 import {ToolbarImage} from '@dreifuss-wysiwyg-editor/image-ui'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
-import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
-import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
+import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-ui'
+import {
+  MARK_COLOR,
+  MARK_BG_COLOR,
+  createFontColorPlugin,
+  createFontBackgroundColorPlugin
+} from '@dreifuss-wysiwyg-editor/font'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {createDeserializeMDPlugin} from '@udecode/plate-md-serializer'
@@ -66,6 +71,7 @@ import {
   ToolbarBasicMarksButtons,
   ToolbarListButtons,
   ToolbarTableButtons,
+  ToolbarFontBgButton,
   ToolbarFontColorButton
 } from './Toolbar'
 import {DndProvider} from 'react-dnd'
@@ -153,6 +159,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
     createItalicPlugin(),
     createTodoListPlugin(),
     createFontColorPlugin(),
+    createFontBackgroundColorPlugin(),
     createParagraphPlugin(),
     createHighlightPlugin(),
     createCodeBlockPlugin(),
@@ -202,7 +209,11 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
 
             <Divider type={DividerType.vertical} />
             <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
-              <FontColorToolbar />
+              <FontColorToolbar type={MARK_COLOR} />
+            </Modal>
+
+            <Modal editor={editorRef} Icon={<ToolbarFontBgButton editor={editorRef} />}>
+              <FontColorToolbar type={MARK_BG_COLOR} />
             </Modal>
 
             <Divider type={DividerType.vertical} />
@@ -226,7 +237,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
               <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
             </Modal>
 
-            <Divider type={DividerType.vertical} />
             <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
               <MediaEmbedToolbar />
             </Modal>
