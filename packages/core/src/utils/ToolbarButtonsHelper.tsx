@@ -51,14 +51,3 @@ Button.Link = ({isSelectionFocused, editor, type: plugin, icon}) => {
 
   return <ToolbarButton icon={icon} active={isActive} />
 }
-
-Button.FontColor = ({isSelectionFocused, editor, icon}) => {
-  const isActive =
-    isSelectionFocused &&
-    someNode(editor, {
-      at: editor.selection,
-      match: node => !!node.color
-    })
-
-  return <ToolbarButton icon={icon} active={isActive} />
-}
