@@ -1,17 +1,19 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useEffect, useRef, useState} from 'react'
 import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
-import {Editor, BaseEditor, Text} from 'slate'
+import {BaseEditor, BaseSelection, Transforms} from 'slate'
 import {
   getPlatePluginType,
   useEventEditorId,
   useStoreEditorRef,
+  useStoreEditorSelection,
   useStoreEditorState
 } from '@udecode/plate-core'
 import {ModalContext} from '@dreifuss-wysiwyg-editor/common'
 import {DEFAULT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font'
+import {getMark, setMarks, removeMark} from '@udecode/plate-common'
+
 import './font-color.css'
-import {getMark, setMarks} from '@udecode/plate-common'
 
 type CustomElement = {type: 'paragraph'; children: CustomText[]}
 type CustomText = {text: string; color?: string}
@@ -27,47 +29,45 @@ declare module 'slate' {
 export const FontColorToolbar = ({type: pluginKey}: {type?: string}) => {
   const editor = useStoreEditorState(useEventEditorId('focus'))
   const editorRef = useStoreEditorRef(useEventEditorId('focus'))
+  const selection = useStoreEditorSelection(useEventEditorId('focus'))
+
+  const latestSelection = useRef<BaseSelection>()
 
   const type = getPlatePluginType(editor, pluginKey)
 
   const {toggleMenu} = useContext(ModalContext)
 
-  const [selectedColor, setColor] = useState<string>(DEFAULT_FONT_COLOR)
+  const [selectedColor, setSelectedColor] = useState<string>(DEFAULT_FONT_COLOR)
 
   const color = editorRef && getMark(editorRef, type)
 
   useEffect(() => {
-    if (!editor?.selection) return
-
-    const nodes: Array<any> | null = Array.from(
-      Editor.nodes(editor, {
-        at: editor.selection,
-        match: node => Text.isText(node) && !!node.color
-      })
-    )
-
-    if (nodes?.length) {
-      setColor(nodes[0][0].color)
+    if (selection && color !== DEFAULT_FONT_COLOR) {
+      latestSelection.current = selection
+      setSelectedColor(color)
     }
-  }, [editor?.selection])
+  }, [color, selection])
 
   return (
     <form className="font-color-toolbar">
       <div className="form-group">
         <div className="input-group">
-          <label>Selected font color</label>
+          <label>Selected color</label>
           <input
             type="color"
             value={selectedColor}
             onChange={e => {
               e.preventDefault()
-              if (!editor?.selection) return
 
               const newColor = e.target.value
-              if (newColor) {
-                setMarks(editor, {[type]: newColor})
+              if (editorRef && editor && latestSelection.current) {
+                Transforms.select(editorRef, latestSelection.current)
+                ReactEditor.focus(editorRef)
 
-                setColor(newColor)
+                if (selectedColor) {
+                  setMarks(editor, {[type]: newColor})
+                  setSelectedColor(newColor)
+                }
               }
             }}
           />
@@ -77,11 +77,9 @@ export const FontColorToolbar = ({type: pluginKey}: {type?: string}) => {
         <button
           className={`${color && color !== DEFAULT_FONT_COLOR ? 'remove' : 'disabled'}`}
           onClick={e => {
-            e.preventDefault()
             if (!editor) return
 
-            setColor(DEFAULT_FONT_COLOR)
-
+            removeMark(editor, {key: type})
             toggleMenu()
           }}>
           Remove
