@@ -94,11 +94,11 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
 
   const editorRef = useStoreEditorRef(props.id)
 
+  const {setSearch, plugin: findReplacePlugin} = useFindReplacePlugin()
+
   const components = withStyledDraggables(createPlateComponents({enabledOptions}))
 
   const options = createPlateOptions({enabledOptions})
-
-  const {setSearch} = useFindReplacePlugin()
 
   const editableProps = {
     placeholder: "What's on your mind?",
@@ -126,7 +126,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
       <Plate
         id={props.id}
         onChange={(val: TNode[]) => props.onChange(handleOnChange(val))}
-        plugins={plugins(enabledOptions)}
+        plugins={plugins({enabledOptions, overrides: {findReplace: findReplacePlugin}})}
         components={components}
         options={options}
         editableProps={editableProps as EditableProps}

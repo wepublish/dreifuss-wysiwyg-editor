@@ -197,14 +197,6 @@ export const createPlateComponents = ({
         }
       }
     }),
-    [MARK_SEARCH_HIGHLIGHT]: withProps(StyledLeaf, {
-      as: 'span',
-      styles: {
-        root: {
-          backgroundColor: '#fff59d'
-        }
-      }
-    }),
     [MARK_STRIKETHROUGH]: withProps(StyledLeaf, {as: 's'}),
     [MARK_SUBSCRIPT]: withProps(StyledLeaf, {as: 'sub'}),
     [MARK_SUPERSCRIPT]: withProps(StyledLeaf, {as: 'sup'}),
@@ -222,6 +214,14 @@ export const createPlateComponents = ({
           padding: '4px 0'
         }
       }
+    }),
+    [MARK_SEARCH_HIGHLIGHT]: withProps(StyledLeaf, {
+      as: 'span',
+      styles: {
+        root: {
+          backgroundColor: '#fff59d'
+        }
+      }
     })
   }
 
@@ -234,7 +234,6 @@ export const createPlateComponents = ({
     color: [ELEMENT_FONT_COLOR],
     media: [ELEMENT_MEDIA_EMBED],
     link: [ELEMENT_LINK],
-    quote: [ELEMENT_BLOCKQUOTE],
     basicMarks: [
       MARK_BOLD,
       MARK_ITALIC,

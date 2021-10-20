@@ -99,10 +99,6 @@ export const createPlateOptions = ({
     [ELEMENT_CODE_LINE]: {
       type: 'code-line'
     },
-    [ELEMENT_PARAGRAPH]: {
-      type: 'paragraph',
-      defaultType: 'paragraph'
-    },
     [ELEMENT_H1]: {
       type: 'heading-one',
       defaultType: 'heading-one'
@@ -157,9 +153,6 @@ export const createPlateOptions = ({
     [MARK_ITALIC]: {
       ...DEFAULTS_ITALIC
     },
-    [MARK_SEARCH_HIGHLIGHT]: {
-      ...DEFAULTS_HIGHLIGHT
-    },
     [MARK_STRIKETHROUGH]: {
       ...DEFAULTS_STRIKETHROUGH
     },
@@ -175,7 +168,15 @@ export const createPlateOptions = ({
     [ELEMENT_IMAGE]: {}
   }
 
-  const workingOptions: Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>> = {}
+  const workingOptions: Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>> = {
+    [ELEMENT_PARAGRAPH]: {
+      type: 'paragraph',
+      defaultType: 'paragraph'
+    },
+    [MARK_SEARCH_HIGHLIGHT]: {
+      ...DEFAULTS_HIGHLIGHT
+    }
+  }
 
   const optionsMap = {
     align: [ELEMENT_ALIGN_CENTER, ELEMENT_ALIGN_LEFT, ELEMENT_ALIGN_RIGHT, ELEMENT_ALIGN_JUSTIFY],

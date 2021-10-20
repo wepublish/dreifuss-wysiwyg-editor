@@ -1,4 +1,3 @@
-import React, {ReactNode} from 'react'
 import {createTablePlugin} from '@dreifuss-wysiwyg-editor/table'
 import {createAlignPlugin} from '@dreifuss-wysiwyg-editor/alignment'
 import {createHeadingPlugin} from '@udecode/plate-heading'
@@ -35,9 +34,13 @@ import {createExitBreakPlugin, createSoftBreakPlugin} from '@udecode/plate-break
 import {createResetNodePlugin} from '@udecode/plate-reset-node'
 import {EditorEnabledOptions} from '../DreifussWysiwygEditor'
 
-export function plugins(enabledOptions: EditorEnabledOptions) {
-  const {plugin: searchHighlightPlugin} = useFindReplacePlugin()
-
+export function plugins({
+  enabledOptions,
+  overrides: {findReplace}
+}: {
+  enabledOptions: EditorEnabledOptions
+  overrides: any
+}) {
   const pluginsMap = {
     heading: createHeadingPlugin({levels: 3}),
     list: createListPlugin(),
@@ -51,14 +54,14 @@ export function plugins(enabledOptions: EditorEnabledOptions) {
     link: createLinkPlugin(),
     image: createImagePlugin(),
     media: createMediaEmbedPlugin(),
-    highlight: createHighlightPlugin(),
-    find: searchHighlightPlugin
+    highlight: createHighlightPlugin()
   }
 
   const enabledPlugins = [
     createReactPlugin(),
     createHistoryPlugin(),
     createParagraphPlugin(),
+    findReplace,
     /** dnd */
     createNodeIdPlugin(),
     createDndPlugin(),
