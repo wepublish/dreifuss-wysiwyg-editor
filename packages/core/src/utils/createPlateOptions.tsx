@@ -20,7 +20,7 @@ import {
   MARK_UNDERLINE,
   DEFAULTS_UNDERLINE
 } from '@udecode/plate-basic-marks'
-import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font-color'
+import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
 import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
 import {PlatePluginOptions} from '@udecode/plate-core'

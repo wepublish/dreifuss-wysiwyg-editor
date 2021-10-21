@@ -16,7 +16,7 @@ import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {createHistoryPlugin, createReactPlugin} from '@udecode/plate-core'
 import {createImagePlugin, ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
-import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
+import {createFontColorPlugin, createFontBackgroundColorPlugin} from '@dreifuss-wysiwyg-editor/font'
 import {createSelectOnBackspacePlugin} from '@udecode/plate-select'
 import {
   createBoldPlugin,
@@ -42,6 +42,7 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     code: createCodePlugin(),
     codeBlock: createCodeBlockPlugin(),
     color: createFontColorPlugin(),
+    bgColor: createFontBackgroundColorPlugin(),
     align: createAlignPlugin(),
     table: createTablePlugin(),
     link: createLinkPlugin(),

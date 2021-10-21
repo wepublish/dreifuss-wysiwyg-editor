@@ -19,7 +19,8 @@ import {Plate, TNode, useStoreEditorRef} from '@udecode/plate-core'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 import {ToolbarImage} from '@dreifuss-wysiwyg-editor/image-ui'
-import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-color-ui'
+import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-ui'
+import {MARK_COLOR, MARK_BG_COLOR} from '@dreifuss-wysiwyg-editor/font'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {useFindReplacePlugin, MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
@@ -33,6 +34,7 @@ import {
   ToolbarBasicMarksButtons,
   ToolbarListButtons,
   ToolbarTableButtons,
+  ToolbarFontBgButton,
   ToolbarFontColorButton
 } from './Toolbar'
 import {DndProvider} from 'react-dnd'
@@ -168,7 +170,16 @@ export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOption
             {enablePlugins.color && (
               <>
                 <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
-                  <FontColorToolbar />
+                  <FontColorToolbar type={MARK_COLOR} />
+                </Modal>
+                <Divider type={DividerType.vertical} />
+              </>
+            )}
+
+            {enablePlugins.color && (
+              <>
+                <Modal editor={editorRef} Icon={<ToolbarFontBgButton editor={editorRef} />}>
+                  <FontColorToolbar type={MARK_BG_COLOR} />
                 </Modal>
                 <Divider type={DividerType.vertical} />
               </>
