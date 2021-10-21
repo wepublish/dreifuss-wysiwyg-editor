@@ -38,15 +38,12 @@ import {DefaultPlatePluginKey} from './createPlateOptions'
 import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font-color'
 import {RenderFontColorLeaf} from '@dreifuss-wysiwyg-editor/font-color-ui'
 import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
-import {EditorEnabledOptions} from '../DreifussWysiwygEditor'
+import {EnablePluginsProps} from '../DreifussWysiwygEditor'
 
-export const createPlateComponents = ({
-  enabledOptions,
-  overrides
-}: {
-  enabledOptions: EditorEnabledOptions
+export const createPlateComponents = (
+  enablePlugins: EnablePluginsProps,
   overrides?: Partial<Record<DefaultPlatePluginKey | T, FunctionComponent<any>>>
-}) => {
+) => {
   const components: any = {
     [ELEMENT_ALIGN_CENTER]: withProps(StyledElement, {
       styles: {
@@ -252,7 +249,7 @@ export const createPlateComponents = ({
     ]
   }
 
-  for (const key in enabledOptions) {
+  for (const key in enablePlugins) {
     if (componentsMap[key]) {
       for (let i = 0; i < componentsMap[key].length; i++) {
         enabledComponents[componentsMap[key][i]] = components[componentsMap[key][i]]

@@ -52,7 +52,7 @@ export interface Toolbars {
   ImageToolbar: ReactNode
 }
 
-export interface EditorEnabledOptions {
+export interface EnablePluginsProps {
   list?: boolean
   code?: boolean
   color?: boolean
@@ -68,7 +68,7 @@ export interface EditorEnabledOptions {
   table?: {tableBorderColor?: boolean; tableBgColor?: boolean} | boolean
 }
 
-export interface EditorProps {
+export interface DreifussWysiwygEditorOptions {
   id?: string
   displayOnly?: boolean
   showCharactersCount?: boolean
@@ -78,7 +78,11 @@ export interface EditorProps {
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
   toolbars?: Toolbars
-  enabledOptions?: EditorEnabledOptions
+
+  /** Enable plugins (BOOLEANs) */
+  enablePlugins?: EnablePluginsProps
+
+  /** PLUGINS OPTIONS */
 }
 
 /** Removes nodes' ids before getting value out */
@@ -89,16 +93,16 @@ const handleOnChange = (value: TNode[]) => {
   })
 }
 
-export default function DreifussWysiwygEditor(props: EditorProps) {
-  const {id = 'main', showCharactersCount = true, toolbars, enabledOptions = {}} = props
+export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOptions) {
+  const {id = 'main', showCharactersCount = true, toolbars, enablePlugins = {}} = props
 
   const editorRef = useStoreEditorRef(props.id)
 
   const {setSearch, plugin: findReplacePlugin} = useFindReplacePlugin()
 
-  const components = withStyledDraggables(createPlateComponents({enabledOptions}))
+  const components = withStyledDraggables(createPlateComponents(enablePlugins))
 
-  const options = createPlateOptions({enabledOptions})
+  const options = createPlateOptions(enablePlugins)
 
   const editableProps = {
     placeholder: "What's on your mind?",
@@ -126,7 +130,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
       <Plate
         id={props.id}
         onChange={(val: TNode[]) => props.onChange(handleOnChange(val))}
-        plugins={plugins({enabledOptions, overrides: {findReplace: findReplacePlugin}})}
+        plugins={plugins(enablePlugins, {findReplace: findReplacePlugin})}
         components={components}
         options={options}
         editableProps={editableProps as EditableProps}
@@ -136,9 +140,9 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
         <ToolbarBalloon editor={editorRef} />
         {!props.displayOnly && (
           <HeadingToolbar>
-            {enabledOptions.basicElements && <ToolbarBasicElementsButtons editor={editorRef} />}
+            {enablePlugins.basicElements && <ToolbarBasicElementsButtons editor={editorRef} />}
 
-            {enabledOptions.quotationMarks && (
+            {enablePlugins.quotationMarks && (
               <>
                 <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
                   <QuotationMarksMenu />
@@ -147,21 +151,21 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
               </>
             )}
 
-            {enabledOptions.list && (
+            {enablePlugins.list && (
               <>
                 <ToolbarListButtons editor={editorRef} />
                 <Divider type={DividerType.vertical} />
               </>
             )}
 
-            {enabledOptions.basicMarks && (
+            {enablePlugins.basicMarks && (
               <>
                 <ToolbarBasicMarksButtons editor={editorRef} />
                 <Divider type={DividerType.vertical} />
               </>
             )}
 
-            {enabledOptions.color && (
+            {enablePlugins.color && (
               <>
                 <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
                   <FontColorToolbar />
@@ -170,21 +174,21 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
               </>
             )}
 
-            {enabledOptions.align && (
+            {enablePlugins.align && (
               <>
                 <ToolbarAlignButtons editor={editorRef} />
                 <Divider type={DividerType.vertical} />
               </>
             )}
 
-            {enabledOptions.table && (
+            {enablePlugins.table && (
               <>
-                <ToolbarTableButtons enabledOptions={enabledOptions.table} />
+                <ToolbarTableButtons enabledOptions={enablePlugins.table} />
                 <Divider type={DividerType.vertical} />
               </>
             )}
 
-            {enabledOptions.image && (
+            {enablePlugins.image && (
               <>
                 <Modal type={ELEMENT_IMAGE} Icon={<EmojiIcon />}>
                   <EmojiPicker />
@@ -193,7 +197,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
               </>
             )}
 
-            {enabledOptions.link && (
+            {enablePlugins.link && (
               <>
                 <Modal editor={editorRef} Icon={<ToolbarLinkButton editor={editorRef} />}>
                   <ToolbarLink />
@@ -202,7 +206,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
               </>
             )}
 
-            {enabledOptions.image && (
+            {enablePlugins.image && (
               <>
                 <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
                   <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
@@ -211,7 +215,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
               </>
             )}
 
-            {enabledOptions.media && (
+            {enablePlugins.media && (
               <>
                 <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
                   <MediaEmbedToolbar />

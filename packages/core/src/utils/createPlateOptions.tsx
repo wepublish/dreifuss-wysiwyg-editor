@@ -36,7 +36,7 @@ import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 import {ExitBreakPluginOptions, SoftBreakPluginOptions} from '@udecode/plate-break'
 import {isBlockAboveEmpty, isSelectionAtBlockStart} from '@udecode/plate-common'
 import {ResetBlockTypePluginOptions} from '@udecode/plate-reset-node'
-import {EditorEnabledOptions} from '../DreifussWysiwygEditor'
+import {EnablePluginsProps} from '../DreifussWysiwygEditor'
 import {FunctionComponent} from 'react'
 
 export type DefaultPlatePluginKey =
@@ -78,13 +78,10 @@ export type DefaultPlatePluginKey =
  * Get slate plugins options.
  * @param overrides merge into the default options
  */
-export const createPlateOptions = ({
-  enabledOptions = {},
-  overrides
-}: {
-  enabledOptions?: EditorEnabledOptions
+export const createPlateOptions = (
+  enabledOptions: EnablePluginsProps = {},
   overrides?: Partial<Record<DefaultPlatePluginKey | T, FunctionComponent<any>>>
-}) => {
+) => {
   const options: Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>> = {
     [ELEMENT_ALIGN_CENTER]: {},
     [ELEMENT_ALIGN_JUSTIFY]: {},
@@ -233,7 +230,7 @@ export const createPlateOptions = ({
   return workingOptions as Record<DefaultPlatePluginKey | T, PlatePluginOptions>
 }
 
-export const options = createPlateOptions({})
+export const options = createPlateOptions({}, {})
 
 const resetBlockTypesCommonRule = {
   types: [options?.[ELEMENT_BLOCKQUOTE]?.type, options?.[ELEMENT_TODO_LI]?.type],

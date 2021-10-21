@@ -17,7 +17,6 @@ import {createHistoryPlugin, createReactPlugin} from '@udecode/plate-core'
 import {createImagePlugin, ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {createFontColorPlugin} from '@dreifuss-wysiwyg-editor/font-color'
-import {useFindReplacePlugin} from '@dreifuss-wysiwyg-editor/find-replace'
 import {createSelectOnBackspacePlugin} from '@udecode/plate-select'
 import {
   createBoldPlugin,
@@ -32,15 +31,9 @@ import {createDndPlugin} from '@udecode/plate-dnd'
 import {createNodeIdPlugin} from '@udecode/plate-node-id'
 import {createExitBreakPlugin, createSoftBreakPlugin} from '@udecode/plate-break'
 import {createResetNodePlugin} from '@udecode/plate-reset-node'
-import {EditorEnabledOptions} from '../DreifussWysiwygEditor'
+import {EnablePluginsProps} from '../DreifussWysiwygEditor'
 
-export function plugins({
-  enabledOptions,
-  overrides: {findReplace}
-}: {
-  enabledOptions: EditorEnabledOptions
-  overrides: any
-}) {
+export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
   const pluginsMap = {
     heading: createHeadingPlugin({levels: 3}),
     list: createListPlugin(),

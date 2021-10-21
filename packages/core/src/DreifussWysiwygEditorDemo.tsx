@@ -140,7 +140,7 @@ const DreifussWysiwygEditorDemo = () => (
     <div style={{minHeight: 400, padding: 30}}>
       <h1>RichText Component Demo</h1>
       <DreifussWysiwygEditor
-        enabledOptions={{
+        enablePlugins={{
           basicElements: true,
           basicMarks: true,
           list: true,
