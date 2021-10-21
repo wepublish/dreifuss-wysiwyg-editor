@@ -20,7 +20,7 @@ import {
   MARK_UNDERLINE,
   DEFAULTS_UNDERLINE
 } from '@udecode/plate-basic-marks'
-import {ELEMENT_FONT_COLOR} from '@dreifuss-wysiwyg-editor/font'
+import {MARK_BG_COLOR, MARK_COLOR} from '@dreifuss-wysiwyg-editor/font'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
 import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
 import {PlatePluginOptions} from '@udecode/plate-core'
@@ -72,7 +72,7 @@ export type DefaultPlatePluginKey =
   | typeof MARK_SUPERSCRIPT
   | typeof MARK_UNDERLINE
   | typeof ELEMENT_IMAGE
-  | typeof ELEMENT_FONT_COLOR
+  | typeof MARK_COLOR
 
 /**
  * Get slate plugins options.
@@ -181,7 +181,8 @@ export const createPlateOptions = (
     todoList: [ELEMENT_TODO_LI],
     table: [ELEMENT_TABLE, ELEMENT_TR, ELEMENT_TH, ELEMENT_TD],
     image: [ELEMENT_IMAGE],
-    color: [ELEMENT_FONT_COLOR],
+    color: [MARK_COLOR],
+    bgColor: [MARK_BG_COLOR],
     media: [ELEMENT_MEDIA_EMBED],
     link: [ELEMENT_LINK],
     quote: [ELEMENT_BLOCKQUOTE],

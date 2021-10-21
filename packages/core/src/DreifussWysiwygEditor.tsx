@@ -58,6 +58,7 @@ export interface EnablePluginsProps {
   list?: boolean
   code?: boolean
   color?: boolean
+  bgColor?: boolean
   align?: boolean
   emoji?: boolean
   link?: boolean

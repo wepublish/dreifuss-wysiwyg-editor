@@ -229,7 +229,8 @@ export const createPlateComponents = (
     todoList: [ELEMENT_TODO_LI],
     table: [ELEMENT_TABLE, ELEMENT_TR, ELEMENT_TH, ELEMENT_TD],
     image: [ELEMENT_IMAGE],
-    color: [ELEMENT_FONT_COLOR],
+    color: [MARK_COLOR],
+    bgColor: [MARK_BG_COLOR],
     media: [ELEMENT_MEDIA_EMBED],
     link: [ELEMENT_LINK],
     basicMarks: [
