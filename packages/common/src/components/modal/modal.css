@@ -1,4 +1,4 @@
-.modal {
+/* .modal {
   background: #fff;
   border-radius: 4px;
   min-width: 300px;
@@ -13,7 +13,7 @@
 
 .modal-container {
   position: relative;
-}
+} */
 
 .modal .close-container {
   margin-bottom: 5px;
@@ -48,4 +48,25 @@
 
 .modal .close:after {
   transform: rotate(-45deg);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal-content {
+  min-width: fit-content;
+  min-height: fit-content;
+  background-color: white;
+  padding: 25px;
+  position: relative;
 }
