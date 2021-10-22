@@ -4,7 +4,6 @@ import {HeadingToolbar} from '@udecode/plate-toolbar'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {createPlateOptions} from './utils/createPlateOptions'
 import {
-  EditorValue,
   CharactersCountIcon,
   Modal,
   ImageIcon,
@@ -77,7 +76,7 @@ export interface DreifussWysiwygEditorOptions {
   showCharactersCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
-  value?: EditorValue
+  value?: any
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
   toolbars?: Toolbars
@@ -97,30 +96,38 @@ const handleOnChange = (value: TNode[]) => {
 }
 
 export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOptions) {
-  const {
-    id = 'main',
-    showCharactersCount = true,
-    toolbars,
-    enablePlugins: userEnabledPlugins = {}
-  } = props
-
-  const defaultEnabledPlugins: EnablePluginsProps = {
-    basicElements: true,
-    basicMarks: true,
-    list: true,
-    quote: true,
-    quotationMarks: true,
-    code: true,
-    color: true,
-    align: true,
-    table: {tableBorderColor: false, tableBgColor: true},
-    emoji: false,
-    link: false,
-    image: false,
-    media: false
+  const defaultOptions: DreifussWysiwygEditorOptions = {
+    id: 'main',
+    displayOnly: false,
+    showCharactersCount: true,
+    displayOneLine: false,
+    disabled: false,
+    value: [
+      {
+        type: 'paragraph',
+        children: [{text: ''}]
+      }
+    ],
+    enablePlugins: {
+      basicElements: true,
+      basicMarks: true,
+      list: true,
+      quote: true,
+      quotationMarks: true,
+      code: true,
+      color: true,
+      align: true,
+      table: {tableBorderColor: false, tableBgColor: false},
+      emoji: false,
+      link: false,
+      image: false,
+      media: false
+    }
   }
 
-  const enablePlugins = Object.assign(defaultEnabledPlugins, userEnabledPlugins)
+  const availableOptions = Object.assign(defaultOptions, props)
+
+  const {id, showCharactersCount, enablePlugins, toolbars} = availableOptions
 
   const editorRef = useStoreEditorRef(props.id)
 
