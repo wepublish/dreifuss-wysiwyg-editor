@@ -97,7 +97,30 @@ const handleOnChange = (value: TNode[]) => {
 }
 
 export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOptions) {
-  const {id = 'main', showCharactersCount = true, toolbars, enablePlugins = {}} = props
+  const {
+    id = 'main',
+    showCharactersCount = true,
+    toolbars,
+    enablePlugins: userEnabledPlugins = {}
+  } = props
+
+  const defaultEnabledPlugins: EnablePluginsProps = {
+    basicElements: true,
+    basicMarks: true,
+    list: true,
+    quote: true,
+    quotationMarks: true,
+    code: true,
+    color: true,
+    align: true,
+    table: {tableBorderColor: false, tableBgColor: true},
+    emoji: false,
+    link: false,
+    image: false,
+    media: false
+  }
+
+  const enablePlugins = Object.assign(defaultEnabledPlugins, userEnabledPlugins)
 
   const editorRef = useStoreEditorRef(props.id)
 

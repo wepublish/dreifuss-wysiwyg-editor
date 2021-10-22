@@ -150,10 +150,10 @@ const DreifussWysiwygEditorDemo = () => (
           color: true,
           align: true,
           table: {tableBorderColor: false, tableBgColor: true},
-          emoji: false,
-          link: false,
-          image: false,
-          media: false
+          emoji: true,
+          link: true,
+          image: true,
+          media: true
         }}
         onChange={e => {
           console.log(e)
