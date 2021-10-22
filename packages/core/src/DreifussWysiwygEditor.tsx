@@ -54,6 +54,7 @@ export interface Toolbars {
 }
 
 export interface EnablePluginsProps {
+  dnd?: boolean
   search?: boolean
   list?: boolean
   code?: boolean
@@ -92,7 +93,7 @@ const handleOnChange = (value: TNode[]) => {
   })
 }
 
-export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOptions) {
+function DreifussEditor(props: DreifussWysiwygEditorOptions) {
   const defaultOptions: Omit<DreifussWysiwygEditorOptions, 'id'> = {
     displayOnly: false,
     showCharactersCount: true,
@@ -118,7 +119,8 @@ export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOption
       link: false,
       image: false,
       media: false,
-      search: true
+      search: true,
+      dnd: false
     }
   }
 
@@ -140,7 +142,9 @@ export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOption
 
   const {setSearch, plugin: findReplacePlugin} = useFindReplacePlugin()
 
-  const components = withStyledDraggables(createPlateComponents(enablePlugins))
+  const components = enablePlugins.dnd
+    ? withStyledDraggables(createPlateComponents(enablePlugins))
+    : createPlateComponents(enablePlugins)
 
   const options = createPlateOptions(enablePlugins)
 
@@ -166,126 +170,136 @@ export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOption
   }, [charCount])
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <Plate
-        id={id}
-        onChange={(val: TNode[]) => props.onChange(handleOnChange(val))}
-        plugins={plugins(enablePlugins, {findReplace: findReplacePlugin})}
-        components={components}
-        options={options}
-        editableProps={editableProps as EditableProps}
-        initialValue={JSON.parse(
-          JSON.stringify(value?.map(block => ({...block, id: Math.random()})))
-        )}>
-        <ToolbarBalloon editor={editorRef} />
-        {!displayOnly && (
-          <HeadingToolbar>
-            {enablePlugins.basicElements && <ToolbarBasicElementsButtons editor={editorRef} />}
+    <Plate
+      id={id}
+      onChange={(val: TNode[]) => props.onChange(handleOnChange(val))}
+      plugins={plugins(enablePlugins, {findReplace: findReplacePlugin})}
+      components={components}
+      options={options}
+      editableProps={editableProps as EditableProps}
+      initialValue={JSON.parse(
+        JSON.stringify(value?.map(block => ({...block, id: Math.random()})))
+      )}>
+      <ToolbarBalloon editor={editorRef} />
+      {!displayOnly && (
+        <HeadingToolbar>
+          {enablePlugins.basicElements && <ToolbarBasicElementsButtons editor={editorRef} />}
 
-            {enablePlugins.quotationMarks && (
-              <>
-                <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
-                  <QuotationMarksMenu />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.list && (
-              <>
-                <ToolbarListButtons editor={editorRef} />
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.basicMarks && (
-              <>
-                <ToolbarBasicMarksButtons editor={editorRef} />
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.color && (
-              <>
-                <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
-                  <FontColorToolbar type={MARK_COLOR} />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.color && (
-              <>
-                <Modal editor={editorRef} Icon={<ToolbarFontBgButton editor={editorRef} />}>
-                  <FontColorToolbar type={MARK_BG_COLOR} />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.align && (
-              <>
-                <ToolbarAlignButtons editor={editorRef} />
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.table && (
-              <>
-                <ToolbarTableButtons enabledOptions={enablePlugins.table} />
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.image && (
-              <>
-                <Modal type={ELEMENT_IMAGE} Icon={<EmojiIcon />}>
-                  <EmojiPicker />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.link && (
-              <>
-                <Modal editor={editorRef} Icon={<ToolbarLinkButton editor={editorRef} />}>
-                  <ToolbarLink />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.image && (
-              <>
-                <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
-                  <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.media && (
-              <>
-                <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
-                  <MediaEmbedToolbar />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.search && (
-              <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
-                <ToolbarSearchHighlight setSearch={setSearch} />
+          {enablePlugins.quotationMarks && (
+            <>
+              <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
+                <QuotationMarksMenu />
               </Modal>
-            )}
-          </HeadingToolbar>
-        )}
-        {showCharactersCount && (
-          <p style={{textAlign: 'right'}}>
-            <CharactersCountIcon /> <CharCountToolbar id={id} />
-          </p>
-        )}
-      </Plate>
-    </DndProvider>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.list && (
+            <>
+              <ToolbarListButtons editor={editorRef} />
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.basicMarks && (
+            <>
+              <ToolbarBasicMarksButtons editor={editorRef} />
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.color && (
+            <>
+              <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
+                <FontColorToolbar type={MARK_COLOR} />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.color && (
+            <>
+              <Modal editor={editorRef} Icon={<ToolbarFontBgButton editor={editorRef} />}>
+                <FontColorToolbar type={MARK_BG_COLOR} />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.align && (
+            <>
+              <ToolbarAlignButtons editor={editorRef} />
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.table && (
+            <>
+              <ToolbarTableButtons enabledOptions={enablePlugins.table} />
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.image && (
+            <>
+              <Modal type={ELEMENT_IMAGE} Icon={<EmojiIcon />}>
+                <EmojiPicker />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.link && (
+            <>
+              <Modal editor={editorRef} Icon={<ToolbarLinkButton editor={editorRef} />}>
+                <ToolbarLink />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.image && (
+            <>
+              <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
+                <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.media && (
+            <>
+              <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
+                <MediaEmbedToolbar />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.search && (
+            <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
+              <ToolbarSearchHighlight setSearch={setSearch} />
+            </Modal>
+          )}
+        </HeadingToolbar>
+      )}
+      {showCharactersCount && (
+        <p style={{textAlign: 'right'}}>
+          <CharactersCountIcon /> <CharCountToolbar id={id} />
+        </p>
+      )}
+    </Plate>
   )
+}
+
+export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOptions) {
+  if (props?.enablePlugins?.dnd) {
+    return (
+      <DndProvider backend={HTML5Backend}>
+        <DreifussEditor {...props} />
+      </DndProvider>
+    )
+  }
+
+  return <DreifussEditor {...props} />
 }

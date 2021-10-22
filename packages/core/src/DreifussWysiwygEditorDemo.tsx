@@ -153,7 +153,8 @@ const DreifussWysiwygEditorDemo = () => (
           emoji: true,
           link: true,
           image: true,
-          media: true
+          media: true,
+          dnd: true
         }}
         onChange={e => {
           console.log(e)

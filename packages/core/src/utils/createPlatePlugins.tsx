@@ -49,7 +49,8 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     link: createLinkPlugin(),
     image: createImagePlugin(),
     media: createMediaEmbedPlugin(),
-    highlight: createHighlightPlugin()
+    highlight: createHighlightPlugin(),
+    dnd: createDndPlugin()
   }
 
   const enabledPlugins = [
@@ -58,7 +59,6 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     createParagraphPlugin(),
     /** dnd */
     createNodeIdPlugin(),
-    createDndPlugin(),
     createResetNodePlugin(optionsResetBlockTypePlugin),
     /** break */
     createExitBreakPlugin(optionsExitBreakPlugin),
