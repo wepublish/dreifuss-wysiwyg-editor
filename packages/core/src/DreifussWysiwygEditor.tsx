@@ -54,6 +54,7 @@ export interface Toolbars {
 }
 
 export interface EnablePluginsProps {
+  search?: boolean
   list?: boolean
   code?: boolean
   color?: boolean
@@ -80,11 +81,7 @@ export interface DreifussWysiwygEditorOptions {
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
   toolbars?: Toolbars
-
-  /** Enable plugins (BOOLEANs) */
   enablePlugins?: EnablePluginsProps
-
-  /** PLUGINS OPTIONS */
 }
 
 /** Removes nodes' ids before getting value out */
@@ -113,18 +110,19 @@ export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOption
       list: true,
       quote: true,
       quotationMarks: true,
-      code: true,
-      color: true,
+      code: false,
+      color: false,
       align: true,
       table: {tableBorderColor: false, tableBgColor: false},
       emoji: false,
       link: false,
       image: false,
-      media: false
+      media: false,
+      search: true
     }
   }
 
-  const availableOptions = Object.assign(defaultOptions, props)
+  const availableOptions: DreifussWysiwygEditorOptions = Object.assign(defaultOptions, props)
 
   const {
     id,
@@ -275,9 +273,11 @@ export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOption
               </>
             )}
 
-            <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
-              <ToolbarSearchHighlight setSearch={setSearch} />
-            </Modal>
+            {enablePlugins.search && (
+              <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
+                <ToolbarSearchHighlight setSearch={setSearch} />
+              </Modal>
+            )}
           </HeadingToolbar>
         )}
         {showCharactersCount && (

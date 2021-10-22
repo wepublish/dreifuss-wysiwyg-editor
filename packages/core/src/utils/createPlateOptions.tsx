@@ -150,6 +150,9 @@ export const createPlateOptions = (
     [MARK_ITALIC]: {
       ...DEFAULTS_ITALIC
     },
+    [MARK_SEARCH_HIGHLIGHT]: {
+      ...DEFAULTS_HIGHLIGHT
+    },
     [MARK_STRIKETHROUGH]: {
       ...DEFAULTS_STRIKETHROUGH
     },
@@ -169,9 +172,6 @@ export const createPlateOptions = (
     [ELEMENT_PARAGRAPH]: {
       type: 'paragraph',
       defaultType: 'paragraph'
-    },
-    [MARK_SEARCH_HIGHLIGHT]: {
-      ...DEFAULTS_HIGHLIGHT
     }
   }
 

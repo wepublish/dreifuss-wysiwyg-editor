@@ -200,7 +200,15 @@ export const createPlateComponents = (
     [MARK_UNDERLINE]: withProps(StyledLeaf, {as: 'u'}),
     [ELEMENT_IMAGE]: withProps(ImageElement, {}),
     [MARK_COLOR]: RenderFontLeaf,
-    [MARK_BG_COLOR]: RenderFontLeaf
+    [MARK_BG_COLOR]: RenderFontLeaf,
+    [MARK_SEARCH_HIGHLIGHT]: withProps(StyledLeaf, {
+      as: 'span',
+      styles: {
+        root: {
+          backgroundColor: '#fff59d'
+        }
+      }
+    })
   }
 
   const enabledComponents = {
@@ -212,18 +220,11 @@ export const createPlateComponents = (
           padding: '4px 0'
         }
       }
-    }),
-    [MARK_SEARCH_HIGHLIGHT]: withProps(StyledLeaf, {
-      as: 'span',
-      styles: {
-        root: {
-          backgroundColor: '#fff59d'
-        }
-      }
     })
   }
 
   const componentsMap = {
+    search: [MARK_SEARCH_HIGHLIGHT],
     align: [ELEMENT_ALIGN_CENTER, ELEMENT_ALIGN_LEFT, ELEMENT_ALIGN_RIGHT, ELEMENT_ALIGN_JUSTIFY],
     list: [ELEMENT_UL, ELEMENT_OL, ELEMENT_LI],
     todoList: [ELEMENT_TODO_LI],

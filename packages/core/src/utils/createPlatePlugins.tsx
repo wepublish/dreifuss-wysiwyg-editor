@@ -35,6 +35,7 @@ import {EnablePluginsProps} from '../DreifussWysiwygEditor'
 
 export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
   const pluginsMap = {
+    search: findReplace,
     heading: createHeadingPlugin({levels: 3}),
     list: createListPlugin(),
     todoList: createTodoListPlugin(),
@@ -55,7 +56,6 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     createReactPlugin(),
     createHistoryPlugin(),
     createParagraphPlugin(),
-    findReplace,
     /** dnd */
     createNodeIdPlugin(),
     createDndPlugin(),
