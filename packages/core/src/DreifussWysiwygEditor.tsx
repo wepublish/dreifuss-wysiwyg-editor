@@ -71,12 +71,12 @@ export interface EnablePluginsProps {
 }
 
 export interface DreifussWysiwygEditorOptions {
-  id?: string
+  id: string
   displayOnly?: boolean
   showCharactersCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
-  value?: any
+  value?: TNode[]
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
   toolbars?: Toolbars
@@ -96,8 +96,7 @@ const handleOnChange = (value: TNode[]) => {
 }
 
 export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOptions) {
-  const defaultOptions: DreifussWysiwygEditorOptions = {
-    id: 'main',
+  const defaultOptions: Omit<DreifussWysiwygEditorOptions, 'id'> = {
     displayOnly: false,
     showCharactersCount: true,
     displayOneLine: false,
@@ -127,9 +126,19 @@ export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOption
 
   const availableOptions = Object.assign(defaultOptions, props)
 
-  const {id, showCharactersCount, enablePlugins, toolbars} = availableOptions
+  const {
+    id,
+    value,
+    disabled,
+    displayOnly,
+    displayOneLine,
+    charactersCount,
+    showCharactersCount,
+    enablePlugins,
+    toolbars
+  } = availableOptions
 
-  const editorRef = useStoreEditorRef(props.id)
+  const editorRef = useStoreEditorRef(id)
 
   const {setSearch, plugin: findReplacePlugin} = useFindReplacePlugin()
 
@@ -141,8 +150,8 @@ export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOption
     placeholder: "What's on your mind?",
     spellCheck: false,
     autoFocus: true,
-    readOnly: props.displayOnly ?? props.disabled ?? false,
-    style: props.displayOneLine
+    readOnly: displayOnly ?? disabled ?? false,
+    style: displayOneLine
       ? {
           whiteSpace: 'nowrap',
           overflow: 'hidden',
@@ -155,23 +164,23 @@ export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOption
   const charCount = getCharacterCount(id)
 
   useEffect(() => {
-    if (props?.charactersCount) props.charactersCount(charCount)
+    if (charactersCount) charactersCount(charCount)
   }, [charCount])
 
   return (
     <DndProvider backend={HTML5Backend}>
       <Plate
-        id={props.id}
+        id={id}
         onChange={(val: TNode[]) => props.onChange(handleOnChange(val))}
         plugins={plugins(enablePlugins, {findReplace: findReplacePlugin})}
         components={components}
         options={options}
         editableProps={editableProps as EditableProps}
         initialValue={JSON.parse(
-          JSON.stringify(props.value.map(block => ({...block, id: Math.random()})))
+          JSON.stringify(value?.map(block => ({...block, id: Math.random()})))
         )}>
         <ToolbarBalloon editor={editorRef} />
-        {!props.displayOnly && (
+        {!displayOnly && (
           <HeadingToolbar>
             {enablePlugins.basicElements && <ToolbarBasicElementsButtons editor={editorRef} />}
 
