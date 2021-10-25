@@ -1,7 +1,11 @@
+.modal-component {
+  position: relative;
+}
+
 .modal {
   background: #fff;
   border-radius: 4px;
-  min-width: 300px;
+  width: 250px;
   padding: 5px;
   position: absolute;
   top: 24px;
@@ -9,12 +13,13 @@
   z-index: 999;
 }
 
-.modal-container {
+.modal-content {
+  padding: 5px;
   position: relative;
 }
 
 .modal .close-container {
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
 .modal .close {
@@ -46,9 +51,4 @@
 
 .modal .close:after {
   transform: rotate(-45deg);
-}
-
-.modal-content {
-  padding: 5px;
-  position: relative;
 }

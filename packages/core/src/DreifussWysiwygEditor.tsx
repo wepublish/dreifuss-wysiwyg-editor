@@ -245,7 +245,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
           </HeadingToolbar>
         )}
         {showCharactersCount && (
-          <p style={{textAlign: 'right'}}>
+          <p style={{display: 'flex', justifyContent: 'right', alignItems: 'center'}}>
             <CharactersCountIcon /> <CharCountToolbar id={id} />
           </p>
         )}

@@ -38,7 +38,7 @@ export const Modal = ({children, Icon, type}: any) => {
       value={{
         toggleMenu
       }}>
-      <div className="modal-container" ref={modalRef as any}>
+      <div className="modal-component" ref={modalRef as any}>
         <div role="presentation" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {type ? <SubMenuIcon type={type} icon={Icon} /> : Icon}
         </div>
