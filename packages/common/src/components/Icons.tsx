@@ -64,7 +64,6 @@ export function BackgroundColorIcon() {
       enableBackground="new 0 0 24 24"
       height="20px"
       viewBox="0 0 24 24"
-      // width="20px"
       fill="currentcolor">
       <g>
         <rect fill="none" height="24" width="24" />
