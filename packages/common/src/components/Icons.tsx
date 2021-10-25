@@ -2,12 +2,7 @@ import React from 'react'
 
 export function MediaEmbedIcon() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 0 24 24"
-      width="24px"
-      fill="#000000">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentcolor">
       <path d="M0 0h24v24H0z" fill="none" />
       <path d="M20 8H4V6h16v2zm-2-6H6v2h12V2zm4 10v8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-8c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2zm-6 4l-6-3.27v6.53L16 16z" />
     </svg>
@@ -16,12 +11,7 @@ export function MediaEmbedIcon() {
 
 export function SearchIcon() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="24px"
-      viewBox="0 0 24 24"
-      width="24px"
-      fill="#000000">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentcolor">
       <path d="M0 0h24v24H0V0z" fill="none" />
       <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
     </svg>
@@ -35,7 +25,6 @@ export function ImageIcon() {
       focusable="false"
       data-prefix="far"
       data-icon="image"
-      className="svg-inline--fa fa-image fa-w-16"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512">
@@ -53,8 +42,7 @@ export function BorderColorIcon() {
       enableBackground="new 0 0 24 24"
       height="20px"
       viewBox="0 0 24 24"
-      width="20px"
-      fill="#000000">
+      fill="currentcolor">
       <g>
         <rect fill="none" height="24" width="24" />
       </g>
@@ -76,7 +64,7 @@ export function BackgroundColorIcon() {
       enableBackground="new 0 0 24 24"
       height="20px"
       viewBox="0 0 24 24"
-      width="20px"
+      // width="20px"
       fill="currentcolor">
       <g>
         <rect fill="none" height="24" width="24" />
@@ -311,72 +299,42 @@ export const ListOLIcon = () => (
 )
 
 export const BorderAllIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    height="24px"
-    viewBox="0 0 24 24"
-    width="24px"
-    fill="#000000">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentcolor">
     <path d="M0 0h24v24H0V0z" fill="none" />
     <path d="M21 3H3v18h18V3zM11 19H5v-6h6v6zm0-8H5V5h6v6zm8 8h-6v-6h6v6zm0-8h-6V5h6v6z" />
   </svg>
 )
 
 export const BorderBottomIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    height="24px"
-    viewBox="0 0 24 24"
-    width="24px"
-    fill="#000000">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentcolor">
     <path d="M0 0h24v24H0V0z" fill="none" />
     <path d="M3 11h2v2H3zm0 4h2v2H3zm0 4h18v2H3zm16-4h2v2h-2zM3 7h2v2H3zm16 4h2v2h-2zm0-8h2v2h-2zm-4 8h2v2h-2zm4-4h2v2h-2zm-4-4h2v2h-2zm-8 8h2v2H7zM3 3h2v2H3zm8 4h2v2h-2zM7 3h2v2H7zm4 8h2v2h-2zm0 4h2v2h-2zm0-12h2v2h-2z" />
   </svg>
 )
 
 export const BorderClearIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    height="24px"
-    viewBox="0 0 24 24"
-    width="24px"
-    fill="#000000">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentcolor">
     <path d="M0 0h24v24H0V0z" fill="none" />
     <path d="M7 3h2v2H7zm0 16h2v2H7zM3 3h2v2H3zm16 0h2v2h-2zm0 4h2v2h-2zm0 4h2v2h-2zM3 7h2v2H3zm0 12h2v2H3zm16 0h2v2h-2zm0-4h2v2h-2zM3 15h2v2H3zm0-4h2v2H3zm4 0h2v2H7zm8 0h2v2h-2zm-4 8h2v2h-2zm4 0h2v2h-2zm0-16h2v2h-2zm-4 0h2v2h-2zm0 4h2v2h-2zm0 8h2v2h-2zm0-4h2v2h-2z" />
   </svg>
 )
 
 export const BorderLeftIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    height="24px"
-    viewBox="0 0 24 24"
-    width="24px"
-    fill="#000000">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentcolor">
     <path d="M0 0h24v24H0V0z" fill="none" />
     <path d="M11 3h2v2h-2zM3 3h2v18H3zm12 0h2v2h-2zm-4 16h2v2h-2zm0-4h2v2h-2zm4 4h2v2h-2zM11 7h2v2h-2zm0 4h2v2h-2zm8 4h2v2h-2zm0 4h2v2h-2zm0-12h2v2h-2zm0 4h2v2h-2zm0-8h2v2h-2zm-4 8h2v2h-2zm-8 8h2v2H7zm0-8h2v2H7zm0-8h2v2H7z" />
   </svg>
 )
 
 export const BorderRightIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    height="24px"
-    viewBox="0 0 24 24"
-    width="24px"
-    fill="#000000">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentcolor">
     <path d="M0 0h24v24H0V0z" fill="none" />
     <path d="M3 3h2v2H3zm0 16h2v2H3zM15 3h2v2h-2zm0 16h2v2h-2zm0-8h2v2h-2zM3 15h2v2H3zm0-4h2v2H3zm0-4h2v2H3zm8 8h2v2h-2zm-4-4h2v2H7zm0-8h2v2H7zm12 0h2v18h-2zM7 19h2v2H7zm4-16h2v2h-2zm0 4h2v2h-2zm0 4h2v2h-2zm0 8h2v2h-2z" />
   </svg>
 )
 
 export const BorderTopIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    height="24px"
-    viewBox="0 0 24 24"
-    width="24px"
-    fill="#000000">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentcolor">
     <path d="M0 0h24v24H0V0z" fill="none" />
     <path d="M19 19h2v2h-2zM3 19h2v2H3zm8 0h2v2h-2zm-8-8h2v2H3zm0 4h2v2H3zm4 4h2v2H7zm4-12h2v2h-2zm0 4h2v2h-2zM3 7h2v2H3zm0-4h18v2H3zm8 12h2v2h-2zm4 4h2v2h-2zm-8-8h2v2H7zm8 0h2v2h-2zm4 4h2v2h-2zm0-4h2v2h-2zm0-4h2v2h-2z" />
   </svg>

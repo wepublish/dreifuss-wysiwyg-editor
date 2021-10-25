@@ -98,7 +98,7 @@ export const ToolbarBasicMarksButtons = ({editor}) => (
     <Button.Mark type={MARK_ITALIC} icon={<ItalicIcon />} />
     <Button.Mark type={MARK_UNDERLINE} icon={<UnderlineIcon />} />
     <Button.Mark type={MARK_STRIKETHROUGH} icon={<StrikeThroughIcon />} />
-    <Button.Mark type={MARK_CODE} icon={'code'} />
+    <Button.Mark type={MARK_CODE} icon={<BlockCodeIcon />} />
     <Button.Mark
       type={MARK_SUBSCRIPT}
       clear={getPlatePluginType(useEditorRef(), MARK_SUBSCRIPT)}

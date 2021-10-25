@@ -227,12 +227,10 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
               <EmojiPicker />
             </Modal>
 
-            <Divider type={DividerType.vertical} />
             <Modal editor={editorRef} Icon={<ToolbarLinkButton editor={editorRef} />}>
               <ToolbarLink />
             </Modal>
 
-            <Divider type={DividerType.vertical} />
             <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
               <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
             </Modal>
@@ -241,7 +239,6 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
               <MediaEmbedToolbar />
             </Modal>
 
-            <Divider type={DividerType.vertical} />
             <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
               <ToolbarSearchHighlight setSearch={setSearch} />
             </Modal>
