@@ -1,4 +1,4 @@
-import React, {ReactNode, useState} from 'react'
+import React, {ReactNode, useEffect, useRef, useState} from 'react'
 import {SubMenuIcon} from '../SubMenuIcon'
 import {ModalContext} from './ModalContext'
 
@@ -18,28 +18,33 @@ export const Modal = ({children, Icon, type}: any) => {
     setIsMenuOpen(false)
   }
 
+  const modalRef = useRef()
+
+  useEffect(() => {
+    function handleClick(e: any) {
+      if (modalRef && modalRef.current) {
+        const ref: any = modalRef.current
+        if (!ref.contains(e.target)) {
+          toggleMenu()
+        }
+      }
+    }
+    document.addEventListener('click', handleClick)
+    return () => document.removeEventListener('click', handleClick)
+  }, [])
+
   return (
     <ModalContext.Provider
       value={{
         toggleMenu
       }}>
-      <div className="modal-container">
+      <div className="modal-container" ref={modalRef as any}>
         <div role="presentation" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {type ? <SubMenuIcon type={type} icon={Icon} /> : Icon}
         </div>
         {isMenuOpen && (
-          <div
-            className="modal"
-            onClick={() => {
-              // close modal when outside of modal is clicked
-              setIsMenuOpen(false)
-            }}>
-            <div
-              className="modal-content"
-              onClick={e => {
-                // do not close modal if anything inside modal content is clicked
-                e.stopPropagation()
-              }}>
+          <div className="modal">
+            <div className="modal-content">
               <div className="close-container">
                 <div role="presentation" className="close" onClick={() => toggleMenu()}></div>
               </div>

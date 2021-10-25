@@ -12,10 +12,11 @@ import {
   removeLink,
   ELEMENT_LINK
 } from '@dreifuss-wysiwyg-editor/link'
-import './link.css'
 import {ModalContext} from '@dreifuss-wysiwyg-editor/common'
 import {ReactEditor} from 'slate-react'
 import {HistoryEditor} from 'slate-history'
+
+import './link-toolbar.css'
 
 type CustomElement = {type: 'link'; title: string; url?: string; children: CustomText[]}
 type CustomText = {title: string; url?: string; text: string}
@@ -141,7 +142,7 @@ export const ToolbarLink = () => {
           </select>
           <input name="url" value={url} onChange={e => setURL(e.target.value)} />
         </div>
-        <p>{url && !isValidURL ? 'Invalid Link' : undefined}</p>
+        <p className="invalid-value-tooltip">{url && !isValidURL ? 'Invalid Link' : undefined}</p>
       </div>
       <div className="form-group">
         <label>Selected Text</label>

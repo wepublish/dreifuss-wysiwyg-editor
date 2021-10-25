@@ -1,6 +1,7 @@
 .image-toolbar .input-group {
   border: 1px solid #e5e5ea;
   padding: 5px 5px;
+  margin-top: 5px;
 }
 
 .image-toolbar .input-group input {
@@ -27,6 +28,10 @@
   font-size: 14px;
   line-height: 1.42857143;
   border-radius: 6px;
+}
+
+.image-toolbar .toolbar button:first-child {
+  margin-left: 0px;
 }
 
 .image-toolbar .toolbar button.insert {

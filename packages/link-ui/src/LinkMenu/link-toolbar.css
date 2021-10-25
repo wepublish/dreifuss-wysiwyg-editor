@@ -4,11 +4,18 @@
 
 .link-toolbar .input-group {
   border: 1px solid #e5e5ea;
+  margin-top: 5px;
+  display: flex;
 }
 
 .link-toolbar .input-group input {
   border: 0px;
-  padding: 7px 11px;
+  padding: 5px 5px;
+  flex: 1 1 100%;
+}
+
+.invalid-value-tooltip {
+  color: red;
 }
 
 .link-toolbar .form-group:not(:last-child) {
@@ -30,6 +37,10 @@
   font-size: 14px;
   line-height: 1.42857143;
   border-radius: 6px;
+}
+
+.link-toolbar .toolbar button:first-child {
+  margin-left: 0px;
 }
 
 .link-toolbar .toolbar button.insert {

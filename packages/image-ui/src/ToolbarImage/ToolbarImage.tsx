@@ -50,6 +50,7 @@ export const ToolbarImage = ({CustomComponent}: any) => {
       </div>
       <div className="toolbar" role="toolbar">
         <button
+          className={`${url ? 'insert' : 'disabled'}`}
           onClick={async e => {
             e.preventDefault()
             if (!editor) return

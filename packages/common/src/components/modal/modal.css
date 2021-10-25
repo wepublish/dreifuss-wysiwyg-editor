@@ -1,19 +1,17 @@
-/* .modal {
+.modal {
   background: #fff;
   border-radius: 4px;
   min-width: 300px;
-  margin: 20px auto;
-  padding: 10px;
+  padding: 5px;
   position: absolute;
-  top: 100%;
-  left: -50px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  top: 24px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   z-index: 999;
 }
 
 .modal-container {
   position: relative;
-} */
+}
 
 .modal .close-container {
   margin-bottom: 5px;
@@ -21,10 +19,10 @@
 
 .modal .close {
   position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 22px;
-  height: 20px;
+  right: 5px;
+  top: 5px;
+  width: 16px;
+  height: 15px;
   opacity: 0.3;
 }
 
@@ -35,9 +33,9 @@
 .modal .close:before,
 .modal .close:after {
   position: absolute;
-  left: 10px;
+  left: 6px;
   content: ' ';
-  height: 20px;
+  height: 15px;
   width: 2px;
   background-color: #333;
 }
@@ -50,23 +48,7 @@
   transform: rotate(-45deg);
 }
 
-.modal {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-}
-
 .modal-content {
-  min-width: fit-content;
-  min-height: fit-content;
-  background-color: white;
-  padding: 25px;
+  padding: 5px;
   position: relative;
 }
