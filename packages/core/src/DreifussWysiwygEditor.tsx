@@ -10,7 +10,8 @@ import {
   SearchIcon,
   MediaEmbedIcon,
   EmojiPicker,
-  EmojiIcon
+  EmojiIcon,
+  EditorValue
 } from '@dreifuss-wysiwyg-editor/common'
 import {createPlateComponents} from './utils/createPlateComponents'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
@@ -78,7 +79,7 @@ export interface DreifussWysiwygEditorOptions {
   showCharactersCount?: boolean
   displayOneLine?: boolean
   disabled?: boolean
-  value?: TNode[]
+  value?: EditorValue
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
   toolbars?: Toolbars
@@ -86,7 +87,7 @@ export interface DreifussWysiwygEditorOptions {
 }
 
 /** Removes nodes' ids before getting value out */
-const handleOnChange = (value: TNode[]) => {
+const handleOnChange = (value: EditorValue) => {
   return value.map(({id, ...block}) => {
     if (block.children?.length) return {...block, children: handleOnChange(block.children)}
     else return block
