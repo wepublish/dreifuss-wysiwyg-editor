@@ -5,28 +5,24 @@ import {ModalContext} from './ModalContext'
 import './modal.css'
 
 export interface ModalProps {
-  readonly children?: ReactNode
+  readonly children: ReactNode
   readonly Icon: ReactNode
   readonly type?: string
 }
 
-// eslint-disable-next-line react/display-name
-export const Modal = ({children, Icon, type}: any) => {
+export const Modal = ({children, Icon, type}: ModalProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuOpen(false)
   }
 
-  const modalRef = useRef()
+  const modalRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    function handleClick(e: any) {
-      if (modalRef && modalRef.current) {
-        const ref: any = modalRef.current
-        if (!ref.contains(e.target)) {
-          toggleMenu()
-        }
+    function handleClick(e) {
+      if (!modalRef?.current?.contains(e.target)) {
+        toggleMenu()
       }
     }
     document.addEventListener('click', handleClick)
@@ -38,7 +34,7 @@ export const Modal = ({children, Icon, type}: any) => {
       value={{
         toggleMenu
       }}>
-      <div className="modal-component" ref={modalRef as any}>
+      <div className="modal-component" ref={modalRef}>
         <div role="presentation" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {type ? <SubMenuIcon type={type} icon={Icon} /> : Icon}
         </div>
