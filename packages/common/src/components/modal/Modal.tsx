@@ -20,7 +20,7 @@ export const Modal = ({children, Icon, type}: ModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    function handleClick(e) {
+    function handleClick(e: any) {
       if (!modalRef?.current?.contains(e.target)) {
         toggleMenu()
       }
