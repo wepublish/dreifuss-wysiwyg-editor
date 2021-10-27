@@ -33,11 +33,7 @@ import {
   ELEMENT_ALIGN_LEFT,
   ELEMENT_ALIGN_RIGHT
 } from '@dreifuss-wysiwyg-editor/alignment'
-import {
-  ToolbarTable,
-  TableBorderColorToolbar,
-  TableBgColorToolbar
-} from '@dreifuss-wysiwyg-editor/table-ui'
+import {TableBorderColorToolbar, TableBgColorToolbar} from '@dreifuss-wysiwyg-editor/table-ui'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {ELEMENT_OL, ELEMENT_UL} from '@udecode/plate-list'
 import {ELEMENT_CODE_BLOCK} from '@udecode/plate-code-block'
@@ -112,16 +108,18 @@ export const ToolbarBasicMarksButtons = ({editor}) => (
   </Button>
 )
 
-export const ToolbarTableButtons = () => (
+export const ToolbarTableButtons = ({editor}) => (
   <>
-    <ToolbarTable icon={<BorderAllIcon />} transform={insertTable} />
-    <ToolbarTable icon={<BorderClearIcon />} transform={deleteTable} />
-    <ToolbarTable icon={<BorderBottomIcon />} transform={addRow} />
-    <ToolbarTable icon={<BorderTopIcon />} transform={deleteRow} />
-    <ToolbarTable icon={<BorderLeftIcon />} transform={addColumn} />
-    <ToolbarTable icon={<BorderRightIcon />} transform={deleteColumn} />
-    <TableBorderColorToolbar />
-    <TableBgColorToolbar />
+    <Button editor={editor}>
+      <Button.Table icon={<BorderAllIcon />} transform={insertTable} />
+      <Button.Table icon={<BorderClearIcon />} transform={deleteTable} />
+      <Button.Table icon={<BorderBottomIcon />} transform={addRow} />
+      <Button.Table icon={<BorderTopIcon />} transform={deleteRow} />
+      <Button.Table icon={<BorderLeftIcon />} transform={addColumn} />
+      <Button.Table icon={<BorderRightIcon />} transform={deleteColumn} />
+      <TableBorderColorToolbar />
+      <TableBgColorToolbar />
+    </Button>
   </>
 )
 
@@ -154,10 +152,6 @@ export const ToolbarBalloon = ({editor}) => {
           icon={<UnderlineIcon />}
           tooltip={{content: 'Underline (⌘U)', ...tooltip}}
         />
-        <Button.Element type={ELEMENT_H1} icon={<H1Icon />} />
-        <Button.Element type={ELEMENT_H2} icon={<H2Icon />} />
-        <Button.Element type={ELEMENT_H3} icon={<H3Icon />} />
-        <Button.List type={ELEMENT_UL} icon={<ListULIcon />} />
       </Button>
     </BalloonToolbar>
   )

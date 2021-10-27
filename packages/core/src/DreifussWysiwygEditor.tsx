@@ -208,11 +208,11 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             <ToolbarBasicMarksButtons editor={editorRef} />
 
             <Divider type={DividerType.vertical} />
-            <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
+            <Modal Icon={<ToolbarFontColorButton editor={editorRef} />}>
               <FontColorToolbar type={MARK_COLOR} />
             </Modal>
 
-            <Modal editor={editorRef} Icon={<ToolbarFontBgButton editor={editorRef} />}>
+            <Modal Icon={<ToolbarFontBgButton editor={editorRef} />}>
               <FontColorToolbar type={MARK_BG_COLOR} />
             </Modal>
 
@@ -220,19 +220,19 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             <ToolbarAlignButtons editor={editorRef} />
 
             <Divider type={DividerType.vertical} />
-            <ToolbarTableButtons />
+            <ToolbarTableButtons editor={editorRef} />
 
             <Divider type={DividerType.vertical} />
-            <Modal type={ELEMENT_IMAGE} Icon={<EmojiIcon />}>
+            <Modal type="EMOJI" Icon={<EmojiIcon />}>
               <EmojiPicker />
             </Modal>
 
-            <Modal editor={editorRef} Icon={<ToolbarLinkButton editor={editorRef} />}>
+            <Modal Icon={<ToolbarLinkButton editor={editorRef} />}>
               <ToolbarLink />
             </Modal>
 
             <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
-              <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
+              <ToolbarImage editorRef={editorRef} CustomComponent={toolbars?.ImageToolbar} />
             </Modal>
 
             <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>

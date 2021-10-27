@@ -2,10 +2,12 @@
   border: 1px solid #e5e5ea;
   padding: 5px 5px;
   margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .image-toolbar .input-group input {
-  width: 100%;
+  flex: 1 1 auto;
   border: 0px;
 }
 
