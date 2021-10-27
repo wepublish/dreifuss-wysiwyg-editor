@@ -13,7 +13,7 @@ export const MediaEmbedUrlInput = ({
 }) => {
   const [value, setValue] = React.useState(url)
 
-  const validateUrl = (newUrl: string) => {
+  const transformUrl = (newUrl = '') => {
     // if not starting with http, assume pasting of full iframe embed code
     if (newUrl.substring(0, 4) !== 'http') {
       const regexMatchSrc = /src=".*?"/
@@ -31,11 +31,11 @@ export const MediaEmbedUrlInput = ({
 
   return (
     <input
+      placeholder={!value ? 'Please add a valid embed url' : undefined}
       value={value}
       onClick={e => e.stopPropagation()}
       onChange={e => {
-        const newUrl = e.target.value
-        validateUrl(newUrl)
+        const newUrl = transformUrl(e.target.value)
         setValue(newUrl)
         onChange(newUrl)
       }}

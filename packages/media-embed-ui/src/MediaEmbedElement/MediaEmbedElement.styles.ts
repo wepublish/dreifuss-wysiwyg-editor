@@ -8,10 +8,10 @@ export const getMediaEmbedElementStyles = (props: MediaEmbedElementProps) =>
     {prefixClassNames: 'MediaEmbedElement', ...props},
     {
       root: tw`relative`,
+      container: tw`flex flex-col`,
       iframeWrapper: [tw`relative`, tw`padding[75% 0 0 0]`],
       iframe: [tw`absolute top-0 left-0 w-full h-full`],
       input: [
-        tw`w-full`,
         css`
           padding: 0.5em;
           font-size: 0.85em;

@@ -236,7 +236,7 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
             </Modal>
 
             <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
-              <MediaEmbedToolbar />
+              <MediaEmbedToolbar editorRef={editorRef} />
             </Modal>
 
             <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
