@@ -11,7 +11,7 @@
 .link-toolbar .input-group input {
   border: 0px;
   padding: 5px 5px;
-  flex: 1 1 100%;
+  flex: 1 1 auto;
 }
 
 .invalid-value-tooltip {

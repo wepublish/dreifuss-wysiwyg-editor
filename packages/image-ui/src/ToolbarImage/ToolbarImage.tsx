@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useRef, useState} from 'react'
 import {ReactEditor} from 'slate-react'
 import {BaseSelection, Transforms} from 'slate'
-import {insertImage, checkImage} from '@dreifuss-wysiwyg-editor/image'
+import {insertImage, checkImageUrl} from '@dreifuss-wysiwyg-editor/image'
 import {ModalContext, Spinner} from '@dreifuss-wysiwyg-editor/common'
 import {useEventEditorId, useStoreEditorRef, useStoreEditorSelection} from '@udecode/plate-core'
 
@@ -33,7 +33,7 @@ export const ToolbarImage = ({CustomComponent, editorRef: passedEditor}: any) =>
   useEffect(() => {
     if (url) {
       setIsCheckingURL(true)
-      checkImage(url)
+      checkImageUrl(url)
         .then(isValidImg => {
           setIsValidURL(isValidImg)
           setIsCheckingURL(false)

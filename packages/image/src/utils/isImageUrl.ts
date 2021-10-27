@@ -131,7 +131,7 @@ export const isImageUrl = (url: string) => {
   return imageExtensions.includes(ext)
 }
 
-export async function checkImage(url: string) {
+export async function checkImageUrl(url: string) {
   if (!isUrl(url)) return false
 
   const res = await fetch(url)
