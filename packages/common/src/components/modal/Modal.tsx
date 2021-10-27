@@ -34,18 +34,18 @@ export const Modal = ({children, Icon, type}: ModalProps) => {
       value={{
         toggleMenu
       }}>
-      <div className="modal-component" ref={modalRef}>
+      <div className="modal-container" ref={modalRef}>
         <div role="presentation" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {type ? <SubMenuIcon type={type} icon={Icon} /> : Icon}
         </div>
         {isMenuOpen && (
           <div className="modal">
-            <div className="modal-content">
-              <div className="close-container">
+            <div>
+              <div className="close-btn-container">
                 <div role="presentation" className="close" onClick={() => toggleMenu()}></div>
               </div>
-              {children}
             </div>
+            <div style={{flex: '1 1 auto'}}>{children}</div>
           </div>
         )}
       </div>

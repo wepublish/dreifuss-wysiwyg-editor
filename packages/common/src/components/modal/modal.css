@@ -1,4 +1,4 @@
-.modal-component {
+.modal-container {
   position: relative;
 }
 
@@ -6,38 +6,37 @@
   background: #fff;
   border-radius: 4px;
   width: 250px;
-  padding: 5px;
+  padding: 10px;
   position: absolute;
   top: 24px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   z-index: 999;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
 }
 
-.modal-content {
-  padding: 5px;
+.modal .close-btn-container {
   position: relative;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
 }
 
-.modal .close-container {
-  margin-bottom: 20px;
-}
-
-.modal .close {
+.modal .close-btn-container .close {
   position: absolute;
-  right: 5px;
-  top: 5px;
   width: 16px;
   height: 15px;
   opacity: 0.3;
   cursor: pointer;
 }
 
-.modal .close:hover {
+.modal .close-btn-container .close:hover {
   opacity: 1;
 }
 
-.modal .close:before,
-.modal .close:after {
+.modal .close-btn-container .close:before,
+.modal .close-btn-container .close:after {
   position: absolute;
   left: 6px;
   content: ' ';
@@ -46,10 +45,10 @@
   background-color: #333;
 }
 
-.modal .close:before {
+.modal .close-btn-container .close:before {
   transform: rotate(45deg);
 }
 
-.modal .close:after {
+.modal .close-btn-container .close:after {
   transform: rotate(-45deg);
 }
