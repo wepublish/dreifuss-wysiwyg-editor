@@ -5,7 +5,7 @@
 .modal {
   background: #fff;
   border-radius: 4px;
-  width: 250px;
+  min-width: 250px;
   padding: 10px;
   position: absolute;
   top: 24px;

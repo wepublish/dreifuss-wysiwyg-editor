@@ -135,7 +135,7 @@ export const ToolbarBalloon = ({editor}) => {
   }
 
   return (
-    <BalloonToolbar direction="top" hiddenDelay={0} theme="light" arrow={arrow}>
+    <BalloonToolbar direction="top" hiddenDelay={0} theme="dark" arrow={arrow}>
       <Button editor={editor}>
         <Button.Mark
           type={getPlatePluginType(editor, MARK_BOLD)}
