@@ -1,0 +1,226 @@
+[
+  {
+    "children": [
+      {
+        "text": "Auf dem Rhein"
+      }
+    ],
+    "type": "heading-two"
+  },
+  {
+    "children": [
+      {
+        "text": "Fondue auf dem Wasser gibt es gleich mehrfach: Auf dem "
+      },
+      {
+        "children": [
+          {
+            "text": "Rhystärn"
+          }
+        ],
+        "type": "link",
+        "url": "https://www.bpg.ch/de/Events/fondueschiff_rhystaern.php"
+      },
+      {
+        "text": ", dem "
+      },
+      {
+        "children": [
+          {
+            "text": "Rhytaxi"
+          }
+        ],
+        "type": "link",
+        "url": "http://www.rhytaxi.ch/taxi.html"
+      },
+      {
+        "text": ", dem "
+      },
+      {
+        "children": [
+          {
+            "text": "Rhyschiffli"
+          }
+        ],
+        "type": "link",
+        "url": "https://www.rhyschiffli.ch/essens-fahrten"
+      },
+      {
+        "text": ", der "
+      },
+      {
+        "children": [
+          {
+            "text": "Vogel-Gryff-"
+          }
+        ],
+        "type": "link",
+        "url": "https://www.vogel-gryff-faehri.ch/"
+      },
+      {
+        "text": ", "
+      },
+      {
+        "children": [
+          {
+            "text": "Ueli-"
+          }
+        ],
+        "type": "link",
+        "url": "https://www.ueli-faehri.ch/"
+      },
+      {
+        "text": " und "
+      },
+      {
+        "children": [
+          {
+            "text": "Wild-Maa-Fähri"
+          }
+        ],
+        "type": "link",
+        "url": "https://www.wild-maa-faehri.ch/"
+      },
+      {
+        "text": ". Für spontanen Fonduegenuss kommt allerdings nur der Rhystärn in Frage. Bei den anderen Anbietern musst du reservieren."
+      }
+    ],
+    "type": "paragraph"
+  },
+  {
+    "children": [
+      {
+        "text": "Bierfondue mit Bretzel"
+      }
+    ],
+    "type": "heading-two"
+  },
+  {
+    "children": [
+      {
+        "text": "Das Kultfondue gibts im "
+      },
+      {
+        "children": [
+          {
+            "text": "Restaurant Linde"
+          }
+        ],
+        "type": "link",
+        "url": "http://www.linde-basel.ch/"
+      },
+      {
+        "text": ", wo du dir ausserdem auch dein eigenes Bier zapfen kannst."
+      }
+    ],
+    "type": "paragraph"
+  },
+  {
+    "children": [
+      {
+        "text": "Im Casino"
+      }
+    ],
+    "type": "heading-two"
+  },
+  {
+    "children": [
+      {
+        "text": "Wer weder auf Käse, noch das Spielen verzichten möchte, ist im "
+      },
+      {
+        "children": [
+          {
+            "text": "Grandcasino"
+          }
+        ],
+        "type": "link",
+        "url": "https://grandcasinobasel.com/de/fondueplausch"
+      },
+      {
+        "text": " richtig."
+      }
+    ],
+    "type": "paragraph"
+  },
+  {
+    "children": [
+      {
+        "text": "Am Feuer"
+      }
+    ],
+    "type": "heading-two"
+  },
+  {
+    "children": [
+      {
+        "text": "In der Aktienmühle gibt es einmal im Monat "
+      },
+      {
+        "children": [
+          {
+            "text": "Fondue am Feuer"
+          }
+        ],
+        "type": "link",
+        "url": "https://turbinenhaus-basel.ch/fondue-am-feuer/"
+      },
+      {
+        "text": " inklusive Rahmenprogramm. Reservation ist möglich, aber nicht zwingend."
+      }
+    ],
+    "type": "paragraph"
+  },
+  {
+    "children": [
+      {
+        "text": "In der Jurte, dem Zelt oder einem Hüttli"
+      }
+    ],
+    "type": "heading-two"
+  },
+  {
+    "children": [
+      {
+        "text": "Wer so tun möchte, als wäre man nicht in der Stadt, die Stadt aber nicht verlassen möchte oder kann, wird in der "
+      },
+      {
+        "children": [
+          {
+            "text": "Jurte"
+          }
+        ],
+        "type": "link",
+        "url": "https://www.baltazarbar.ch/de/winterjurte"
+      },
+      {
+        "text": " des Baltazars, dem "
+      },
+      {
+        "children": [
+          {
+            "text": "Winterdorf"
+          }
+        ],
+        "type": "link",
+        "url": "https://www.sandoase.ch/winterdorf#ueber_uns"
+      },
+      {
+        "text": " der Sandoase oder der "
+      },
+      {
+        "children": [
+          {
+            "text": "Baracca-Berghütte"
+          }
+        ],
+        "type": "link",
+        "url": "https://baracca-zermatt.ch/bs"
+      },
+      {
+        "text": " glücklich."
+      }
+    ],
+    "type": "paragraph"
+  }
+]
