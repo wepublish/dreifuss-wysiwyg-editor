@@ -231,74 +231,84 @@ export const createPlateOptions = (
   return workingOptions as Record<DefaultPlatePluginKey | T, PlatePluginOptions>
 }
 
-export const options = createPlateOptions({}, {})
-
-const resetBlockTypesCommonRule = {
-  types: [options?.[ELEMENT_BLOCKQUOTE]?.type, options?.[ELEMENT_TODO_LI]?.type],
-  defaultType: options?.[ELEMENT_PARAGRAPH]?.type
+const resetBlockTypesCommonRule = (enabledOptions: any): any => {
+  const options = createPlateOptions(enabledOptions)
+  return {
+    types: [options?.[ELEMENT_BLOCKQUOTE]?.type, options?.[ELEMENT_TODO_LI]?.type],
+    defaultType: options?.[ELEMENT_PARAGRAPH]?.type
+  }
 }
 
-export const optionsResetBlockTypePlugin: ResetBlockTypePluginOptions = {
-  rules: [
-    {
-      ...resetBlockTypesCommonRule,
-      hotkey: 'Enter',
-      predicate: isBlockAboveEmpty
-    },
-    {
-      ...resetBlockTypesCommonRule,
-      hotkey: 'Backspace',
-      predicate: isSelectionAtBlockStart
-    }
-  ]
+export const optionsResetBlockTypePlugin = (enabledOptions: any): ResetBlockTypePluginOptions => {
+  const options = createPlateOptions(enabledOptions)
+  return {
+    rules: [
+      {
+        ...resetBlockTypesCommonRule(options),
+        hotkey: 'Enter',
+        predicate: isBlockAboveEmpty
+      },
+      {
+        ...resetBlockTypesCommonRule(options),
+        hotkey: 'Backspace',
+        predicate: isSelectionAtBlockStart
+      }
+    ]
+  }
 }
 
-export const optionsSoftBreakPlugin: SoftBreakPluginOptions = {
-  rules: [
-    {hotkey: 'shift+enter'},
-    {
-      hotkey: 'enter',
-      query: {
-        allow: [
-          options?.[ELEMENT_CODE_BLOCK]?.type,
-          options?.[ELEMENT_BLOCKQUOTE]?.type,
-          options?.[ELEMENT_TD]?.type
-        ]
+export const enabledOptionsoftBreakPlugin = (enabledOptions: any): SoftBreakPluginOptions => {
+  const options = createPlateOptions(enabledOptions)
+  return {
+    rules: [
+      {hotkey: 'shift+enter'},
+      {
+        hotkey: 'enter',
+        query: {
+          allow: [
+            options?.[ELEMENT_CODE_BLOCK]?.type,
+            options?.[ELEMENT_BLOCKQUOTE]?.type,
+            options?.[ELEMENT_TD]?.type
+          ]
+        }
       }
-    }
-  ]
+    ]
+  }
 }
 
-export const optionsExitBreakPlugin: ExitBreakPluginOptions = {
-  rules: [
-    {
-      hotkey: 'mod+enter'
-    },
-    {
-      hotkey: 'mod+shift+enter',
-      before: true
-    },
-    {
-      hotkey: 'enter',
-      query: {
-        start: true,
-        end: true,
-        allow: KEYS_HEADING
+export const optionsExitBreakPlugin = (enabledOptions: any): ExitBreakPluginOptions => {
+  const options = createPlateOptions(enabledOptions)
+  return {
+    rules: [
+      {
+        hotkey: 'mod+enter'
+      },
+      {
+        hotkey: 'mod+shift+enter',
+        before: true
+      },
+      {
+        hotkey: 'enter',
+        query: {
+          start: true,
+          end: true,
+          allow: KEYS_HEADING
+        }
+      },
+      {
+        hotkey: 'enter',
+        query: {
+          allow: [options?.[ELEMENT_IMAGE]?.type]
+        }
+      },
+      {
+        hotkey: 'enter',
+        before: true,
+        query: {
+          start: true,
+          allow: [options?.[ELEMENT_PARAGRAPH]?.type]
+        }
       }
-    },
-    {
-      hotkey: 'enter',
-      query: {
-        allow: [options?.[ELEMENT_IMAGE]?.type]
-      }
-    },
-    {
-      hotkey: 'enter',
-      before: true,
-      query: {
-        start: true,
-        allow: [options?.[ELEMENT_PARAGRAPH]?.type]
-      }
-    }
-  ]
+    ]
+  }
 }

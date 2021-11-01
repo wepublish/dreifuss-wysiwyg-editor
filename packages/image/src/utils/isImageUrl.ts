@@ -130,12 +130,3 @@ export const isImageUrl = (url: string) => {
 
   return imageExtensions.includes(ext)
 }
-
-export async function checkImageUrl(url: string) {
-  if (!isUrl(url)) return false
-
-  const res = await fetch(url)
-  const buff = await res.blob()
-
-  return buff.type.startsWith('image/')
-}

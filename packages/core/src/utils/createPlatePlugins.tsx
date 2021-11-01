@@ -59,10 +59,10 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     createParagraphPlugin(),
     /** dnd */
     createNodeIdPlugin(),
-    createResetNodePlugin(optionsResetBlockTypePlugin),
+    createResetNodePlugin(optionsResetBlockTypePlugin(enabledOptions)),
     /** break */
-    createExitBreakPlugin(optionsExitBreakPlugin),
-    createSoftBreakPlugin(optionsSoftBreakPlugin),
+    createExitBreakPlugin(optionsExitBreakPlugin(enabledOptions)),
+    createSoftBreakPlugin(optionsSoftBreakPlugin(enabledOptions)),
     /** backspace */
     createSelectOnBackspacePlugin({allow: [ELEMENT_MEDIA_EMBED, ELEMENT_IMAGE]})
   ]
