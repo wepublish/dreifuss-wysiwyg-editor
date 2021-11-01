@@ -102,17 +102,17 @@ export const ToolbarBasicMarksButtons = ({editor}) => (
     <Button.Mark
       type={MARK_SUBSCRIPT}
       clear={getPlatePluginType(useEditorRef(), MARK_SUBSCRIPT)}
-      icon={<SuperscriptIcon />}
+      icon={<SubscriptIcon />}
     />
     <Button.Mark
       type={MARK_SUPERSCRIPT}
       clear={getPlatePluginType(useEditorRef(), MARK_SUPERSCRIPT)}
-      icon={<SubscriptIcon />}
+      icon={<SuperscriptIcon />}
     />
   </Button>
 )
 
-export const ToolbarTableButtons = () => (
+export const ToolbarTableButtons = ({enabledOptions}) => (
   <>
     <ToolbarTable icon={<BorderAllIcon />} transform={insertTable} />
     <ToolbarTable icon={<BorderClearIcon />} transform={deleteTable} />
@@ -120,8 +120,8 @@ export const ToolbarTableButtons = () => (
     <ToolbarTable icon={<BorderTopIcon />} transform={deleteRow} />
     <ToolbarTable icon={<BorderLeftIcon />} transform={addColumn} />
     <ToolbarTable icon={<BorderRightIcon />} transform={deleteColumn} />
-    <TableBorderColorToolbar />
-    <TableBgColorToolbar />
+    {enabledOptions.tableBorderColor && <TableBorderColorToolbar />}
+    {enabledOptions.tableBgColor && <TableBgColorToolbar />}
   </>
 )
 

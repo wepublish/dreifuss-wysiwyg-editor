@@ -1,68 +1,31 @@
 import React, {ReactNode, useEffect} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/plate-toolbar'
-import {createTablePlugin} from '@dreifuss-wysiwyg-editor/table'
-import {createAlignPlugin} from '@dreifuss-wysiwyg-editor/alignment'
-import {createHeadingPlugin} from '@udecode/plate-heading'
-import {createHighlightPlugin} from '@udecode/plate-highlight'
-import {createParagraphPlugin} from '@udecode/plate-paragraph'
-import {createCodeBlockPlugin} from '@udecode/plate-code-block'
-import {createBlockquotePlugin} from '@udecode/plate-block-quote'
-import {createMediaEmbedPlugin, ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
+import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
+import {createPlateOptions} from './utils/createPlateOptions'
 import {
-  createPlateOptions,
-  optionsExitBreakPlugin,
-  optionsResetBlockTypePlugin,
-  optionsSoftBreakPlugin
-} from './utils/createPlateOptions'
-import {
-  EditorValue,
   CharactersCountIcon,
   Modal,
   ImageIcon,
   SearchIcon,
   MediaEmbedIcon,
   EmojiPicker,
-  EmojiIcon
+  EmojiIcon,
+  EditorValue
 } from '@dreifuss-wysiwyg-editor/common'
-import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
 import {createPlateComponents} from './utils/createPlateComponents'
-import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
-import {
-  createHistoryPlugin,
-  createReactPlugin,
-  Plate,
-  TNode,
-  useStoreEditorRef
-} from '@udecode/plate-core'
+import {Plate, TNode, useStoreEditorRef} from '@udecode/plate-core'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
-import {createImagePlugin, ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
+import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 import {ToolbarImage} from '@dreifuss-wysiwyg-editor/image-ui'
-import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {FontColorToolbar} from '@dreifuss-wysiwyg-editor/font-ui'
-import {
-  MARK_COLOR,
-  MARK_BG_COLOR,
-  createFontColorPlugin,
-  createFontBackgroundColorPlugin
-} from '@dreifuss-wysiwyg-editor/font'
+import {MARK_COLOR, MARK_BG_COLOR} from '@dreifuss-wysiwyg-editor/font'
 import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
-import {createDeserializeMDPlugin} from '@udecode/plate-md-serializer'
 import {useFindReplacePlugin, MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
 import {ToolbarSearchHighlight} from '@dreifuss-wysiwyg-editor/find-replace-ui'
 import {MediaEmbedToolbar} from '@dreifuss-wysiwyg-editor/media-embed-ui'
-import {createSelectOnBackspacePlugin} from '@udecode/plate-select'
-import {
-  createBoldPlugin,
-  createItalicPlugin,
-  createCodePlugin,
-  createUnderlinePlugin,
-  createStrikethroughPlugin,
-  createSubscriptPlugin,
-  createSuperscriptPlugin
-} from '@udecode/plate-basic-marks'
 import {
   ToolbarLinkButton,
   ToolbarBalloon,
@@ -75,12 +38,9 @@ import {
   ToolbarFontColorButton
 } from './Toolbar'
 import {DndProvider} from 'react-dnd'
-import {createDndPlugin} from '@udecode/plate-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import {withStyledDraggables} from './utils/WithStyledDraggables'
-import {createNodeIdPlugin} from '@udecode/plate-node-id'
-import {createExitBreakPlugin, createSoftBreakPlugin} from '@udecode/plate-break'
-import {createResetNodePlugin} from '@udecode/plate-reset-node'
+import {plugins} from './utils/createPlatePlugins'
 
 export interface EditableProps {
   id?: string
@@ -94,8 +54,27 @@ export interface Toolbars {
   ImageToolbar: ReactNode
 }
 
-export interface EditorProps {
-  id?: string
+export interface EnablePluginsProps {
+  dnd?: boolean
+  search?: boolean
+  list?: boolean
+  code?: boolean
+  color?: boolean
+  bgColor?: boolean
+  align?: boolean
+  emoji?: boolean
+  link?: boolean
+  image?: boolean
+  media?: boolean
+  quote?: boolean
+  quotationMarks?: boolean
+  basicMarks?: boolean
+  basicElements?: boolean
+  table?: {tableBorderColor?: boolean; tableBgColor?: boolean} | boolean
+}
+
+export interface DreifussWysiwygEditorOptions {
+  id: string
   displayOnly?: boolean
   showCharactersCount?: boolean
   displayOneLine?: boolean
@@ -104,33 +83,78 @@ export interface EditorProps {
   charactersCount?: any
   onChange?: React.Dispatch<React.SetStateAction<any>>
   toolbars?: Toolbars
+  enablePlugins?: EnablePluginsProps
 }
 
 /** Removes nodes' ids before getting value out */
-const handleOnChange = (value: TNode[]) => {
+const handleOnChange = (value: EditorValue) => {
   return value.map(({id, ...block}) => {
     if (block.children?.length) return {...block, children: handleOnChange(block.children)}
     else return block
   })
 }
 
-export default function DreifussWysiwygEditor(props: EditorProps) {
-  const {id = 'main', showCharactersCount = true, toolbars} = props
+function DreifussEditor(props: DreifussWysiwygEditorOptions) {
+  const defaultOptions: Omit<DreifussWysiwygEditorOptions, 'id'> = {
+    displayOnly: false,
+    showCharactersCount: true,
+    displayOneLine: false,
+    disabled: false,
+    value: [
+      {
+        type: 'paragraph',
+        children: [{text: ''}]
+      }
+    ],
+    enablePlugins: {
+      basicElements: true,
+      basicMarks: true,
+      list: true,
+      quote: true,
+      quotationMarks: true,
+      code: false,
+      color: false,
+      align: true,
+      table: {tableBorderColor: false, tableBgColor: false},
+      emoji: false,
+      link: false,
+      image: false,
+      media: false,
+      search: true,
+      dnd: false
+    }
+  }
 
-  const editorRef = useStoreEditorRef(props.id)
+  const availableOptions: DreifussWysiwygEditorOptions = Object.assign(defaultOptions, props)
 
-  const components = withStyledDraggables(createPlateComponents())
+  const {
+    id,
+    value,
+    disabled,
+    displayOnly,
+    displayOneLine,
+    charactersCount,
+    showCharactersCount,
+    enablePlugins,
+    toolbars
+  } = availableOptions
 
-  const options = createPlateOptions()
+  const editorRef = useStoreEditorRef(id)
 
-  const {setSearch, plugin: searchHighlightPlugin} = useFindReplacePlugin()
+  const {setSearch, plugin: findReplacePlugin} = useFindReplacePlugin()
+
+  const components = enablePlugins.dnd
+    ? withStyledDraggables(createPlateComponents(enablePlugins))
+    : createPlateComponents(enablePlugins)
+
+  const options = createPlateOptions(enablePlugins)
 
   const editableProps = {
     placeholder: "What's on your mind?",
     spellCheck: false,
     autoFocus: true,
-    readOnly: props.displayOnly ?? props.disabled ?? false,
-    style: props.displayOneLine
+    readOnly: displayOnly ?? disabled ?? false,
+    style: displayOneLine
       ? {
           whiteSpace: 'nowrap',
           overflow: 'hidden',
@@ -143,116 +167,140 @@ export default function DreifussWysiwygEditor(props: EditorProps) {
   const charCount = getCharacterCount(id)
 
   useEffect(() => {
-    if (props?.charactersCount) props.charactersCount(charCount)
+    if (charactersCount) charactersCount(charCount)
   }, [charCount])
 
-  const plugins = [
-    ...createBasicElementPlugins(),
-    createReactPlugin(),
-    createHistoryPlugin(),
-    createLinkPlugin(),
-    createListPlugin(),
-    createBoldPlugin(),
-    createCodePlugin(),
-    createAlignPlugin(),
-    createTablePlugin(),
-    createItalicPlugin(),
-    createTodoListPlugin(),
-    createFontColorPlugin(),
-    createFontBackgroundColorPlugin(),
-    createParagraphPlugin(),
-    createHighlightPlugin(),
-    createCodeBlockPlugin(),
-    createUnderlinePlugin(),
-    createSubscriptPlugin(),
-    createMediaEmbedPlugin(),
-    createBlockquotePlugin(),
-    createSuperscriptPlugin(),
-    createStrikethroughPlugin(),
-    createHeadingPlugin({levels: 3}),
-    createDeserializeMDPlugin(),
-    createImagePlugin(),
-    searchHighlightPlugin,
-    createNodeIdPlugin(),
-    createDndPlugin(),
-    createExitBreakPlugin(optionsExitBreakPlugin),
-    createSoftBreakPlugin(optionsSoftBreakPlugin),
-    createResetNodePlugin(optionsResetBlockTypePlugin),
-    createSelectOnBackspacePlugin({allow: [ELEMENT_MEDIA_EMBED, ELEMENT_IMAGE]})
-  ]
-
   return (
-    <DndProvider backend={HTML5Backend}>
-      <Plate
-        id={props.id}
-        onChange={(val: TNode[]) => props.onChange(handleOnChange(val))}
-        plugins={plugins}
-        components={components}
-        options={options}
-        editableProps={editableProps as EditableProps}
-        initialValue={JSON.parse(
-          JSON.stringify(props.value.map(block => ({...block, id: Math.random()})))
-        )}>
-        <ToolbarBalloon editor={editorRef} />
-        {!props.displayOnly && (
-          <HeadingToolbar>
-            <ToolbarBasicElementsButtons editor={editorRef} />
-            <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
-              <QuotationMarksMenu />
-            </Modal>
+    <Plate
+      id={id}
+      onChange={(val: TNode[]) => props.onChange(handleOnChange(val))}
+      plugins={plugins(enablePlugins, {findReplace: findReplacePlugin})}
+      components={components}
+      options={options}
+      editableProps={editableProps as EditableProps}
+      initialValue={JSON.parse(
+        JSON.stringify(value?.map(block => ({...block, id: Math.random()})))
+      )}>
+      <ToolbarBalloon editor={editorRef} />
+      {!displayOnly && (
+        <HeadingToolbar>
+          {enablePlugins.basicElements && <ToolbarBasicElementsButtons editor={editorRef} />}
 
-            <Divider type={DividerType.vertical} />
-            <ToolbarListButtons editor={editorRef} />
+          {enablePlugins.quotationMarks && (
+            <>
+              <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
+                <QuotationMarksMenu />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
 
-            <Divider type={DividerType.vertical} />
-            <ToolbarBasicMarksButtons editor={editorRef} />
+          {enablePlugins.list && (
+            <>
+              <ToolbarListButtons editor={editorRef} />
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
 
-            <Divider type={DividerType.vertical} />
-            <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
-              <FontColorToolbar type={MARK_COLOR} />
-            </Modal>
+          {enablePlugins.basicMarks && (
+            <>
+              <ToolbarBasicMarksButtons editor={editorRef} />
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
 
-            <Modal editor={editorRef} Icon={<ToolbarFontBgButton editor={editorRef} />}>
-              <FontColorToolbar type={MARK_BG_COLOR} />
-            </Modal>
+          {enablePlugins.color && (
+            <>
+              <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
+                <FontColorToolbar type={MARK_COLOR} />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
 
-            <Divider type={DividerType.vertical} />
-            <ToolbarAlignButtons editor={editorRef} />
+          {enablePlugins.color && (
+            <>
+              <Modal editor={editorRef} Icon={<ToolbarFontBgButton editor={editorRef} />}>
+                <FontColorToolbar type={MARK_BG_COLOR} />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
 
-            <Divider type={DividerType.vertical} />
-            <ToolbarTableButtons />
+          {enablePlugins.align && (
+            <>
+              <ToolbarAlignButtons editor={editorRef} />
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
 
-            <Divider type={DividerType.vertical} />
-            <Modal type={ELEMENT_IMAGE} Icon={<EmojiIcon />}>
-              <EmojiPicker />
-            </Modal>
+          {enablePlugins.table && (
+            <>
+              <ToolbarTableButtons enabledOptions={enablePlugins.table} />
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
 
-            <Divider type={DividerType.vertical} />
-            <Modal editor={editorRef} Icon={<ToolbarLinkButton editor={editorRef} />}>
-              <ToolbarLink />
-            </Modal>
+          {enablePlugins.image && (
+            <>
+              <Modal type={ELEMENT_IMAGE} Icon={<EmojiIcon />}>
+                <EmojiPicker />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
 
-            <Divider type={DividerType.vertical} />
-            <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
-              <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
-            </Modal>
+          {enablePlugins.link && (
+            <>
+              <Modal editor={editorRef} Icon={<ToolbarLinkButton editor={editorRef} />}>
+                <ToolbarLink />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
 
-            <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
-              <MediaEmbedToolbar />
-            </Modal>
+          {enablePlugins.image && (
+            <>
+              <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
+                <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
 
-            <Divider type={DividerType.vertical} />
+          {enablePlugins.media && (
+            <>
+              <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
+                <MediaEmbedToolbar />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.search && (
             <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
               <ToolbarSearchHighlight setSearch={setSearch} />
             </Modal>
-          </HeadingToolbar>
-        )}
-        {showCharactersCount && (
-          <p style={{textAlign: 'right'}}>
-            <CharactersCountIcon /> <CharCountToolbar id={id} />
-          </p>
-        )}
-      </Plate>
-    </DndProvider>
+          )}
+        </HeadingToolbar>
+      )}
+      {showCharactersCount && (
+        <p style={{textAlign: 'right'}}>
+          <CharactersCountIcon /> <CharCountToolbar id={id} />
+        </p>
+      )}
+    </Plate>
   )
+}
+
+export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOptions) {
+  if (props?.enablePlugins?.dnd) {
+    return (
+      <DndProvider backend={HTML5Backend}>
+        <DreifussEditor {...props} />
+      </DndProvider>
+    )
+  }
+
+  return <DreifussEditor {...props} />
 }

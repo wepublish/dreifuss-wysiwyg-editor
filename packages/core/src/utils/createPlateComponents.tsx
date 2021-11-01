@@ -20,14 +20,7 @@ import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
 import {CodeBlockElement, CodeLineElement} from '@udecode/plate-code-block-ui'
 import {withProps} from '@udecode/plate-common'
 import {MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
-import {
-  ELEMENT_H1,
-  ELEMENT_H2,
-  ELEMENT_H3,
-  ELEMENT_H4,
-  ELEMENT_H5,
-  ELEMENT_H6
-} from '@udecode/plate-heading'
+import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
 import {MARK_HIGHLIGHT} from '@udecode/plate-highlight'
 import {MARK_KBD} from '@udecode/plate-kbd'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
@@ -37,8 +30,6 @@ import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/plat
 import {TodoListElement} from '@udecode/plate-list-ui'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {MediaEmbedElement} from '@dreifuss-wysiwyg-editor/media-embed-ui'
-// import {ELEMENT_MENTION} from '@udecode/plate-mention'
-// import {MentionElement} from '@udecode/plate-mention-ui'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 import {TableElement, TableDataElement} from '@dreifuss-wysiwyg-editor/table-ui'
@@ -47,11 +38,13 @@ import {DefaultPlatePluginKey} from './createPlateOptions'
 import {RenderFontLeaf} from '@dreifuss-wysiwyg-editor/font-ui'
 import {MARK_COLOR, MARK_BG_COLOR} from '@dreifuss-wysiwyg-editor/font'
 import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
+import {EnablePluginsProps} from '../DreifussWysiwygEditor'
 
-export const createPlateComponents = <T extends string = string>(
+export const createPlateComponents = (
+  enablePlugins: EnablePluginsProps,
   overrides?: Partial<Record<DefaultPlatePluginKey | T, FunctionComponent<any>>>
 ) => {
-  const components = {
+  const components: any = {
     [ELEMENT_ALIGN_CENTER]: withProps(StyledElement, {
       styles: {
         root: {
@@ -118,46 +111,9 @@ export const createPlateComponents = <T extends string = string>(
         }
       }
     }),
-    [ELEMENT_H4]: withProps(StyledElement, {
-      as: 'h4',
-      styles: {
-        root: {
-          margin: '0.75em 0 0',
-          color: '#666666',
-          fontSize: '1.1em',
-          fontWeight: 500,
-          lineHeight: '1.3'
-        }
-      }
-    }),
-    [ELEMENT_H5]: withProps(StyledElement, {
-      as: 'h5',
-      styles: {
-        root: {
-          margin: '0.75em 0 0',
-          color: '#666666',
-          fontSize: '1.1em',
-          fontWeight: 500,
-          lineHeight: '1.3'
-        }
-      }
-    }),
-    [ELEMENT_H6]: withProps(StyledElement, {
-      as: 'h6',
-      styles: {
-        root: {
-          margin: '0.75em 0 0',
-          color: '#666666',
-          fontSize: '1.1em',
-          fontWeight: 500,
-          lineHeight: '1.3'
-        }
-      }
-    }),
     [ELEMENT_LI]: withProps(StyledElement, {as: 'li'}),
     [ELEMENT_LINK]: LinkElement,
     [ELEMENT_MEDIA_EMBED]: MediaEmbedElement,
-    // [ELEMENT_MENTION]: MentionElement,
     [ELEMENT_UL]: withProps(StyledElement, {
       as: 'ul',
       styles: {
@@ -173,15 +129,6 @@ export const createPlateComponents = <T extends string = string>(
         root: {
           margin: 0,
           paddingInlineStart: '24px'
-        }
-      }
-    }),
-    [ELEMENT_PARAGRAPH]: withProps(StyledElement, {
-      as: 'p',
-      styles: {
-        root: {
-          margin: 0,
-          padding: '4px 0'
         }
       }
     }),
@@ -247,6 +194,13 @@ export const createPlateComponents = <T extends string = string>(
         }
       }
     }),
+    [MARK_STRIKETHROUGH]: withProps(StyledLeaf, {as: 's'}),
+    [MARK_SUBSCRIPT]: withProps(StyledLeaf, {as: 'sub'}),
+    [MARK_SUPERSCRIPT]: withProps(StyledLeaf, {as: 'sup'}),
+    [MARK_UNDERLINE]: withProps(StyledLeaf, {as: 'u'}),
+    [ELEMENT_IMAGE]: withProps(ImageElement, {}),
+    [MARK_COLOR]: RenderFontLeaf,
+    [MARK_BG_COLOR]: RenderFontLeaf,
     [MARK_SEARCH_HIGHLIGHT]: withProps(StyledLeaf, {
       as: 'span',
       styles: {
@@ -254,21 +208,57 @@ export const createPlateComponents = <T extends string = string>(
           backgroundColor: '#fff59d'
         }
       }
-    }),
-    [MARK_STRIKETHROUGH]: withProps(StyledLeaf, {as: 's'}),
-    [MARK_SUBSCRIPT]: withProps(StyledLeaf, {as: 'sub'}),
-    [MARK_SUPERSCRIPT]: withProps(StyledLeaf, {as: 'sup'}),
-    [MARK_UNDERLINE]: withProps(StyledLeaf, {as: 'u'}),
-    [ELEMENT_IMAGE]: withProps(ImageElement, {}),
-    [MARK_COLOR]: RenderFontLeaf,
-    [MARK_BG_COLOR]: RenderFontLeaf
-  }
-
-  if (overrides) {
-    Object.keys(overrides).forEach(key => {
-      components[key] = overrides[key]
     })
   }
 
-  return components as Record<DefaultPlatePluginKey | T, FunctionComponent>
+  const enabledComponents = {
+    [ELEMENT_PARAGRAPH]: withProps(StyledElement, {
+      as: 'p',
+      styles: {
+        root: {
+          margin: 0,
+          padding: '4px 0'
+        }
+      }
+    })
+  }
+
+  const componentsMap = {
+    search: [MARK_SEARCH_HIGHLIGHT],
+    align: [ELEMENT_ALIGN_CENTER, ELEMENT_ALIGN_LEFT, ELEMENT_ALIGN_RIGHT, ELEMENT_ALIGN_JUSTIFY],
+    list: [ELEMENT_UL, ELEMENT_OL, ELEMENT_LI],
+    todoList: [ELEMENT_TODO_LI],
+    table: [ELEMENT_TABLE, ELEMENT_TR, ELEMENT_TH, ELEMENT_TD],
+    image: [ELEMENT_IMAGE],
+    color: [MARK_COLOR],
+    bgColor: [MARK_BG_COLOR],
+    media: [ELEMENT_MEDIA_EMBED],
+    link: [ELEMENT_LINK],
+    basicMarks: [
+      MARK_BOLD,
+      MARK_ITALIC,
+      MARK_STRIKETHROUGH,
+      MARK_SUBSCRIPT,
+      MARK_SUPERSCRIPT,
+      MARK_UNDERLINE
+    ],
+    basicElements: [
+      ELEMENT_H1,
+      ELEMENT_H2,
+      ELEMENT_H3,
+      ELEMENT_BLOCKQUOTE,
+      ELEMENT_CODE_BLOCK,
+      ELEMENT_CODE_LINE
+    ]
+  }
+
+  for (const key in enablePlugins) {
+    if (componentsMap[key]) {
+      for (let i = 0; i < componentsMap[key].length; i++) {
+        enabledComponents[componentsMap[key][i]] = components[componentsMap[key][i]]
+      }
+    }
+  }
+
+  return enabledComponents as any
 }
