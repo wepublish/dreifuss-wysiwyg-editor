@@ -257,7 +257,7 @@ export const optionsResetBlockTypePlugin = (enabledOptions: any): ResetBlockType
   }
 }
 
-export const enabledOptionsoftBreakPlugin = (enabledOptions: any): SoftBreakPluginOptions => {
+export const optionsSoftBreakPlugin = (enabledOptions: any): SoftBreakPluginOptions => {
   const options = createPlateOptions(enabledOptions)
   return {
     rules: [
