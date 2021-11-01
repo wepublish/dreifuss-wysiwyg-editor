@@ -1,7 +1,7 @@
 {
   "name": "@dreifuss-wysiwyg-editor/font-ui",
   "version": "0.0.0",
-  "description": "Dreifuss wysiwyg Editor font plugin",
+  "description": "Dreifuss wysiwyg Editor font ui plugin",
   "keywords": [],
   "homepage": "https://github.com/wepublish/dreifuss-wysiwyg-editor/tree/main/packages/font-ui#readme",
   "bugs": {
@@ -10,7 +10,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/wepublish/dreifuss-wysiwyg-editor.git",
-    "directory": "packages/font-color-ui"
+    "directory": "packages/font-ui"
   },
   "license": "MIT",
   "main": "dist/index.js",

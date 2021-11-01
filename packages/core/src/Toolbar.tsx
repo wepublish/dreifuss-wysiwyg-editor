@@ -40,7 +40,7 @@ import {ELEMENT_CODE_BLOCK} from '@udecode/plate-code-block'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
 import {ToolbarCodeBlock} from '@udecode/plate-code-block-ui'
 import {BalloonToolbar} from '@udecode/plate-toolbar'
-import {getPlatePluginType, useEditorRef} from '@udecode/plate-core'
+import {getPlatePluginType, TEditor, useEditorRef} from '@udecode/plate-core'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
 import {Button} from './utils/ToolbarButtonsHelper'
 import {MARK_BG_COLOR, MARK_COLOR} from '@dreifuss-wysiwyg-editor/font'
@@ -98,17 +98,23 @@ export const ToolbarBasicMarksButtons = ({editor}) => (
     <Button.Mark
       type={MARK_SUBSCRIPT}
       clear={getPlatePluginType(useEditorRef(), MARK_SUBSCRIPT)}
-      icon={<SuperscriptIcon />}
+      icon={<SubscriptIcon />}
     />
     <Button.Mark
       type={MARK_SUPERSCRIPT}
       clear={getPlatePluginType(useEditorRef(), MARK_SUPERSCRIPT)}
-      icon={<SubscriptIcon />}
+      icon={<SuperscriptIcon />}
     />
   </Button>
 )
 
-export const ToolbarTableButtons = ({editor}) => (
+export const ToolbarTableButtons = ({
+  editor,
+  enabledOptions
+}: {
+  editor: TEditor
+  enabledOptions: {tableBorderColor?: boolean; tableBgColor?: boolean}
+}) => (
   <>
     <Button editor={editor}>
       <Button.Table icon={<BorderAllIcon />} transform={insertTable} />
@@ -117,8 +123,8 @@ export const ToolbarTableButtons = ({editor}) => (
       <Button.Table icon={<BorderTopIcon />} transform={deleteRow} />
       <Button.Table icon={<BorderLeftIcon />} transform={addColumn} />
       <Button.Table icon={<BorderRightIcon />} transform={deleteColumn} />
-      <TableBorderColorToolbar />
-      <TableBgColorToolbar />
+      {enabledOptions.tableBorderColor && <TableBorderColorToolbar />}
+      {enabledOptions.tableBgColor && <TableBgColorToolbar />}
     </Button>
   </>
 )

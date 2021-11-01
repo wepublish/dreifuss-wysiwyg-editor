@@ -1,5 +1,4 @@
-import React, {useState, ReactNode} from 'react'
-
+import React, {ReactNode} from 'react'
 import {render} from 'react-dom'
 import {DreifussWysiwygEditor} from './index'
 import {CustomImageToolbarProps} from '@dreifuss-wysiwyg-editor/image-ui'
@@ -134,13 +133,28 @@ const DreifussWysiwygEditorDemo = () => (
         onChange={e => {
           console.log(e)
         }}
-        value={value}
       />
     </div>
 
     <div style={{minHeight: 400, padding: 30}}>
       <h1>RichText Component Demo</h1>
       <DreifussWysiwygEditor
+        enablePlugins={{
+          basicElements: true,
+          basicMarks: true,
+          list: true,
+          quote: true,
+          quotationMarks: true,
+          code: true,
+          color: true,
+          align: true,
+          table: {tableBorderColor: false, tableBgColor: true},
+          emoji: true,
+          link: true,
+          image: true,
+          media: true,
+          dnd: true
+        }}
         onChange={e => {
           console.log(e)
         }}
