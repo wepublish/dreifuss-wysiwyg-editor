@@ -94,7 +94,7 @@ const value: any = [
  *   these are just examples on how to pass custom toolbars
  */
 const toolbars = {
-  ImageToolbar: ({isValidURL, url, onChange, onSubmit}: CustomImageToolbarProps): ReactNode => {
+  ImageToolbar: ({url, onChange, onSubmit}: CustomImageToolbarProps): ReactNode => {
     return (
       <>
         <form className="image-toolbar">
@@ -106,7 +106,7 @@ const toolbars = {
           </div>
           <div className="toolbar" role="toolbar">
             <button
-              className={`${url && isValidURL ? 'insert' : 'disabled'}`}
+              className={`${url ? 'insert' : 'disabled'}`}
               onClick={e => {
                 e.preventDefault()
                 onSubmit()
@@ -125,7 +125,7 @@ const DreifussWysiwygEditorDemo = () => (
     <div style={{minHeight: 400, padding: 30}}>
       <h1>RichText Component Demo</h1>
       <DreifussWysiwygEditor
-        id="one"
+        id="sec"
         toolbars={toolbars}
         // charactersCount={count => {
         //   console.log(count)

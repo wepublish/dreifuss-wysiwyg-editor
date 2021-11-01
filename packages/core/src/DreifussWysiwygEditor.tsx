@@ -250,20 +250,20 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
             </>
           )}
 
-          {enablePlugins.image && (
-            <>
-              <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
-                <ToolbarImage editorRef={editorRef} CustomComponent={toolbars?.ImageToolbar} />
-              </Modal>
-            </>
-          )}
-
           {enablePlugins.link && (
             <>
               <Modal Icon={<ToolbarLinkButton editor={editorRef} />}>
                 <ToolbarLink />
               </Modal>
               <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.image && (
+            <>
+              <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
+                <ToolbarImage editorRef={editorRef} CustomComponent={toolbars?.ImageToolbar} />
+              </Modal>
             </>
           )}
 
