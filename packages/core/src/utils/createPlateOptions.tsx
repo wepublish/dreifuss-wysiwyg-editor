@@ -82,7 +82,10 @@ export const createPlateOptions = (
   enabledOptions: EnablePluginsProps = {},
   overrides?: Partial<Record<DefaultPlatePluginKey | T, FunctionComponent<any>>>
 ) => {
-  const options: Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>> = {
+  const options: Omit<
+    Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>>,
+    typeof ELEMENT_PARAGRAPH | typeof MARK_COLOR
+  > = {
     [ELEMENT_ALIGN_CENTER]: {},
     [ELEMENT_ALIGN_JUSTIFY]: {},
     [ELEMENT_ALIGN_LEFT]: {},
@@ -231,7 +234,7 @@ export const createPlateOptions = (
   return workingOptions as Record<DefaultPlatePluginKey | T, PlatePluginOptions>
 }
 
-const resetBlockTypesCommonRule = (enabledOptions: any): any => {
+const resetBlockTypesCommonRule = (enabledOptions: EnablePluginsProps): any => {
   const options = createPlateOptions(enabledOptions)
   return {
     types: [options?.[ELEMENT_BLOCKQUOTE]?.type, options?.[ELEMENT_TODO_LI]?.type],
@@ -239,7 +242,9 @@ const resetBlockTypesCommonRule = (enabledOptions: any): any => {
   }
 }
 
-export const optionsResetBlockTypePlugin = (enabledOptions: any): ResetBlockTypePluginOptions => {
+export const optionsResetBlockTypePlugin = (
+  enabledOptions: EnablePluginsProps
+): ResetBlockTypePluginOptions => {
   const options = createPlateOptions(enabledOptions)
   return {
     rules: [
@@ -257,7 +262,9 @@ export const optionsResetBlockTypePlugin = (enabledOptions: any): ResetBlockType
   }
 }
 
-export const optionsSoftBreakPlugin = (enabledOptions: any): SoftBreakPluginOptions => {
+export const optionsSoftBreakPlugin = (
+  enabledOptions: EnablePluginsProps
+): SoftBreakPluginOptions => {
   const options = createPlateOptions(enabledOptions)
   return {
     rules: [
@@ -276,7 +283,9 @@ export const optionsSoftBreakPlugin = (enabledOptions: any): SoftBreakPluginOpti
   }
 }
 
-export const optionsExitBreakPlugin = (enabledOptions: any): ExitBreakPluginOptions => {
+export const optionsExitBreakPlugin = (
+  enabledOptions: EnablePluginsProps
+): ExitBreakPluginOptions => {
   const options = createPlateOptions(enabledOptions)
   return {
     rules: [
