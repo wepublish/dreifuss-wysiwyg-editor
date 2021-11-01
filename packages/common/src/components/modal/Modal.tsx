@@ -19,6 +19,9 @@ export const Modal = ({children, Icon, type}: ModalProps) => {
 
   const modalRef = useRef<HTMLDivElement>(null)
 
+  /**
+   * Add event listener, checks and close modal if what the user is clicking isn't contained within it.
+   */
   useEffect(() => {
     function handleClick(e: any) {
       if (!modalRef?.current?.contains(e.target)) {
