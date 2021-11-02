@@ -81,10 +81,11 @@ export const createPlateComponents = (
       as: 'h1',
       styles: {
         root: {
-          margin: '2em 0 4px',
-          fontSize: '1.875em',
-          fontWeight: 500,
-          lineHeight: '1.3'
+          margin: 0,
+          fontSize: '2.875em',
+          fontWeight: 'bolder',
+          lineHeight: '64px',
+          color: '#434343'
         }
       }
     }),
@@ -92,10 +93,11 @@ export const createPlateComponents = (
       as: 'h2',
       styles: {
         root: {
-          margin: '1.4em 0 1px',
-          fontSize: '1.5em',
-          fontWeight: 500,
-          lineHeight: '1.3'
+          margin: 0,
+          fontSize: '2.25em',
+          fontWeight: 'bolder',
+          lineHeight: '50px',
+          color: '#434343'
         }
       }
     }),
@@ -103,11 +105,11 @@ export const createPlateComponents = (
       as: 'h3',
       styles: {
         root: {
-          margin: '1em 0 1px',
+          margin: 0,
           color: '#434343',
-          fontSize: '1.25em',
-          fontWeight: 500,
-          lineHeight: '1.3'
+          fontSize: '1.75em',
+          fontWeight: 'bolder',
+          lineHeight: '42px'
         }
       }
     }),
@@ -217,7 +219,9 @@ export const createPlateComponents = (
       styles: {
         root: {
           margin: 0,
-          padding: '4px 0'
+          padding: '4px 0',
+          fontSize: '14px',
+          lineHeight: '20px'
         }
       }
     })
