@@ -7,9 +7,8 @@ import {useEventEditorId, useStoreEditorRef, useStoreEditorSelection} from '@ude
 
 import './image-toolbar.css'
 
-export const ToolbarImage = ({CustomComponent}: any) => {
+export const ToolbarImage = ({CustomComponent, editorRef: passedEditor}: any) => {
   const editor = useStoreEditorRef(useEventEditorId('focus'))
-  const editorRef = useStoreEditorRef(useEventEditorId('focus'))
   const selection = useStoreEditorSelection(useEventEditorId('focus'))
 
   const latestSelection = useRef<BaseSelection>()
@@ -17,6 +16,15 @@ export const ToolbarImage = ({CustomComponent}: any) => {
   const {toggleMenu} = useContext(ModalContext)
 
   const [url, setURL] = useState('')
+
+  useEffect(() => {
+    if (passedEditor !== editor) {
+      if (latestSelection.current) {
+        Transforms.select(passedEditor, latestSelection.current)
+      }
+      ReactEditor.focus(passedEditor)
+    }
+  }, [passedEditor, editor])
 
   useEffect(() => {
     if (selection) {
@@ -27,14 +35,17 @@ export const ToolbarImage = ({CustomComponent}: any) => {
   if (CustomComponent)
     return (
       <CustomComponent
-        onChange={(newUrl: string) => {
-          setURL(newUrl)
+        url={url}
+        onChange={(newUrl: string) => setURL(newUrl)}
+        onSubmit={() => {
           if (!editor) return
 
-          Transforms.select(editorRef, latestSelection.current)
-          ReactEditor.focus(editorRef)
+          if (latestSelection.current) {
+            Transforms.select(editor, latestSelection.current)
+          }
+          ReactEditor.focus(editor)
 
-          insertImage(editor, newUrl)
+          insertImage(editor, url)
           toggleMenu()
         }}
       />
@@ -50,12 +61,15 @@ export const ToolbarImage = ({CustomComponent}: any) => {
       </div>
       <div className="toolbar" role="toolbar">
         <button
+          className={`${url ? 'insert' : 'disabled'}`}
           onClick={async e => {
             e.preventDefault()
             if (!editor) return
 
-            Transforms.select(editorRef, latestSelection.current)
-            ReactEditor.focus(editorRef)
+            if (latestSelection.current) {
+              Transforms.select(editor, latestSelection.current)
+            }
+            ReactEditor.focus(editor)
 
             insertImage(editor, url)
             toggleMenu()
@@ -69,4 +83,6 @@ export const ToolbarImage = ({CustomComponent}: any) => {
 
 export interface CustomImageToolbarProps {
   onChange: React.Dispatch<React.SetStateAction<any>>
+  url: string
+  onSubmit: React.Dispatch<React.SetStateAction<any>>
 }

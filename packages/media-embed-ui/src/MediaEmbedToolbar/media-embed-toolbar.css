@@ -1,15 +1,16 @@
 .media-embed-toolbar .input-group {
   border: 1px solid #e5e5ea;
+  display: flex;
 }
 
 .media-embed-toolbar .input-group input {
   border: 0px;
-  padding: 7px 0px;
-  width: 100%;
+  padding: 7px 4px;
+  flex: 1 1 auto;
 }
 
-.media-embed-toolbar .form-group:first-child .input-group{
-  margin-top: 10px;
+.media-embed-toolbar .form-group:first-child .input-group {
+  margin-top: 5px;
 }
 
 .media-embed-toolbar .form-group:not(:last-child) {
@@ -17,12 +18,12 @@
 }
 
 .media-embed-toolbar .toolbar button:first-of-type {
-margin-left: 0px;
+  margin-left: 0px;
 }
 
 .media-embed-toolbar .toolbar button {
   margin-bottom: 0;
-  margin:auto 5px;
+  margin: auto 5px;
   font-weight: normal;
   text-align: center;
   vertical-align: middle;
@@ -37,10 +38,9 @@ margin-left: 0px;
   border-radius: 6px;
 }
 
-
 .media-embed-toolbar .toolbar button.insert {
   color: white;
-  background-color:#0078d4;
+  background-color: #0078d4;
 }
 
 .media-embed-toolbar .toolbar button.cancel {
@@ -48,10 +48,7 @@ margin-left: 0px;
   background-color: #f7f7fa;
 }
 
-
-
 .media-embed-toolbar .toolbar button.disabled {
   color: #c5c6c7;
   background-color: #f7f7fa;
 }
-

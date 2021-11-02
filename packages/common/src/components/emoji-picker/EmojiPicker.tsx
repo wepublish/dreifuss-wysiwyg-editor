@@ -26,6 +26,7 @@ export function EmojiPicker({setEmoji}: EmojiPickerProps) {
 
   return (
     <Picker
+      style={{width: '100%'}}
       onSelect={({native: emoji}: BaseEmoji) => {
         if (!editor) return
 

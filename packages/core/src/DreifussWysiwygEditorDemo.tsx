@@ -1,4 +1,4 @@
-import React, {useState, ReactNode} from 'react'
+import React, {ReactNode} from 'react'
 import {render} from 'react-dom'
 import {DreifussWysiwygEditor} from './index'
 import {CustomImageToolbarProps} from '@dreifuss-wysiwyg-editor/image-ui'
@@ -94,23 +94,22 @@ const value: any = [
  *   these are just examples on how to pass custom toolbars
  */
 const toolbars = {
-  ImageToolbar: ({onChange}: CustomImageToolbarProps): ReactNode => {
-    const [url, setURL] = useState('')
-
+  ImageToolbar: ({url, onChange, onSubmit}: CustomImageToolbarProps): ReactNode => {
     return (
       <>
         <form className="image-toolbar">
           <div className="form-group">
             <h4>Image Uploader</h4>
             <div className="input-group">
-              <input name="url" value={url} onChange={e => setURL(e.target.value)} />
+              <input name="url" value={url} onChange={e => onChange(e.target.value)} />
             </div>
           </div>
           <div className="toolbar" role="toolbar">
             <button
-              type="submit"
-              onClick={() => {
-                onChange(url)
+              className={`${url ? 'insert' : 'disabled'}`}
+              onClick={e => {
+                e.preventDefault()
+                onSubmit()
               }}>
               Insert
             </button>

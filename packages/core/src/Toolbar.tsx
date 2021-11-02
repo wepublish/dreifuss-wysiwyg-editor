@@ -33,18 +33,14 @@ import {
   ELEMENT_ALIGN_LEFT,
   ELEMENT_ALIGN_RIGHT
 } from '@dreifuss-wysiwyg-editor/alignment'
-import {
-  ToolbarTable,
-  TableBorderColorToolbar,
-  TableBgColorToolbar
-} from '@dreifuss-wysiwyg-editor/table-ui'
+import {TableBorderColorToolbar, TableBgColorToolbar} from '@dreifuss-wysiwyg-editor/table-ui'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {ELEMENT_OL, ELEMENT_UL} from '@udecode/plate-list'
 import {ELEMENT_CODE_BLOCK} from '@udecode/plate-code-block'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
 import {ToolbarCodeBlock} from '@udecode/plate-code-block-ui'
 import {BalloonToolbar} from '@udecode/plate-toolbar'
-import {getPlatePluginType, useEditorRef} from '@udecode/plate-core'
+import {getPlatePluginType, TEditor, useEditorRef} from '@udecode/plate-core'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
 import {Button} from './utils/ToolbarButtonsHelper'
 import {MARK_BG_COLOR, MARK_COLOR} from '@dreifuss-wysiwyg-editor/font'
@@ -98,7 +94,7 @@ export const ToolbarBasicMarksButtons = ({editor}) => (
     <Button.Mark type={MARK_ITALIC} icon={<ItalicIcon />} />
     <Button.Mark type={MARK_UNDERLINE} icon={<UnderlineIcon />} />
     <Button.Mark type={MARK_STRIKETHROUGH} icon={<StrikeThroughIcon />} />
-    <Button.Mark type={MARK_CODE} icon={'code'} />
+    <Button.Mark type={MARK_CODE} icon={<BlockCodeIcon />} />
     <Button.Mark
       type={MARK_SUBSCRIPT}
       clear={getPlatePluginType(useEditorRef(), MARK_SUBSCRIPT)}
@@ -112,16 +108,24 @@ export const ToolbarBasicMarksButtons = ({editor}) => (
   </Button>
 )
 
-export const ToolbarTableButtons = ({enabledOptions}) => (
+export const ToolbarTableButtons = ({
+  editor,
+  enabledOptions
+}: {
+  editor: TEditor
+  enabledOptions: {tableBorderColor?: boolean; tableBgColor?: boolean}
+}) => (
   <>
-    <ToolbarTable icon={<BorderAllIcon />} transform={insertTable} />
-    <ToolbarTable icon={<BorderClearIcon />} transform={deleteTable} />
-    <ToolbarTable icon={<BorderBottomIcon />} transform={addRow} />
-    <ToolbarTable icon={<BorderTopIcon />} transform={deleteRow} />
-    <ToolbarTable icon={<BorderLeftIcon />} transform={addColumn} />
-    <ToolbarTable icon={<BorderRightIcon />} transform={deleteColumn} />
-    {enabledOptions.tableBorderColor && <TableBorderColorToolbar />}
-    {enabledOptions.tableBgColor && <TableBgColorToolbar />}
+    <Button editor={editor}>
+      <Button.Table icon={<BorderAllIcon />} transform={insertTable} />
+      <Button.Table icon={<BorderClearIcon />} transform={deleteTable} />
+      <Button.Table icon={<BorderBottomIcon />} transform={addRow} />
+      <Button.Table icon={<BorderTopIcon />} transform={deleteRow} />
+      <Button.Table icon={<BorderLeftIcon />} transform={addColumn} />
+      <Button.Table icon={<BorderRightIcon />} transform={deleteColumn} />
+      {enabledOptions.tableBorderColor && <TableBorderColorToolbar />}
+      {enabledOptions.tableBgColor && <TableBgColorToolbar />}
+    </Button>
   </>
 )
 
@@ -137,7 +141,7 @@ export const ToolbarBalloon = ({editor}) => {
   }
 
   return (
-    <BalloonToolbar direction="top" hiddenDelay={0} theme="light" arrow={arrow}>
+    <BalloonToolbar direction="top" hiddenDelay={0} theme="dark" arrow={arrow}>
       <Button editor={editor}>
         <Button.Mark
           type={getPlatePluginType(editor, MARK_BOLD)}
@@ -154,10 +158,6 @@ export const ToolbarBalloon = ({editor}) => {
           icon={<UnderlineIcon />}
           tooltip={{content: 'Underline (⌘U)', ...tooltip}}
         />
-        <Button.Element type={ELEMENT_H1} icon={<H1Icon />} />
-        <Button.Element type={ELEMENT_H2} icon={<H2Icon />} />
-        <Button.Element type={ELEMENT_H3} icon={<H3Icon />} />
-        <Button.List type={ELEMENT_UL} icon={<ListULIcon />} />
       </Button>
     </BalloonToolbar>
   )

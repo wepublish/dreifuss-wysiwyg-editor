@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 export interface ToolbarSearchHighlightProps {
-  icon: any
+  icon?: any
   setSearch: any
 }
 
@@ -28,12 +28,9 @@ export const ToolbarSearchHighlight = ({icon: Icon, setSearch}: ToolbarSearchHig
       onChange={e => setSearch(e.target.value)}
       style={{
         boxSizing: 'border-box',
-        fontSize: '0.85em',
-        width: '100%',
+        width: '95%',
         padding: '0.5em',
-        paddingLeft: '2em',
-        border: '2px solid #ddd',
-        background: '#fafafa'
+        border: '1px solid #e5e5ea'
       }}
     />
   </div>

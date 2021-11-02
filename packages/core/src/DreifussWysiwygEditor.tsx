@@ -70,7 +70,7 @@ export interface EnablePluginsProps {
   quotationMarks?: boolean
   basicMarks?: boolean
   basicElements?: boolean
-  table?: {tableBorderColor?: boolean; tableBgColor?: boolean} | boolean
+  table?: {tableBorderColor?: boolean; tableBgColor?: boolean}
 }
 
 export interface DreifussWysiwygEditorOptions {
@@ -211,7 +211,7 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
 
           {enablePlugins.color && (
             <>
-              <Modal editor={editorRef} Icon={<ToolbarFontColorButton editor={editorRef} />}>
+              <Modal Icon={<ToolbarFontColorButton editor={editorRef} />}>
                 <FontColorToolbar type={MARK_COLOR} />
               </Modal>
               <Divider type={DividerType.vertical} />
@@ -220,7 +220,7 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
 
           {enablePlugins.color && (
             <>
-              <Modal editor={editorRef} Icon={<ToolbarFontBgButton editor={editorRef} />}>
+              <Modal Icon={<ToolbarFontBgButton editor={editorRef} />}>
                 <FontColorToolbar type={MARK_BG_COLOR} />
               </Modal>
               <Divider type={DividerType.vertical} />
@@ -236,14 +236,14 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
 
           {enablePlugins.table && (
             <>
-              <ToolbarTableButtons enabledOptions={enablePlugins.table} />
+              <ToolbarTableButtons editor={editorRef} enabledOptions={enablePlugins.table} />
               <Divider type={DividerType.vertical} />
             </>
           )}
 
-          {enablePlugins.image && (
+          {enablePlugins.emoji && (
             <>
-              <Modal type={ELEMENT_IMAGE} Icon={<EmojiIcon />}>
+              <Modal type="EMOJI" Icon={<EmojiIcon />}>
                 <EmojiPicker />
               </Modal>
               <Divider type={DividerType.vertical} />
@@ -252,7 +252,7 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
 
           {enablePlugins.link && (
             <>
-              <Modal editor={editorRef} Icon={<ToolbarLinkButton editor={editorRef} />}>
+              <Modal Icon={<ToolbarLinkButton editor={editorRef} />}>
                 <ToolbarLink />
               </Modal>
               <Divider type={DividerType.vertical} />
@@ -262,16 +262,15 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
           {enablePlugins.image && (
             <>
               <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
-                <ToolbarImage CustomComponent={toolbars?.ImageToolbar} />
+                <ToolbarImage editorRef={editorRef} CustomComponent={toolbars?.ImageToolbar} />
               </Modal>
-              <Divider type={DividerType.vertical} />
             </>
           )}
 
           {enablePlugins.media && (
             <>
               <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
-                <MediaEmbedToolbar />
+                <MediaEmbedToolbar editorRef={editorRef} />
               </Modal>
               <Divider type={DividerType.vertical} />
             </>
@@ -285,7 +284,7 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
         </HeadingToolbar>
       )}
       {showCharactersCount && (
-        <p style={{textAlign: 'right'}}>
+        <p style={{display: 'flex', justifyContent: 'right', alignItems: 'center'}}>
           <CharactersCountIcon /> <CharCountToolbar id={id} />
         </p>
       )}

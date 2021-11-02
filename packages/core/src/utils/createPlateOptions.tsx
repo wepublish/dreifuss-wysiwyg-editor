@@ -82,7 +82,10 @@ export const createPlateOptions = (
   enabledOptions: EnablePluginsProps = {},
   overrides?: Partial<Record<DefaultPlatePluginKey | T, FunctionComponent<any>>>
 ) => {
-  const options: Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>> = {
+  const options: Omit<
+    Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>>,
+    typeof ELEMENT_PARAGRAPH | typeof MARK_COLOR
+  > = {
     [ELEMENT_ALIGN_CENTER]: {},
     [ELEMENT_ALIGN_JUSTIFY]: {},
     [ELEMENT_ALIGN_LEFT]: {},
@@ -231,74 +234,90 @@ export const createPlateOptions = (
   return workingOptions as Record<DefaultPlatePluginKey | T, PlatePluginOptions>
 }
 
-export const options = createPlateOptions({}, {})
-
-const resetBlockTypesCommonRule = {
-  types: [options?.[ELEMENT_BLOCKQUOTE]?.type, options?.[ELEMENT_TODO_LI]?.type],
-  defaultType: options?.[ELEMENT_PARAGRAPH]?.type
+const resetBlockTypesCommonRule = (enabledOptions: EnablePluginsProps): any => {
+  const options = createPlateOptions(enabledOptions)
+  return {
+    types: [options?.[ELEMENT_BLOCKQUOTE]?.type, options?.[ELEMENT_TODO_LI]?.type],
+    defaultType: options?.[ELEMENT_PARAGRAPH]?.type
+  }
 }
 
-export const optionsResetBlockTypePlugin: ResetBlockTypePluginOptions = {
-  rules: [
-    {
-      ...resetBlockTypesCommonRule,
-      hotkey: 'Enter',
-      predicate: isBlockAboveEmpty
-    },
-    {
-      ...resetBlockTypesCommonRule,
-      hotkey: 'Backspace',
-      predicate: isSelectionAtBlockStart
-    }
-  ]
+export const optionsResetBlockTypePlugin = (
+  enabledOptions: EnablePluginsProps
+): ResetBlockTypePluginOptions => {
+  const options = createPlateOptions(enabledOptions)
+  return {
+    rules: [
+      {
+        ...resetBlockTypesCommonRule(options),
+        hotkey: 'Enter',
+        predicate: isBlockAboveEmpty
+      },
+      {
+        ...resetBlockTypesCommonRule(options),
+        hotkey: 'Backspace',
+        predicate: isSelectionAtBlockStart
+      }
+    ]
+  }
 }
 
-export const optionsSoftBreakPlugin: SoftBreakPluginOptions = {
-  rules: [
-    {hotkey: 'shift+enter'},
-    {
-      hotkey: 'enter',
-      query: {
-        allow: [
-          options?.[ELEMENT_CODE_BLOCK]?.type,
-          options?.[ELEMENT_BLOCKQUOTE]?.type,
-          options?.[ELEMENT_TD]?.type
-        ]
+export const optionsSoftBreakPlugin = (
+  enabledOptions: EnablePluginsProps
+): SoftBreakPluginOptions => {
+  const options = createPlateOptions(enabledOptions)
+  return {
+    rules: [
+      {hotkey: 'shift+enter'},
+      {
+        hotkey: 'enter',
+        query: {
+          allow: [
+            options?.[ELEMENT_CODE_BLOCK]?.type,
+            options?.[ELEMENT_BLOCKQUOTE]?.type,
+            options?.[ELEMENT_TD]?.type
+          ]
+        }
       }
-    }
-  ]
+    ]
+  }
 }
 
-export const optionsExitBreakPlugin: ExitBreakPluginOptions = {
-  rules: [
-    {
-      hotkey: 'mod+enter'
-    },
-    {
-      hotkey: 'mod+shift+enter',
-      before: true
-    },
-    {
-      hotkey: 'enter',
-      query: {
-        start: true,
-        end: true,
-        allow: KEYS_HEADING
+export const optionsExitBreakPlugin = (
+  enabledOptions: EnablePluginsProps
+): ExitBreakPluginOptions => {
+  const options = createPlateOptions(enabledOptions)
+  return {
+    rules: [
+      {
+        hotkey: 'mod+enter'
+      },
+      {
+        hotkey: 'mod+shift+enter',
+        before: true
+      },
+      {
+        hotkey: 'enter',
+        query: {
+          start: true,
+          end: true,
+          allow: KEYS_HEADING
+        }
+      },
+      {
+        hotkey: 'enter',
+        query: {
+          allow: [options?.[ELEMENT_IMAGE]?.type]
+        }
+      },
+      {
+        hotkey: 'enter',
+        before: true,
+        query: {
+          start: true,
+          allow: [options?.[ELEMENT_PARAGRAPH]?.type]
+        }
       }
-    },
-    {
-      hotkey: 'enter',
-      query: {
-        allow: [options?.[ELEMENT_IMAGE]?.type]
-      }
-    },
-    {
-      hotkey: 'enter',
-      before: true,
-      query: {
-        start: true,
-        allow: [options?.[ELEMENT_PARAGRAPH]?.type]
-      }
-    }
-  ]
+    ]
+  }
 }
