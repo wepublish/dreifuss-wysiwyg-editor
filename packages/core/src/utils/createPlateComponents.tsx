@@ -84,8 +84,7 @@ export const createPlateComponents = (
           margin: 0,
           fontSize: '2.875em',
           fontWeight: 'bolder',
-          lineHeight: '64px',
-          color: '#434343'
+          lineHeight: '64px'
         }
       }
     }),
@@ -96,8 +95,7 @@ export const createPlateComponents = (
           margin: 0,
           fontSize: '2.25em',
           fontWeight: 'bolder',
-          lineHeight: '50px',
-          color: '#434343'
+          lineHeight: '50px'
         }
       }
     }),
@@ -106,7 +104,6 @@ export const createPlateComponents = (
       styles: {
         root: {
           margin: 0,
-          color: '#434343',
           fontSize: '1.75em',
           fontWeight: 'bolder',
           lineHeight: '42px'

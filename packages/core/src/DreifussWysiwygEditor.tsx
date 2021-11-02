@@ -41,6 +41,7 @@ import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import {withStyledDraggables} from './utils/WithStyledDraggables'
 import {plugins} from './utils/createPlatePlugins'
+import './main.css'
 
 export interface EditableProps {
   id?: string
@@ -171,10 +172,7 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
   }, [charCount])
 
   return (
-    <div
-      style={{
-        fontFamily: 'Helvetica'
-      }}>
+    <div className="dreifuss-wrapper">
       <Plate
         id={id}
         onChange={(val: TNode[]) => props.onChange(handleOnChange(val))}
