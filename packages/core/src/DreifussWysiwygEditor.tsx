@@ -41,7 +41,6 @@ import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
 import {withStyledDraggables} from './utils/WithStyledDraggables'
 import {plugins} from './utils/createPlatePlugins'
-import './main.css'
 
 export interface EditableProps {
   id?: string
@@ -160,9 +159,10 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
           whiteSpace: 'nowrap',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
-          width: 'inherit'
+          width: 'inherit',
+          fontFamily: 'Helvetica'
         }
-      : {}
+      : {fontFamily: 'Helvetica'}
   }
 
   const charCount = getCharacterCount(id)
