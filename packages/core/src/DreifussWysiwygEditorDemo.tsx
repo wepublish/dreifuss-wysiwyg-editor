@@ -122,33 +122,44 @@ const toolbars = {
   }
 }
 
-const DreifussWysiwygEditorDemo = () => (
-  <div style={{display: 'flex'}}>
-    <div style={{minHeight: 400, padding: 30}}>
-      <h1>RichText Component Demo</h1>
-      <DreifussWysiwygEditor
-        toolbars={toolbars}
-        // charactersCount={count => {
-        //   console.log(count)
-        // }}
-        onChange={e => {
-          console.log(e)
-        }}
-        value={value}
-      />
-    </div>
+function download(content, fileName) {
+  const a = document.createElement('a')
+  const jsonse = JSON.stringify(content)
+  const blob = new Blob([jsonse], {type: 'application/json'})
 
-    <div style={{minHeight: 400, padding: 30}}>
-      <h1>RichText Component Demo</h1>
-      <DreifussWysiwygEditor
-        onChange={e => {
-          console.log(e)
-        }}
-        id="two"
-        value={value}
-      />
+  a.href = URL.createObjectURL(blob)
+  a.download = fileName
+  a.click()
+}
+
+const DreifussWysiwygEditorDemo = () => {
+  const [val, setValu] = useState()
+
+  return (
+    <div style={{display: 'flex'}}>
+      <div style={{minHeight: 400, padding: 30}}>
+        <h1>RichText Component Demo</h1>
+        <DreifussWysiwygEditor
+          toolbars={toolbars}
+          // charactersCount={count => {
+          //   console.log(count)
+          // }}
+          onChange={editorValue => {
+            console.log(editorValue)
+            setValu(editorValue)
+          }}
+          value={value}
+        />
+      </div>
+      <button
+        onClick={e => {
+          e.preventDefault()
+          download(val, 'dreifuss.json')
+        }}>
+        Save
+      </button>
     </div>
-  </div>
-)
+  )
+}
 
 render(<DreifussWysiwygEditorDemo />, document.getElementById('root'))
