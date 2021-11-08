@@ -172,126 +172,124 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
   }, [charCount])
 
   return (
-    <div className="dreifuss-wrapper">
-      <Plate
-        id={id}
-        onChange={(val: TNode[]) => props.onChange(handleOnChange(val))}
-        plugins={plugins(enablePlugins, {findReplace: findReplacePlugin})}
-        components={components}
-        options={options}
-        editableProps={editableProps as EditableProps}
-        initialValue={JSON.parse(
-          JSON.stringify(value?.map(block => ({...block, id: Math.random()})))
-        )}>
-        <ToolbarBalloon editor={editorRef} />
-        {!displayOnly && (
-          <HeadingToolbar>
-            {enablePlugins.basicElements && <ToolbarBasicElementsButtons editor={editorRef} />}
+    <Plate
+      id={id}
+      onChange={(val: TNode[]) => props.onChange(handleOnChange(val))}
+      plugins={plugins(enablePlugins, {findReplace: findReplacePlugin})}
+      components={components}
+      options={options}
+      editableProps={editableProps as EditableProps}
+      initialValue={JSON.parse(
+        JSON.stringify(value?.map(block => ({...block, id: Math.random()})))
+      )}>
+      <ToolbarBalloon editor={editorRef} />
+      {!displayOnly && (
+        <HeadingToolbar>
+          {enablePlugins.basicElements && <ToolbarBasicElementsButtons editor={editorRef} />}
 
-            {enablePlugins.quotationMarks && (
-              <>
-                <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
-                  <QuotationMarksMenu />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.list && (
-              <>
-                <ToolbarListButtons editor={editorRef} />
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.basicMarks && (
-              <>
-                <ToolbarBasicMarksButtons editor={editorRef} />
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.color && (
-              <>
-                <Modal Icon={<ToolbarFontColorButton editor={editorRef} />}>
-                  <FontColorToolbar type={MARK_COLOR} />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.color && (
-              <>
-                <Modal Icon={<ToolbarFontBgButton editor={editorRef} />}>
-                  <FontColorToolbar type={MARK_BG_COLOR} />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.align && (
-              <>
-                <ToolbarAlignButtons editor={editorRef} />
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.table && (
-              <>
-                <ToolbarTableButtons editor={editorRef} enabledOptions={enablePlugins.table} />
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.emoji && (
-              <>
-                <Modal type="EMOJI" Icon={<EmojiIcon />}>
-                  <EmojiPicker />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.link && (
-              <>
-                <Modal Icon={<ToolbarLinkButton editor={editorRef} />}>
-                  <ToolbarLink />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.image && (
-              <>
-                <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
-                  <ToolbarImage editorRef={editorRef} CustomComponent={toolbars?.ImageToolbar} />
-                </Modal>
-              </>
-            )}
-
-            {enablePlugins.media && (
-              <>
-                <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
-                  <MediaEmbedToolbar editorRef={editorRef} />
-                </Modal>
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
-
-            {enablePlugins.search && (
-              <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
-                <ToolbarSearchHighlight setSearch={setSearch} />
+          {enablePlugins.quotationMarks && (
+            <>
+              <Modal type={ELEMENT_QUOTATION_MARK} Icon={'«»'}>
+                <QuotationMarksMenu />
               </Modal>
-            )}
-          </HeadingToolbar>
-        )}
-        {showCharactersCount && (
-          <p style={{display: 'flex', justifyContent: 'right', alignItems: 'center'}}>
-            <CharactersCountIcon /> <CharCountToolbar id={id} />
-          </p>
-        )}
-      </Plate>
-    </div>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.list && (
+            <>
+              <ToolbarListButtons editor={editorRef} />
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.basicMarks && (
+            <>
+              <ToolbarBasicMarksButtons editor={editorRef} />
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.color && (
+            <>
+              <Modal Icon={<ToolbarFontColorButton editor={editorRef} />}>
+                <FontColorToolbar type={MARK_COLOR} />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.color && (
+            <>
+              <Modal Icon={<ToolbarFontBgButton editor={editorRef} />}>
+                <FontColorToolbar type={MARK_BG_COLOR} />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.align && (
+            <>
+              <ToolbarAlignButtons editor={editorRef} />
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.table && (
+            <>
+              <ToolbarTableButtons editor={editorRef} enabledOptions={enablePlugins.table} />
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.emoji && (
+            <>
+              <Modal type="EMOJI" Icon={<EmojiIcon />}>
+                <EmojiPicker />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.link && (
+            <>
+              <Modal Icon={<ToolbarLinkButton editor={editorRef} />}>
+                <ToolbarLink />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.image && (
+            <>
+              <Modal type={ELEMENT_IMAGE} Icon={<ImageIcon />}>
+                <ToolbarImage editorRef={editorRef} CustomComponent={toolbars?.ImageToolbar} />
+              </Modal>
+            </>
+          )}
+
+          {enablePlugins.media && (
+            <>
+              <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
+                <MediaEmbedToolbar editorRef={editorRef} />
+              </Modal>
+              <Divider type={DividerType.vertical} />
+            </>
+          )}
+
+          {enablePlugins.search && (
+            <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
+              <ToolbarSearchHighlight setSearch={setSearch} />
+            </Modal>
+          )}
+        </HeadingToolbar>
+      )}
+      {showCharactersCount && (
+        <p style={{display: 'flex', justifyContent: 'right', alignItems: 'center'}}>
+          <CharactersCountIcon /> <CharCountToolbar id={id} />
+        </p>
+      )}
+    </Plate>
   )
 }
 
