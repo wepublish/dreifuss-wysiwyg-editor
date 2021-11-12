@@ -45,6 +45,7 @@ import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
 import {Button} from './utils/ToolbarButtonsHelper'
 import {MARK_BG_COLOR, MARK_COLOR} from '@dreifuss-wysiwyg-editor/font'
 import {
+  insertTable,
   deleteColumn,
   deleteRow,
   deleteTable,
