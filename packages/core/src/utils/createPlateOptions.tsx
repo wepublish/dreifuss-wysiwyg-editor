@@ -234,17 +234,21 @@ export const createPlateOptions = (
   //   }
   // })
 
-  return workingOptions as Record<DefaultPlatePluginKey | T, PlatePluginOptions>
+  return workingOptions as Record<DefaultPlatePluginKey, PlatePluginOptions>
 }
 
-const resetBlockTypesCommonRule = (options: any): any => {
+const resetBlockTypesCommonRule = (
+  options: Record<DefaultPlatePluginKey, PlatePluginOptions>
+): any => {
   return {
     types: [options?.[ELEMENT_BLOCKQUOTE]?.type],
     defaultType: options?.[ELEMENT_PARAGRAPH]?.type
   }
 }
 
-export const optionsResetBlockTypePlugin = (options: any): ResetBlockTypePluginOptions => {
+export const optionsResetBlockTypePlugin = (
+  options: Record<DefaultPlatePluginKey, PlatePluginOptions>
+): ResetBlockTypePluginOptions => {
   return {
     rules: [
       {
@@ -261,7 +265,9 @@ export const optionsResetBlockTypePlugin = (options: any): ResetBlockTypePluginO
   }
 }
 
-export const optionsSoftBreakPlugin = (options: EnablePluginsProps): SoftBreakPluginOptions => {
+export const optionsSoftBreakPlugin = (
+  options: Record<DefaultPlatePluginKey, PlatePluginOptions>
+): SoftBreakPluginOptions => {
   return {
     rules: [
       {hotkey: 'shift+enter'},
@@ -279,7 +285,9 @@ export const optionsSoftBreakPlugin = (options: EnablePluginsProps): SoftBreakPl
   }
 }
 
-export const optionsExitBreakPlugin = (options: any): ExitBreakPluginOptions => {
+export const optionsExitBreakPlugin = (
+  options: Record<DefaultPlatePluginKey, PlatePluginOptions>
+): ExitBreakPluginOptions => {
   return {
     rules: [
       {
