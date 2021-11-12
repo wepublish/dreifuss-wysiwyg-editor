@@ -33,11 +33,17 @@ export const Modal = ({children, Icon, type}: ModalProps) => {
     return () => document.removeEventListener('click', handleClick)
   }, [])
 
-  /**
-   * the below hooks handling dragging the modal around the window
-   */
   const [position, setPosition] = useState({x: 0, y: 0})
 
+  //  Reset position if modal is closed and
+  //  position doesn't have initial value
+  useEffect(() => {
+    if (!isMenuOpen && (position.x || position.y)) {
+      setPosition({x: 0, y: 0})
+    }
+  }, [isMenuOpen])
+
+  // below hooks handling dragging the modal around the window
   const modalWindowRef = useRef<HTMLDivElement>(null)
 
   const onMouseDown = useCallback(() => {
