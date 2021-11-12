@@ -222,42 +222,24 @@ export const createPlateOptions = (
     }
   }
 
-  // if (overrides) {
-  //   Object.keys(overrides).forEach(key => {
-  //     workingOptions[key] = overrides[key]
-  //   })
-  // }
-
-  // Object.keys(workingOptions).forEach(key => {
-  //   if (!workingOptions[key].type) {
-  //     workingOptions[key].type = key
-  //   }
-  // })
-
   return workingOptions as Record<DefaultPlatePluginKey, PlatePluginOptions>
 }
 
-const resetBlockTypesCommonRule = (
-  options: Record<DefaultPlatePluginKey, PlatePluginOptions>
-): any => {
-  return {
-    types: [options?.[ELEMENT_BLOCKQUOTE]?.type],
-    defaultType: options?.[ELEMENT_PARAGRAPH]?.type
-  }
+const resetBlockTypesCommonRule = {
+  types: [ELEMENT_BLOCKQUOTE, ELEMENT_TODO_LI],
+  defaultType: ELEMENT_PARAGRAPH
 }
 
-export const optionsResetBlockTypePlugin = (
-  options: Record<DefaultPlatePluginKey, PlatePluginOptions>
-): ResetBlockTypePluginOptions => {
+export const optionsResetBlockTypePlugin = (): ResetBlockTypePluginOptions => {
   return {
     rules: [
       {
-        ...resetBlockTypesCommonRule(options),
+        ...resetBlockTypesCommonRule,
         hotkey: 'Enter',
         predicate: isBlockAboveEmpty
       },
       {
-        ...resetBlockTypesCommonRule(options),
+        ...resetBlockTypesCommonRule,
         hotkey: 'Backspace',
         predicate: isSelectionAtBlockStart
       }
@@ -265,21 +247,11 @@ export const optionsResetBlockTypePlugin = (
   }
 }
 
-export const optionsSoftBreakPlugin = (
-  options: Record<DefaultPlatePluginKey, PlatePluginOptions>
-): SoftBreakPluginOptions => {
+export const optionsSoftBreakPlugin = (): SoftBreakPluginOptions => {
   return {
     rules: [
-      {hotkey: 'shift+enter'},
       {
-        hotkey: 'enter',
-        query: {
-          allow: [
-            options?.[ELEMENT_CODE_BLOCK]?.type,
-            options?.[ELEMENT_BLOCKQUOTE]?.type,
-            options?.[ELEMENT_TD]?.type
-          ]
-        }
+        hotkey: 'shift+enter'
       }
     ]
   }
@@ -287,38 +259,30 @@ export const optionsSoftBreakPlugin = (
 
 export const optionsExitBreakPlugin = (
   options: Record<DefaultPlatePluginKey, PlatePluginOptions>
-): ExitBreakPluginOptions => {
-  return {
-    rules: [
-      {
-        hotkey: 'mod+enter'
-      },
-      {
-        hotkey: 'mod+shift+enter',
-        before: true
-      },
-      {
-        hotkey: 'enter',
-        query: {
-          start: true,
-          end: true,
-          allow: KEYS_HEADING
-        }
-      },
-      {
-        hotkey: 'enter',
-        query: {
-          allow: [options?.[ELEMENT_IMAGE]?.type]
-        }
-      },
-      {
-        hotkey: 'enter',
-        before: true,
-        query: {
-          start: true,
-          allow: [options?.[ELEMENT_PARAGRAPH]?.type]
-        }
+): ExitBreakPluginOptions => ({
+  rules: [
+    {
+      hotkey: 'enter',
+      query: {
+        start: true,
+        end: true,
+        allow: KEYS_HEADING
       }
-    ]
-  }
-}
+    },
+    {
+      hotkey: 'enter',
+      query: {
+        allow: [options?.[ELEMENT_IMAGE]?.type]
+      }
+    },
+    {
+      hotkey: 'enter',
+      before: false,
+      query: {
+        start: true,
+        end: true,
+        allow: [options?.[ELEMENT_PARAGRAPH]?.type]
+      }
+    }
+  ]
+})
