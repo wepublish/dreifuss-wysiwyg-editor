@@ -42,7 +42,8 @@
     "@udecode/plate-toolbar": "^3.0.1",
     "@udecode/plate-styled-components": "^3.0.1",
     "twin.macro": "^2.7.0",
-    "styled-components": ">=5.0.0"
+    "styled-components": ">=5.0.0",
+    "@styled-icons/material": "^10.34.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.14",

@@ -52,6 +52,7 @@ import {
   addColumn,
   addRow
 } from '@dreifuss-wysiwyg-editor/table'
+
 import {
   MARK_BOLD,
   MARK_CODE,
