@@ -1,13 +1,14 @@
-import React from 'react'
+import React, {ReactNode} from 'react'
 import {render} from 'react-dom'
 import {DreifussWysiwygEditor} from './index'
+import {CustomImageToolbarProps} from '@dreifuss-wysiwyg-editor/image-ui'
 
 const value: any = [
   // {
   //   type: 'paragraph',
   //   children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}]
   // },
-  {type: 'paragraph', children: [{text: 'Bold: Make the selected text bold.', bold: true}]}
+  // {type: 'paragraph', children: [{text: 'Bold: Make the selected text bold.', bold: true}]}
   // {type: 'paragraph', children: [{text: 'Italic: Make the selected text italic.', italic: true}]},
   // {
   //   type: 'paragraph',
@@ -74,21 +75,93 @@ const value: any = [
   //   ]
   // },
   // {type: 'paragraph', children: [{text: 'Emojis: 😄'}]}
+
+  {
+    type: 'paragraph',
+    children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}]
+  },
+  {
+    type: 'paragraph',
+    children: [
+      {text: 'Bold: ', bold: true},
+      // {bold: true, text: 'Make', color: '#c21414'},
+      {bold: true, text: ' the selected text bold.'}
+    ]
+  }
 ]
 
+/**
+ *   these are just examples on how to pass custom toolbars
+ */
+const toolbars = {
+  ImageToolbar: ({url, onChange, onSubmit}: CustomImageToolbarProps): ReactNode => {
+    return (
+      <>
+        <form className="image-toolbar">
+          <div className="form-group">
+            <h4>Image Uploader</h4>
+            <div className="input-group">
+              <input name="url" value={url} onChange={e => onChange(e.target.value)} />
+            </div>
+          </div>
+          <div className="toolbar" role="toolbar">
+            <button
+              className={`${url ? 'insert' : 'disabled'}`}
+              onClick={e => {
+                e.preventDefault()
+                onSubmit()
+              }}>
+              Insert
+            </button>
+          </div>
+        </form>
+      </>
+    )
+  }
+}
+
 const DreifussWysiwygEditorDemo = () => (
-  <div style={{minHeight: 400, padding: 30}}>
-    <h1>RichText Component Demo</h1>
-    <DreifussWysiwygEditor
-      // charactersCount={count => {
-      //   console.log(count)
-      // }}
-      onChange={(data: any) => {
-        console.log(data)
-        // console.log(JSON.stringify(data))
-      }}
-      value={value}
-    />
+  <div style={{display: 'flex'}}>
+    <div style={{minHeight: 400, padding: 30}}>
+      <h1>RichText Component Demo</h1>
+      <DreifussWysiwygEditor
+        id="sec"
+        toolbars={toolbars}
+        // charactersCount={count => {
+        //   console.log(count)
+        // }}
+        onChange={e => {
+          console.log(e)
+        }}
+      />
+    </div>
+
+    <div style={{minHeight: 400, padding: 30}}>
+      <h1>RichText Component Demo</h1>
+      <DreifussWysiwygEditor
+        enablePlugins={{
+          basicElements: true,
+          basicMarks: true,
+          list: true,
+          quote: true,
+          quotationMarks: true,
+          code: true,
+          color: true,
+          align: true,
+          table: {tableBorderColor: false, tableBgColor: true},
+          emoji: true,
+          link: true,
+          image: true,
+          media: true,
+          dnd: true
+        }}
+        onChange={e => {
+          console.log(e)
+        }}
+        id="two"
+        value={value}
+      />
+    </div>
   </div>
 )
 

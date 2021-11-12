@@ -4,7 +4,7 @@ import {BaseSelection, Transforms} from 'slate'
 import {useEventEditorId, useStoreEditorRef, useStoreEditorSelection} from '@udecode/plate-core'
 import {ModalContext} from '@dreifuss-wysiwyg-editor/common'
 import {insertMediaEmbed} from '@udecode/plate-media-embed'
-import {MediaEmbedUrlInput} from '../MediaEmbedElement'
+
 import './media-embed-toolbar.css'
 
 const transformUrl = (newUrl: string) => {
@@ -23,7 +23,7 @@ const transformUrl = (newUrl: string) => {
   return newUrl
 }
 
-export const MediaEmbedToolbar = () => {
+export const MediaEmbedToolbar = ({editorRef: passedEditor}: any) => {
   const editor = useStoreEditorRef(useEventEditorId('focus'))
 
   const selection = useStoreEditorSelection(useEventEditorId('focus'))
@@ -39,14 +39,28 @@ export const MediaEmbedToolbar = () => {
     }
   }, [selection])
 
+  useEffect(() => {
+    if (passedEditor !== editor) {
+      if (latestSelection.current) {
+        Transforms.select(passedEditor, latestSelection.current)
+      }
+      ReactEditor.focus(passedEditor)
+    }
+  }, [passedEditor, editor])
+
   return (
     <form className="media-embed-toolbar">
       <div className="form-group">
         <label>Media Embed</label>
         <div className="input-group">
-          <MediaEmbedUrlInput
-            onChange={(newUrl: string) => setURL(transformUrl(newUrl))}
-            url={url}
+          <input
+            placeholder="Add a url.."
+            value={url}
+            onClick={e => e.stopPropagation()}
+            onChange={e => {
+              const newUrl = e.target.value
+              setURL(transformUrl(newUrl))
+            }}
           />
         </div>
       </div>

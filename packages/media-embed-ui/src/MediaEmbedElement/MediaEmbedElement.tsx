@@ -17,7 +17,10 @@ export const MediaEmbedElement = (props: MediaEmbedElementProps) => {
 
   return (
     <div {...attributes} css={styles.root.css} className={styles.root.className}>
-      <div contentEditable={false}>
+      <div
+        contentEditable={false}
+        css={styles.container.css}
+        className={styles.container.className}>
         <div css={styles.iframeWrapper?.css} className={styles.iframeWrapper?.className}>
           {url && (
             <iframe

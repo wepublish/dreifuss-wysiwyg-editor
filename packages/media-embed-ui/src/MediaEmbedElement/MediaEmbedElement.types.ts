@@ -6,6 +6,7 @@ export interface MediaEmbedElementStyles {
   iframeWrapper: CSSProp
   iframe: CSSProp
   input: CSSProp
+  container: CSSProp
 }
 
 export type MediaEmbedElementProps = StyledElementProps<MediaEmbedNodeData, MediaEmbedElementStyles>

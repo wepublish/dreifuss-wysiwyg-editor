@@ -11,7 +11,7 @@ interface DividerProps {
 export const Divider = (props: DividerProps) => (
   <hr
     style={{
-      margin: props.type === DividerType.vertical ? '0 10px' : '10px 0',
+      margin: props.type === DividerType.vertical ? '0 2px' : '2px 0',
       height: props.type === DividerType.vertical ? '22px' : undefined,
       borderLeft: '1px solid black'
     }}
