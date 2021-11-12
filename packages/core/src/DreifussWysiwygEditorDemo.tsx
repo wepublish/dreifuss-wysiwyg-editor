@@ -4,6 +4,8 @@ import {DreifussWysiwygEditor} from './index'
 import {CustomImageToolbarProps} from '@dreifuss-wysiwyg-editor/image-ui'
 
 const value: any = [
+  {type: 'action_item', checked: true, children: [{text: 'Slide to the right.'}], id: 10054},
+  {type: 'action_item', children: [{text: 'Criss-cross.'}], id: 10055},
   // {
   //   type: 'paragraph',
   //   children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}]
@@ -122,20 +124,6 @@ const toolbars = {
 
 const DreifussWysiwygEditorDemo = () => (
   <div style={{display: 'flex'}}>
-    <div style={{minHeight: 400, padding: 30}}>
-      <h1>RichText Component Demo</h1>
-      <DreifussWysiwygEditor
-        id="sec"
-        toolbars={toolbars}
-        // charactersCount={count => {
-        //   console.log(count)
-        // }}
-        onChange={e => {
-          console.log(e)
-        }}
-      />
-    </div>
-
     <div style={{minHeight: 400, padding: 30}}>
       <h1>RichText Component Demo</h1>
       <DreifussWysiwygEditor
