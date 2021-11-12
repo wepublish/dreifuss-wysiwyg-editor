@@ -58,6 +58,7 @@ export interface EnablePluginsProps {
   dnd?: boolean
   search?: boolean
   list?: boolean
+  todoList?: boolean
   code?: boolean
   color?: boolean
   bgColor?: boolean
@@ -110,10 +111,12 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
       basicElements: true,
       basicMarks: true,
       list: true,
+      todoList: true,
       quote: true,
       quotationMarks: true,
       code: false,
       color: false,
+      bgColor: false,
       align: true,
       table: {tableBorderColor: false, tableBgColor: false},
       emoji: false,
@@ -215,16 +218,14 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
               <Modal Icon={<ToolbarFontColorButton editor={editorRef} />}>
                 <FontColorToolbar type={MARK_COLOR} />
               </Modal>
-              <Divider type={DividerType.vertical} />
             </>
           )}
 
-          {enablePlugins.color && (
+          {enablePlugins.bgColor && (
             <>
               <Modal Icon={<ToolbarFontBgButton editor={editorRef} />}>
                 <FontColorToolbar type={MARK_BG_COLOR} />
               </Modal>
-              <Divider type={DividerType.vertical} />
             </>
           )}
 
@@ -247,7 +248,6 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
               <Modal type="EMOJI" Icon={<EmojiIcon />}>
                 <EmojiPicker />
               </Modal>
-              <Divider type={DividerType.vertical} />
             </>
           )}
 
@@ -256,7 +256,6 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
               <Modal Icon={<ToolbarLinkButton editor={editorRef} />}>
                 <ToolbarLink />
               </Modal>
-              <Divider type={DividerType.vertical} />
             </>
           )}
 
@@ -273,7 +272,6 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
               <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
                 <MediaEmbedToolbar editorRef={editorRef} />
               </Modal>
-              <Divider type={DividerType.vertical} />
             </>
           )}
 

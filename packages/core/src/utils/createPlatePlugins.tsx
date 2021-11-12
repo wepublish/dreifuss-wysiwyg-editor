@@ -7,6 +7,7 @@ import {createCodeBlockPlugin} from '@udecode/plate-code-block'
 import {createBlockquotePlugin} from '@udecode/plate-block-quote'
 import {createMediaEmbedPlugin, ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {
+  createPlateOptions,
   optionsExitBreakPlugin,
   optionsResetBlockTypePlugin,
   optionsSoftBreakPlugin
@@ -52,6 +53,7 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     highlight: createHighlightPlugin(),
     dnd: createDndPlugin()
   }
+  const options = createPlateOptions(enabledOptions)
 
   const enabledPlugins = [
     createReactPlugin(),
@@ -59,10 +61,10 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     createParagraphPlugin(),
     /** dnd */
     createNodeIdPlugin(),
-    createResetNodePlugin(optionsResetBlockTypePlugin(enabledOptions)),
+    createResetNodePlugin(optionsResetBlockTypePlugin(options)),
     /** break */
-    createExitBreakPlugin(optionsExitBreakPlugin(enabledOptions)),
-    createSoftBreakPlugin(optionsSoftBreakPlugin(enabledOptions)),
+    createExitBreakPlugin(optionsExitBreakPlugin(options)),
+    createSoftBreakPlugin(optionsSoftBreakPlugin(options)),
     /** backspace */
     createSelectOnBackspacePlugin({allow: [ELEMENT_MEDIA_EMBED, ELEMENT_IMAGE]})
   ]
