@@ -77,6 +77,11 @@ export const ToolbarListButtons = ({editor}: any) => (
   <Button editor={editor}>
     <Button.List type={ELEMENT_UL} icon={<ListULIcon />} />
     <Button.List type={ELEMENT_OL} icon={<ListOLIcon />} />
+  </Button>
+)
+
+export const ToolbarTodoListButton = ({editor}: any) => (
+  <Button editor={editor}>
     <Button.Element type={ELEMENT_TODO_LI} icon={<CheckBoxIcon />} />
   </Button>
 )

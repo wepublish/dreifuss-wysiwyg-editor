@@ -35,7 +35,8 @@ import {
   ToolbarListButtons,
   ToolbarTableButtons,
   ToolbarFontBgButton,
-  ToolbarFontColorButton
+  ToolbarFontColorButton,
+  ToolbarTodoListButton
 } from './Toolbar'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
@@ -200,9 +201,13 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
               </>
             )}
 
-            {enablePlugins.list && (
+            {enablePlugins.list && <ToolbarListButtons editor={editorRef} />}
+
+            {!enablePlugins.todoList && <Divider type={DividerType.vertical} />}
+
+            {enablePlugins.todoList && (
               <>
-                <ToolbarListButtons editor={editorRef} />
+                <ToolbarTodoListButton editor={editorRef} />
                 <Divider type={DividerType.vertical} />
               </>
             )}
