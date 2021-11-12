@@ -62,7 +62,6 @@ import {
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE
 } from '@udecode/plate-basic-marks'
-import {insertNodes} from '@udecode/plate-common'
 
 export const ToolbarBasicElementsButtons = ({editor}) => (
   <Button editor={editor}>

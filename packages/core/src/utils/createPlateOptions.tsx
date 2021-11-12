@@ -237,41 +237,47 @@ export const createPlateOptions = (
   return workingOptions as Record<DefaultPlatePluginKey | T, PlatePluginOptions>
 }
 
-const resetBlockTypesCommonRule = (options: any): any => ({
-  types: [options?.[ELEMENT_BLOCKQUOTE]?.type],
-  defaultType: options?.[ELEMENT_PARAGRAPH]?.type
-})
+const resetBlockTypesCommonRule = (options: any): any => {
+  return {
+    types: [options?.[ELEMENT_BLOCKQUOTE]?.type],
+    defaultType: options?.[ELEMENT_PARAGRAPH]?.type
+  }
+}
 
-export const optionsResetBlockTypePlugin = (options: any): ResetBlockTypePluginOptions => ({
-  rules: [
-    {
-      ...resetBlockTypesCommonRule(options),
-      hotkey: 'Enter',
-      predicate: isBlockAboveEmpty
-    },
-    {
-      ...resetBlockTypesCommonRule(options),
-      hotkey: 'Backspace',
-      predicate: isSelectionAtBlockStart
-    }
-  ]
-})
-
-export const optionsSoftBreakPlugin = (options: EnablePluginsProps): SoftBreakPluginOptions => ({
-  rules: [
-    {hotkey: 'shift+enter'},
-    {
-      hotkey: 'enter',
-      query: {
-        allow: [
-          options?.[ELEMENT_CODE_BLOCK]?.type,
-          options?.[ELEMENT_BLOCKQUOTE]?.type,
-          options?.[ELEMENT_TD]?.type
-        ]
+export const optionsResetBlockTypePlugin = (options: any): ResetBlockTypePluginOptions => {
+  return {
+    rules: [
+      {
+        ...resetBlockTypesCommonRule(options),
+        hotkey: 'Enter',
+        predicate: isBlockAboveEmpty
+      },
+      {
+        ...resetBlockTypesCommonRule(options),
+        hotkey: 'Backspace',
+        predicate: isSelectionAtBlockStart
       }
-    }
-  ]
-})
+    ]
+  }
+}
+
+export const optionsSoftBreakPlugin = (options: EnablePluginsProps): SoftBreakPluginOptions => {
+  return {
+    rules: [
+      {hotkey: 'shift+enter'},
+      {
+        hotkey: 'enter',
+        query: {
+          allow: [
+            options?.[ELEMENT_CODE_BLOCK]?.type,
+            options?.[ELEMENT_BLOCKQUOTE]?.type,
+            options?.[ELEMENT_TD]?.type
+          ]
+        }
+      }
+    ]
+  }
+}
 
 export const optionsExitBreakPlugin = (options: any): ExitBreakPluginOptions => {
   return {
