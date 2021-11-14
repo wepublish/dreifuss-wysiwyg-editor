@@ -236,6 +236,7 @@ export const createPlateComponents = (
     media: [ELEMENT_MEDIA_EMBED],
     link: [ELEMENT_LINK],
     basicMarks: [
+      MARK_CODE,
       MARK_BOLD,
       MARK_ITALIC,
       MARK_STRIKETHROUGH,
@@ -243,14 +244,9 @@ export const createPlateComponents = (
       MARK_SUPERSCRIPT,
       MARK_UNDERLINE
     ],
-    basicElements: [
-      ELEMENT_H1,
-      ELEMENT_H2,
-      ELEMENT_H3,
-      ELEMENT_BLOCKQUOTE,
-      ELEMENT_CODE_BLOCK,
-      ELEMENT_CODE_LINE
-    ]
+    basicElements: [ELEMENT_H1, ELEMENT_H2, ELEMENT_H3],
+    codeBlock: [ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE],
+    quote: [ELEMENT_BLOCKQUOTE]
   }
 
   for (const key in enablePlugins) {

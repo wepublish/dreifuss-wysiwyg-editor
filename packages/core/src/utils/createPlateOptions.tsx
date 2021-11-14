@@ -75,6 +75,11 @@ export type DefaultPlatePluginKey =
   | typeof MARK_COLOR
   | typeof MARK_BG_COLOR
 
+const customTypes = {
+  [ELEMENT_BLOCKQUOTE]: 'block-quote',
+  [ELEMENT_CODE_BLOCK]: 'code-block'
+}
+
 /**
  * Get slate plugins options.
  * @param overrides merge into the default options
@@ -92,10 +97,10 @@ export const createPlateOptions = (
     [ELEMENT_ALIGN_LEFT]: {},
     [ELEMENT_ALIGN_RIGHT]: {},
     [ELEMENT_BLOCKQUOTE]: {
-      type: 'block-quote'
+      type: customTypes[ELEMENT_BLOCKQUOTE]
     },
     [ELEMENT_CODE_BLOCK]: {
-      type: 'code-block'
+      type: customTypes[ELEMENT_CODE_BLOCK]
     },
     [ELEMENT_CODE_LINE]: {
       type: 'code-line'
@@ -169,7 +174,7 @@ export const createPlateOptions = (
     [MARK_UNDERLINE]: {
       ...DEFAULTS_UNDERLINE
     },
-    [ELEMENT_IMAGE]: {},
+    [ELEMENT_IMAGE]: {type: ELEMENT_IMAGE},
     [MARK_COLOR]: {},
     [MARK_BG_COLOR]: {}
   }
@@ -193,6 +198,7 @@ export const createPlateOptions = (
     link: [ELEMENT_LINK],
     quote: [ELEMENT_BLOCKQUOTE],
     basicMarks: [
+      MARK_CODE,
       MARK_BOLD,
       MARK_ITALIC,
       MARK_STRIKETHROUGH,
@@ -200,14 +206,8 @@ export const createPlateOptions = (
       MARK_SUPERSCRIPT,
       MARK_UNDERLINE
     ],
-    basicElements: [
-      ELEMENT_H1,
-      ELEMENT_H2,
-      ELEMENT_H3,
-      ELEMENT_BLOCKQUOTE,
-      ELEMENT_CODE_BLOCK,
-      ELEMENT_CODE_LINE
-    ]
+    basicElements: [ELEMENT_H1, ELEMENT_H2, ELEMENT_H3],
+    codeBlock: [ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE]
   }
 
   for (const key in enabledOptions) {
@@ -226,35 +226,31 @@ export const createPlateOptions = (
 }
 
 const resetBlockTypesCommonRule = {
-  types: [ELEMENT_BLOCKQUOTE, ELEMENT_TODO_LI],
+  types: [customTypes[ELEMENT_BLOCKQUOTE], customTypes[ELEMENT_CODE_BLOCK], ELEMENT_TODO_LI],
   defaultType: ELEMENT_PARAGRAPH
 }
 
-export const optionsResetBlockTypePlugin = (): ResetBlockTypePluginOptions => {
-  return {
-    rules: [
-      {
-        ...resetBlockTypesCommonRule,
-        hotkey: 'Enter',
-        predicate: isBlockAboveEmpty
-      },
-      {
-        ...resetBlockTypesCommonRule,
-        hotkey: 'Backspace',
-        predicate: isSelectionAtBlockStart
-      }
-    ]
-  }
+export const optionsResetBlockTypePlugin: ResetBlockTypePluginOptions = {
+  rules: [
+    {
+      ...resetBlockTypesCommonRule,
+      hotkey: 'Enter',
+      predicate: isBlockAboveEmpty
+    },
+    {
+      ...resetBlockTypesCommonRule,
+      hotkey: 'Backspace',
+      predicate: isSelectionAtBlockStart
+    }
+  ]
 }
 
-export const optionsSoftBreakPlugin = (): SoftBreakPluginOptions => {
-  return {
-    rules: [
-      {
-        hotkey: 'shift+enter'
-      }
-    ]
-  }
+export const optionsSoftBreakPlugin: SoftBreakPluginOptions = {
+  rules: [
+    {
+      hotkey: 'shift+enter'
+    }
+  ]
 }
 
 export const optionsExitBreakPlugin = (

@@ -41,7 +41,6 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     list: createListPlugin(),
     todoList: createTodoListPlugin(),
     quote: createBlockquotePlugin(),
-    code: createCodePlugin(),
     codeBlock: createCodeBlockPlugin(),
     color: createFontColorPlugin(),
     bgColor: createFontBackgroundColorPlugin(),
@@ -61,10 +60,10 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     createParagraphPlugin(),
     /** dnd */
     createNodeIdPlugin(),
-    createResetNodePlugin(optionsResetBlockTypePlugin(options)),
+    createResetNodePlugin(optionsResetBlockTypePlugin),
     /** break */
     createExitBreakPlugin(optionsExitBreakPlugin(options)),
-    createSoftBreakPlugin(optionsSoftBreakPlugin(options)),
+    createSoftBreakPlugin(optionsSoftBreakPlugin),
     /** backspace */
     createSelectOnBackspacePlugin({allow: [ELEMENT_MEDIA_EMBED, ELEMENT_IMAGE]})
   ]
@@ -72,6 +71,7 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
   for (const key in enabledOptions) {
     if (enabledOptions.basicMarks) {
       enabledPlugins.push(
+        createCodePlugin(),
         createBoldPlugin(),
         createItalicPlugin(),
         createUnderlinePlugin(),

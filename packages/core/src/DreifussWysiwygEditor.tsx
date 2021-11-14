@@ -60,7 +60,7 @@ export interface EnablePluginsProps {
   search?: boolean
   list?: boolean
   todoList?: boolean
-  code?: boolean
+  codeBlock?: boolean
   color?: boolean
   bgColor?: boolean
   align?: boolean
@@ -115,7 +115,7 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
       todoList: true,
       quote: true,
       quotationMarks: true,
-      code: false,
+      codeBlock: true,
       color: false,
       bgColor: false,
       align: true,
