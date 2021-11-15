@@ -270,15 +270,6 @@ export const optionsExitBreakPlugin = (
       query: {
         allow: [options?.[ELEMENT_IMAGE]?.type]
       }
-    },
-    {
-      hotkey: 'enter',
-      before: false,
-      query: {
-        start: true,
-        end: true,
-        allow: [options?.[ELEMENT_PARAGRAPH]?.type]
-      }
     }
   ]
 })
