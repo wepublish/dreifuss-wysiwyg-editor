@@ -77,7 +77,9 @@ export type DefaultPlatePluginKey =
 
 const customTypes = {
   [ELEMENT_BLOCKQUOTE]: 'block-quote',
-  [ELEMENT_CODE_BLOCK]: 'code-block'
+  [ELEMENT_CODE_BLOCK]: 'code-block',
+  [ELEMENT_TR]: 'table-row',
+  [ELEMENT_TD]: 'table-cell'
 }
 
 /**
@@ -138,12 +140,12 @@ export const createPlateOptions = (
     },
     [ELEMENT_TABLE]: {},
     [ELEMENT_TD]: {
-      type: 'table-cell',
-      defaultType: 'table-cell'
+      type: customTypes[ELEMENT_TD],
+      defaultType: customTypes[ELEMENT_TD]
     },
     [ELEMENT_TR]: {
-      type: 'table-row',
-      defaultType: 'table-row'
+      type: customTypes[ELEMENT_TR],
+      defaultType: customTypes[ELEMENT_TR]
     },
     [ELEMENT_TH]: {},
     [ELEMENT_TODO_LI]: {},
@@ -257,6 +259,9 @@ export const optionsExitBreakPlugin = (
   options: Record<DefaultPlatePluginKey, PlatePluginOptions>
 ): ExitBreakPluginOptions => ({
   rules: [
+    {
+      hotkey: 'mod+enter'
+    },
     {
       hotkey: 'enter',
       query: {

@@ -134,7 +134,7 @@ const DreifussWysiwygEditorDemo = () => (
           todoList: true,
           quote: true,
           quotationMarks: true,
-          code: true,
+          codeBlock: true,
           color: true,
           bgColor: true,
           align: true,
@@ -146,7 +146,7 @@ const DreifussWysiwygEditorDemo = () => (
           dnd: true
         }}
         onChange={e => {
-          console.log(e)
+          // console.log(e)
         }}
         id="two"
         value={value}
