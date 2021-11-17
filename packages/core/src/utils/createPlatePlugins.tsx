@@ -12,7 +12,6 @@ import {
   optionsResetBlockTypePlugin,
   optionsSoftBreakPlugin
 } from './createPlateOptions'
-import {createBasicElementPlugins} from '@udecode/plate-basic-elements'
 import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
 import {createHistoryPlugin, createReactPlugin} from '@udecode/plate-core'
 import {createImagePlugin, ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
@@ -37,7 +36,6 @@ import {EnablePluginsProps} from '../DreifussWysiwygEditor'
 export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
   const pluginsMap = {
     search: findReplace,
-    heading: createHeadingPlugin({levels: 3}),
     list: createListPlugin(),
     todoList: createTodoListPlugin(),
     quote: createBlockquotePlugin(),
@@ -58,6 +56,7 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     createReactPlugin(),
     createHistoryPlugin(),
     createParagraphPlugin(),
+    createHeadingPlugin({levels: 3}),
     /** dnd */
     createNodeIdPlugin(),
     createResetNodePlugin(optionsResetBlockTypePlugin),
@@ -68,21 +67,27 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     createSelectOnBackspacePlugin({allow: [ELEMENT_MEDIA_EMBED, ELEMENT_IMAGE]})
   ]
 
-  for (const key in enabledOptions) {
-    if (enabledOptions.basicMarks) {
-      enabledPlugins.push(
-        createCodePlugin(),
-        createBoldPlugin(),
-        createItalicPlugin(),
-        createUnderlinePlugin(),
-        createSubscriptPlugin(),
-        createSuperscriptPlugin(),
-        createStrikethroughPlugin(),
-        ...createBasicElementPlugins()
-      )
-    }
-    if (pluginsMap[key]) enabledPlugins.push(pluginsMap[key])
+  if (enabledOptions.basicMarks) {
+    enabledPlugins.push(
+      createCodePlugin(),
+      createBoldPlugin(),
+      createItalicPlugin(),
+      createUnderlinePlugin(),
+      createSubscriptPlugin(),
+      createSuperscriptPlugin(),
+      createStrikethroughPlugin()
+    )
   }
+  // Filter options to be enabled,
+  // And add their plugins if exist.
+  Object.entries(enabledOptions)
+    .filter(option => !!option[1])
+    .map(option => {
+      const [plugin] = option
+      if (pluginsMap[plugin]) {
+        enabledPlugins.push(pluginsMap[plugin])
+      }
+    })
 
   return enabledPlugins
 }

@@ -209,7 +209,8 @@ export const createPlateOptions = (
       MARK_UNDERLINE
     ],
     basicElements: [ELEMENT_H1, ELEMENT_H2, ELEMENT_H3],
-    codeBlock: [ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE]
+    codeBlock: [ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE],
+    highlight: [MARK_HIGHLIGHT]
   }
 
   for (const key in enabledOptions) {
