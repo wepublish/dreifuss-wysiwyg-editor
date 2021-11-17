@@ -228,7 +228,7 @@ export const createPlateOptions = (
 }
 
 const resetBlockTypesCommonRule = {
-  types: [customTypes[ELEMENT_BLOCKQUOTE], customTypes[ELEMENT_CODE_BLOCK], ELEMENT_TODO_LI],
+  types: [customTypes[ELEMENT_BLOCKQUOTE], ELEMENT_TODO_LI],
   defaultType: ELEMENT_PARAGRAPH
 }
 

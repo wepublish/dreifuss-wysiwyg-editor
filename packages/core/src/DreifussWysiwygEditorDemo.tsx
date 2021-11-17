@@ -6,11 +6,16 @@ import {CustomImageToolbarProps} from '@dreifuss-wysiwyg-editor/image-ui'
 const value: any = [
   {type: 'action_item', checked: true, children: [{text: 'Slide to the right.'}], id: 10054},
   {type: 'action_item', children: [{text: 'Criss-cross.'}], id: 10055},
-  // {
-  //   type: 'paragraph',
-  //   children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}]
-  // },
-  // {type: 'paragraph', children: [{text: 'Bold: Make the selected text bold.', bold: true}]}
+  {
+    type: 'paragraph',
+    children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}],
+    id: 10052
+  },
+  {
+    type: 'paragraph',
+    children: [{text: 'Bold: Make the selected text bold.', code: true}],
+    id: 10055
+  },
   // {type: 'paragraph', children: [{text: 'Italic: Make the selected text italic.', italic: true}]},
   // {
   //   type: 'paragraph',
@@ -85,9 +90,9 @@ const value: any = [
   {
     type: 'paragraph',
     children: [
-      {text: 'Bold: ', bold: true},
-      // {bold: true, text: 'Make', color: '#c21414'},
-      {bold: true, text: ' the selected text bold.'}
+      {text: 'Bold: '},
+      {text: 'Make', color: '#c21414'},
+      {text: ' the selected text bold.'}
     ]
   }
 ]
@@ -146,7 +151,7 @@ const DreifussWysiwygEditorDemo = () => (
           dnd: false
         }}
         onChange={e => {
-          // console.log(e)
+          console.log(e)
         }}
         id="two"
         value={value}
