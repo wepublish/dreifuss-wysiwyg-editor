@@ -138,12 +138,12 @@ const DreifussWysiwygEditorDemo = () => (
           color: true,
           bgColor: true,
           align: true,
-          table: {tableBorderColor: false, tableBgColor: true},
+          table: {tableBorderColor: true, tableBgColor: true},
           emoji: true,
           link: true,
           image: true,
           media: true,
-          dnd: true
+          dnd: false
         }}
         onChange={e => {
           // console.log(e)
