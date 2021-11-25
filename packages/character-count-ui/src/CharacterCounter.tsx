@@ -1,7 +1,7 @@
 import React from 'react'
 import {Node} from 'slate'
 import {toArray} from 'lodash'
-import {useStoreEditorRef} from '@udecode/plate-core'
+import {useStoreEditorState} from '@udecode/plate-core'
 import {TEditor} from '@dreifuss-wysiwyg-editor/common'
 
 const getTextString = (editor: TEditor) => {
@@ -25,7 +25,7 @@ const calculateCharCount = (editor?: TEditor) => {
 }
 
 export function getCharacterCount(id: string): number {
-  const editor = useStoreEditorRef(id)
+  const editor = useStoreEditorState(id)
   return calculateCharCount(editor)
 }
 
