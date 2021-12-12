@@ -88,6 +88,8 @@
     "@dreifuss-wysiwyg-editor/common": "^1.0.2-alpha.1",
     "@dreifuss-wysiwyg-editor/link": "^1.0.2-alpha.1",
     "@dreifuss-wysiwyg-editor/link-ui": "^1.0.2-alpha.1",
+    "@dreifuss-wysiwyg-editor/design": "0.0.0",
+    "@dreifuss-wysiwyg-editor/design-ui": "0.0.0",
     "@dreifuss-wysiwyg-editor/image": "0.0.0",
     "@dreifuss-wysiwyg-editor/image-ui": "0.0.0",
     "@dreifuss-wysiwyg-editor/table": "0.0.0",
