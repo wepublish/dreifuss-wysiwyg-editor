@@ -116,7 +116,11 @@ export const ImageElement = (props: ImageElementProps) => {
       {...attributes}
       css={styles.root.css}
       className={styles.root.className}
-      style={{margin: 10, width: imageSizeMap[imageSize], float: imageAlignment ?? undefined}}>
+      style={{
+        margin: 'auto 10px',
+        width: imageSizeMap[imageSize],
+        float: imageAlignment ?? undefined
+      }}>
       <div contentEditable={false}>
         <figure
           css={styles.figure?.css}
