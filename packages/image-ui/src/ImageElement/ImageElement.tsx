@@ -1,4 +1,12 @@
-import React, {ChangeEventHandler, Dispatch, useCallback, useEffect, useMemo, useState} from 'react'
+import React, {
+  ChangeEventHandler,
+  Dispatch,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState
+} from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
 import {setNodes} from '@udecode/plate-common'
 import {useEventEditorId, useStoreEditorState} from '@udecode/plate-core'
@@ -6,7 +14,8 @@ import {Node} from 'slate'
 import {ReactEditor, useFocused, useSelected} from 'slate-react'
 import {getImageElementStyles} from './ImageElement.styles'
 import {ImageElementProps} from './ImageElement.types'
-import {ImageSizeType} from '@dreifuss-wysiwyg-editor/image'
+import {ImageSizeType, ImageAlignmentType} from '@dreifuss-wysiwyg-editor/image'
+import {AlignRightIcon, AlignLeftIcon, AlignJustifyIcon} from '@dreifuss-wysiwyg-editor/common'
 
 export const imageSizeMap = {
   [ImageSizeType.fullScreen]: '100%',
@@ -38,6 +47,27 @@ const ImageSizeButton = ({
   )
 }
 
+const ImageAlignButton = ({
+  icon: Icon,
+  onClick,
+  styles,
+  isActive
+}: {
+  icon: ReactNode
+  onClick: Dispatch<any>
+  styles: any
+  isActive: boolean
+}) => (
+  <button
+    css={styles?.css}
+    className={`${styles?.className} ${isActive && `slate-ToolbarButton-active`}`}
+    onClick={onClick}>
+    <span style={{width: 20}}>
+      <Icon />
+    </span>
+  </button>
+)
+
 export const ImageElement = (props: ImageElementProps) => {
   const {attributes, children, element, nodeProps, caption = {}, draggable} = props
 
@@ -45,6 +75,7 @@ export const ImageElement = (props: ImageElementProps) => {
 
   const {
     url,
+    align,
     size = ImageSizeType.large,
     caption: nodeCaption = [{children: [{text: ''}]}]
   } = element
@@ -54,10 +85,17 @@ export const ImageElement = (props: ImageElementProps) => {
 
   const [imageSize, setImageSize] = useState<ImageSizeType>(size || ImageSizeType.large)
 
+  const [imageAlignment, setImageAlignment] = useState<ImageAlignmentType | undefined>(align)
+
   useEffect(() => {
     const path = ReactEditor.findPath(editor, element)
     setNodes(editor, {size: imageSize}, {at: path})
   }, [imageSize])
+
+  useEffect(() => {
+    const path = ReactEditor.findPath(editor, element)
+    setNodes(editor, {align: imageAlignment}, {at: path})
+  }, [imageAlignment])
 
   const styles = getImageElementStyles({...props, focused, selected})
 
@@ -74,41 +112,70 @@ export const ImageElement = (props: ImageElementProps) => {
   }, [nodeCaption])
 
   return (
-    <div {...attributes} css={styles.root.css} className={styles.root.className}>
+    <div
+      {...attributes}
+      css={styles.root.css}
+      className={styles.root.className}
+      style={{margin: 10, width: imageSizeMap[imageSize], float: imageAlignment ?? undefined}}>
       <div contentEditable={false}>
         <figure
           css={styles.figure?.css}
           className={`group ${styles.figure?.className}`}
-          style={{width: imageSizeMap[imageSize]}}>
-          <div css={styles.optionsToolbar.css} className={styles.optionsToolbar.className}>
-            <ImageSizeButton
-              type={ImageSizeType.fullScreen}
-              label="screen"
-              onClick={setImageSize}
-              styles={styles.optionsToolbarButton}
-              isActive={imageSize === ImageSizeType.fullScreen}
-            />
-            <ImageSizeButton
-              type={ImageSizeType.large}
-              label="lg"
-              onClick={setImageSize}
-              styles={styles.optionsToolbarButton}
-              isActive={imageSize === ImageSizeType.large}
-            />
-            <ImageSizeButton
-              type={ImageSizeType.medium}
-              label="md"
-              onClick={setImageSize}
-              styles={styles.optionsToolbarButton}
-              isActive={imageSize === ImageSizeType.medium}
-            />
-            <ImageSizeButton
-              type={ImageSizeType.small}
-              label="sm"
-              onClick={setImageSize}
-              styles={styles.optionsToolbarButton}
-              isActive={imageSize === ImageSizeType.small}
-            />
+          style={{width: '100%'}}>
+          <div style={{display: 'flex'}}>
+            <div css={styles.optionsToolbar.css} className={styles.optionsToolbar.className}>
+              <ImageSizeButton
+                type={ImageSizeType.fullScreen}
+                label="screen"
+                onClick={setImageSize}
+                styles={styles.optionsToolbarButton}
+                isActive={imageSize === ImageSizeType.fullScreen}
+              />
+              <ImageSizeButton
+                type={ImageSizeType.large}
+                label="lg"
+                onClick={setImageSize}
+                styles={styles.optionsToolbarButton}
+                isActive={imageSize === ImageSizeType.large}
+              />
+              <ImageSizeButton
+                type={ImageSizeType.medium}
+                label="md"
+                onClick={setImageSize}
+                styles={styles.optionsToolbarButton}
+                isActive={imageSize === ImageSizeType.medium}
+              />
+              <ImageSizeButton
+                type={ImageSizeType.small}
+                label="sm"
+                onClick={setImageSize}
+                styles={styles.optionsToolbarButton}
+                isActive={imageSize === ImageSizeType.small}
+              />
+            </div>
+            <div
+              style={{right: '16px'}}
+              css={styles.optionsToolbar.css}
+              className={styles.optionsToolbar.className}>
+              <ImageAlignButton
+                icon={AlignLeftIcon}
+                onClick={() => setImageAlignment('left')}
+                styles={styles.optionsToolbarButton}
+                isActive={imageAlignment === ImageAlignmentType.left}
+              />
+              <ImageAlignButton
+                icon={AlignRightIcon}
+                onClick={() => setImageAlignment('right')}
+                styles={styles.optionsToolbarButton}
+                isActive={imageAlignment === ImageAlignmentType.right}
+              />
+              <ImageAlignButton
+                icon={AlignJustifyIcon}
+                onClick={() => setImageAlignment(null)}
+                styles={styles.optionsToolbarButton}
+                isActive={imageAlignment === ImageAlignmentType.justify}
+              />
+            </div>
           </div>
           <img
             data-testid="ImageElementImage"

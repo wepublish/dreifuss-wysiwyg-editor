@@ -256,7 +256,12 @@ export const SubscriptIcon = () => (
 )
 
 export const AlignLeftIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor">
+  <svg
+    width="1rem"
+    height="1rem"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 640 512"
+    fill="currentColor">
     <path d="M16 208h416c8.801 0 16-7.199 16-15.1S440.8 176 432 176h-416C7.199 176 0 183.2 0 192S7.199 208 16 208zM16 80h256c8.801 0 16-7.199 16-15.1S280.8 48 272 48h-256C7.199 48 0 55.2 0 64S7.199 80 16 80zM16 336h256c8.801 0 16-7.199 16-15.1S280.8 304 272 304h-256C7.199 304 0 311.2 0 320S7.199 336 16 336zM432 432h-416c-8.801 0-16 7.199-16 16S7.199 464 16 464h416c8.801 0 16-7.199 16-15.1S440.8 432 432 432z" />
   </svg>
 )
@@ -268,13 +273,23 @@ export const AlignCenterIcon = () => (
 )
 
 export const AlignRightIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor">
+  <svg
+    width="1rem"
+    height="1rem"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 640 512"
+    fill="currentColor">
     <path d="M176 80h256c8.801 0 16-7.199 16-15.1S440.8 48 432 48h-256C167.2 48 160 55.2 160 64S167.2 80 176 80zM432 432h-416c-8.799 0-16 7.199-16 16S7.201 464 16 464h416c8.801 0 16-7.199 16-15.1S440.8 432 432 432zM432 176h-416C7.201 176 0 183.2 0 192S7.201 208 16 208h416c8.801 0 16-7.199 16-15.1S440.8 176 432 176zM432 304h-256C167.2 304 160 311.2 160 320S167.2 336 176 336h256c8.801 0 16-7.199 16-15.1S440.8 304 432 304z" />
   </svg>
 )
 
 export const AlignJustifyIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor">
+  <svg
+    width="1rem"
+    height="1rem"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 640 512"
+    fill="currentColor">
     <path d="M432 432h-416c-8.801 0-16 7.199-16 16S7.199 464 16 464h416c8.801 0 16-7.199 16-15.1S440.8 432 432 432zM16 80h416c8.801 0 16-7.199 16-15.1S440.8 48 432 48h-416C7.199 48 0 55.2 0 64S7.199 80 16 80zM432 176h-416C7.199 176 0 183.2 0 192S7.199 208 16 208h416c8.801 0 16-7.199 16-15.1S440.8 176 432 176zM432 304h-416C7.199 304 0 311.2 0 320S7.199 336 16 336h416c8.801 0 16-7.199 16-15.1S440.8 304 432 304z" />
   </svg>
 )
