@@ -51,14 +51,18 @@ const ImageAlignButton = ({
   icon: Icon,
   onClick,
   styles,
-  isActive
+  isActive,
+  disabled = false
 }: {
   icon: ReactNode
   onClick: Dispatch<any>
   styles: any
   isActive: boolean
+  disabled?: boolean
 }) => (
   <button
+    style={{cursor: !disabled ? 'pointer' : 'auto'}}
+    disabled={disabled}
     css={styles?.css}
     className={`${styles?.className} ${isActive && `slate-ToolbarButton-active`}`}
     onClick={onClick}>
@@ -87,15 +91,30 @@ export const ImageElement = (props: ImageElementProps) => {
 
   const [imageAlignment, setImageAlignment] = useState<ImageAlignmentType | undefined>(align)
 
-  useEffect(() => {
-    const path = ReactEditor.findPath(editor, element)
-    setNodes(editor, {size: imageSize}, {at: path})
-  }, [imageSize])
+  const [disableAlignmentBtn, setDisableAlignmentBtn] = useState<boolean>(true)
 
   useEffect(() => {
     const path = ReactEditor.findPath(editor, element)
     setNodes(editor, {align: imageAlignment}, {at: path})
   }, [imageAlignment])
+
+  useEffect(() => {
+    const path = ReactEditor.findPath(editor, element)
+    setNodes(editor, {size: imageSize}, {at: path})
+  }, [imageSize])
+
+  /**
+   * If image size = large | screen,
+   * Then no need for alignment buttons or its prop in Node
+   * */
+  useEffect(() => {
+    if ([ImageSizeType.large, ImageSizeType.fullScreen].includes(imageSize)) {
+      setImageAlignment(undefined)
+      setDisableAlignmentBtn(true)
+    } else {
+      setDisableAlignmentBtn(false)
+    }
+  }, [imageSize])
 
   const styles = getImageElementStyles({...props, focused, selected})
 
@@ -163,18 +182,21 @@ export const ImageElement = (props: ImageElementProps) => {
               className={styles.optionsToolbar.className}>
               <ImageAlignButton
                 icon={AlignLeftIcon}
+                disabled={disableAlignmentBtn}
                 onClick={() => setImageAlignment('left')}
                 styles={styles.optionsToolbarButton}
                 isActive={imageAlignment === ImageAlignmentType.left}
               />
               <ImageAlignButton
                 icon={AlignRightIcon}
+                disabled={disableAlignmentBtn}
                 onClick={() => setImageAlignment('right')}
                 styles={styles.optionsToolbarButton}
                 isActive={imageAlignment === ImageAlignmentType.right}
               />
               <ImageAlignButton
                 icon={AlignJustifyIcon}
+                disabled={disableAlignmentBtn}
                 onClick={() => setImageAlignment(null)}
                 styles={styles.optionsToolbarButton}
                 isActive={imageAlignment === ImageAlignmentType.justify}
