@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Node} from 'slate'
 import {toArray} from 'lodash'
 import {useStoreEditorState} from '@udecode/plate-core'
@@ -24,13 +24,14 @@ const calculateCharCount = (editor?: TEditor) => {
   return toArray(getTextString(editor)).length
 }
 
-export function getCharacterCount(id: string): number {
+export const CharCountToolbar = ({id, getCharsCount}: {id: string; getCharsCount: any}) => {
   const editor = useStoreEditorState(id)
-  return calculateCharCount(editor)
-}
 
-export const CharCountToolbar = ({id}: {id: string}) => {
-  const charCount = getCharacterCount(id)
+  const charCount = calculateCharCount(editor)
+
+  useEffect(() => {
+    if (getCharsCount) getCharsCount(charCount)
+  }, [charCount])
 
   return <span>{charCount}</span>
 }

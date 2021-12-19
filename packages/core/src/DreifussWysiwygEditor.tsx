@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect} from 'react'
+import React, {ReactNode} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/plate-toolbar'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
@@ -14,7 +14,7 @@ import {
   EditorValue
 } from '@dreifuss-wysiwyg-editor/common'
 import {createPlateComponents} from './utils/createPlateComponents'
-import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
+import {CharCountToolbar} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {Plate, TNode, useStoreEditorRef} from '@udecode/plate-core'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
@@ -169,12 +169,6 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
       : {fontFamily: 'Helvetica'}
   }
 
-  const charCount = getCharacterCount(id)
-
-  useEffect(() => {
-    if (charactersCount) charactersCount(charCount)
-  }, [charCount])
-
   return (
     <div className="dreifuss-wrapper">
       <Plate
@@ -290,7 +284,13 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
         )}
         {showCharactersCount && (
           <p style={{display: 'flex', justifyContent: 'right', alignItems: 'center'}}>
-            <CharactersCountIcon /> <CharCountToolbar id={id} />
+            <CharactersCountIcon />
+            <CharCountToolbar
+              getCharsCount={count => {
+                if (charactersCount) charactersCount(count)
+              }}
+              id={id}
+            />
           </p>
         )}
       </Plate>
