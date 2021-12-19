@@ -4,19 +4,26 @@ import {DreifussWysiwygEditor} from './index'
 import {CustomImageToolbarProps} from '@dreifuss-wysiwyg-editor/image-ui'
 
 const value: any = [
-  {type: 'action_item', checked: true, children: [{text: 'Slide to the right.'}], id: 10054},
-  {type: 'action_item', children: [{text: 'Criss-cross.'}], id: 10055},
+  {type: 'action_item', checked: true, children: [{text: 'Slide to the right.'}]},
+  {type: 'action_item', children: [{text: 'Criss-cross.'}]},
   {
     type: 'paragraph',
-    children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}],
-    id: 10052
+    children: [
+      {text: ''},
+      {type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]},
+      {text: ''}
+    ]
   },
+  {type: 'paragraph', children: [{text: ''}]},
   {
-    type: 'paragraph',
-    children: [{text: 'Bold: Make the selected text bold.', code: true}],
-    id: 10055
+    type: 'img',
+    url: 'https://picsum.photos/500/300',
+    size: 'medium',
+    children: [{text: ''}],
+    align: 'right'
   },
-
+  {type: 'paragraph', children: [{text: ''}]},
+  {type: 'paragraph', children: [{text: 'Bold: Make the selected text bold.', code: true}]},
   {type: 'paragraph', children: [{text: 'Italic: Make the selected text italic.', italic: true}]},
   {
     type: 'paragraph',

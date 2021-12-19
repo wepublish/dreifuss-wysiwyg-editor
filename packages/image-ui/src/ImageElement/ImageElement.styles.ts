@@ -66,7 +66,7 @@ export const getImageElementStyles = (props: ImageElementStyleProps) => {
         `
       ],
       optionsToolbarButton: [
-        tw`bg-transparent text-gray-300 hover:text-white`,
+        tw`bg-transparent text-gray-300 hover:text-white cursor-pointer`,
         css`
           border: 0px;
         `

@@ -7,9 +7,15 @@ export enum ImageSizeType {
   small = 'small'
 }
 
+export enum ImageAlignmentType {
+  right = 'right',
+  left = 'left'
+}
+
 export interface ImageNodeData {
   url: string
   size: ImageSizeType
+  align?: ImageAlignmentType
   caption?: TDescendant[]
 }
 
