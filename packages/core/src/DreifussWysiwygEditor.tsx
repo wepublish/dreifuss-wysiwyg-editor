@@ -1,14 +1,12 @@
 import React, {ReactNode} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/plate-toolbar'
-import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {createPlateOptions} from './utils/createPlateOptions'
 import {
   CharactersCountIcon,
   Modal,
   ImageIcon,
   SearchIcon,
-  MediaEmbedIcon,
   EmojiPicker,
   EmojiIcon,
   EditorValue
@@ -25,7 +23,6 @@ import {QuotationMarksMenu} from '@dreifuss-wysiwyg-editor/quotation-mark-ui'
 import {ELEMENT_QUOTATION_MARK} from '@dreifuss-wysiwyg-editor/quotation-mark'
 import {useFindReplacePlugin, MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
 import {ToolbarSearchHighlight} from '@dreifuss-wysiwyg-editor/find-replace-ui'
-import {MediaEmbedToolbar} from '@dreifuss-wysiwyg-editor/media-embed-ui'
 import {
   ToolbarLinkButton,
   ToolbarBalloon,
@@ -38,9 +35,6 @@ import {
   ToolbarFontColorButton,
   ToolbarTodoListButton
 } from './Toolbar'
-import {DndProvider} from 'react-dnd'
-import {HTML5Backend} from 'react-dnd-html5-backend'
-import {withStyledDraggables} from './utils/WithStyledDraggables'
 import {plugins} from './utils/createPlatePlugins'
 
 export interface EditableProps {
@@ -56,7 +50,6 @@ export interface Toolbars {
 }
 
 export interface EnablePluginsProps {
-  dnd?: boolean
   search?: boolean
   list?: boolean
   todoList?: boolean
@@ -67,7 +60,6 @@ export interface EnablePluginsProps {
   emoji?: boolean
   link?: boolean
   image?: boolean
-  media?: boolean
   quote?: boolean
   quotationMarks?: boolean
   basicMarks?: boolean
@@ -123,9 +115,7 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
       emoji: false,
       link: false,
       image: false,
-      media: false,
-      search: true,
-      dnd: false
+      search: true
     }
   }
 
@@ -147,9 +137,7 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
 
   const {setSearch, plugin: findReplacePlugin} = useFindReplacePlugin()
 
-  const components = enablePlugins.dnd
-    ? withStyledDraggables(createPlateComponents(enablePlugins))
-    : createPlateComponents(enablePlugins)
+  const components = createPlateComponents(enablePlugins)
 
   const options = createPlateOptions(enablePlugins)
 
@@ -267,14 +255,6 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
               </>
             )}
 
-            {enablePlugins.media && (
-              <>
-                <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
-                  <MediaEmbedToolbar editorRef={editorRef} />
-                </Modal>
-              </>
-            )}
-
             {enablePlugins.search && (
               <Modal type={MARK_SEARCH_HIGHLIGHT} Icon={<SearchIcon />}>
                 <ToolbarSearchHighlight setSearch={setSearch} />
@@ -299,13 +279,5 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
 }
 
 export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOptions) {
-  if (props?.enablePlugins?.dnd) {
-    return (
-      <DndProvider backend={HTML5Backend}>
-        <DreifussEditor {...props} />
-      </DndProvider>
-    )
-  }
-
   return <DreifussEditor {...props} />
 }

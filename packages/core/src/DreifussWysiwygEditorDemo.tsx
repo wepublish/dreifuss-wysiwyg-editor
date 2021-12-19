@@ -142,9 +142,7 @@ const DreifussWysiwygEditorDemo = () => (
           table: {tableBorderColor: true, tableBgColor: true},
           emoji: true,
           link: true,
-          image: true,
-          media: true,
-          dnd: false
+          image: true
         }}
         onChange={e => {
           // console.log(e)

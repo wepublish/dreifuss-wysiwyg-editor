@@ -29,7 +29,6 @@ import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, KEYS_HEADING} from '@udecode/plate-h
 import {DEFAULTS_HIGHLIGHT, MARK_HIGHLIGHT} from '@udecode/plate-highlight'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL, ELEMENT_LIC} from '@udecode/plate-list'
-import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
@@ -52,7 +51,6 @@ export type DefaultPlatePluginKey =
   | typeof ELEMENT_H3
   | typeof ELEMENT_LI
   | typeof ELEMENT_LINK
-  | typeof ELEMENT_MEDIA_EMBED
   | typeof ELEMENT_OL
   | typeof ELEMENT_PARAGRAPH
   | typeof ELEMENT_TABLE
@@ -130,7 +128,6 @@ export const createPlateOptions = (
     [ELEMENT_LINK]: {
       hotkey: ['ctrl+v', 'mod+v']
     },
-    [ELEMENT_MEDIA_EMBED]: {},
     [ELEMENT_OL]: {
       type: 'ordered-list',
       defaultType: 'ordered-list'
@@ -196,7 +193,6 @@ export const createPlateOptions = (
     image: [ELEMENT_IMAGE],
     color: [MARK_COLOR],
     bgColor: [MARK_BG_COLOR],
-    media: [ELEMENT_MEDIA_EMBED],
     link: [ELEMENT_LINK],
     quote: [ELEMENT_BLOCKQUOTE],
     basicMarks: [

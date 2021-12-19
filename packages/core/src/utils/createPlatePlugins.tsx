@@ -5,11 +5,9 @@ import {createHighlightPlugin} from '@udecode/plate-highlight'
 import {createParagraphPlugin} from '@udecode/plate-paragraph'
 import {createCodeBlockPlugin} from '@udecode/plate-code-block'
 import {createBlockquotePlugin} from '@udecode/plate-block-quote'
-import {createMediaEmbedPlugin, ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {
   createPlateOptions,
   optionsExitBreakPlugin,
-  optionsResetBlockTypePlugin,
   optionsSoftBreakPlugin
 } from './createPlateOptions'
 import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
@@ -27,10 +25,7 @@ import {
   createSubscriptPlugin,
   createSuperscriptPlugin
 } from '@udecode/plate-basic-marks'
-import {createDndPlugin} from '@udecode/plate-dnd'
-import {createNodeIdPlugin} from '@udecode/plate-node-id'
 import {createExitBreakPlugin, createSoftBreakPlugin} from '@udecode/plate-break'
-import {createResetNodePlugin} from '@udecode/plate-reset-node'
 import {EnablePluginsProps} from '../DreifussWysiwygEditor'
 
 export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
@@ -46,9 +41,7 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     table: createTablePlugin(),
     link: createLinkPlugin(),
     image: createImagePlugin(),
-    media: createMediaEmbedPlugin(),
-    highlight: createHighlightPlugin(),
-    dnd: createDndPlugin()
+    highlight: createHighlightPlugin()
   }
   const options = createPlateOptions(enabledOptions)
 
@@ -57,14 +50,11 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     createHistoryPlugin(),
     createParagraphPlugin(),
     createHeadingPlugin({levels: 3}),
-    /** dnd */
-    createNodeIdPlugin(),
-    createResetNodePlugin(optionsResetBlockTypePlugin),
     /** break */
     createExitBreakPlugin(optionsExitBreakPlugin(options)),
     createSoftBreakPlugin(optionsSoftBreakPlugin),
     /** backspace */
-    createSelectOnBackspacePlugin({allow: [ELEMENT_MEDIA_EMBED, ELEMENT_IMAGE]})
+    createSelectOnBackspacePlugin({allow: [ELEMENT_IMAGE]})
   ]
 
   if (enabledOptions.basicMarks) {

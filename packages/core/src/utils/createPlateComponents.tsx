@@ -28,8 +28,6 @@ import {LinkElement} from '@dreifuss-wysiwyg-editor/link-ui'
 import {ImageElement} from '@dreifuss-wysiwyg-editor/image-ui'
 import {ELEMENT_LI, ELEMENT_OL, ELEMENT_UL, ELEMENT_TODO_LI} from '@udecode/plate-list'
 import {TodoListElement} from '@udecode/plate-list-ui'
-import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
-import {MediaEmbedElement} from '@dreifuss-wysiwyg-editor/media-embed-ui'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 import {TableElement, TableDataElement} from '@dreifuss-wysiwyg-editor/table-ui'
@@ -112,7 +110,6 @@ export const createPlateComponents = (
     }),
     [ELEMENT_LI]: withProps(StyledElement, {as: 'li'}),
     [ELEMENT_LINK]: LinkElement,
-    [ELEMENT_MEDIA_EMBED]: MediaEmbedElement,
     [ELEMENT_UL]: withProps(StyledElement, {
       as: 'ul',
       styles: {
@@ -233,7 +230,6 @@ export const createPlateComponents = (
     image: [ELEMENT_IMAGE],
     color: [MARK_COLOR],
     bgColor: [MARK_BG_COLOR],
-    media: [ELEMENT_MEDIA_EMBED],
     link: [ELEMENT_LINK],
     basicMarks: [
       MARK_CODE,
