@@ -154,8 +154,7 @@ const DreifussWysiwygEditorDemo = () => (
           dnd: false
         }}
         onChange={e => {
-          console.log(e)
-          // console.log(JSON.stringify(e))
+          // console.log(e)
         }}
         id="two"
         value={value}
