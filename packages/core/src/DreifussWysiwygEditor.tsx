@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect} from 'react'
+import React, {ReactNode} from 'react'
 import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/plate-toolbar'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
@@ -14,7 +14,7 @@ import {
   EditorValue
 } from '@dreifuss-wysiwyg-editor/common'
 import {createPlateComponents} from './utils/createPlateComponents'
-import {CharCountToolbar, getCharacterCount} from '@dreifuss-wysiwyg-editor/character-count-ui'
+import {CharCountToolbar} from '@dreifuss-wysiwyg-editor/character-count-ui'
 import {Plate, TNode, useStoreEditorRef} from '@udecode/plate-core'
 import {ToolbarLink} from '@dreifuss-wysiwyg-editor/link-ui'
 import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
@@ -35,7 +35,8 @@ import {
   ToolbarListButtons,
   ToolbarTableButtons,
   ToolbarFontBgButton,
-  ToolbarFontColorButton
+  ToolbarFontColorButton,
+  ToolbarTodoListButton
 } from './Toolbar'
 import {DndProvider} from 'react-dnd'
 import {HTML5Backend} from 'react-dnd-html5-backend'
@@ -58,7 +59,8 @@ export interface EnablePluginsProps {
   dnd?: boolean
   search?: boolean
   list?: boolean
-  code?: boolean
+  todoList?: boolean
+  codeBlock?: boolean
   color?: boolean
   bgColor?: boolean
   align?: boolean
@@ -110,10 +112,12 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
       basicElements: true,
       basicMarks: true,
       list: true,
+      todoList: true,
       quote: true,
       quotationMarks: true,
-      code: false,
+      codeBlock: true,
       color: false,
+      bgColor: false,
       align: true,
       table: {tableBorderColor: false, tableBgColor: false},
       emoji: false,
@@ -165,12 +169,6 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
       : {fontFamily: 'Helvetica'}
   }
 
-  const charCount = getCharacterCount(id)
-
-  useEffect(() => {
-    if (charactersCount) charactersCount(charCount)
-  }, [charCount])
-
   return (
     <div className="dreifuss-wrapper">
       <Plate
@@ -197,9 +195,13 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
               </>
             )}
 
-            {enablePlugins.list && (
+            {enablePlugins.list && <ToolbarListButtons editor={editorRef} />}
+
+            {!enablePlugins.todoList && <Divider type={DividerType.vertical} />}
+
+            {enablePlugins.todoList && (
               <>
-                <ToolbarListButtons editor={editorRef} />
+                <ToolbarTodoListButton editor={editorRef} />
                 <Divider type={DividerType.vertical} />
               </>
             )}
@@ -216,16 +218,14 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
                 <Modal Icon={<ToolbarFontColorButton editor={editorRef} />}>
                   <FontColorToolbar type={MARK_COLOR} />
                 </Modal>
-                <Divider type={DividerType.vertical} />
               </>
             )}
 
-            {enablePlugins.color && (
+            {enablePlugins.bgColor && (
               <>
                 <Modal Icon={<ToolbarFontBgButton editor={editorRef} />}>
                   <FontColorToolbar type={MARK_BG_COLOR} />
                 </Modal>
-                <Divider type={DividerType.vertical} />
               </>
             )}
 
@@ -248,7 +248,6 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
                 <Modal type="EMOJI" Icon={<EmojiIcon />}>
                   <EmojiPicker />
                 </Modal>
-                <Divider type={DividerType.vertical} />
               </>
             )}
 
@@ -257,7 +256,6 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
                 <Modal Icon={<ToolbarLinkButton editor={editorRef} />}>
                   <ToolbarLink />
                 </Modal>
-                <Divider type={DividerType.vertical} />
               </>
             )}
 
@@ -274,7 +272,6 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
                 <Modal type={ELEMENT_MEDIA_EMBED} Icon={<MediaEmbedIcon />}>
                   <MediaEmbedToolbar editorRef={editorRef} />
                 </Modal>
-                <Divider type={DividerType.vertical} />
               </>
             )}
 
@@ -287,7 +284,13 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
         )}
         {showCharactersCount && (
           <p style={{display: 'flex', justifyContent: 'right', alignItems: 'center'}}>
-            <CharactersCountIcon /> <CharCountToolbar id={id} />
+            <CharactersCountIcon />
+            <CharCountToolbar
+              getCharsCount={count => {
+                if (charactersCount) charactersCount(count)
+              }}
+              id={id}
+            />
           </p>
         )}
       </Plate>

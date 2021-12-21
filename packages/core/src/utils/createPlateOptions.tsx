@@ -73,6 +73,14 @@ export type DefaultPlatePluginKey =
   | typeof MARK_UNDERLINE
   | typeof ELEMENT_IMAGE
   | typeof MARK_COLOR
+  | typeof MARK_BG_COLOR
+
+const customTypes = {
+  [ELEMENT_BLOCKQUOTE]: 'block-quote',
+  [ELEMENT_CODE_BLOCK]: 'code-block',
+  [ELEMENT_TR]: 'table-row',
+  [ELEMENT_TD]: 'table-cell'
+}
 
 /**
  * Get slate plugins options.
@@ -84,17 +92,17 @@ export const createPlateOptions = (
 ) => {
   const options: Omit<
     Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>>,
-    typeof ELEMENT_PARAGRAPH | typeof MARK_COLOR
+    typeof ELEMENT_PARAGRAPH
   > = {
     [ELEMENT_ALIGN_CENTER]: {},
     [ELEMENT_ALIGN_JUSTIFY]: {},
     [ELEMENT_ALIGN_LEFT]: {},
     [ELEMENT_ALIGN_RIGHT]: {},
     [ELEMENT_BLOCKQUOTE]: {
-      type: 'block-quote'
+      type: customTypes[ELEMENT_BLOCKQUOTE]
     },
     [ELEMENT_CODE_BLOCK]: {
-      type: 'code-block'
+      type: customTypes[ELEMENT_CODE_BLOCK]
     },
     [ELEMENT_CODE_LINE]: {
       type: 'code-line'
@@ -132,12 +140,12 @@ export const createPlateOptions = (
     },
     [ELEMENT_TABLE]: {},
     [ELEMENT_TD]: {
-      type: 'table-cell',
-      defaultType: 'table-cell'
+      type: customTypes[ELEMENT_TD],
+      defaultType: customTypes[ELEMENT_TD]
     },
     [ELEMENT_TR]: {
-      type: 'table-row',
-      defaultType: 'table-row'
+      type: customTypes[ELEMENT_TR],
+      defaultType: customTypes[ELEMENT_TR]
     },
     [ELEMENT_TH]: {},
     [ELEMENT_TODO_LI]: {},
@@ -168,7 +176,9 @@ export const createPlateOptions = (
     [MARK_UNDERLINE]: {
       ...DEFAULTS_UNDERLINE
     },
-    [ELEMENT_IMAGE]: {}
+    [ELEMENT_IMAGE]: {type: ELEMENT_IMAGE},
+    [MARK_COLOR]: {},
+    [MARK_BG_COLOR]: {}
   }
 
   const workingOptions: Record<DefaultPlatePluginKey, Partial<PlatePluginOptions>> = {
@@ -190,6 +200,7 @@ export const createPlateOptions = (
     link: [ELEMENT_LINK],
     quote: [ELEMENT_BLOCKQUOTE],
     basicMarks: [
+      MARK_CODE,
       MARK_BOLD,
       MARK_ITALIC,
       MARK_STRIKETHROUGH,
@@ -197,14 +208,9 @@ export const createPlateOptions = (
       MARK_SUPERSCRIPT,
       MARK_UNDERLINE
     ],
-    basicElements: [
-      ELEMENT_H1,
-      ELEMENT_H2,
-      ELEMENT_H3,
-      ELEMENT_BLOCKQUOTE,
-      ELEMENT_CODE_BLOCK,
-      ELEMENT_CODE_LINE
-    ]
+    basicElements: [ELEMENT_H1, ELEMENT_H2, ELEMENT_H3],
+    codeBlock: [ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE],
+    highlight: [MARK_HIGHLIGHT]
   }
 
   for (const key in enabledOptions) {
@@ -219,105 +225,57 @@ export const createPlateOptions = (
     }
   }
 
-  // if (overrides) {
-  //   Object.keys(overrides).forEach(key => {
-  //     workingOptions[key] = overrides[key]
-  //   })
-  // }
-
-  // Object.keys(workingOptions).forEach(key => {
-  //   if (!workingOptions[key].type) {
-  //     workingOptions[key].type = key
-  //   }
-  // })
-
-  return workingOptions as Record<DefaultPlatePluginKey | T, PlatePluginOptions>
+  return workingOptions as Record<DefaultPlatePluginKey, PlatePluginOptions>
 }
 
-const resetBlockTypesCommonRule = (enabledOptions: EnablePluginsProps): any => {
-  const options = createPlateOptions(enabledOptions)
-  return {
-    types: [options?.[ELEMENT_BLOCKQUOTE]?.type, options?.[ELEMENT_TODO_LI]?.type],
-    defaultType: options?.[ELEMENT_PARAGRAPH]?.type
-  }
+const resetBlockTypesCommonRule = {
+  types: [customTypes[ELEMENT_BLOCKQUOTE], ELEMENT_TODO_LI],
+  defaultType: ELEMENT_PARAGRAPH
 }
 
-export const optionsResetBlockTypePlugin = (
-  enabledOptions: EnablePluginsProps
-): ResetBlockTypePluginOptions => {
-  const options = createPlateOptions(enabledOptions)
-  return {
-    rules: [
-      {
-        ...resetBlockTypesCommonRule(options),
-        hotkey: 'Enter',
-        predicate: isBlockAboveEmpty
-      },
-      {
-        ...resetBlockTypesCommonRule(options),
-        hotkey: 'Backspace',
-        predicate: isSelectionAtBlockStart
-      }
-    ]
-  }
+export const optionsResetBlockTypePlugin: ResetBlockTypePluginOptions = {
+  rules: [
+    {
+      ...resetBlockTypesCommonRule,
+      hotkey: 'Enter',
+      predicate: isBlockAboveEmpty
+    },
+    {
+      ...resetBlockTypesCommonRule,
+      hotkey: 'Backspace',
+      predicate: isSelectionAtBlockStart
+    }
+  ]
 }
 
-export const optionsSoftBreakPlugin = (
-  enabledOptions: EnablePluginsProps
-): SoftBreakPluginOptions => {
-  const options = createPlateOptions(enabledOptions)
-  return {
-    rules: [
-      {hotkey: 'shift+enter'},
-      {
-        hotkey: 'enter',
-        query: {
-          allow: [
-            options?.[ELEMENT_CODE_BLOCK]?.type,
-            options?.[ELEMENT_BLOCKQUOTE]?.type,
-            options?.[ELEMENT_TD]?.type
-          ]
-        }
-      }
-    ]
-  }
+export const optionsSoftBreakPlugin: SoftBreakPluginOptions = {
+  rules: [
+    {
+      hotkey: 'shift+enter'
+    }
+  ]
 }
 
 export const optionsExitBreakPlugin = (
-  enabledOptions: EnablePluginsProps
-): ExitBreakPluginOptions => {
-  const options = createPlateOptions(enabledOptions)
-  return {
-    rules: [
-      {
-        hotkey: 'mod+enter'
-      },
-      {
-        hotkey: 'mod+shift+enter',
-        before: true
-      },
-      {
-        hotkey: 'enter',
-        query: {
-          start: true,
-          end: true,
-          allow: KEYS_HEADING
-        }
-      },
-      {
-        hotkey: 'enter',
-        query: {
-          allow: [options?.[ELEMENT_IMAGE]?.type]
-        }
-      },
-      {
-        hotkey: 'enter',
-        before: true,
-        query: {
-          start: true,
-          allow: [options?.[ELEMENT_PARAGRAPH]?.type]
-        }
+  options: Record<DefaultPlatePluginKey, PlatePluginOptions>
+): ExitBreakPluginOptions => ({
+  rules: [
+    {
+      hotkey: 'mod+enter'
+    },
+    {
+      hotkey: 'enter',
+      query: {
+        start: true,
+        end: true,
+        allow: KEYS_HEADING
       }
-    ]
-  }
-}
+    },
+    {
+      hotkey: 'enter',
+      query: {
+        allow: [options?.[ELEMENT_IMAGE]?.type]
+      }
+    }
+  ]
+})

@@ -25,7 +25,8 @@ import {
   BorderTopIcon,
   LinkIcon,
   FontColorIcon,
-  BackgroundColorIcon
+  BackgroundColorIcon,
+  CheckBoxIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {
   ELEMENT_ALIGN_CENTER,
@@ -35,7 +36,7 @@ import {
 } from '@dreifuss-wysiwyg-editor/alignment'
 import {TableBorderColorToolbar, TableBgColorToolbar} from '@dreifuss-wysiwyg-editor/table-ui'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
-import {ELEMENT_OL, ELEMENT_UL} from '@udecode/plate-list'
+import {ELEMENT_OL, ELEMENT_UL, ELEMENT_TODO_LI} from '@udecode/plate-list'
 import {ELEMENT_CODE_BLOCK} from '@udecode/plate-code-block'
 import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
 import {ToolbarCodeBlock} from '@udecode/plate-code-block-ui'
@@ -76,6 +77,12 @@ export const ToolbarListButtons = ({editor}: any) => (
   <Button editor={editor}>
     <Button.List type={ELEMENT_UL} icon={<ListULIcon />} />
     <Button.List type={ELEMENT_OL} icon={<ListOLIcon />} />
+  </Button>
+)
+
+export const ToolbarTodoListButton = ({editor}: any) => (
+  <Button editor={editor}>
+    <Button.Element type={ELEMENT_TODO_LI} icon={<CheckBoxIcon />} />
   </Button>
 )
 

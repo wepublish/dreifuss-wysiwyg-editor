@@ -26,7 +26,7 @@ import {MARK_KBD} from '@udecode/plate-kbd'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {LinkElement} from '@dreifuss-wysiwyg-editor/link-ui'
 import {ImageElement} from '@dreifuss-wysiwyg-editor/image-ui'
-import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL} from '@udecode/plate-list'
+import {ELEMENT_LI, ELEMENT_OL, ELEMENT_UL, ELEMENT_TODO_LI} from '@udecode/plate-list'
 import {TodoListElement} from '@udecode/plate-list-ui'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {MediaEmbedElement} from '@dreifuss-wysiwyg-editor/media-embed-ui'
@@ -236,6 +236,7 @@ export const createPlateComponents = (
     media: [ELEMENT_MEDIA_EMBED],
     link: [ELEMENT_LINK],
     basicMarks: [
+      MARK_CODE,
       MARK_BOLD,
       MARK_ITALIC,
       MARK_STRIKETHROUGH,
@@ -243,14 +244,9 @@ export const createPlateComponents = (
       MARK_SUPERSCRIPT,
       MARK_UNDERLINE
     ],
-    basicElements: [
-      ELEMENT_H1,
-      ELEMENT_H2,
-      ELEMENT_H3,
-      ELEMENT_BLOCKQUOTE,
-      ELEMENT_CODE_BLOCK,
-      ELEMENT_CODE_LINE
-    ]
+    basicElements: [ELEMENT_H1, ELEMENT_H2, ELEMENT_H3],
+    codeBlock: [ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE],
+    quote: [ELEMENT_BLOCKQUOTE]
   }
 
   for (const key in enablePlugins) {
