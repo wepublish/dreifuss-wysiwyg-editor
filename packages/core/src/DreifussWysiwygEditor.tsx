@@ -32,8 +32,7 @@ import {
   ToolbarListButtons,
   ToolbarTableButtons,
   ToolbarFontBgButton,
-  ToolbarFontColorButton,
-  ToolbarTodoListButton
+  ToolbarFontColorButton
 } from './Toolbar'
 import {plugins} from './utils/createPlatePlugins'
 
@@ -52,15 +51,12 @@ export interface Toolbars {
 export interface EnablePluginsProps {
   search?: boolean
   list?: boolean
-  todoList?: boolean
-  codeBlock?: boolean
   color?: boolean
   bgColor?: boolean
   align?: boolean
   emoji?: boolean
   link?: boolean
   image?: boolean
-  quote?: boolean
   quotationMarks?: boolean
   basicMarks?: boolean
   basicElements?: boolean
@@ -88,7 +84,7 @@ const handleOnChange = (value: EditorValue) => {
   })
 }
 
-function DreifussEditor(props: DreifussWysiwygEditorOptions) {
+export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOptions) {
   const defaultOptions: Omit<DreifussWysiwygEditorOptions, 'id'> = {
     displayOnly: false,
     showCharactersCount: true,
@@ -104,10 +100,7 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
       basicElements: true,
       basicMarks: true,
       list: true,
-      todoList: true,
-      quote: true,
       quotationMarks: true,
-      codeBlock: true,
       color: false,
       bgColor: false,
       align: true,
@@ -184,15 +177,6 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
             )}
 
             {enablePlugins.list && <ToolbarListButtons editor={editorRef} />}
-
-            {!enablePlugins.todoList && <Divider type={DividerType.vertical} />}
-
-            {enablePlugins.todoList && (
-              <>
-                <ToolbarTodoListButton editor={editorRef} />
-                <Divider type={DividerType.vertical} />
-              </>
-            )}
 
             {enablePlugins.basicMarks && (
               <>
@@ -276,8 +260,4 @@ function DreifussEditor(props: DreifussWysiwygEditorOptions) {
       </Plate>
     </div>
   )
-}
-
-export default function DreifussWysiwygEditor(props: DreifussWysiwygEditorOptions) {
-  return <DreifussEditor {...props} />
 }

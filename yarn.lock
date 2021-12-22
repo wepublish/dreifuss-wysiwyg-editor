@@ -1531,7 +1531,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.10.5", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.10.5":
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
@@ -2785,26 +2785,6 @@
     invariant "^2.2.3"
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
-
-"@react-dnd/asap@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@react-dnd/asap/-/asap-4.0.0.tgz#b300eeed83e9801f51bd66b0337c9a6f04548651"
-  integrity sha512-0XhqJSc6pPoNnf8DhdsPHtUhRzZALVzYMTzRwV4VI6DJNJ/5xxfL9OQUwb8IH5/2x7lSf7nAZrnzUD+16VyOVQ==
-
-"@react-dnd/invariant@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@react-dnd/invariant/-/invariant-2.0.0.tgz#09d2e81cd39e0e767d7da62df9325860f24e517e"
-  integrity sha512-xL4RCQBCBDJ+GRwKTFhGUW8GXa4yoDfJrPbLblc3U09ciS+9ZJXJ3Qrcs/x2IODOdIE5kQxvMmE2UKyqUictUw==
-
-"@react-dnd/shallowequal@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@react-dnd/shallowequal/-/shallowequal-2.0.0.tgz#a3031eb54129f2c66b2753f8404266ec7bf67f0a"
-  integrity sha512-Pc/AFTdwZwEKJxFJvlxrSmGe/di+aAOBn60sremrpLo6VI/6cmiUYNNwlI5KNYttg7uypzA3ILPMPgxB2GYZEg==
-
-"@react-hook/merged-ref@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@react-hook/merged-ref/-/merged-ref-1.3.0.tgz#0f482780e1eefc1abdc964dd3d04680186b07c8a"
-  integrity sha512-9p7fbPZ37n1Cbw37f3EtrcR9TwVjMkoTKwYbG7URO2HDlnOzuNTjsd/VK0/4i52SwKmOa6lBwz6Pr9g0pIyaCg==
 
 "@rollup/plugin-babel@^5.3.0":
   version "5.3.0"
@@ -4193,17 +4173,7 @@
     "@udecode/plate-common" "2.0.0"
     "@udecode/plate-core" "1.0.0"
 
-"@udecode/plate-block-quote-ui@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@udecode/plate-block-quote-ui/-/plate-block-quote-ui-3.0.1.tgz#0560fdb449c704ba611f05b4dcfa7eed18e46e59"
-  integrity sha512-3l8H2GIR9/u0SgY/LmHsHjbs2V1WWySpQkKG63rTr+IxG/8TgmW40AikkqV2u5aY7GPUDKhPIYlHOmVKIGlpgg==
-  dependencies:
-    "@udecode/plate-block-quote" "2.0.0"
-    "@udecode/plate-common" "2.0.0"
-    "@udecode/plate-core" "1.0.0"
-    "@udecode/plate-styled-components" "3.0.1"
-
-"@udecode/plate-block-quote@2.0.0", "@udecode/plate-block-quote@^2.0.0":
+"@udecode/plate-block-quote@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@udecode/plate-block-quote/-/plate-block-quote-2.0.0.tgz#b247ef26cf3538cc668798bfe316475c5fa7fdb7"
   integrity sha512-UxP2qK6vxcFoU56zdERP50Bjc99hGnMVq73l0Lo1ehKg7qc/Y8PKWsp2nVTQtMLxNJJ6xaGlTwCz3pf1sttq0Q==
@@ -4219,18 +4189,7 @@
     "@udecode/plate-common" "2.0.0"
     "@udecode/plate-core" "1.0.0"
 
-"@udecode/plate-code-block-ui@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@udecode/plate-code-block-ui/-/plate-code-block-ui-3.0.1.tgz#580686bf33900403a87df25a3e7d83d6f42c1b6f"
-  integrity sha512-o4ezfSHeWGVuCwpdYvbvhaxqQBIusdRc+JP/AbFFldaA2y9ACu/fZ91zVzEYsek/pKN09tiBt3+HzDmnh0TY6A==
-  dependencies:
-    "@udecode/plate-code-block" "2.0.0"
-    "@udecode/plate-common" "2.0.0"
-    "@udecode/plate-core" "1.0.0"
-    "@udecode/plate-styled-components" "3.0.1"
-    "@udecode/plate-toolbar" "3.0.1"
-
-"@udecode/plate-code-block@2.0.0", "@udecode/plate-code-block@^2.0.0":
+"@udecode/plate-code-block@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@udecode/plate-code-block/-/plate-code-block-2.0.0.tgz#e8608c4deced9d53aba3e4d77e02e3892da6d9d4"
   integrity sha512-ioLK2Ph8EtAFdjGO1E7ikogQvUuLdQbjK6a5qHKP1sy+ImMrMnlLeMOVF5Ky7m/fmR3H13tuMhh0wNYBAlk06w==
@@ -4294,19 +4253,6 @@
   dependencies:
     lodash "^4.17.21"
     zustand "^3.4.2"
-
-"@udecode/plate-dnd@^3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@udecode/plate-dnd/-/plate-dnd-3.5.1.tgz#e8e49b72dc954069580e772baa1312c748fff20a"
-  integrity sha512-qa7VKEoIzZN+Uz/0ISX8b1Hvi6RG+0h4GCS6vAt/PxKFHH0TSQ+jUBkj3i8BCAuvgm/9UApzogXBA0qg3HRJ9Q==
-  dependencies:
-    "@react-hook/merged-ref" "^1.3.0"
-    "@tippyjs/react" "^4.2.0"
-    "@udecode/plate-common" "3.4.0"
-    "@udecode/plate-core" "3.4.0"
-    "@udecode/plate-styled-components" "3.5.1"
-    react-dnd "^14.0.2"
-    react-dnd-html5-backend "^14.0.0"
 
 "@udecode/plate-heading@2.0.0", "@udecode/plate-heading@^2.0.0":
   version "2.0.0"
@@ -4387,14 +4333,6 @@
     remark-parse "^9.0.0"
     remark-slate "^1.4.0"
     unified "^9.2.0"
-
-"@udecode/plate-media-embed@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@udecode/plate-media-embed/-/plate-media-embed-2.0.0.tgz#cf18ff653628c8e499a1ee0fb3f9e42062571450"
-  integrity sha512-6sQgYAU3qoY+wVrLYKIsswpjPFJv/gUKT9ihucZWLB+6YX509y0YdXp6GccaaYdPNVev86fUOhsJIOmH1cLUqQ==
-  dependencies:
-    "@udecode/plate-common" "2.0.0"
-    "@udecode/plate-core" "1.0.0"
 
 "@udecode/plate-mention-ui@^3.0.1":
   version "3.0.1"
@@ -4480,15 +4418,6 @@
     "@udecode/plate-core" "1.0.0"
     clsx "^1.1.1"
 
-"@udecode/plate-styled-components@3.5.1", "@udecode/plate-styled-components@^3.1.0":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@udecode/plate-styled-components/-/plate-styled-components-3.5.1.tgz#879340ae8d482731e6ba037e1b54a40687d9516c"
-  integrity sha512-rsRrirF3B9nt9s8jpk4tEjNbAlpVeF2GHcI53jv0DnOLdEusPUO/QUzORQ9K+DzuUqB8mIIFL/jLH46ZJJic9A==
-  dependencies:
-    "@udecode/plate-common" "3.4.0"
-    "@udecode/plate-core" "3.4.0"
-    clsx "^1.1.1"
-
 "@udecode/plate-styled-components@4.3.7":
   version "4.3.7"
   resolved "https://registry.yarnpkg.com/@udecode/plate-styled-components/-/plate-styled-components-4.3.7.tgz#32a455542e4669ed73fc3f4467bbd116c769c84a"
@@ -4505,6 +4434,15 @@
   dependencies:
     "@udecode/plate-common" "4.4.0"
     "@udecode/plate-core" "4.3.7"
+    clsx "^1.1.1"
+
+"@udecode/plate-styled-components@^3.1.0":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@udecode/plate-styled-components/-/plate-styled-components-3.5.1.tgz#879340ae8d482731e6ba037e1b54a40687d9516c"
+  integrity sha512-rsRrirF3B9nt9s8jpk4tEjNbAlpVeF2GHcI53jv0DnOLdEusPUO/QUzORQ9K+DzuUqB8mIIFL/jLH46ZJJic9A==
+  dependencies:
+    "@udecode/plate-common" "3.4.0"
+    "@udecode/plate-core" "3.4.0"
     clsx "^1.1.1"
 
 "@udecode/plate-toolbar@3.0.1", "@udecode/plate-toolbar@^3.0.1":
@@ -7632,15 +7570,6 @@ dlv@^1.1.3:
   resolved "https://registry.yarnpkg.com/dlv/-/dlv-1.1.3.tgz#5c198a8a11453596e751494d49874bc7732f2e79"
   integrity sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==
 
-dnd-core@14.0.0:
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/dnd-core/-/dnd-core-14.0.0.tgz#973ab3470d0a9ac5a0fa9021c4feba93ad12347d"
-  integrity sha512-wTDYKyjSqWuYw3ZG0GJ7k+UIfzxTNoZLjDrut37PbcPGNfwhlKYlPUqjAKUjOOv80izshUiqusaKgJPItXSevA==
-  dependencies:
-    "@react-dnd/asap" "^4.0.0"
-    "@react-dnd/invariant" "^2.0.0"
-    redux "^4.0.5"
-
 dns-equal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/dns-equal/-/dns-equal-1.0.0.tgz#b39e7f1da6eb0a75ba9c17324b34753c47e0654d"
@@ -9665,7 +9594,7 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
+hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.0:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
@@ -14219,24 +14148,6 @@ react-dev-utils@^11.0.3:
     strip-ansi "6.0.0"
     text-table "0.2.0"
 
-react-dnd-html5-backend@^14.0.0, react-dnd-html5-backend@^14.0.1:
-  version "14.0.1"
-  resolved "https://registry.yarnpkg.com/react-dnd-html5-backend/-/react-dnd-html5-backend-14.0.1.tgz#37d43d6b6ddd91069101969d9eac6d688a9d57ef"
-  integrity sha512-ZDmpvFpd1NR4riw/CMbr8C3mgP6ZhsTf0c48a36kw4ZW8emgiugNlAz/qhhZ4/Pz9TO6DZ63sQohUTTl+AWGiA==
-  dependencies:
-    dnd-core "14.0.0"
-
-react-dnd@^14.0.2, react-dnd@^14.0.3:
-  version "14.0.3"
-  resolved "https://registry.yarnpkg.com/react-dnd/-/react-dnd-14.0.3.tgz#1762c1ec84815439f2d8a6a40efd1f57eee41ba6"
-  integrity sha512-i73Hx5SKfDRdwXe30+CjF/DidiRdt/gwpPN14ajkPR20t/0osnNKFNHg3DLV6RZym+DJ0pO9H5APeMsBWGU3+Q==
-  dependencies:
-    "@react-dnd/invariant" "^2.0.0"
-    "@react-dnd/shallowequal" "^2.0.0"
-    dnd-core "14.0.0"
-    fast-deep-equal "^3.1.3"
-    hoist-non-react-statics "^3.3.2"
-
 react-docgen-typescript@^2.0.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/react-docgen-typescript/-/react-docgen-typescript-2.1.0.tgz#20db64a7fd62e63a8a9469fb4abd90600878cbb2"
@@ -14641,13 +14552,6 @@ reduce-css-calc@^2.1.8:
   dependencies:
     css-unit-converter "^1.1.1"
     postcss-value-parser "^3.3.0"
-
-redux@^4.0.5:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/redux/-/redux-4.1.1.tgz#76f1c439bb42043f985fbd9bf21990e60bd67f47"
-  integrity sha512-hZQZdDEM25UY2P493kPYuKqviVwZ58lEmGQNeQ+gXa+U0gYPUBf7NKYazbe3m+bs/DzM/ahN12DbF+NG8i0CWw==
-  dependencies:
-    "@babel/runtime" "^7.9.2"
 
 refractor@^3.1.0:
   version "3.4.0"

@@ -14,10 +14,6 @@ import {
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE
 } from '@udecode/plate-basic-marks'
-import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
-import {BlockquoteElement} from '@udecode/plate-block-quote-ui'
-import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
-import {CodeBlockElement, CodeLineElement} from '@udecode/plate-code-block-ui'
 import {withProps} from '@udecode/plate-common'
 import {MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
@@ -26,8 +22,7 @@ import {MARK_KBD} from '@udecode/plate-kbd'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
 import {LinkElement} from '@dreifuss-wysiwyg-editor/link-ui'
 import {ImageElement} from '@dreifuss-wysiwyg-editor/image-ui'
-import {ELEMENT_LI, ELEMENT_OL, ELEMENT_UL, ELEMENT_TODO_LI} from '@udecode/plate-list'
-import {TodoListElement} from '@udecode/plate-list-ui'
+import {ELEMENT_LI, ELEMENT_OL, ELEMENT_UL} from '@udecode/plate-list'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 import {TableElement, TableDataElement} from '@dreifuss-wysiwyg-editor/table-ui'
@@ -72,9 +67,6 @@ export const createPlateComponents = (
         }
       }
     }),
-    [ELEMENT_BLOCKQUOTE]: BlockquoteElement,
-    [ELEMENT_CODE_BLOCK]: CodeBlockElement,
-    [ELEMENT_CODE_LINE]: CodeLineElement,
     [ELEMENT_H1]: withProps(StyledElement, {
       as: 'h1',
       styles: {
@@ -148,7 +140,6 @@ export const createPlateComponents = (
       }
     }),
     [ELEMENT_TR]: withProps(StyledElement, {as: 'tr'}),
-    [ELEMENT_TODO_LI]: TodoListElement,
     [MARK_BOLD]: withProps(StyledLeaf, {as: 'strong'}),
     [MARK_CODE]: withProps(StyledLeaf, {
       as: 'code',
@@ -225,7 +216,6 @@ export const createPlateComponents = (
     search: [MARK_SEARCH_HIGHLIGHT],
     align: [ELEMENT_ALIGN_CENTER, ELEMENT_ALIGN_LEFT, ELEMENT_ALIGN_RIGHT, ELEMENT_ALIGN_JUSTIFY],
     list: [ELEMENT_UL, ELEMENT_OL, ELEMENT_LI],
-    todoList: [ELEMENT_TODO_LI],
     table: [ELEMENT_TABLE, ELEMENT_TR, ELEMENT_TH, ELEMENT_TD],
     image: [ELEMENT_IMAGE],
     color: [MARK_COLOR],
@@ -240,9 +230,7 @@ export const createPlateComponents = (
       MARK_SUPERSCRIPT,
       MARK_UNDERLINE
     ],
-    basicElements: [ELEMENT_H1, ELEMENT_H2, ELEMENT_H3],
-    codeBlock: [ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE],
-    quote: [ELEMENT_BLOCKQUOTE]
+    basicElements: [ELEMENT_H1, ELEMENT_H2, ELEMENT_H3]
   }
 
   for (const key in enablePlugins) {

@@ -3,14 +3,12 @@ import {createAlignPlugin} from '@dreifuss-wysiwyg-editor/alignment'
 import {createHeadingPlugin} from '@udecode/plate-heading'
 import {createHighlightPlugin} from '@udecode/plate-highlight'
 import {createParagraphPlugin} from '@udecode/plate-paragraph'
-import {createCodeBlockPlugin} from '@udecode/plate-code-block'
-import {createBlockquotePlugin} from '@udecode/plate-block-quote'
 import {
   createPlateOptions,
   optionsExitBreakPlugin,
   optionsSoftBreakPlugin
 } from './createPlateOptions'
-import {createListPlugin, createTodoListPlugin} from '@udecode/plate-list'
+import {createListPlugin} from '@udecode/plate-list'
 import {createHistoryPlugin, createReactPlugin} from '@udecode/plate-core'
 import {createImagePlugin, ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
@@ -32,9 +30,6 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
   const pluginsMap = {
     search: findReplace,
     list: createListPlugin(),
-    todoList: createTodoListPlugin(),
-    quote: createBlockquotePlugin(),
-    codeBlock: createCodeBlockPlugin(),
     color: createFontColorPlugin(),
     bgColor: createFontBackgroundColorPlugin(),
     align: createAlignPlugin(),
