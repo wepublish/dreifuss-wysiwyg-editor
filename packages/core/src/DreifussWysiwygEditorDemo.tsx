@@ -132,19 +132,14 @@ const DreifussWysiwygEditorDemo = () => (
           basicElements: true,
           basicMarks: true,
           list: true,
-          todoList: true,
-          quote: true,
           quotationMarks: true,
-          codeBlock: true,
           color: true,
           bgColor: true,
           align: true,
           table: {tableBorderColor: true, tableBgColor: true},
           emoji: true,
           link: true,
-          image: true,
-          media: true,
-          dnd: false
+          image: true
         }}
         onChange={e => {
           // console.log(e)

@@ -21,21 +21,16 @@ import {
   DEFAULTS_UNDERLINE
 } from '@udecode/plate-basic-marks'
 import {MARK_BG_COLOR, MARK_COLOR} from '@dreifuss-wysiwyg-editor/font'
-import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
-import {ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE} from '@udecode/plate-code-block'
 import {PlatePluginOptions} from '@udecode/plate-core'
 import {MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, KEYS_HEADING} from '@udecode/plate-heading'
 import {DEFAULTS_HIGHLIGHT, MARK_HIGHLIGHT} from '@udecode/plate-highlight'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
-import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL, ELEMENT_LIC} from '@udecode/plate-list'
-import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
+import {ELEMENT_LI, ELEMENT_OL, ELEMENT_UL, ELEMENT_LIC} from '@udecode/plate-list'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 import {ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 import {ExitBreakPluginOptions, SoftBreakPluginOptions} from '@udecode/plate-break'
-import {isBlockAboveEmpty, isSelectionAtBlockStart} from '@udecode/plate-common'
-import {ResetBlockTypePluginOptions} from '@udecode/plate-reset-node'
 import {EnablePluginsProps} from '../DreifussWysiwygEditor'
 import {FunctionComponent} from 'react'
 
@@ -44,21 +39,16 @@ export type DefaultPlatePluginKey =
   | typeof ELEMENT_ALIGN_JUSTIFY
   | typeof ELEMENT_ALIGN_LEFT
   | typeof ELEMENT_ALIGN_RIGHT
-  | typeof ELEMENT_BLOCKQUOTE
-  | typeof ELEMENT_CODE_BLOCK
-  | typeof ELEMENT_CODE_LINE
   | typeof ELEMENT_H1
   | typeof ELEMENT_H2
   | typeof ELEMENT_H3
   | typeof ELEMENT_LI
   | typeof ELEMENT_LINK
-  | typeof ELEMENT_MEDIA_EMBED
   | typeof ELEMENT_OL
   | typeof ELEMENT_PARAGRAPH
   | typeof ELEMENT_TABLE
   | typeof ELEMENT_TD
   | typeof ELEMENT_TH
-  | typeof ELEMENT_TODO_LI
   | typeof ELEMENT_TR
   | typeof ELEMENT_UL
   | typeof ELEMENT_LIC
@@ -76,8 +66,6 @@ export type DefaultPlatePluginKey =
   | typeof MARK_BG_COLOR
 
 const customTypes = {
-  [ELEMENT_BLOCKQUOTE]: 'block-quote',
-  [ELEMENT_CODE_BLOCK]: 'code-block',
   [ELEMENT_TR]: 'table-row',
   [ELEMENT_TD]: 'table-cell'
 }
@@ -98,15 +86,6 @@ export const createPlateOptions = (
     [ELEMENT_ALIGN_JUSTIFY]: {},
     [ELEMENT_ALIGN_LEFT]: {},
     [ELEMENT_ALIGN_RIGHT]: {},
-    [ELEMENT_BLOCKQUOTE]: {
-      type: customTypes[ELEMENT_BLOCKQUOTE]
-    },
-    [ELEMENT_CODE_BLOCK]: {
-      type: customTypes[ELEMENT_CODE_BLOCK]
-    },
-    [ELEMENT_CODE_LINE]: {
-      type: 'code-line'
-    },
     [ELEMENT_H1]: {
       type: 'heading-one',
       defaultType: 'heading-one'
@@ -130,7 +109,6 @@ export const createPlateOptions = (
     [ELEMENT_LINK]: {
       hotkey: ['ctrl+v', 'mod+v']
     },
-    [ELEMENT_MEDIA_EMBED]: {},
     [ELEMENT_OL]: {
       type: 'ordered-list',
       defaultType: 'ordered-list'
@@ -148,7 +126,6 @@ export const createPlateOptions = (
       defaultType: customTypes[ELEMENT_TR]
     },
     [ELEMENT_TH]: {},
-    [ELEMENT_TODO_LI]: {},
     [MARK_BOLD]: {
       ...DEFAULTS_BOLD
     },
@@ -191,14 +168,11 @@ export const createPlateOptions = (
   const optionsMap = {
     align: [ELEMENT_ALIGN_CENTER, ELEMENT_ALIGN_LEFT, ELEMENT_ALIGN_RIGHT, ELEMENT_ALIGN_JUSTIFY],
     list: [ELEMENT_UL, ELEMENT_OL, ELEMENT_LI],
-    todoList: [ELEMENT_TODO_LI],
     table: [ELEMENT_TABLE, ELEMENT_TR, ELEMENT_TH, ELEMENT_TD],
     image: [ELEMENT_IMAGE],
     color: [MARK_COLOR],
     bgColor: [MARK_BG_COLOR],
-    media: [ELEMENT_MEDIA_EMBED],
     link: [ELEMENT_LINK],
-    quote: [ELEMENT_BLOCKQUOTE],
     basicMarks: [
       MARK_CODE,
       MARK_BOLD,
@@ -209,7 +183,6 @@ export const createPlateOptions = (
       MARK_UNDERLINE
     ],
     basicElements: [ELEMENT_H1, ELEMENT_H2, ELEMENT_H3],
-    codeBlock: [ELEMENT_CODE_BLOCK, ELEMENT_CODE_LINE],
     highlight: [MARK_HIGHLIGHT]
   }
 
@@ -226,26 +199,6 @@ export const createPlateOptions = (
   }
 
   return workingOptions as Record<DefaultPlatePluginKey, PlatePluginOptions>
-}
-
-const resetBlockTypesCommonRule = {
-  types: [customTypes[ELEMENT_BLOCKQUOTE], ELEMENT_TODO_LI],
-  defaultType: ELEMENT_PARAGRAPH
-}
-
-export const optionsResetBlockTypePlugin: ResetBlockTypePluginOptions = {
-  rules: [
-    {
-      ...resetBlockTypesCommonRule,
-      hotkey: 'Enter',
-      predicate: isBlockAboveEmpty
-    },
-    {
-      ...resetBlockTypesCommonRule,
-      hotkey: 'Backspace',
-      predicate: isSelectionAtBlockStart
-    }
-  ]
 }
 
 export const optionsSoftBreakPlugin: SoftBreakPluginOptions = {

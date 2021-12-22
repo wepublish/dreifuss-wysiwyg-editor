@@ -7,7 +7,6 @@ import {
   ItalicIcon,
   UnderlineIcon,
   BlockCodeIcon,
-  BlockQuoteIcon,
   AlignLeftIcon,
   AlignRightIcon,
   AlignCenterIcon,
@@ -25,8 +24,7 @@ import {
   BorderTopIcon,
   LinkIcon,
   FontColorIcon,
-  BackgroundColorIcon,
-  CheckBoxIcon
+  BackgroundColorIcon
 } from '@dreifuss-wysiwyg-editor/common'
 import {
   ELEMENT_ALIGN_CENTER,
@@ -36,10 +34,7 @@ import {
 } from '@dreifuss-wysiwyg-editor/alignment'
 import {TableBorderColorToolbar, TableBgColorToolbar} from '@dreifuss-wysiwyg-editor/table-ui'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
-import {ELEMENT_OL, ELEMENT_UL, ELEMENT_TODO_LI} from '@udecode/plate-list'
-import {ELEMENT_CODE_BLOCK} from '@udecode/plate-code-block'
-import {ELEMENT_BLOCKQUOTE} from '@udecode/plate-block-quote'
-import {ToolbarCodeBlock} from '@udecode/plate-code-block-ui'
+import {ELEMENT_OL, ELEMENT_UL} from '@udecode/plate-list'
 import {BalloonToolbar} from '@udecode/plate-toolbar'
 import {getPlatePluginType, TEditor, useEditorRef} from '@udecode/plate-core'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3} from '@udecode/plate-heading'
@@ -68,8 +63,6 @@ export const ToolbarBasicElementsButtons = ({editor}) => (
     <Button.Element type={ELEMENT_H1} icon={<H1Icon />} />
     <Button.Element type={ELEMENT_H2} icon={<H2Icon />} />
     <Button.Element type={ELEMENT_H3} icon={<H3Icon />} />
-    <Button.Element type={ELEMENT_BLOCKQUOTE} icon={<BlockQuoteIcon />} />
-    <ToolbarCodeBlock type={ELEMENT_CODE_BLOCK} icon={<BlockCodeIcon />} />
   </Button>
 )
 
@@ -77,12 +70,6 @@ export const ToolbarListButtons = ({editor}: any) => (
   <Button editor={editor}>
     <Button.List type={ELEMENT_UL} icon={<ListULIcon />} />
     <Button.List type={ELEMENT_OL} icon={<ListOLIcon />} />
-  </Button>
-)
-
-export const ToolbarTodoListButton = ({editor}: any) => (
-  <Button editor={editor}>
-    <Button.Element type={ELEMENT_TODO_LI} icon={<CheckBoxIcon />} />
   </Button>
 )
 
