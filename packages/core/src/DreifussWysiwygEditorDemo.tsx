@@ -4,27 +4,26 @@ import {DreifussWysiwygEditor} from './index'
 import {CustomImageToolbarProps} from '@dreifuss-wysiwyg-editor/image-ui'
 
 const value: any = [
-  {type: 'action_item', checked: true, children: [{text: 'Slide to the right.'}], id: 10054},
-  {type: 'action_item', children: [{text: 'Criss-cross.'}], id: 10055},
+  {type: 'action_item', checked: true, children: [{text: 'Slide to the right.'}]},
+  {type: 'action_item', children: [{text: 'Criss-cross.'}]},
+  {type: 'action_item', children: [{text: 'Third item'}]},
   {
     type: 'paragraph',
-    children: [{type: 'link', url: 'http://google.com', children: [{text: 'Links: Add links.'}]}],
-    id: 10052
+    children: [
+      {text: ''},
+      {type: 'link', url: 'http://google.com', children: [{text: 'Links: Add linkss.'}]},
+      {text: ''}
+    ]
+  },
+  {type: 'paragraph', children: [{text: 'Bold: Make the selected text bold. no?', code: true}]},
+  {type: 'paragraph', children: [{text: 'Italic: Make the selected text italicc.', italic: true}]},
+  {
+    type: 'paragraph',
+    children: [{text: 'Underline: Underline the selected textt.', underline: true}]
   },
   {
     type: 'paragraph',
-    children: [{text: 'Bold: Make the selected text bold.', code: true}],
-    id: 10055
-  },
-
-  {type: 'paragraph', children: [{text: 'Italic: Make the selected text italic.', italic: true}]},
-  {
-    type: 'paragraph',
-    children: [{text: 'Underline: Underline the selected text.', underline: true}]
-  },
-  {
-    type: 'paragraph',
-    children: [{text: 'Strikethrough: Strikethrough the selected text.', strikethrough: true}]
+    children: [{text: 'Strikethrough: Strikethrough the selected textt.', strikethrough: true}]
   },
   {
     type: 'paragraph',
@@ -55,12 +54,12 @@ const value: any = [
             type: 'table-cell',
             borderColor: '#000000',
             children: [{type: 'paragraph', children: [{text: ''}]}],
-            backgroundColor: '#f31212'
+            backgroundColor: 'lightgray'
           },
           {
             type: 'table-cell',
             children: [{type: 'paragraph', children: [{text: ''}]}],
-            backgroundColor: '#f31212'
+            backgroundColor: 'lightgray'
           }
         ]
       },
@@ -71,12 +70,12 @@ const value: any = [
             type: 'table-cell',
             borderColor: '#000000',
             children: [{type: 'paragraph', children: [{text: ''}]}],
-            backgroundColor: '#f31212'
+            backgroundColor: 'lightgray'
           },
           {
             type: 'table-cell',
             children: [{type: 'paragraph', children: [{text: ''}]}],
-            backgroundColor: '#f31212'
+            backgroundColor: 'lightgray'
           }
         ]
       }
@@ -90,7 +89,10 @@ const value: any = [
       {text: 'Make', color: '#c21414'},
       {text: ' the selected text bold.'}
     ]
-  }
+  },
+  {type: 'paragraph', children: [{text: ''}]},
+  {type: 'media_embed', url: 'https://youtu.be/6vcBKwnl_Y0', children: [{text: ''}]},
+  {type: 'paragraph', children: [{text: ''}]}
 ]
 
 /**
@@ -126,7 +128,7 @@ const toolbars = {
 const DreifussWysiwygEditorDemo = () => (
   <div style={{display: 'flex'}}>
     <div style={{minHeight: 400, padding: 30}}>
-      <h1>RichText Component Demo</h1>
+      <h1>WePublish Rich Text Editor</h1>
       <DreifussWysiwygEditor
         enablePlugins={{
           basicElements: true,
@@ -147,7 +149,7 @@ const DreifussWysiwygEditorDemo = () => (
           dnd: false
         }}
         onChange={e => {
-          // console.log(e)
+          console.log(JSON.stringify(e))
         }}
         id="two"
         value={value}
