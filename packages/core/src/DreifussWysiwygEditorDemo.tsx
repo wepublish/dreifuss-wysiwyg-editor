@@ -4,6 +4,38 @@ import {DreifussWysiwygEditor} from './index'
 import {CustomImageToolbarProps} from '@dreifuss-wysiwyg-editor/image-ui'
 
 const value: any = [
+  {
+    type: 'layout',
+    layout: [1, 1],
+    children: [
+      {
+        type: 'layout-area',
+        children: [
+          {
+            type: 'paragraph',
+            children: [
+              {
+                text: 'hello'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        type: 'layout-area',
+        children: [
+          {
+            type: 'paragraph',
+            children: [
+              {
+                text: 'hii'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   {type: 'action_item', checked: true, children: [{text: 'Slide to the right.'}]},
   {type: 'action_item', children: [{text: 'Criss-cross.'}]},
   {type: 'action_item', children: [{text: 'Third item'}]},
@@ -131,6 +163,7 @@ const DreifussWysiwygEditorDemo = () => (
       <h1>WePublish Rich Text Editor</h1>
       <DreifussWysiwygEditor
         enablePlugins={{
+          layout: true,
           basicElements: true,
           basicMarks: true,
           list: true,

@@ -28,6 +28,7 @@ import {MARK_SEARCH_HIGHLIGHT} from '@dreifuss-wysiwyg-editor/find-replace'
 import {ELEMENT_H1, ELEMENT_H2, ELEMENT_H3, KEYS_HEADING} from '@udecode/plate-heading'
 import {DEFAULTS_HIGHLIGHT, MARK_HIGHLIGHT} from '@udecode/plate-highlight'
 import {ELEMENT_LINK} from '@dreifuss-wysiwyg-editor/link'
+import {ELEMENT_LAYOUT, ELEMENT_LAYOUT_AREA} from '@dreifuss-wysiwyg-editor/layout'
 import {ELEMENT_LI, ELEMENT_OL, ELEMENT_TODO_LI, ELEMENT_UL, ELEMENT_LIC} from '@udecode/plate-list'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
@@ -74,6 +75,8 @@ export type DefaultPlatePluginKey =
   | typeof ELEMENT_IMAGE
   | typeof MARK_COLOR
   | typeof MARK_BG_COLOR
+  | typeof ELEMENT_LAYOUT
+  | typeof ELEMENT_LAYOUT_AREA
 
 const customTypes = {
   [ELEMENT_BLOCKQUOTE]: 'block-quote',
@@ -189,6 +192,7 @@ export const createPlateOptions = (
   }
 
   const optionsMap = {
+    layout: [ELEMENT_LAYOUT, ELEMENT_LAYOUT_AREA],
     align: [ELEMENT_ALIGN_CENTER, ELEMENT_ALIGN_LEFT, ELEMENT_ALIGN_RIGHT, ELEMENT_ALIGN_JUSTIFY],
     list: [ELEMENT_UL, ELEMENT_OL, ELEMENT_LI],
     todoList: [ELEMENT_TODO_LI],

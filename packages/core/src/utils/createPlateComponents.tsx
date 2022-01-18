@@ -31,6 +31,8 @@ import {TodoListElement} from '@udecode/plate-list-ui'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {MediaEmbedElement} from '@dreifuss-wysiwyg-editor/media-embed-ui'
 import {ELEMENT_PARAGRAPH} from '@udecode/plate-paragraph'
+import {LayoutContainer, LayoutArea} from '@dreifuss-wysiwyg-editor/layout-ui'
+import {ELEMENT_LAYOUT, ELEMENT_LAYOUT_AREA} from '@dreifuss-wysiwyg-editor/layout'
 import {ELEMENT_TABLE, ELEMENT_TD, ELEMENT_TH, ELEMENT_TR} from '@dreifuss-wysiwyg-editor/table'
 import {TableElement, TableDataElement} from '@dreifuss-wysiwyg-editor/table-ui'
 import {StyledElement, StyledLeaf} from '@udecode/plate-styled-components'
@@ -111,6 +113,8 @@ export const createPlateComponents = (
       }
     }),
     [ELEMENT_LI]: withProps(StyledElement, {as: 'li'}),
+    [ELEMENT_LAYOUT]: LayoutContainer,
+    [ELEMENT_LAYOUT_AREA]: LayoutArea,
     [ELEMENT_LINK]: LinkElement,
     [ELEMENT_MEDIA_EMBED]: MediaEmbedElement,
     [ELEMENT_UL]: withProps(StyledElement, {
@@ -225,6 +229,7 @@ export const createPlateComponents = (
   }
 
   const componentsMap = {
+    layout: [ELEMENT_LAYOUT, ELEMENT_LAYOUT_AREA],
     search: [MARK_SEARCH_HIGHLIGHT],
     align: [ELEMENT_ALIGN_CENTER, ELEMENT_ALIGN_LEFT, ELEMENT_ALIGN_RIGHT, ELEMENT_ALIGN_JUSTIFY],
     list: [ELEMENT_UL, ELEMENT_OL, ELEMENT_LI],

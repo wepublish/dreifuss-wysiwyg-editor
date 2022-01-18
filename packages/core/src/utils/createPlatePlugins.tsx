@@ -17,6 +17,7 @@ import {createHistoryPlugin, createReactPlugin} from '@udecode/plate-core'
 import {createImagePlugin, ELEMENT_IMAGE} from '@dreifuss-wysiwyg-editor/image'
 import {createLinkPlugin} from '@dreifuss-wysiwyg-editor/link'
 import {createFontColorPlugin, createFontBackgroundColorPlugin} from '@dreifuss-wysiwyg-editor/font'
+import {createLayoutPlugin} from '@dreifuss-wysiwyg-editor/layout'
 import {createSelectOnBackspacePlugin} from '@udecode/plate-select'
 import {
   createBoldPlugin,
@@ -48,7 +49,8 @@ export function plugins(enabledOptions: EnablePluginsProps, {findReplace}) {
     image: createImagePlugin(),
     media: createMediaEmbedPlugin(),
     highlight: createHighlightPlugin(),
-    dnd: createDndPlugin()
+    dnd: createDndPlugin(),
+    layout: createLayoutPlugin()
   }
   const options = createPlateOptions(enabledOptions)
 
