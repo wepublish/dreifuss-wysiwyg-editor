@@ -1,5 +1,4 @@
 import React, {ReactNode} from 'react'
-import Divider, {DividerType} from './atoms/Divider'
 import {HeadingToolbar} from '@udecode/plate-toolbar'
 import {ELEMENT_MEDIA_EMBED} from '@udecode/plate-media-embed'
 import {createPlateOptions} from './utils/createPlateOptions'
@@ -11,7 +10,9 @@ import {
   MediaEmbedIcon,
   EmojiPicker,
   EmojiIcon,
-  EditorValue
+  EditorValue,
+  Divider,
+  DividerType
 } from '@dreifuss-wysiwyg-editor/common'
 import {createPlateComponents} from './utils/createPlateComponents'
 import {CharCountToolbar} from '@dreifuss-wysiwyg-editor/character-count-ui'
@@ -56,6 +57,7 @@ export interface Toolbars {
 }
 
 export interface EnablePluginsProps {
+  layout?: boolean
   dnd?: boolean
   search?: boolean
   list?: boolean
